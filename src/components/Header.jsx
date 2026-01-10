@@ -44,12 +44,12 @@ const developmentServices = [
     to: "/services/software",
   },
   {
-    title: "Frontend Development",
+    title: "Frontend Engineering",
     description: "Modern, performant user interfaces.",
     to: "/services/frontend",
   },
   {
-    title: "Backend Development",
+    title: "API & Backend Systems",
     description: "APIs, databases, and server systems.",
     to: "/services/backend",
   },
@@ -59,6 +59,39 @@ const developmentServices = [
     to: "/services/fullstack",
   },
 ];
+
+const solutions = [
+  {
+    title: "Business Website",
+    description: "A professional website for companies and brands.",
+    to: "/solutions/business-website"
+  },
+  {
+    title: "Langing Page",
+    description: "A focused page to launch and validate ideas.",
+    to: "/solutions/landing-page"
+  },
+  {
+    title: "E-commerce",
+    description: "Online store with products, payments, and orders.",
+    to: "/solutions/e-commerce"
+  },
+  {
+    title: "SaaS MVP",
+    description: "Core product built to test and launch fast.",
+    to: "/solutions/saas-mvp"
+  },
+  {
+    title: "Admin Dashboard",
+    description: "Secure panel to manage data and users.",
+    to: "/solutions/admin-dashboard"
+  },
+  {
+    title: "Portfolio Website",
+    description: "Personal portfolio focused on presentation and credibility.",
+    to: "/solutions/portfolio-website"
+  },
+]
 
 /* ===================== HEADER ===================== */
 
@@ -84,7 +117,14 @@ export default function Header() {
 
         <NavigationMenu.List className="NavigationMenuList hidden lg:flex">
           <NavItem to="/">About</NavItem>
-          <NavItem to="/">Solutions</NavItem>
+          <NavItem to="/">Products</NavItem>
+          <NavItem to="/">Pricing</NavItem>
+
+          <NavList to="/" title="Solutions">
+            {solutions.map((item, idx) => (
+              <ListItem title={item.title} to={item.to} key={idx}>{item.description}</ListItem>
+            ))}
+          </NavList>
 
           <NavList to="/" title="Design">
             <CallOut to="/">
@@ -94,8 +134,7 @@ export default function Header() {
             {designServices.map((item, idx) => (
               <ListItem title={item.title} to={item.to} key={idx}>{item.description}</ListItem>
             ))}
-          </NavList>
-          
+          </NavList>  
 
           <NavList to="/" title="Development">
             {developmentServices.map((item, idx) => (

@@ -32,19 +32,19 @@ export default function Footer() {
           <nav aria-label='Footer navigation'>
             <ul>
               <span>Solutions</span>
-              <li><Link to="/">Marketing</Link></li>
-              <li><Link to="/">Analytics</Link></li>
-              <li><Link to="/">Automation</Link></li>
-              <li><Link to="/">Commerce</Link></li>
-              <li><Link to="/">Insights</Link></li>
+              <li><Link to="/">Business Website</Link></li>
+              <li><Link to="/">Startup Landing Page</Link></li>
+              <li><Link to="/">E-commerce</Link></li>
+              <li><Link to="/">SaaS MVP</Link></li>
+              <li><Link to="/">Admin Dashboard</Link></li>
             </ul>
 
             <ul>
               <span>Company</span>
               <li><Link to="/">About</Link></li>
-              <li><Link to="/">Blog</Link></li>
-              <li><Link to="/">Jobs</Link></li>
-              <li><Link to="/">Press</Link></li>
+              <li><Link to="/">FAQ</Link></li>
+              <li><Link to="/">Career</Link></li>
+              <li><Link to="/">Contact Us</Link></li>
             </ul>
 
             <ul>
