@@ -1,97 +1,13 @@
-import * as React from "react";
-import { Link, NavLink } from "react-router";
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import * as React from 'react';
+import { Link, NavLink } from 'react-router';
+import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import * as Dialog from "@radix-ui/react-dialog";
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { CaretDownIcon } from "@radix-ui/react-icons";
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
+import { CaretDownIcon } from '@radix-ui/react-icons';
 import classNames from "classnames";
-import Logo from '../assets/logo.svg?react'
-
-/* ===================== DATA ===================== */
-
-const designServices = [
-  {
-    title: "UI / UX Design",
-    description: "User-centered interfaces focused on clarity and usability.",
-    to: "/services/ui-ux",
-  },
-  {
-    title: "Branding & Logos",
-    description: "Distinct visual identities and brand systems.",
-    to: "/services/branding",
-  },
-  {
-    title: "Illustration",
-    description: "Custom illustrations for digital and marketing use.",
-    to: "/services/illustration",
-  }
-];
-
-const developmentServices = [
-  {
-    title: "Website Development",
-    description: "Fast, responsive, and maintainable websites.",
-    to: "/services/websites",
-  },
-  {
-    title: "Web Applications",
-    description: "Custom platforms and dashboards.",
-    to: "/services/web-apps",
-  },
-  {
-    title: "Software Development",
-    description: "Tailored software for real business needs.",
-    to: "/services/software",
-  },
-  {
-    title: "Frontend Engineering",
-    description: "Modern, performant user interfaces.",
-    to: "/services/frontend",
-  },
-  {
-    title: "API & Backend Systems",
-    description: "APIs, databases, and server systems.",
-    to: "/services/backend",
-  },
-  {
-    title: "Full-Stack Development",
-    description: "End-to-end application delivery.",
-    to: "/services/fullstack",
-  },
-];
-
-const solutions = [
-  {
-    title: "Business Website",
-    description: "A professional website for companies and brands.",
-    to: "/solutions/business-website"
-  },
-  {
-    title: "Langing Page",
-    description: "A focused page to launch and validate ideas.",
-    to: "/solutions/landing-page"
-  },
-  {
-    title: "E-commerce",
-    description: "Online store with products, payments, and orders.",
-    to: "/solutions/e-commerce"
-  },
-  {
-    title: "SaaS MVP",
-    description: "Core product built to test and launch fast.",
-    to: "/solutions/saas-mvp"
-  },
-  {
-    title: "Admin Dashboard",
-    description: "Secure panel to manage data and users.",
-    to: "/solutions/admin-dashboard"
-  },
-  {
-    title: "Portfolio Website",
-    description: "Personal portfolio focused on presentation and credibility.",
-    to: "/solutions/portfolio-website"
-  },
-]
+import Logo from '../assets/logo.svg?react';
+import { services, solutions } from '../constants/catalog';
+import { companyName } from '../constants/company';
 
 /* ===================== HEADER ===================== */
 
@@ -131,13 +47,13 @@ export default function Header() {
               <CallOut.Heading>Design Services</CallOut.Heading>
               <CallOut.Text>Visual, brand, and product design tailored for digital-first experiences.</CallOut.Text>
             </CallOut>
-            {designServices.map((item, idx) => (
+            {services.design.map((item, idx) => (
               <ListItem title={item.title} to={item.to} key={idx}>{item.description}</ListItem>
             ))}
           </NavList>  
 
           <NavList to="/" title="Development">
-            {developmentServices.map((item, idx) => (
+            {services.development.map((item, idx) => (
               <ListItem title={item.title} to={item.to} key={idx}>{item.description}</ListItem>
             ))}
           </NavList>
@@ -173,7 +89,7 @@ export default function Header() {
               
               <div className="MobileMenuHeader">
                 <Link to="/" className="-m-1.5 p-1.5">
-                  <span className="sr-only">Hestia</span>
+                  <span className="sr-only">{companyName}</span>
                   <Logo className="Logo h-10 w-10" />
                 </Link>
                 <Dialog.Close asChild>

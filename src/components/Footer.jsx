@@ -1,8 +1,9 @@
-import React from 'react'
-import Logo from '../assets/logo.svg?react'
-import { Link } from 'react-router'
-
-import { FaFacebook, FaInstagram, FaXTwitter, FaGithub, FaTiktok } from "react-icons/fa6";
+import React from 'react';
+import Logo from '../assets/logo.svg?react';
+import { Link } from 'react-router';
+import { solutions } from '../constants/catalog';
+import { companyName, companyMission } from '../constants/company';
+import { FaFacebook, FaInstagram, FaXTwitter, FaGithub, FaTiktok } from 'react-icons/fa6';
 
 export default function Footer() {
   return (
@@ -10,13 +11,13 @@ export default function Footer() {
       <div className="FooterMainContainer">
         <div className="FooterBrandContainer">
           <div className="BrandLogo">
-            <span className="sr-only">Hestia</span>
+            <span className="sr-only">{companyName}</span>
             <Link to="/">
               <Logo className="Logo h-10 w-auto" />
             </Link>
           </div>
 
-          <p className='CompanyMission'>We turn ideas into thoughtful digital experiences that feel simple, human, and purposeful</p>
+          <p className='CompanyMission'>{companyMission}</p>
 
           <div className="SocialLinks">
             <nav aria-label='Social media'>
@@ -32,17 +33,16 @@ export default function Footer() {
           <nav aria-label='Footer navigation'>
             <ul>
               <span>Solutions</span>
-              <li><Link to="/">Business Website</Link></li>
-              <li><Link to="/">Startup Landing Page</Link></li>
-              <li><Link to="/">E-commerce</Link></li>
-              <li><Link to="/">SaaS MVP</Link></li>
-              <li><Link to="/">Admin Dashboard</Link></li>
+              {solutions.map((item, idx) => (
+                <li key={idx}><Link to={item.to}>{item.title}</Link></li>
+              ))}
             </ul>
 
             <ul>
               <span>Company</span>
               <li><Link to="/">About</Link></li>
               <li><Link to="/">FAQ</Link></li>
+              <li><Link to="/">Team</Link></li>
               <li><Link to="/">Career</Link></li>
               <li><Link to="/">Contact Us</Link></li>
             </ul>
