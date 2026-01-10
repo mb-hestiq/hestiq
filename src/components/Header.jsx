@@ -14,7 +14,8 @@ import { companyName } from '../constants/company';
 export default function Header() {
   const [openDisclosures, setOpenDisclosures] = React.useState({
     design: false,
-    development: false
+    development: false,
+    solutions: false,
   });
 
   const toggleDisclosure = (key) => {
@@ -105,7 +106,37 @@ export default function Header() {
                 <div className="MobileMenuInner">
                   <div className="MobileMenuSection space-y-2">
                     <NavLink to="/" className="MobileMenuLink">About</NavLink>
-                    <NavLink to="/" className="MobileMenuLink">Solutions</NavLink>
+                    <NavLink to="/" className="MobileMenuLink">Products</NavLink>
+                    <NavLink to="/" className="MobileMenuLink">Pricing</NavLink>
+
+                    <div className="MobileMenuDisclosure">
+                      <button 
+                        type="button" 
+                        onClick={() => toggleDisclosure('solutions')}
+                        className="MobileMenuDisclosureButton"
+                        aria-expanded={openDisclosures.solutions}
+                      >
+                        Solutions
+                        <svg 
+                          viewBox="0 0 20 20" 
+                          fill="currentColor" 
+                          aria-hidden="true" 
+                          className="MobileMenuDisclosureIcon"
+                          style={{ transform: openDisclosures.design ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                        >
+                          <path d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" fillRule="evenodd" />
+                        </svg>
+                      </button>
+                      {openDisclosures.solutions && (
+                        <div className="MobileMenuDisclosureContent">
+                          <div className="space-y-2">
+                            {solutions.map((item, idx) => (
+                              <NavLink to={item.to} key={idx} className="MobileMenuDisclosureLink">{item.title}</NavLink>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                     
                     <div className="MobileMenuDisclosure">
                       <button 
@@ -128,7 +159,7 @@ export default function Header() {
                       {openDisclosures.design && (
                         <div className="MobileMenuDisclosureContent">
                           <div className="space-y-2">
-                            {designServices.map((item, idx) => (
+                            {services.design.map((item, idx) => (
                               <NavLink to={item.to} key={idx} className="MobileMenuDisclosureLink">{item.title}</NavLink>
                             ))}
                           </div>
@@ -157,7 +188,7 @@ export default function Header() {
                       {openDisclosures.development && (
                         <div className="MobileMenuDisclosureContent">
                           <div className="space-y-2">
-                            {developmentServices.map((item, idx) => (
+                            {services.development.map((item, idx) => (
                               <NavLink to={item.to} key={idx} className="MobileMenuDisclosureLink">{item.title}</NavLink>
                             ))}
                           </div>
