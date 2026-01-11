@@ -3,6 +3,7 @@ import { FaShieldHalved, FaListCheck } from 'react-icons/fa6';
 import { DatePicker } from '@heroui/date-picker';
 import { now, getLocalTimeZone, isWeekend, today } from '@internationalized/date';
 import { useLocale } from "@react-aria/i18n";
+import Toast from './ToastButton';
 
 export default function BookConsultationSection() {
   const Today = today(getLocalTimeZone());
@@ -37,7 +38,11 @@ export default function BookConsultationSection() {
                     placeholder="Enter your email"
                     autoComplete="email"
                     className="ConsultationInput sm:text-sm"
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      if (e.target.validity.valid) {
+                        setEmail(e.target.value);
+                      }
+                    }}
                   />
                   <DatePicker
                       className="DatePicker"
@@ -75,12 +80,13 @@ export default function BookConsultationSection() {
                     />
                 </div>
 
-                <button
+                <Toast
+                  title="Consultation Successfully Booked"
+                  description={`See you at ${date}`}
                   type="submit"
                   onSubmit={() => {}}
-                  className="ConsultationButton"
-                > Let's Talk
-                </button>
+                  validation={() => email != ""}
+                  className="ConsultationButton">Let's Talk</Toast>
               </form>
             </div>
             <dl className="ConsultationFeatures sm:grid-cols-2 lg:pt-2">
