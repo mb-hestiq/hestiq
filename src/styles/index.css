@@ -1543,7 +1543,7 @@ footer {
 .TestimonialCard .StarsContainer .Star {
   width: 1.25rem;
   height: 1.25rem;
-  color: var(--color-warning);
+  color: var(--color-primary);
 }
 
 .TestimonialCard .Quote {
