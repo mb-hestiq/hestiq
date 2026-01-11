@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import HeroSection from './components/HeroSection'
 import HowItWorksSection from './components/HowItWorksSection'
 import BookConsultationSection from './components/BookConsultationSection'
+import Testimonials from './components/Testimonials'
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <HeroSection />
         <HowItWorksSection />
         <BookConsultationSection />
+        <Testimonials />
       </main>
       <Footer />
     </>

@@ -1,8 +1,8 @@
 import React from 'react';
-import StepLaunchSVG from '../assets/step-launch.svg?react';
-import StepBuildSVG from '../assets/step-build.svg?react';
-import StepDiscoverSVG from '../assets/step-discover.svg?react';
-import StepPlanningSVG from '../assets/step-planning.svg?react';
+import StepLaunchSVG from '../assets/steps/step-launch.svg?react';
+import StepBuildSVG from '../assets/steps/step-build.svg?react';
+import StepDiscoverSVG from '../assets/steps/step-discover.svg?react';
+import StepPlanningSVG from '../assets/steps/step-planning.svg?react';
 
 export default function HowItWorksSection() {
   return (

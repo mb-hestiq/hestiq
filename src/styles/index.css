@@ -898,14 +898,12 @@ footer {
 .ConsultationSection {
 	position: relative;
 	background-color: var(--color-surface);
-	padding-top: 4rem;
-	padding-bottom: 4rem;
+  padding: 4rem 2rem !important;
 }
 
 .ConsultationContainer {
 	margin-inline: auto;
 	max-width: 80rem;
-	padding-inline: 2rem;
 }
 
 .ConsultationGrid {
@@ -1475,5 +1473,113 @@ footer {
 
 .ToastAction {
 	grid-area: action;
+}
+/*#endregion */
+
+/*#region Testimonials */
+.Testimonials {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  padding: 4rem 2rem !important;
+}
+
+.Testimonials .Swiper {
+  padding-bottom: 3rem;
+}
+
+.Testimonials .swiper-slide {
+  height: auto; 
+}
+
+.swiper-pagination-bullet {
+  background: var(--color-border) !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-primary) !important;
+}
+
+.Testimonials .Container {
+  max-width: 80rem;
+	margin-inline: auto;
+	width: 100%;
+}
+
+.Testimonials .SectionTitle {
+  width: fit-content;
+  align-self: center;
+  text-align: center;
+  margin: 2rem;
+  margin-bottom: 4rem;
+}
+
+.TestimonialCard {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  background-color: var(--color-divider);
+  height: 100%;
+}
+
+.TestimonialCard .Content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.TestimonialCard .StarsContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.TestimonialCard .StarsContainer .Star {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-warning);
+}
+
+.TestimonialCard .Quote {
+  flex: 1;
+  margin-top: 2rem;
+}
+
+.TestimonialCard .Quote p {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+}
+
+.TestimonialCard .AuthorContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.AuthorContainer .Avatar {
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 100%;
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.AuthorContainer .Author {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+.AuthorContainer .Role {
+  margin-top: 0.125rem;
+  font-size: 0.875rem;
+  line-height: calc(1.25 / 0.875);
+  color: var(--color-text-muted);
 }
 /*#endregion */
