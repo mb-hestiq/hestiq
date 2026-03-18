@@ -3,21 +3,21 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/WhispererX/hestia">
+  <a href="https://github.com/WhispererX/hestiq">
     <img src="./public/favicon.svg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Hestia</h3>
+  <h3 align="center">HestiQ</h3>
 
   <p align="center">
     Design and programming studio focused on building clear, reliable, and scalable digital products.
     <br />
-    <a href="https://hestia.com"><strong>Visit Website »</strong></a>
+    <a href="https://hestiq.com"><strong>Visit Website »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/WhispererX/hestia/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/WhispererX/hestiq/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
-    <a href="https://github.com/WhispererX/hestia/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/WhispererX/hestiq/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -51,13 +51,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Screen Shot][product-screenshot]](https://hestia.com)
+[![Screen Shot][product-screenshot]](https://hestiq.com)
 
-Hestia is a design and programming studio focused on building clear, reliable, and scalable digital products. We combine thoughtful visual design with solid engineering to deliver solutions that are both functional and refined.
+HestiQ is a design and programming studio focused on building clear, reliable, and scalable digital products. We combine thoughtful visual design with solid engineering to deliver solutions that are both functional and refined.
 
 Our services span UI/UX design, web and application development, and custom software solutions. From concept to deployment, we work closely with clients to understand their goals, translate requirements into clean systems, and produce results that are maintainable over time.
 
-Hestia emphasizes clarity, performance, and long-term value—creating digital foundations that support growth rather than complexity.
+HestiQ emphasizes clarity, performance, and long-term value—creating digital foundations that support growth rather than complexity.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -86,7 +86,7 @@ Hestia emphasizes clarity, performance, and long-term value—creating digital f
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/WhispererX/hestia.git
+   git clone https://github.com/WhispererX/hestiq.git
    ```
 2. Install NPM packages
    ```sh
@@ -103,14 +103,14 @@ Hestia emphasizes clarity, performance, and long-term value—creating digital f
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/WhispererX/hestia/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/WhispererX/hestiq/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
 ## License
 
-Copyright © 2026 Hestia.
+Copyright © 2026 HestiQ.
 All rights reserved.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -120,7 +120,9 @@ All rights reserved.
 <!-- CONTACT -->
 ## Contact
 
-Herkus Žilaitis - herkus.zilaitis@gmail.com
+Email - [contact@hestiq.com](mailto:contact@hestiq.com)  
+Twitter - [@hestiq_social](https://x.com/hestiq_social)  
+Phone - +370 63285735  
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
