@@ -50,14 +50,40 @@ main {
 	line-height: 1.5;
 }
 
+.document .title {
+	font-weight: 700;
+	font-size: 2rem;
+	text-align: center;
+}
+
+.document .subtitle {
+	text-align: center;
+	margin-bottom: 2em;
+}
+
+.document p:not(.subtitle) {
+	text-indent: 2em;
+}
+
 .document ul, .document ol {
-	padding-left: 1.5rem;
+	margin-left: 1.5rem;
 	margin-block: 1rem;
+}
+
+.document ul {
+	list-style:  inside disc;
+	
 }
 
 .document li {
 	margin-block: 0.5rem;
 }
+
+.document p + ul, .document p + ol {
+	margin-left: 2em;
+}
+
+/*#region Ordered Lists */
 
 .document ol[typeof="123"] {
 	list-style-type: decimal;
@@ -82,7 +108,12 @@ main {
 .document ol[typeof="abc"] > li::before,
 .document ol[typeof="ABC"] > li::before {
   content: counter(alpha, lower-alpha) ") ";
+  font-weight: 500;
 }
+
+/*#endregion */
+
+/*#region Headings */
 
 .document h1,
 .document h2,
@@ -152,15 +183,7 @@ main {
   content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " ";
 }
 
-.externalLink {
-	display: inline-flex;
-	align-items: center;
-	text-underline-offset: 3px;
-	text-decoration: underline;
-
-	color: var(--color-primary);
-	font-weight: 500;
-}
+/*#endregion */
 
 /*#endregion */
 
@@ -1708,4 +1731,17 @@ footer {
   line-height: calc(1.25 / 0.875);
   color: var(--color-text-muted);
 }
+/*#endregion */
+
+/*#region Links */ 
+
+.externalLink {
+	align-items: center;
+	text-underline-offset: 3px;
+	text-decoration: underline;
+
+	color: var(--color-primary);
+	font-weight: 500;
+}
+
 /*#endregion */

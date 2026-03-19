@@ -49,15 +49,15 @@ export default function Footer() {
 
             <ul>
               <span>Legal</span>
-              <li><Link to="/terms-of-service">Terms of service</Link></li>
-              <li><Link to="/privacy-policy">Privacy policy</Link></li>
-              <li><Link to="/license">License</Link></li>
+              <li><Link to="/terms">Terms of service</Link></li>
+              <li><Link to="/privacy">Privacy policy</Link></li>
+              <li><Link to="/refunds">Refund Policy</Link></li>
             </ul>
           </nav>
         </div>
       </div>
       <div className="FooterCopyrightContainer">
-        <small>© 2026 HestiQ, All rights reserved.</small>
+        <small>© {new Date().getFullYear()} HestiQ, All rights reserved.</small>
       </div>
     </footer>
   )
