@@ -3,7 +3,7 @@
 
 @theme {
   --color-primary: #342937;
-	--color-primary-light: #342937ab;
+  --color-primary-light: #342937ab;
   --color-secondary: #ffffff;
   --color-accent: #ffffff;
 
@@ -37,6 +37,132 @@ body, #root {
 main {
 	flex: 1;
 }
+
+/*#region Document */
+
+.document {
+	max-width: 80rem;
+	margin-inline: auto;
+	padding: 2rem;
+
+	text-align: justify;
+	counter-reset: h1;
+	line-height: 1.5;
+}
+
+.document ul, .document ol {
+	padding-left: 1.5rem;
+	margin-block: 1rem;
+}
+
+.document li {
+	margin-block: 0.5rem;
+}
+
+.document ol[typeof="123"] {
+	list-style-type: decimal;
+}
+
+.document ol[typeof="abc"],
+.document ol[typeof="ABC"] {
+  counter-reset: alpha;
+}
+
+.document ol[typeof="abc"] > li,
+.document ol[typeof="ABC"] > li {
+  counter-increment: alpha;
+  position: relative;
+}
+
+.document ol[typeof="abc"] > li::marker,
+.document ol[typeof="ABC"] > li::marker {
+  content: "";
+}
+
+.document ol[typeof="abc"] > li::before,
+.document ol[typeof="ABC"] > li::before {
+  content: counter(alpha, lower-alpha) ") ";
+}
+
+.document h1,
+.document h2,
+.document h3,
+.document h4,
+.document h5,
+.document h6 {
+	font-weight: 600;
+	font-size: 1.5rem;
+	color: var(--color-primary);
+	margin-block: 1.5rem 0.5rem;
+}
+
+/* Level 1 */
+.document h1 {
+  counter-reset: h2;
+}
+
+.document h1:not(.title)::before {
+  counter-increment: h1;
+  content: counter(h1) ". ";
+}
+
+/* Level 2 */
+.document h2 {
+  counter-reset: h3;
+}
+
+.document h2::before {
+  counter-increment: h2;
+  content: counter(h1) "." counter(h2) " ";
+}
+
+/* Level 3 */
+.document h3 {
+  counter-reset: h4;
+}
+
+.document h3::before {
+  counter-increment: h3;
+  content: counter(h1) "." counter(h2) "." counter(h3) " ";
+}
+
+/* Level 4 */
+.document h4 {
+  counter-reset: h5;
+}
+
+.document h4::before {
+  counter-increment: h4;
+  content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) " ";
+}
+
+/* Level 5 */
+.document h5 {
+  counter-reset: h6;
+}
+
+.document h5::before {
+  counter-increment: h5;
+  content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
+}
+
+/* Level 6 */
+.document h6::before {
+  counter-increment: h6;
+  content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " ";
+}
+
+.externalLink {
+	display: inline-flex;
+	align-items: center;
+	text-underline-offset: 3px;
+	text-decoration: underline;
+
+	color: var(--color-primary);
+	font-weight: 500;
+}
+
+/*#endregion */
 
 /*#region Header */
 header {

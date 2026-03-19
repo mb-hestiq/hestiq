@@ -21,11 +21,11 @@ export default function Footer() {
 
           <div className="SocialLinks">
             <nav aria-label='Social media'>
-              <Link title='Facebook' aria-label='Facebook' to="/"><FaFacebook /></Link>
-              <Link title='Instagram' aria-label='Instagram' to="/"><FaInstagram /></Link>
-              <Link title='Twitter' aria-label='Twitter' to="/"><FaXTwitter /></Link>
-              <Link title='Github' aria-label='Github' to="/"><FaGithub /></Link>
-              <Link title='Tiktok' aria-label='Tiktok' to="/"><FaTiktok /></Link>
+              <Link title='Facebook' aria-label='Facebook' to="https://www.facebook.com/profile.php?id=61580811435794"><FaFacebook /></Link>
+              <Link title='Instagram' aria-label='Instagram' to="https://www.instagram.com/hestiq_social/"><FaInstagram /></Link>
+              <Link title='Twitter' aria-label='Twitter' to="https://x.com/hestiq_social"><FaXTwitter /></Link>
+              <Link title='Github' aria-label='Github' to="https://github.com/mb-hestiq"><FaGithub /></Link>
+              <Link title='Tiktok' aria-label='Tiktok' to="https://www.tiktok.com/@qhesti"><FaTiktok /></Link>
             </nav>
           </div>
         </div>
@@ -49,15 +49,15 @@ export default function Footer() {
 
             <ul>
               <span>Legal</span>
-              <li><Link to="/">Terms of service</Link></li>
-              <li><Link to="/">Privacy policy</Link></li>
-              <li><Link to="/">License</Link></li>
+              <li><Link to="/terms-of-service">Terms of service</Link></li>
+              <li><Link to="/privacy-policy">Privacy policy</Link></li>
+              <li><Link to="/license">License</Link></li>
             </ul>
           </nav>
         </div>
       </div>
       <div className="FooterCopyrightContainer">
-        <small>© 2026 Hestia, All rights reserved.</small>
+        <small>© 2026 HestiQ, All rights reserved.</small>
       </div>
     </footer>
   )

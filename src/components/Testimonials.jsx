@@ -34,7 +34,7 @@ export default function Testimonials() {
             <TestimonialCard
               author="Alex Morgan"
               role="Founder, SaaS Startup"
-              quote="Hestia delivered a clean, scalable product that was easy to iterate on. Communication was clear and technical decisions were solid."
+              quote="HestiQ delivered a clean, scalable product that was easy to iterate on. Communication was clear and technical decisions were solid."
               rating={5}
               avatar={AlexMorgan}
             />
@@ -52,7 +52,7 @@ export default function Testimonials() {
             <TestimonialCard
               author="Daniel Kovacs"
               role="Product Manager"
-              quote="From early concepts to final delivery, Hestia handled both design and engineering with professionalism and attention to detail."
+              quote="From early concepts to final delivery, HestiQ handled both design and engineering with professionalism and attention to detail."
               rating={4}
               avatar={DanielKovacs}
             />
