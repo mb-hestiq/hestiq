@@ -2091,62 +2091,12 @@ footer {
 
 /*#region Summary */
 
-.OnboardingSummary {
-	background-color: white;
-	border-radius: 16px;
-	border: 1px solid var(--color-border);
-	padding: 2rem;
-	animation: cardEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
-}
-
-.OnboardingSummaryRow {
-	padding-block: 1.25rem;
-}
-
-.OnboardingSummaryRow:first-child {
-	padding-top: 0;
-}
-
-.OnboardingSummaryRow:last-of-type {
-	padding-bottom: 0;
-}
-
-.OnboardingSummaryField {
-	display: flex;
-	flex-direction: column;
-	gap: 0.75rem;
-}
-
-.OnboardingSummaryFieldLabel {
-	font-size: 0.8125rem;
-	font-weight: 600;
-	color: var(--color-text-muted);
-	text-transform: uppercase;
-	letter-spacing: 0.07em;
-}
-
-.OnboardingSummaryCategoryBadge {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.625rem;
-	font-size: 1.0625rem;
-	font-weight: 600;
-	color: var(--color-primary);
-	background-color: var(--color-divider);
-	padding: 0.5rem 1rem;
-	border-radius: 25px;
-	width: fit-content;
-}
-
-.OnboardingSummaryDivider {
-	height: 1px;
-	background-color: var(--color-divider);
-}
-
 .OnboardingSummaryTags {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5rem;
+
+	margin-bottom: 1rem;
 }
 
 .OnboardingSummaryTag {
@@ -2173,16 +2123,6 @@ footer {
 	}
 }
 
-.OnboardingSummaryCTANote {
-	margin-top: 1.5rem;
-	padding: 1.25rem 1.5rem;
-	background-color: var(--color-divider);
-	border-radius: 12px;
-	font-size: 0.9375rem;
-	color: var(--color-text-muted);
-	line-height: 1.6;
-}
-
 /*#endregion */
 
 /*#region Contact */
@@ -2205,6 +2145,10 @@ footer {
 	border-radius: 16px;
 	padding: 1.5rem;
 	min-height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
 .OnboardingContactSummaryBadge {
@@ -2240,6 +2184,29 @@ footer {
 }
 
 /*#endregion */
+
+.OnboardingEstimate {
+	font-size: 0.875rem;
+	color: var(--color-text-muted);
+
+	margin-top: auto;
+	align-self: stretch;
+}
+
+.OnboardingEstimateItem {
+	display: flex;
+	justify-content: space-between;
+	gap: 0.5rem;
+}
+
+.OnboardingEstimateLabel {
+	color: var(--color-text);
+}
+
+.OnboardingEstimateValue {
+	font-weight: 600;
+	color: var(--color-primary);
+}
 
 @media (max-width: 900px) {
 	.OnboardingContactLayout {

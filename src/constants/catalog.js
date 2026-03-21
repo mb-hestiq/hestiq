@@ -1,85 +1,85 @@
 export const services = {
   design: [
     {
-      title: "UI / UX Design",
-      description: "User-centered interfaces focused on clarity and usability.",
-      to: "/services/ui-ux",
-    },
-    {
-      title: "Branding & Logos",
-      description: "Distinct visual identities and brand systems.",
-      to: "/services/branding",
+      title: "Logo",
+      description: "Memorable brand identity mark",
+      to: "/services/logo",
     },
     {
       title: "Illustration",
-      description: "Custom illustrations for digital and marketing use.",
+      description: "Custom digital or print artwork",
       to: "/services/illustration",
+    },
+    {
+      title: "Brand Identity",
+      description: "Distinct visual identities and brand systems.",
+      to: "/services/brand-identity",
+    },
+    {
+      title: "Advertisement",
+      description: "Creative ads for digital and print media.",
+      to: "/services/advertisement",
+    },
+    {
+      title: "Poster",
+      description: "Eye-catching posters for events and promotions.",
+      to: "/services/poster",
+    },
+    {
+      title: "UI/UX Design",
+      description: "Intuitive interfaces and engaging user experiences.",
+      to: "/services/ui-ux-design",
     }
   ],
   development: [
     {
-      title: "Website Development",
-      description: "Fast, responsive, and maintainable websites.",
-      to: "/services/websites",
+      title: "Mobile Application",
+      description: "Fast, responsive, and maintainable mobile apps.",
+      to: "/services/mobile-application",
     },
     {
       title: "Web Applications",
-      description: "Custom platforms and dashboards.",
+      description: "Scalable web apps with modern technologies.",
       to: "/services/web-apps",
     },
     {
-      title: "Software Development",
-      description: "Tailored software for real business needs.",
-      to: "/services/software",
+      title: "Business Website",
+      description: "Professional websites for companies and brands.",
+      to: "/services/business-website",
     },
     {
-      title: "Frontend Engineering",
-      description: "Modern, performant user interfaces.",
-      to: "/services/frontend",
+      title: "E-commerce Shop",
+      description: "Online stores with products, payments, and orders.",
+      to: "/services/ecommerce-shop",
     },
     {
-      title: "API & Backend Systems",
-      description: "APIs, databases, and server systems.",
-      to: "/services/backend",
+      title: "Single Page Website",
+      description: "Focused websites to launch and validate ideas quickly.",
+      to: "/services/single-page-website",
     },
     {
-      title: "Full-Stack Development",
-      description: "End-to-end application delivery.",
-      to: "/services/fullstack",
+      title: "Maintenance & Hosting",
+      description: "Reliable hosting and ongoing maintenance for your web projects.",
+      to: "/services/maintenance-hosting",
     },
   ]
 };
 
 export const solutions = [
   {
-    title: "Business Website",
-    description: "A professional website for companies and brands.",
-    to: "/solutions/business-website"
+    title: "Digital Transformation",
+    description: "Helping businesses modernize processes and go digital.",
+    to: "/solutions/digital-transformation",
   },
   {
-    title: "Landing Page",
-    description: "A focused page to launch and validate ideas.",
-    to: "/solutions/landing-page"
+    title: "Scalable Technical Solutions",
+    description: "Building robust and scalable technical solutions for growing businesses.",
+    to: "/solutions/scalable-technical-solutions"
   },
   {
-    title: "E-commerce",
-    description: "Online store with products, payments, and orders.",
-    to: "/solutions/e-commerce"
-  },
-  {
-    title: "SaaS MVP",
-    description: "Core product built to test and launch fast.",
-    to: "/solutions/saas-mvp"
-  },
-  {
-    title: "Admin Dashboard",
-    description: "Secure panel to manage data and users.",
-    to: "/solutions/admin-dashboard"
-  },
-  {
-    title: "Portfolio Website",
-    description: "Personal portfolio focused on presentation and credibility.",
-    to: "/solutions/portfolio-website"
+    title: "End-to-End Creative Strategy",
+    description: "Integrating design and development for cohesive, impactful projects.",
+    to: "/solutions/end-to-end-creative-strategy"
   },
 ];
 

@@ -7,12 +7,13 @@ import {
 	FaBullhorn,
 	FaImage,
 	FaServer,
-	FaCode,
 	FaCheck,
 	FaArrowRight,
 	FaArrowLeft,
 	FaEllipsis,
 	FaEnvelope,
+	FaCartShopping,
+	FaSuitcase,
 } from "react-icons/fa6";
 import {
 	FaLaptopCode,
@@ -43,21 +44,82 @@ const CATEGORIES = [
 
 const SERVICES = {
 	design: [
-		{ id: "logo", label: "Logo", Icon: FaFont },
-		{ id: "illustration", label: "Illustration", Icon: FaPencilAlt },
-		{ id: "brand-identity", label: "Brand Identity", Icon: FaPalette },
-		{ id: "advertisement", label: "Advertisement", Icon: FaBullhorn },
-		{ id: "poster", label: "Poster", Icon: FaImage },
-		{ id: "website-design", label: "Website Design", Icon: FaDesktop },
+		{ id: "logo", label: "Logo", price: 100, duration: 3, Icon: FaFont },
+		{
+			id: "illustration",
+			label: "Illustration",
+			price: 150,
+			duration: 3,
+			Icon: FaPencilAlt,
+		},
+		{
+			id: "brand-identity",
+			label: "Brand Identity",
+			price: 300,
+			duration: 5,
+			Icon: FaPalette,
+		},
+		{
+			id: "advertisement",
+			label: "Advertisement",
+			price: 50,
+			duration: 2,
+			Icon: FaBullhorn,
+		},
+		{ id: "poster", label: "Poster", price: 50, duration: 2, Icon: FaImage },
+		{
+			id: "ui-ux",
+			label: "UI/UX Design",
+			price: 150,
+			duration: 5,
+			Icon: FaDesktop,
+		},
 		{ id: "other", label: "Other", Icon: FaEllipsis },
 	],
+
 	programming: [
-		{ id: "website-dev", label: "Website Development", Icon: FaGlobe },
-		{ id: "web-app", label: "Web Applications", Icon: FaWindowMaximize },
-		{ id: "software-dev", label: "Software Development", Icon: FaCode },
-		{ id: "api-backend", label: "API & Backend Systems", Icon: FaServer },
-		{ id: "mobile-app", label: "Mobile Application", Icon: FaMobileAlt },
-		{ id: "single-page", label: "Single Page Website", Icon: FaFileCode },
+		{
+			id: "web-app",
+			label: "Web Application",
+			price: 300,
+			duration: 7,
+			Icon: FaGlobe,
+		},
+		{
+			id: "business-website",
+			label: "Business Website",
+			price: 250,
+			duration: 5,
+			Icon: FaSuitcase,
+		},
+		{
+			id: "ecommerce-shop",
+			label: "E-commerce Shop",
+			price: 400,
+			duration: 7,
+			Icon: FaCartShopping,
+		},
+		{
+			id: "single-page",
+			label: "Single Page Website",
+			price: 150,
+			duration: 2,
+			Icon: FaFileCode,
+		},
+		{
+			id: "mobile-app",
+			label: "Mobile Application",
+			price: 500,
+			duration: 7,
+			Icon: FaMobileAlt,
+		},
+		{
+			id: "maintenance",
+			label: "Maintenance & Hosting",
+			price: 150,
+			duration: 30,
+			Icon: FaServer,
+		},
 		{ id: "other", label: "Other", Icon: FaEllipsis },
 	],
 };
@@ -111,6 +173,15 @@ export default function Onboarding() {
 	const categoryLabel =
 		category === "design" ? "Design Services" : "Programming Services";
 
+	const estimatedPrice = selectedItems.reduce(
+		(sum, item) => sum + (item.price || 0),
+		0,
+	);
+	const estimatedDuration = selectedItems.reduce(
+		(sum, item) => sum + (item.duration || 0),
+		0,
+	);
+
 	return (
 		<>
 			<Header />
@@ -160,6 +231,8 @@ export default function Onboarding() {
 								<StepContact
 									categoryLabel={categoryLabel}
 									selectedItems={selectedItems}
+									estimatedPrice={estimatedPrice}
+									estimatedDuration={estimatedDuration}
 								/>
 							)}
 						</div>
@@ -269,7 +342,12 @@ function StepServices({ services, selected, onToggle, category }) {
 	);
 }
 
-function StepContact({ categoryLabel, selectedItems }) {
+function StepContact({
+	categoryLabel,
+	selectedItems,
+	estimatedPrice,
+	estimatedDuration,
+}) {
 	return (
 		<>
 			<div className="OnboardingStepHeader">
@@ -300,6 +378,22 @@ function StepContact({ categoryLabel, selectedItems }) {
 								{label}
 							</span>
 						))}
+					</div>
+					<div className="OnboardingEstimate">
+						<div className="OnboardingEstimateItem">
+							<span className="OnboardingEstimateLabel">Estimated Price</span>
+							<span className="OnboardingEstimateValue">
+								from ${estimatedPrice}
+							</span>
+						</div>
+						<div className="OnboardingEstimateItem">
+							<span className="OnboardingEstimateLabel">
+								Estimated Duration
+							</span>
+							<span className="OnboardingEstimateValue">
+								{estimatedDuration} days
+							</span>
+						</div>
 					</div>
 				</div>
 				<ContactForm
