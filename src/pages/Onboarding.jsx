@@ -62,7 +62,7 @@ const SERVICES = {
 	],
 };
 
-const STEPS = ["Choose Category", "Select Services", "Contact"];
+const STEPS = ["Choose Category", "Select Services", "Finalize"];
 const TOTAL_STEPS = STEPS.length;
 
 export default function Onboarding() {
