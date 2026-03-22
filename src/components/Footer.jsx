@@ -70,7 +70,7 @@ export default function Footer() {
 							<span>Solutions</span>
 							{solutions.map((item, idx) => (
 								<li key={idx}>
-									<Link to={item.href}>{item.title}</Link>
+									<Link to={item.href}>{item.name}</Link>
 								</li>
 							))}
 						</ul>
