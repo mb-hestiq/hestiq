@@ -290,8 +290,8 @@ export default function Header() {
 											)}
 										</div>
 
-										<NavLink to="/" className="MobileMenuLink">
-											Contacts
+										<NavLink to="/contact" className="MobileMenuLink">
+											Contact Us
 										</NavLink>
 									</div>
 								</div>
