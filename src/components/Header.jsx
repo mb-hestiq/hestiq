@@ -6,8 +6,9 @@ import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import classNames from "classnames";
 import Logo from "../assets/logo.svg?react";
-import { services, solutions } from "../constants/catalog";
-import { companyName } from "../constants/company";
+import services from "../../shared/services.js";
+import solutions from "../../shared/solutions.js";
+import { companyName } from "../../shared/company.js";
 
 /* ===================== HEADER ===================== */
 
@@ -33,11 +34,11 @@ export default function Header() {
 				</Link>
 
 				<NavigationMenu.List className="NavigationMenuList hidden lg:flex">
-					<NavItem to="/">About</NavItem>
-					<NavItem to="/">Products</NavItem>
-					<NavItem to="/">Pricing</NavItem>
+					<NavItem to="/about">About</NavItem>
+					<NavItem to="/products">Products</NavItem>
+					<NavItem to="/pricing">Pricing</NavItem>
 
-					<NavList to="/" title="Solutions">
+					<NavList to="/solutions" title="Solutions">
 						<CallOut to="/">
 							<CallOut.Heading>
 								Innovative Solutions for Your Business
@@ -48,30 +49,34 @@ export default function Header() {
 							</CallOut.Text>
 						</CallOut>
 						{solutions.map((item, idx) => (
-							<ListItem title={item.title} to={item.to} key={idx}>
+							<ListItem title={item.name} to={item.href} key={idx}>
 								{item.description}
 							</ListItem>
 						))}
 					</NavList>
 
-					<NavList to="/" title="Design">
-						{services.design.map((item, idx) => (
-							<ListItem title={item.title} to={item.to} key={idx}>
-								{item.description}
-							</ListItem>
-						))}
+					<NavList to="/design" title="Design">
+						{services
+							.filter((s) => s.category === "Design")
+							.map((item, idx) => (
+								<ListItem title={item.name} to={item.href} key={idx}>
+									{item.description}
+								</ListItem>
+							))}
 					</NavList>
 
-					<NavList to="/" title="Development">
-						{services.development.map((item, idx) => (
-							<ListItem title={item.title} to={item.to} key={idx}>
-								{item.description}
-							</ListItem>
-						))}
+					<NavList to="/development" title="Development">
+						{services
+							.filter((s) => s.category === "Development")
+							.map((item, idx) => (
+								<ListItem title={item.name} to={item.href} key={idx}>
+									{item.description}
+								</ListItem>
+							))}
 					</NavList>
 
-					<NavItem to="/" className="CTA">
-						Contacts
+					<NavItem to="/contact" className="CTA">
+						Contact Us
 					</NavItem>
 
 					<NavigationMenu.Indicator className="NavigationMenuIndicator">
@@ -142,13 +147,13 @@ export default function Header() {
 							<div className="MobileMenuContent">
 								<div className="MobileMenuInner">
 									<div className="MobileMenuSection space-y-2">
-										<NavLink to="/" className="MobileMenuLink">
+										<NavLink to="/about" className="MobileMenuLink">
 											About
 										</NavLink>
-										<NavLink to="/" className="MobileMenuLink">
+										<NavLink to="/products" className="MobileMenuLink">
 											Products
 										</NavLink>
-										<NavLink to="/" className="MobileMenuLink">
+										<NavLink to="/pricing" className="MobileMenuLink">
 											Pricing
 										</NavLink>
 
@@ -183,11 +188,11 @@ export default function Header() {
 													<div className="space-y-2">
 														{solutions.map((item, idx) => (
 															<NavLink
-																to={item.to}
+																to={item.href}
 																key={idx}
 																className="MobileMenuDisclosureLink"
 															>
-																{item.title}
+																{item.name}
 															</NavLink>
 														))}
 													</div>
@@ -224,15 +229,17 @@ export default function Header() {
 											{openDisclosures.design && (
 												<div className="MobileMenuDisclosureContent">
 													<div className="space-y-2">
-														{services.design.map((item, idx) => (
-															<NavLink
-																to={item.to}
-																key={idx}
-																className="MobileMenuDisclosureLink"
-															>
-																{item.title}
-															</NavLink>
-														))}
+														{services
+															.filter((s) => s.category === "Design")
+															.map((item, idx) => (
+																<NavLink
+																	to={item.href}
+																	key={idx}
+																	className="MobileMenuDisclosureLink"
+																>
+																	{item.name}
+																</NavLink>
+															))}
 													</div>
 												</div>
 											)}
@@ -267,15 +274,17 @@ export default function Header() {
 											{openDisclosures.development && (
 												<div className="MobileMenuDisclosureContent">
 													<div className="space-y-2">
-														{services.development.map((item, idx) => (
-															<NavLink
-																to={item.to}
-																key={idx}
-																className="MobileMenuDisclosureLink"
-															>
-																{item.title}
-															</NavLink>
-														))}
+														{services
+															.filter((s) => s.category === "Development")
+															.map((item, idx) => (
+																<NavLink
+																	to={item.href}
+																	key={idx}
+																	className="MobileMenuDisclosureLink"
+																>
+																	{item.name}
+																</NavLink>
+															))}
 													</div>
 												</div>
 											)}

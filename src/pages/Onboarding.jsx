@@ -1,126 +1,67 @@
 import React, { useState, useCallback } from "react";
 import Header from "../components/Header";
 import ContactForm from "../components/ContactForm";
+import Services from "../../shared/services";
+import Icon from "../components/Icon";
 
 import {
-	FaBrush,
-	FaBullhorn,
-	FaImage,
-	FaServer,
 	FaCheck,
 	FaArrowRight,
 	FaArrowLeft,
-	FaEllipsis,
 	FaEnvelope,
-	FaCartShopping,
-	FaSuitcase,
 } from "react-icons/fa6";
-import {
-	FaLaptopCode,
-	FaFont,
-	FaPencilAlt,
-	FaPalette,
-	FaDesktop,
-	FaGlobe,
-	FaWindowMaximize,
-	FaMobileAlt,
-	FaFileCode,
-} from "react-icons/fa";
 
 const CATEGORIES = [
 	{
 		id: "design",
 		label: "Design Services",
 		description: "Visual, brand & creative solutions",
-		Icon: FaBrush,
+		icon: "FaBrush",
 	},
 	{
 		id: "programming",
 		label: "Programming Services",
 		description: "Web, software & tech solutions",
-		Icon: FaLaptopCode,
+		icon: "FaLaptopCode",
 	},
 ];
 
+const designServices = Services.filter((s) => s.category === "Design");
+const programmingServices = Services.filter(
+	(s) => s.category === "Development",
+);
 const SERVICES = {
 	design: [
-		{ id: "logo", label: "Logo", price: 100, duration: 3, Icon: FaFont },
+		...designServices.map((s) => ({
+			id: s.name.toLowerCase().replace(/\s+/g, "-"),
+			label: s.name,
+			price: s.price,
+			duration: s.duration,
+			icon: s.icon,
+		})),
 		{
-			id: "illustration",
-			label: "Illustration",
-			price: 150,
-			duration: 3,
-			Icon: FaPencilAlt,
+			id: "other",
+			label: "Other",
+			price: null,
+			duration: null,
+			icon: "FaEllipsis",
 		},
-		{
-			id: "brand-identity",
-			label: "Brand Identity",
-			price: 300,
-			duration: 5,
-			Icon: FaPalette,
-		},
-		{
-			id: "advertisement",
-			label: "Advertisement",
-			price: 50,
-			duration: 2,
-			Icon: FaBullhorn,
-		},
-		{ id: "poster", label: "Poster", price: 50, duration: 2, Icon: FaImage },
-		{
-			id: "ui-ux",
-			label: "UI/UX Design",
-			price: 150,
-			duration: 5,
-			Icon: FaDesktop,
-		},
-		{ id: "other", label: "Other", Icon: FaEllipsis },
 	],
-
 	programming: [
+		...programmingServices.map((s) => ({
+			id: s.name.toLowerCase().replace(/\s+/g, "-"),
+			label: s.name,
+			price: s.price,
+			duration: s.duration,
+			icon: s.icon,
+		})),
 		{
-			id: "web-app",
-			label: "Web Application",
-			price: 300,
-			duration: 7,
-			Icon: FaGlobe,
+			id: "other",
+			label: "Other",
+			price: null,
+			duration: null,
+			icon: "FaEllipsis",
 		},
-		{
-			id: "business-website",
-			label: "Business Website",
-			price: 250,
-			duration: 5,
-			Icon: FaSuitcase,
-		},
-		{
-			id: "ecommerce-shop",
-			label: "E-commerce Shop",
-			price: 400,
-			duration: 7,
-			Icon: FaCartShopping,
-		},
-		{
-			id: "single-page",
-			label: "Single Page Website",
-			price: 150,
-			duration: 2,
-			Icon: FaFileCode,
-		},
-		{
-			id: "mobile-app",
-			label: "Mobile Application",
-			price: 500,
-			duration: 7,
-			Icon: FaMobileAlt,
-		},
-		{
-			id: "maintenance",
-			label: "Maintenance & Hosting",
-			price: 150,
-			duration: 30,
-			Icon: FaServer,
-		},
-		{ id: "other", label: "Other", Icon: FaEllipsis },
 	],
 };
 
@@ -134,7 +75,8 @@ export default function Onboarding() {
 	const [category, setCategory] = useState(null);
 	const [selectedServices, setSelectedServices] = useState([]);
 
-	const services = category ? SERVICES[category] : [];
+	const services =
+		category && Array.isArray(SERVICES[category]) ? SERVICES[category] : [];
 
 	const advance = useCallback(() => {
 		setDirection("forward");
@@ -277,7 +219,7 @@ function StepCategory({ selected, onSelect }) {
 				</p>
 			</div>
 			<div className="OnboardingCards" data-layout="category">
-				{CATEGORIES.map(({ id, label, description, Icon }) => (
+				{CATEGORIES.map(({ id, label, description, icon }) => (
 					<button
 						key={id}
 						type="button"
@@ -291,7 +233,7 @@ function StepCategory({ selected, onSelect }) {
 								<FaCheck />
 							</span>
 						)}
-						<Icon className="OnboardingCardIcon" />
+						<Icon name={icon} className="OnboardingCardIcon" />
 						<div>
 							<div className="OnboardingCardLabel">{label}</div>
 							<div className="OnboardingCardDescription">{description}</div>
@@ -317,7 +259,7 @@ function StepServices({ services, selected, onToggle, category }) {
 				</p>
 			</div>
 			<div className="OnboardingCards" data-layout="services">
-				{services.map(({ id, label, Icon }) => {
+				{services.map(({ id, label, icon }) => {
 					const isSelected = selected.includes(id);
 					return (
 						<button
@@ -332,7 +274,7 @@ function StepServices({ services, selected, onToggle, category }) {
 									<FaCheck />
 								</span>
 							)}
-							<Icon className="OnboardingCardIcon" />
+							<Icon name={icon} className="OnboardingCardIcon" />
 							<div className="OnboardingCardLabel">{label}</div>
 						</button>
 					);
@@ -368,13 +310,13 @@ function StepContact({
 						goals, timeline, or anything else the team should know.
 					</p>
 					<div className="OnboardingSummaryTags">
-						{selectedItems.map(({ id, label, Icon }, index) => (
+						{selectedItems.map(({ id, label, icon }, index) => (
 							<span
 								key={id}
 								className="OnboardingSummaryTag"
 								style={{ animationDelay: `${index * 0.05}s` }}
 							>
-								<Icon />
+								<Icon name={icon} />
 								{label}
 							</span>
 						))}
@@ -397,7 +339,7 @@ function StepContact({
 					</div>
 				</div>
 				<ContactForm
-					endpoint="/api/order"
+					endpoint="/api/orders"
 					payload={{
 						category: categoryLabel,
 						services: selectedItems.map((item) => item.label),

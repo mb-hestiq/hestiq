@@ -1749,6 +1749,392 @@ footer {
 
 /*#endregion */
 
+/*#region Contact Page */
+
+.ContactPage {
+	padding-bottom: 5rem;
+}
+
+.ContactPageSection {
+	padding-inline: 1.5rem;
+}
+
+.ContactPageShell {
+	width: 100%;
+	max-width: 80rem;
+	margin-inline: auto;
+}
+
+.ContactPageHero {
+	padding: 4.5rem 1.5rem 2rem;
+}
+
+.ContactPageHeroCard {
+	display: grid;
+	grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+	gap: 1.5rem;
+	padding: clamp(1.5rem, 3vw, 2.5rem);
+	overflow: hidden;
+	position: relative;
+	isolation: isolate;
+}
+
+.ContactPageHeroContent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
+	max-width: 40rem;
+}
+
+.ContactPageEyebrow {
+	font-size: 0.8125rem;
+	font-weight: 700;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-text-muted);
+}
+
+.ContactPageTitle {
+	font-size: clamp(2.25rem, 4vw, 3.5rem);
+	line-height: 1.05;
+	font-weight: 700;
+	color: var(--color-primary);
+}
+
+.ContactPageDescription {
+	max-width: 38rem;
+	font-size: 1.05rem;
+	line-height: 1.8;
+	color: var(--color-text-muted);
+}
+
+.ContactPageHeroMeta {
+	display: grid;
+	gap: 1rem;
+	align-self: stretch;
+}
+
+.ContactPageHeroMetric {
+	display: flex;
+	flex-direction: column;
+
+	gap: 0.5rem;
+	padding: 1.25rem;
+	border-radius: 18px;
+	background-color: rgba(52, 41, 55, 0.04);
+	border: 1px solid rgba(52, 41, 55, 0.08);
+	backdrop-filter: blur(10px);
+}
+
+.ContactPageHeroMetricLabel {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-text-muted);
+}
+
+.ContactPageHeroMetricValue {
+	font-size: 1.1rem;
+	line-height: 1.4;
+	font-weight: 600;
+	color: var(--color-primary);
+}
+
+.ContactPageContentGrid {
+	display: grid;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+	gap: 1.5rem;
+	align-items: stretch;
+	margin-top: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.ContactInfoPanel,
+.ContactPageForm,
+.ContactMapCard {
+	border: 1px solid var(--color-border) !important;
+	border-radius: 24px !important;
+	background-color: rgba(255, 255, 255, 0.92) !important;
+	box-shadow: 0 2px 4px rgba(52, 41, 55, 0.2) !important;
+	backdrop-filter: blur(14px) !important;
+}
+
+.ContactInfoPanel {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding: 1.75rem;
+	height: 100%;
+}
+
+.ContactInfoPanelHeader,
+.ContactMapHeader {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.ContactInfoPanelTitle,
+.ContactMapTitle,
+.ContactPageVisitTitle {
+	font-size: 1.6rem;
+	line-height: 1.2;
+	font-weight: 700;
+	color: var(--color-primary);
+}
+
+.ContactInfoPanelDescription,
+.ContactMapDescription,
+.ContactPageVisitDescription {
+	font-size: 0.97rem;
+	line-height: 1.7;
+	color: var(--color-text-muted);
+}
+
+.ContactInfoList {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 1rem;
+	flex: 1;
+}
+
+.ContactInfoItem {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.ContactInfoItemIcon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ContactInfoItemContent {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	min-width: 0;
+}
+
+.ContactInfoItemLabel {
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-text-muted);
+}
+
+.ContactInfoItemLink {
+	font-size: 1.05rem;
+	line-height: 1.4;
+	font-weight: 600;
+	color: var(--color-primary);
+	text-decoration: none;
+	word-break: break-word;
+}
+
+.ContactInfoItemLink:hover {
+	text-decoration: underline;
+	text-underline-offset: 0.2rem;
+}
+
+.ContactInfoItemDescription {
+	font-size: 0.92rem;
+	line-height: 1.65;
+	color: var(--color-text-muted);
+}
+
+.ContactInfoAddress {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+	font-style: normal;
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--color-primary);
+}
+
+.ContactInfoFaqCard {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem 1.125rem;
+	border-radius: 18px;
+	background-color: var(--color-primary);
+	color: var(--color-text-inverse);
+}
+
+.ContactInfoFaqTitle {
+	font-size: 1rem;
+	font-weight: 600;
+	margin-bottom: 0.35rem;
+}
+
+.ContactInfoFaqText {
+	font-size: 0.92rem;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.76);
+}
+
+.ContactInfoFaqLink {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	white-space: nowrap;
+	background-color: var(--color-text-inverse);
+	color: var(--color-primary);
+	border-color: var(--color-text-inverse);
+	padding: 0.75rem 1rem;
+	font-size: 0.95rem;
+	font-weight: 600;
+}
+
+.ContactInfoFaqLink:hover {
+	background-color: transparent;
+	color: var(--color-text-inverse);
+	border-color: rgba(255, 255, 255, 0.4);
+}
+
+.ContactPageForm {
+	padding: 1.75rem;
+	align-self: stretch;
+}
+
+.ContactPageForm.ContactFormCard {
+	padding: 1.75rem;
+	box-shadow: 0 14px 34px rgba(52, 41, 55, 0.06);
+	background-color: rgba(255, 255, 255, 0.92);
+	border-radius: 24px;
+	border-color: var(--color-border);
+}
+
+.ContactPageSectionSecondary {
+	margin-top: 1rem;
+}
+
+.ContactPageMapGrid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+	gap: 1.5rem;
+	align-items: stretch;
+}
+
+.ContactMapCard {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	padding: 1.75rem;
+}
+
+.ContactMapFrame {
+	overflow: hidden;
+	border-radius: 18px;
+	border: 1px solid rgba(52, 41, 55, 0.08);
+	aspect-ratio: 16 / 10;
+	background-color: var(--color-divider);
+}
+
+.ContactMapFrame iframe {
+	width: 100%;
+	height: 100%;
+	border: 0;
+	display: block;
+}
+
+.ContactPageVisitCard {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
+	padding: 1.75rem;
+}
+
+.ContactPageVisitAddress {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	font-style: normal;
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.6;
+	color: var(--color-primary);
+	padding-top: 0.25rem;
+	border-top: 1px solid rgba(52, 41, 55, 0.08);
+}
+
+@media (max-width: 960px) {
+	.ContactPageHeroCard,
+	.ContactPageContentGrid,
+	.ContactPageMapGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.ContactPageHero {
+		padding-top: 3rem;
+	}
+
+	.ContactPageHeroMeta {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 720px) {
+	.ContactPageHero,
+	.ContactPageSection {
+		padding-inline: 1rem;
+	}
+
+	.ContactPageHeroMeta {
+		grid-template-columns: 1fr;
+	}
+
+	.ContactInfoFaqCard {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.ContactInfoFaqLink {
+		width: 100%;
+		justify-content: center;
+	}
+}
+
+@media (max-width: 480px) {
+	.ContactPageHeroCard,
+	.ContactInfoPanel,
+	.ContactPageForm.ContactFormCard,
+	.ContactMapCard,
+	.ContactPageVisitCard {
+		padding: 1.25rem;
+		border-radius: 20px;
+	}
+
+	.ContactInfoItem {
+		grid-template-columns: 1fr;
+	}
+
+	.ContactInfoItemIcon {
+		width: 2.75rem;
+		height: 2.75rem;
+	}
+
+	.ContactPageTitle {
+		font-size: 2rem;
+	}
+
+	.ContactMapFrame {
+		aspect-ratio: 1 / 1;
+	}
+}
+
+/*#endregion */
+
 /*#region Onboarding */
 
 .OnboardingPage {
