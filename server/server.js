@@ -7,13 +7,18 @@ import orderRoutes from "./routes/orderRoutes.js";
 import serviceRoutes from "./routes/serviceRoutes.js";
 import transporter from "./config/mailer.js";
 import { companyName } from "../shared/company.js";
+import basicAuth from 'express-basic-auth';
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-
 
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/orders", orderRoutes);
@@ -43,6 +48,15 @@ app.post("/api/contact", async (req, res) => {
     console.error("Error sending email:", error);
     res.status(500).json({ success: false, error: error.message });
   }
+});
+
+app.use('/admin', basicAuth({
+  users: { [process.env.ADMIN_USER]: process.env.ADMIN_PASSWORD },
+  challenge: true,
+}));
+
+app.get('/admin', (req, res) => {
+  res.sendFile('admin.html', { root: path.join(__dirname) });
 });
 
 const PORT = process.env.PORT || 5000;

@@ -152,8 +152,37 @@ router.post("/", async (req, res) => {
  * Get all orders
  */
 router.get("/", async (req, res) => {
-  const orders = await Order.find().populate("services");
+  const orders = await Order.find().populate("services").sort({ createdAt: -1 });
   res.json({ success: true, orders });
+});
+
+/**
+ * Update order
+ */
+router.put("/:id", async (req, res) => {
+  try {
+    const order = await Order.findByIdAndUpdate(
+      req.params.id,
+      { ...req.body, updatedAt: new Date() },
+      { new: true }
+    ).populate("services");
+    if (!order) return res.status(404).json({ success: false, error: "Order not found" });
+    res.json({ success: true, order });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * Delete order
+ */
+router.delete("/:id", async (req, res) => {
+  try {
+    await Order.findByIdAndDelete(req.params.id);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 export default router;
