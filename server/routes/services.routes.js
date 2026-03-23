@@ -1,12 +1,10 @@
 import express from "express";
 import Service from "../models/Service.js";
+import { protect, requireRole } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-/**
- * Create service
- */
-router.post("/", async (req, res, next) => {
+router.post("/", protect, requireRole("admin"), async (req, res, next) => {
   try {
     const service = await Service.create(req.body);
     res.json({ success: true, service });
@@ -15,9 +13,6 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-/**
- * Get all services
- */
 router.get("/", async (req, res, next) => {
   try {
     const services = await Service.find().sort({ createdAt: -1 });
@@ -27,9 +22,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-/**
- * Get single service
- */
 router.get("/:id", async (req, res, next) => {
   try {
     const service = await Service.findById(req.params.id);
@@ -42,10 +34,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-/**
- * Update service
- */
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", protect, requireRole("admin"), async (req, res, next) => {
   try {
     const service = await Service.findByIdAndUpdate(
       req.params.id,
@@ -58,10 +47,7 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
-/**
- * Delete service
- */
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", protect, requireRole("admin"), async (req, res, next) => {
   try {
     await Service.findByIdAndDelete(req.params.id);
     res.json({ success: true });

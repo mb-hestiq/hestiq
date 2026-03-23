@@ -1,5 +1,7 @@
 import express from "express";
-import { register, login } from "../services/auth.service.js";
+import { register, login, updateUser, deleteUser } from "../services/auth.service.js";
+import { protect, requireRole } from "../middlewares/auth.middleware.js";
+
 const router = express.Router();
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -13,11 +15,11 @@ function validateAuth(email, password) {
 
 router.post("/register", async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
     const err = validateAuth(email, password);
     if (err) return res.status(400).json({ success: false, error: err });
 
-    const { user, token } = await register({ email, password });
+    const { user, token } = await register({ name, email, password });
     res.status(201).json({ success: true, user, token });
   } catch (error) {
     next(error);
@@ -35,6 +37,36 @@ router.post("/login", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+});
+
+router.post("/logout", protect, (req, res) => {
+  res.json({ success: true });
+});
+
+router.get("/me", protect, (req, res) => {
+  res.json({ success: true, user: req.user });
+});
+
+router.patch("/me", protect, async (req, res, next) => {
+  try {
+    const user = await updateUser(req.user._id, req.body);
+    res.json({ success: true, user });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/me", protect, async (req, res, next) => {
+  try {
+    await deleteUser(req.user._id);
+    res.json({ success: true });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/admin", protect, requireRole("admin"), (req, res) => {
+  res.json({ success: true, user: req.user });
 });
 
 export default router;

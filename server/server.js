@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import rateLimit from "express-rate-limit";
 import orderRoutes from "./routes/order.routes.js";
 import serviceRoutes from "./routes/services.routes.js";
 import authRoutes from "./routes/auth.routes.js";
@@ -13,15 +14,40 @@ import { errorHandler } from "./middlewares/errror.middleware.js";
 dotenv.config();
 const app = express();
 
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, error: "Too many requests, please try again later." },
+});
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 15,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, error: "Too many auth attempts, please try again later." },
+});
+
+const contactLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, error: "Too many contact requests, please try again later." },
+});
+
 app.use(cors());
 app.use(express.json());
+app.use(generalLimiter);
 
+app.use("/api/auth", authLimiter, authRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/services", serviceRoutes);
-app.use("/api/auth", authRoutes);
 app.use("/api/email", emailRoutes);
 
-app.post("/api/contact", async (req, res) => {
+app.post("/api/contact", contactLimiter, async (req, res) => {
   const { name, email, message } = req.body;
 
   try {

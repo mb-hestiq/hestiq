@@ -7,14 +7,13 @@ import { useAuth } from "../context/AuthContext";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function RegisterPage() {
-	const [name, setName] = useState("");
+export default function LoginPage() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [feedback, setFeedback] = useState({ type: "idle", message: "" });
 
-	const { register, isAuthenticated } = useAuth();
+	const { login, isAuthenticated } = useAuth();
 	const navigate = useNavigate();
 	const location = useLocation();
 	const next = location.state?.next || "/";
@@ -28,25 +27,18 @@ export default function RegisterPage() {
 			event.preventDefault();
 			setFeedback({ type: "idle", message: "" });
 
-			if (!name.trim()) {
-				setFeedback({ type: "error", message: "Name is required." });
-				return;
-			}
 			if (!EMAIL_RE.test(email)) {
 				setFeedback({ type: "error", message: "Invalid email address." });
 				return;
 			}
-			if (password.length < 8) {
-				setFeedback({
-					type: "error",
-					message: "Password must be at least 8 characters.",
-				});
+			if (!password) {
+				setFeedback({ type: "error", message: "Password is required." });
 				return;
 			}
 
 			setIsLoading(true);
 			try {
-				await register(name, email, password);
+				await login(email, password);
 				navigate(next, { replace: true });
 			} catch (error) {
 				setFeedback({ type: "error", message: error.message });
@@ -54,7 +46,7 @@ export default function RegisterPage() {
 				setIsLoading(false);
 			}
 		},
-		[name, email, password, register, navigate, next],
+		[email, password, login, navigate, next],
 	);
 
 	return (
@@ -63,36 +55,26 @@ export default function RegisterPage() {
 			<main className="AuthPage">
 				<Form className="AuthForm">
 					<Form.Header>
-						<Form.Title>Register for an account</Form.Title>
+						<Form.Title>Sign in to your account</Form.Title>
 						<Form.Description>
-							Create your account to access our services and stay updated with
-							the latest news.
+							Enter your credentials to access your account.
 						</Form.Description>
 					</Form.Header>
 
 					<Form.Body onSubmit={handleSubmit}>
-						<Form.InputGroup>
-							<Form.NameInput
-								label="Name"
-								value={name}
-								onChange={(e) => setName(e.target.value)}
-								required
-							/>
-							<Form.EmailInput
-								label="Email"
-								value={email}
-								onChange={(e) => setEmail(e.target.value)}
-								required
-							/>
-						</Form.InputGroup>
-
+						<Form.EmailInput
+							label="Email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+						/>
 						<Form.PasswordInput
 							label="Password"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 							required
 						/>
-						<Form.SubmitButton label="Register" isLoading={isLoading} />
+						<Form.SubmitButton label="Sign in" isLoading={isLoading} />
 						<Form.Feedback type={feedback.type} message={feedback.message} />
 					</Form.Body>
 				</Form>

@@ -1,11 +1,8 @@
 import React from "react";
-import { FaArrowRight, FaCircleNotch } from "react-icons/fa6";
+import Form from "./Form";
 
-const INITIAL_FORM = {
-	name: "",
-	email: "",
-	message: "",
-};
+const INITIAL_FORM = { name: "", email: "", message: "" };
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function ContactForm({
 	endpoint,
@@ -19,36 +16,40 @@ export default function ContactForm({
 }) {
 	const [formData, setFormData] = React.useState(INITIAL_FORM);
 	const [isSubmitting, setIsSubmitting] = React.useState(false);
-	const [status, setStatus] = React.useState({ type: "idle", message: "" });
+	const [feedback, setFeedback] = React.useState({ type: "idle", message: "" });
 
 	const handleChange = React.useCallback((event) => {
 		const { name, value } = event.target;
-		setFormData((current) => ({
-			...current,
-			[name]: value,
-		}));
+		setFormData((current) => ({ ...current, [name]: value }));
 	}, []);
 
 	const handleSubmit = React.useCallback(
 		async (event) => {
 			event.preventDefault();
-			setIsSubmitting(true);
-			setStatus({ type: "idle", message: "" });
+			setFeedback({ type: "idle", message: "" });
 
+			if (!formData.name.trim()) {
+				setFeedback({ type: "error", message: "Name is required." });
+				return;
+			}
+			if (!EMAIL_RE.test(formData.email)) {
+				setFeedback({ type: "error", message: "Invalid email address." });
+				return;
+			}
+			if (!formData.message.trim()) {
+				setFeedback({ type: "error", message: "Message is required." });
+				return;
+			}
+
+			setIsSubmitting(true);
 			try {
 				const response = await fetch(endpoint, {
 					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						...formData,
-						...payload,
-					}),
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ ...formData, ...payload }),
 				});
 
 				let responseData = null;
-
 				try {
 					responseData = await response.json();
 				} catch {
@@ -62,11 +63,11 @@ export default function ContactForm({
 					);
 				}
 
-				setStatus({ type: "success", message: successMessage });
+				setFeedback({ type: "success", message: successMessage });
 				setFormData(INITIAL_FORM);
 				onSuccess?.(responseData);
 			} catch (error) {
-				setStatus({
+				setFeedback({
 					type: "error",
 					message:
 						error instanceof Error
@@ -81,64 +82,33 @@ export default function ContactForm({
 	);
 
 	return (
-		<div className={`ContactFormCard ${className}`.trim()}>
-			<div className="ContactFormHeader">
-				<h2 className="ContactFormTitle">{title}</h2>
-				<p className="ContactFormDescription">{description}</p>
-			</div>
-			<form className="ContactForm" onSubmit={handleSubmit}>
-				<label className="ContactFormField">
-					<span className="ContactFormLabel">Name</span>
-					<input
-						className="ContactFormInput"
-						type="text"
-						name="name"
-						value={formData.name}
-						onChange={handleChange}
-						autoComplete="name"
-						required
-					/>
-				</label>
-				<label className="ContactFormField">
-					<span className="ContactFormLabel">Email</span>
-					<input
-						className="ContactFormInput"
-						type="email"
-						name="email"
-						value={formData.email}
-						onChange={handleChange}
-						autoComplete="email"
-						required
-					/>
-				</label>
-				<label className="ContactFormField">
-					<span className="ContactFormLabel">Message</span>
-					<textarea
-						className="ContactFormInput ContactFormTextarea"
-						name="message"
-						value={formData.message}
-						onChange={handleChange}
-						rows={6}
-						required
-					/>
-				</label>
-				{status.type !== "idle" && (
-					<p className="ContactFormStatus" data-status={status.type}>
-						{status.message}
-					</p>
-				)}
-				<button
-					className="CTA ContactFormSubmit"
-					type="submit"
-					disabled={isSubmitting}
-				>
-					{isSubmitting ? (
-						<FaCircleNotch className="ContactFormSpinner" />
-					) : null}
-					<span>{isSubmitting ? "Submitting..." : submitLabel}</span>
-					{!isSubmitting ? <FaArrowRight /> : null}
-				</button>
-			</form>
-		</div>
+		<Form className={className}>
+			<Form.Header>
+				<Form.Title>{title}</Form.Title>
+				<Form.Description>{description}</Form.Description>
+			</Form.Header>
+			<Form.Body onSubmit={handleSubmit}>
+				<Form.NameInput
+					label="Name"
+					value={formData.name}
+					onChange={handleChange}
+					required
+				/>
+				<Form.EmailInput
+					label="Email"
+					value={formData.email}
+					onChange={handleChange}
+					required
+				/>
+				<Form.MessageInput
+					label="Message"
+					value={formData.message}
+					onChange={handleChange}
+					required
+				/>
+				<Form.SubmitButton label={submitLabel} isLoading={isSubmitting} />
+				<Form.Feedback type={feedback.type} message={feedback.message} />
+			</Form.Body>
+		</Form>
 	);
 }

@@ -1,13 +1,11 @@
 import express from "express";
 import transporter from "../config/mailer.js";
 import { companyName } from "../../shared/company.js";
+import { protect, requireRole } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-/**
- * Send email
- */
-router.post("/", async (req, res, next) => {
+router.post("/", protect, requireRole("admin"), async (req, res, next) => {
   try {
     const { to, subject, text, html, replyTo } = req.body;
 

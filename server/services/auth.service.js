@@ -1,18 +1,14 @@
 import User from "../models/User.js";
 import { hashPassword, comparePassword } from "../scripts/hash.js";
-import { signToken, verifyToken } from "../scripts/token.js";
+import { signToken } from "../scripts/token.js";
 
-export const register = async ({ email, password }) => {
+export const register = async ({ name, email, password }) => {
   const exists = await User.findOne({ email });
   if (exists) throw new Error("User already exists");
 
   const hashed = await hashPassword(password);
 
-  const user = await User.create({
-    email,
-    password: hashed,
-  });
-
+  const user = await User.create({ name, email, password: hashed });
   const token = signToken({ id: user._id });
 
   return { user, token };
@@ -30,19 +26,22 @@ export const login = async ({ email, password }) => {
   return { user, token };
 };
 
-export const protect = async (req, res, next) => {
-  try {
-    const token = req.headers.authorization?.split(" ")[1];
-    if (!token) throw new Error("Unauthorized");
-
-    const decoded = verifyToken(token);
-
-    const user = await User.findById(decoded.id);
-    if (!user) throw new Error("User not found");
-
-    req.user = user;
-    next();
-  } catch (error) {
-    next(error);
+export const updateUser = async (id, data) => {
+  const allowed = ["name", "email"];
+  const update = {};
+  for (const field of allowed) {
+    if (data[field] !== undefined) update[field] = data[field];
   }
-}
+  if (data.password) {
+    update.password = await hashPassword(data.password);
+  }
+  const user = await User.findByIdAndUpdate(id, update, { new: true });
+  if (!user) throw new Error("User not found");
+  return user;
+};
+
+export const deleteUser = async (id) => {
+  const user = await User.findByIdAndDelete(id);
+  if (!user) throw new Error("User not found");
+  return user;
+};
