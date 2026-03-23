@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import Service from "../models/Service.js";
 import services from "../../shared/services.js";
 
-dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+  import('dotenv').then(dotenv => dotenv.config());
+}
 
 const seed = async () => {
   try {

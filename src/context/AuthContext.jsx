@@ -5,6 +5,7 @@ import {
 	useEffect,
 	useState,
 } from "react";
+import { backendUrl } from "../../shared/company";
 
 const AuthContext = createContext(null);
 
@@ -19,7 +20,7 @@ export function AuthProvider({ children }) {
 			setIsLoading(false);
 			return;
 		}
-		fetch("/api/auth/me", {
+		fetch(`${backendUrl}/api/auth/me`, {
 			headers: { Authorization: `Bearer ${stored}` },
 		})
 			.then((res) => (res.ok ? res.json() : null))
@@ -36,7 +37,7 @@ export function AuthProvider({ children }) {
 	}, []);
 
 	const login = useCallback(async (email, password) => {
-		const res = await fetch("/api/auth/login", {
+		const res = await fetch(`${backendUrl}/api/auth/login`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ email, password }),
@@ -50,7 +51,7 @@ export function AuthProvider({ children }) {
 	}, []);
 
 	const register = useCallback(async (name, email, password) => {
-		const res = await fetch("/api/auth/register", {
+		const res = await fetch(`${backendUrl}/api/auth/register`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ name, email, password }),
@@ -72,7 +73,7 @@ export function AuthProvider({ children }) {
 
 	const updateAccount = useCallback(
 		async (data) => {
-			const res = await fetch("/api/auth/me", {
+			const res = await fetch(`${backendUrl}/api/auth/me`, {
 				method: "PATCH",
 				headers: {
 					"Content-Type": "application/json",
@@ -90,7 +91,7 @@ export function AuthProvider({ children }) {
 	);
 
 	const deleteAccount = useCallback(async () => {
-		const res = await fetch("/api/auth/me", {
+		const res = await fetch(`${backendUrl}/api/auth/me`, {
 			method: "DELETE",
 			headers: { Authorization: `Bearer ${token}` },
 		});

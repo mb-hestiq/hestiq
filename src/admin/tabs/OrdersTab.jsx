@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import DataGrid from "../components/DataGrid";
 import CrudModal from "../components/CrudModal";
+import { backendUrl } from "../../../shared/company";
 
 function formatDate(d) {
 	if (!d) return "—";
@@ -107,7 +108,7 @@ export default function OrdersTab() {
 	const fetchOrders = useCallback(async () => {
 		setLoading(true);
 		try {
-			const res = await fetch("/api/orders", {
+			const res = await fetch(`${backendUrl}/api/orders`, {
 				headers: { Authorization: `Bearer ${token}` },
 			});
 			const data = await res.json();
@@ -124,7 +125,7 @@ export default function OrdersTab() {
 
 	const handleEdit = useCallback(
 		async (form) => {
-			const res = await fetch(`/api/orders/${modal.target._id}`, {
+			const res = await fetch(`${backendUrl}/api/orders/${modal.target._id}`, {
 				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",
@@ -142,7 +143,7 @@ export default function OrdersTab() {
 
 	const handleDelete = useCallback(
 		async (id) => {
-			const res = await fetch(`/api/orders/${id}`, {
+			const res = await fetch(`${backendUrl}/api/orders/${id}`, {
 				method: "DELETE",
 				headers: { Authorization: `Bearer ${token}` },
 			});
@@ -156,7 +157,7 @@ export default function OrdersTab() {
 
 	const handleBulkDelete = useCallback(
 		async (ids) => {
-			const res = await fetch("/api/orders", {
+			const res = await fetch(`${backendUrl}/api/orders`, {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",

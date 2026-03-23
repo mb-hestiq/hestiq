@@ -6,6 +6,7 @@ import {
 	RiArrowUpSLine,
 	RiLockLine,
 } from "react-icons/ri";
+import { backendUrl } from "../../../shared/company.js";
 
 const METHOD_CLASS = {
 	GET: "api-method-get",
@@ -74,7 +75,7 @@ function EndpointItem({ endpoint }) {
 		setRunning(true);
 		setResult(null);
 		try {
-			let url = endpoint.path;
+			let url = `${backendUrl}${endpoint.path}`;
 
 			for (const p of endpoint.params ?? []) {
 				url = url.replace(

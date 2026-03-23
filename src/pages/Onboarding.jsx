@@ -11,6 +11,7 @@ import {
 	FaArrowLeft,
 	FaEnvelope,
 } from "react-icons/fa6";
+import { backendUrl } from "../../shared/company";
 
 const CATEGORIES = [
 	{
@@ -340,7 +341,7 @@ function StepContact({
 					</div>
 				</div>
 				<ContactForm
-					endpoint="/api/orders"
+					endpoint={`${backendUrl}/api/orders`}
 					payload={{
 						category: categoryLabel,
 						services: selectedItems.map((item) => item.label),

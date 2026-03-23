@@ -9,6 +9,7 @@ import {
 	FaLocationDot,
 	FaPhone,
 } from "react-icons/fa6";
+import { backendUrl } from "../../shared/company.js";
 
 const channelIcons = {
 	email: FaEnvelope,
@@ -81,7 +82,7 @@ export default function ContactPage() {
 							items={contacts}
 						/>
 						<ContactForm
-							endpoint="/api/contact"
+							endpoint={`${backendUrl}/api/contact`}
 							title="Send a message"
 							description="Share your goals, scope, timeline, or any blockers so we can respond with the right next step."
 							submitLabel="Send message"

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { backendUrl } from "../../shared/company";
 
 const CACHE_KEY = "hestiq_services";
 
@@ -11,7 +12,7 @@ export function getServices() {
   } catch {}
 
   if (!inflightPromise) {
-    inflightPromise = fetch("/api/services")
+    inflightPromise = fetch(`${backendUrl}/api/services`)
       .then((r) => r.json())
       .then((data) => {
         const list = data.success && Array.isArray(data.services) ? data.services : [];

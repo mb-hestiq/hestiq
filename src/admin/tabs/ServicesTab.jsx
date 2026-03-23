@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import DataGrid from "../components/DataGrid";
 import CrudModal from "../components/CrudModal";
+import { backendUrl } from "../../../shared/company";
 
 const SERVICE_FIELDS = [
 	{ name: "name", label: "Name", type: "text", required: true },
@@ -97,7 +98,7 @@ export default function ServicesTab() {
 	const fetchServices = useCallback(async () => {
 		setLoading(true);
 		try {
-			const res = await fetch("/api/services", {
+			const res = await fetch(`${backendUrl}/api/services`, {
 				headers: { Authorization: `Bearer ${token}` },
 			});
 			const data = await res.json();
@@ -114,7 +115,7 @@ export default function ServicesTab() {
 
 	const handleCreate = useCallback(
 		async (form) => {
-			const res = await fetch("/api/services", {
+			const res = await fetch(`${backendUrl}/api/services`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -132,14 +133,17 @@ export default function ServicesTab() {
 
 	const handleEdit = useCallback(
 		async (form) => {
-			const res = await fetch(`/api/services/${modal.target._id}`, {
-				method: "PUT",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${token}`,
+			const res = await fetch(
+				`${backendUrl}/api/services/${modal.target._id}`,
+				{
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
+					body: JSON.stringify(form),
 				},
-				body: JSON.stringify(form),
-			});
+			);
 			const data = await res.json();
 			if (!data.success)
 				throw new Error(data.error || "Failed to update service");
@@ -150,7 +154,7 @@ export default function ServicesTab() {
 
 	const handleDelete = useCallback(
 		async (id) => {
-			const res = await fetch(`/api/services/${id}`, {
+			const res = await fetch(`${backendUrl}/api/services/${id}`, {
 				method: "DELETE",
 				headers: { Authorization: `Bearer ${token}` },
 			});
@@ -164,7 +168,7 @@ export default function ServicesTab() {
 
 	const handleBulkDelete = useCallback(
 		async (ids) => {
-			const res = await fetch("/api/services", {
+			const res = await fetch(`${backendUrl}/api/services`, {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",

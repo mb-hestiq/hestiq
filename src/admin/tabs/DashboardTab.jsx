@@ -25,6 +25,7 @@ import {
 	RiArrowUpLine,
 	RiArrowDownLine,
 } from "react-icons/ri";
+import { backendUrl } from "../../../shared/company";
 
 const CHART_COLORS = [
 	"#342937",
@@ -154,9 +155,12 @@ export default function DashboardTab() {
 		async (p) => {
 			setSection("traffic", true);
 			try {
-				const res = await fetch(`/api/analytics/traffic?period=${p}`, {
-					headers: { Authorization: `Bearer ${token}` },
-				});
+				const res = await fetch(
+					`${backendUrl}/api/analytics/traffic?period=${p}`,
+					{
+						headers: { Authorization: `Bearer ${token}` },
+					},
+				);
 				const data = await res.json();
 				if (data.success) setTrafficData(data.data);
 			} finally {
@@ -170,9 +174,12 @@ export default function DashboardTab() {
 		async (p) => {
 			setSection("source", true);
 			try {
-				const res = await fetch(`/api/analytics/source?period=${p}`, {
-					headers: { Authorization: `Bearer ${token}` },
-				});
+				const res = await fetch(
+					`${backendUrl}/api/analytics/source?period=${p}`,
+					{
+						headers: { Authorization: `Bearer ${token}` },
+					},
+				);
 				const data = await res.json();
 				if (data.success) setSourceData(data.data);
 			} finally {
@@ -186,9 +193,12 @@ export default function DashboardTab() {
 		async (p) => {
 			setSection("orders", true);
 			try {
-				const res = await fetch(`/api/analytics/orders-stats?period=${p}`, {
-					headers: { Authorization: `Bearer ${token}` },
-				});
+				const res = await fetch(
+					`${backendUrl}/api/analytics/orders-stats?period=${p}`,
+					{
+						headers: { Authorization: `Bearer ${token}` },
+					},
+				);
 				const data = await res.json();
 				if (data.success) setOrdersData(data.data);
 			} finally {
@@ -202,9 +212,12 @@ export default function DashboardTab() {
 		async (p) => {
 			setSection("users", true);
 			try {
-				const res = await fetch(`/api/analytics/users-stats?period=${p}`, {
-					headers: { Authorization: `Bearer ${token}` },
-				});
+				const res = await fetch(
+					`${backendUrl}/api/analytics/users-stats?period=${p}`,
+					{
+						headers: { Authorization: `Bearer ${token}` },
+					},
+				);
 				const data = await res.json();
 				if (data.success) setUsersData(data.data);
 			} finally {
