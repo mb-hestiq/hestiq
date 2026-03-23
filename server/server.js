@@ -11,9 +11,10 @@ import adminRoutes from "./routes/admin.routes.js";
 import transporter from "./config/mailer.js";
 import { companyName } from "../shared/company.js";
 import { errorHandler } from "./middlewares/error.middleware.js";
+import dotenv from "dotenv";
 
 if (process.env.NODE_ENV !== "production") {
-  import('dotenv').then(dotenv => dotenv.config());
+  dotenv.config();
 }
 
 const app = express();
