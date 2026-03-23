@@ -7,6 +7,8 @@ import orderRoutes from "./routes/order.routes.js";
 import serviceRoutes from "./routes/services.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import emailRoutes from "./routes/email.routes.js";
+import analyticsRoutes from "./routes/analytics.routes.js";
+import adminRoutes from "./routes/admin.routes.js";
 import transporter from "./config/mailer.js";
 import { companyName } from "../shared/company.js";
 import { errorHandler } from "./middlewares/errror.middleware.js";
@@ -46,6 +48,8 @@ app.use("/api/auth", authLimiter, authRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/email", emailRoutes);
+app.use("/api/analytics", analyticsRoutes);
+app.use("/api/admin", adminRoutes);
 
 app.post("/api/contact", contactLimiter, async (req, res) => {
   const { name, email, message } = req.body;

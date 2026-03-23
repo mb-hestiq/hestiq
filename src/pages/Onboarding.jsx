@@ -1,8 +1,9 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import Header from "../components/Header";
 import ContactForm from "../components/ContactForm";
-import Services from "../../shared/services";
 import Icon from "../components/Icon";
+import { useServices } from "../utils/servicesCache";
+import { track } from "../utils/analytics";
 
 import {
 	FaCheck,
@@ -26,45 +27,6 @@ const CATEGORIES = [
 	},
 ];
 
-const designServices = Services.filter((s) => s.category === "Design");
-const programmingServices = Services.filter(
-	(s) => s.category === "Development",
-);
-const SERVICES = {
-	design: [
-		...designServices.map((s) => ({
-			id: s.name.toLowerCase().replace(/\s+/g, "-"),
-			label: s.name,
-			price: s.price,
-			duration: s.duration,
-			icon: s.icon,
-		})),
-		{
-			id: "other",
-			label: "Other",
-			price: null,
-			duration: null,
-			icon: "FaEllipsis",
-		},
-	],
-	programming: [
-		...programmingServices.map((s) => ({
-			id: s.name.toLowerCase().replace(/\s+/g, "-"),
-			label: s.name,
-			price: s.price,
-			duration: s.duration,
-			icon: s.icon,
-		})),
-		{
-			id: "other",
-			label: "Other",
-			price: null,
-			duration: null,
-			icon: "FaEllipsis",
-		},
-	],
-};
-
 const STEPS = ["Choose Category", "Select Services", "Finalize"];
 const TOTAL_STEPS = STEPS.length;
 
@@ -74,6 +36,37 @@ export default function Onboarding() {
 	const [stepKey, setStepKey] = useState(0);
 	const [category, setCategory] = useState(null);
 	const [selectedServices, setSelectedServices] = useState([]);
+
+	const { services: allServices } = useServices();
+
+	const SERVICES = useMemo(() => {
+		const mapService = (s) => ({
+			id: s.name.toLowerCase().replace(/\s+/g, "-"),
+			label: s.name,
+			price: s.price,
+			duration: s.duration,
+			icon: s.icon,
+		});
+		const OTHER = {
+			id: "other",
+			label: "Other",
+			price: null,
+			duration: null,
+			icon: "FaEllipsis",
+		};
+		return {
+			design: [
+				...allServices.filter((s) => s.category === "Design").map(mapService),
+				OTHER,
+			],
+			programming: [
+				...allServices
+					.filter((s) => s.category === "Development")
+					.map(mapService),
+				OTHER,
+			],
+		};
+	}, [allServices]);
 
 	const services =
 		category && Array.isArray(SERVICES[category]) ? SERVICES[category] : [];
@@ -123,6 +116,13 @@ export default function Onboarding() {
 		(sum, item) => sum + (item.duration || 0),
 		0,
 	);
+
+	const handleOrderSuccess = useCallback(() => {
+		track("order_created", {
+			category: categoryLabel,
+			services: selectedItems.map((i) => i.label),
+		});
+	}, [categoryLabel, selectedItems]);
 
 	return (
 		<>
@@ -289,6 +289,7 @@ function StepContact({
 	selectedItems,
 	estimatedPrice,
 	estimatedDuration,
+	onSuccess,
 }) {
 	return (
 		<>
@@ -349,6 +350,7 @@ function StepContact({
 					submitLabel="Submit request"
 					successMessage="Your order request has been sent. We will reach out soon."
 					className="OnboardingContactForm"
+					onSuccess={onSuccess}
 				/>
 			</div>
 		</>

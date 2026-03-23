@@ -56,4 +56,17 @@ router.delete("/:id", protect, requireRole("admin"), async (req, res, next) => {
   }
 });
 
+router.delete("/", protect, requireRole("admin"), async (req, res, next) => {
+  try {
+    const { ids } = req.body;
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return res.status(400).json({ success: false, error: "ids must be a non-empty array" });
+    }
+    await Service.deleteMany({ _id: { $in: ids } });
+    res.json({ success: true });
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default router;

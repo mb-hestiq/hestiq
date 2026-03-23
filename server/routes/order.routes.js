@@ -4,6 +4,7 @@ import Order from "../models/Order.js";
 import Service from "../models/Service.js";
 import transporter from "../config/mailer.js";
 import { companyName } from "../../shared/company.js";
+import { protect, requireRole } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
@@ -146,7 +147,7 @@ router.get("/", async (req, res, next) => {
 /**
  * Update order
  */
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", protect, requireRole("admin"), async (req, res, next) => {
   try {
     const order = await Order.findByIdAndUpdate(
       req.params.id,
@@ -165,9 +166,22 @@ router.put("/:id", async (req, res, next) => {
 /**
  * Delete order
  */
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", protect, requireRole("admin"), async (req, res, next) => {
   try {
     await Order.findByIdAndDelete(req.params.id);
+    res.json({ success: true });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/", protect, requireRole("admin"), async (req, res, next) => {
+  try {
+    const { ids } = req.body;
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return res.status(400).json({ success: false, error: "ids must be a non-empty array" });
+    }
+    await Order.deleteMany({ _id: { $in: ids } });
     res.json({ success: true });
   } catch (error) {
     next(error);

@@ -6,7 +6,7 @@ import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import classNames from "classnames";
 import Logo from "../assets/logo.svg?react";
-import services from "../../shared/services.js";
+import { useServices } from "../utils/servicesCache";
 import solutions from "../../shared/solutions.js";
 import { companyName } from "../../shared/company.js";
 
@@ -25,6 +25,8 @@ export default function Header() {
 			[key]: !prev[key],
 		}));
 	};
+
+	const { services } = useServices();
 
 	return (
 		<header>
