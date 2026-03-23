@@ -2,10 +2,13 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import orderRoutes from "./routes/orderRoutes.js";
-import serviceRoutes from "./routes/serviceRoutes.js";
+import orderRoutes from "./routes/order.routes.js";
+import serviceRoutes from "./routes/services.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+import emailRoutes from "./routes/email.routes.js";
 import transporter from "./config/mailer.js";
 import { companyName } from "../shared/company.js";
+import { errorHandler } from "./middlewares/errror.middleware.js";
 
 dotenv.config();
 const app = express();
@@ -15,6 +18,8 @@ app.use(express.json());
 
 app.use("/api/orders", orderRoutes);
 app.use("/api/services", serviceRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/email", emailRoutes);
 
 app.post("/api/contact", async (req, res) => {
   const { name, email, message } = req.body;
@@ -41,6 +46,8 @@ app.post("/api/contact", async (req, res) => {
     res.status(500).json({ success: false, error: error.message });
   }
 });
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 async function startServer() {

@@ -10,15 +10,12 @@ const router = express.Router();
 /**
  * Create order
  */
-router.post("/", async (req, res) => {
+router.post("/", async (req, res, next) => {
   try {
     const { name, email, category, services, message } = req.body;
 
     if (!name || !email || !Array.isArray(services) || services.length === 0) {
-      return res.status(400).json({
-        success: false,
-        error: "Name, email, and at least one service are required.",
-      });
+      throw new Error("Name, email, and at least one service are required.");
     }
 
     const normalizedServices = services
@@ -27,10 +24,7 @@ router.post("/", async (req, res) => {
       .filter(Boolean);
 
     if (normalizedServices.length === 0) {
-      return res.status(400).json({
-        success: false,
-        error: "At least one valid service must be provided.",
-      });
+      throw new Error("At least one valid service must be provided.");
     }
 
     const idCandidates = normalizedServices.filter((value) =>
@@ -51,19 +45,13 @@ router.post("/", async (req, res) => {
     }
 
     if (query.length === 0) {
-      return res.status(400).json({
-        success: false,
-        error: "No valid service identifiers were provided.",
-      });
+      throw new Error("No valid service identifiers were provided.");
     }
 
     const serviceDocs = await Service.find({ $or: query });
 
     if (serviceDocs.length === 0) {
-      return res.status(400).json({
-        success: false,
-        error: "No matching services were found.",
-      });
+      throw new Error("No matching services were found.");
     }
 
     const matchedKeys = new Set(
@@ -74,11 +62,7 @@ router.post("/", async (req, res) => {
     );
 
     if (unresolvedServices.length > 0) {
-      return res.status(400).json({
-        success: false,
-        error: "Some services could not be resolved.",
-        unresolvedServices,
-      });
+      throw new Error("Some services could not be resolved.");
     }
 
     const total = serviceDocs.reduce(
@@ -143,45 +127,50 @@ router.post("/", async (req, res) => {
     });
     res.json({ success: true, order });
   } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).json({ success: false, error: error.message });
+    next(error);
   }
 });
 
 /**
  * Get all orders
  */
-router.get("/", async (req, res) => {
-  const orders = await Order.find().populate("services").sort({ createdAt: -1 });
-  res.json({ success: true, orders });
+router.get("/", async (req, res, next) => {
+  try {
+    const orders = await Order.find().populate("services").sort({ createdAt: -1 });
+    res.json({ success: true, orders });
+  } catch (error) {
+    next(error);
+  }
 });
 
 /**
  * Update order
  */
-router.put("/:id", async (req, res) => {
+router.put("/:id", async (req, res, next) => {
   try {
     const order = await Order.findByIdAndUpdate(
       req.params.id,
       { ...req.body, updatedAt: new Date() },
       { new: true }
     ).populate("services");
-    if (!order) return res.status(404).json({ success: false, error: "Order not found" });
+
+    if (!order) throw new Error("Order not found");
+
     res.json({ success: true, order });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
+  } catch (error) {
+    next(error);
   }
 });
 
 /**
  * Delete order
  */
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", async (req, res, next) => {
   try {
     await Order.findByIdAndDelete(req.params.id);
     res.json({ success: true });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
+  } catch (error) {
+    next(error);
   }
 });
 

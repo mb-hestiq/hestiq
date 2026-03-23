@@ -9,6 +9,7 @@ import PrivacyPage from "./pages/PrivacyPage.jsx";
 import RefundsPage from "./pages/RefundsPage.jsx";
 import Onboarding from "./pages/Onboarding.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
+import RegisterPage from "./pages/RegisterPage.jsx";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")).render(
 				<Route path="/refunds" element={<RefundsPage />} />
 				<Route path="/onboarding" element={<Onboarding />} />
 				<Route path="/contact" element={<ContactPage />} />
+				<Route path="/register" element={<RegisterPage />} />
 			</Routes>
 		</BrowserRouter>
 	</StrictMode>,
