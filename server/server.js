@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import mongoose from "mongoose";
 import rateLimit from "express-rate-limit";
 import orderRoutes from "./routes/order.routes.js";
@@ -11,9 +10,12 @@ import analyticsRoutes from "./routes/analytics.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
 import transporter from "./config/mailer.js";
 import { companyName } from "../shared/company.js";
-import { errorHandler } from "./middlewares/errror.middleware.js";
+import { errorHandler } from "./middlewares/error.middleware.js";
 
-dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+  import('dotenv').then(dotenv => dotenv.config());
+}
+
 const app = express();
 
 const generalLimiter = rateLimit({
@@ -78,6 +80,9 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
 });
 
 app.use(errorHandler);
+
+process.on('uncaughtException', console.error);
+process.on('unhandledRejection', console.error);
 
 const PORT = process.env.PORT || 5000;
 async function startServer() {
