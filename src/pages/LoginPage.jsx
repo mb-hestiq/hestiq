@@ -1,9 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Footer from "../components/Footer";
 import Form from "../components/Form";
 import Header from "../components/Header";
 import { useAuth } from "../context/AuthContext";
+import Logo from "../assets/logo.svg?react";
+import { companyName } from "../../shared/company.js";
+import { FaCircleCheck, FaLock, FaShieldHalved } from "react-icons/fa6";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -53,31 +56,82 @@ export default function LoginPage() {
 		<>
 			<Header />
 			<main className="AuthPage">
-				<Form className="AuthForm">
-					<Form.Header>
-						<Form.Title>Sign in to your account</Form.Title>
-						<Form.Description>
-							Enter your credentials to access your account.
-						</Form.Description>
-					</Form.Header>
+				<div className="AuthCard">
+					<div className="AuthBrandPanel">
+						<div className="AuthBrandLogo">
+							<Logo className="AuthBrandLogoMark" />
+						</div>
+						<div className="AuthBrandContent">
+							<p className="AuthBrandEyebrow">Welcome back</p>
+							<h1 className="AuthBrandTitle">
+								Sign in to your {companyName} account
+							</h1>
+							<p className="AuthBrandDescription">
+								Access your orders, manage your services, and stay up to date
+								with everything happening across your projects.
+							</p>
+						</div>
+						<div className="AuthBrandFeatures">
+							<div className="AuthBrandFeature">
+								<FaCircleCheck className="AuthBrandFeatureIcon" />
+								<span className="AuthBrandFeatureText">
+									<strong>Track your orders</strong>
+									Monitor projects, check delivery timelines, and review all
+									active work in one place.
+								</span>
+							</div>
+							<div className="AuthBrandFeature">
+								<FaShieldHalved className="AuthBrandFeatureIcon" />
+								<span className="AuthBrandFeatureText">
+									<strong>Secure access</strong>
+									Your account and data are protected with industry-standard
+									authentication.
+								</span>
+							</div>
+							<div className="AuthBrandFeature">
+								<FaLock className="AuthBrandFeatureIcon" />
+								<span className="AuthBrandFeatureText">
+									<strong>Stay in the loop</strong>
+									Get updates, notifications, and direct communication from the{" "}
+									{companyName} team.
+								</span>
+							</div>
+						</div>
+					</div>
 
-					<Form.Body onSubmit={handleSubmit}>
-						<Form.EmailInput
-							label="Email"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-							required
-						/>
-						<Form.PasswordInput
-							label="Password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							required
-						/>
-						<Form.SubmitButton label="Sign in" isLoading={isLoading} />
-						<Form.Feedback type={feedback.type} message={feedback.message} />
-					</Form.Body>
-				</Form>
+					<div className="AuthFormPanel">
+						<Form className="AuthForm">
+							<Form.Header>
+								<Form.Title>Sign in</Form.Title>
+								<Form.Description>
+									Enter your credentials to access your account.
+								</Form.Description>
+							</Form.Header>
+							<Form.Body onSubmit={handleSubmit}>
+								<Form.EmailInput
+									label="Email"
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+									required
+								/>
+								<Form.PasswordInput
+									label="Password"
+									value={password}
+									onChange={(e) => setPassword(e.target.value)}
+									required
+								/>
+								<Form.SubmitButton label="Sign in" isLoading={isLoading} />
+								<Form.Feedback
+									type={feedback.type}
+									message={feedback.message}
+								/>
+							</Form.Body>
+						</Form>
+						<p className="AuthSwitch">
+							Don&apos;t have an account? <Link to="/register">Create one</Link>
+						</p>
+					</div>
+				</div>
 			</main>
 			<Footer />
 		</>
