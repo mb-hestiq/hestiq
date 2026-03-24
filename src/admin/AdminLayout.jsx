@@ -8,6 +8,7 @@ import ServicesTab from "./tabs/ServicesTab";
 import TeamTab from "./tabs/TeamTab";
 import ProfileTab from "./tabs/ProfileTab";
 import ApiTab from "./tabs/ApiTab";
+import JobsTab from "./tabs/JobsTab";
 
 const TABS = {
 	dashboard: DashboardTab,
@@ -15,6 +16,7 @@ const TABS = {
 	orders: OrdersTab,
 	services: ServicesTab,
 	team: TeamTab,
+	jobs: JobsTab,
 	profile: ProfileTab,
 	api: ApiTab,
 };

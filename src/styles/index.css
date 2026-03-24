@@ -3889,3 +3889,669 @@ footer {
 }
 
 /*#endregion */
+
+/*#region Career Page */
+
+.CareerHero {
+	padding: 5rem 1.5rem 4rem;
+	max-width: 90rem;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.CareerHeroContent {
+	display: flex;
+	align-items: center;
+	gap: 3rem;
+	max-width: 72rem;
+	margin: 0 auto;
+}
+
+.CareerHeroLeft {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.CareerHeroTitle {
+	font-size: clamp(2rem, 5vw, 3.25rem);
+	font-weight: 800;
+	line-height: 1.1;
+	color: var(--color-primary);
+	letter-spacing: -0.02em;
+}
+
+.CareerHeroTitle span {
+	color: var(--color-text-inverse);
+	text-shadow: 0 2px 3px var(--color-primary);
+}
+
+.CareerHeroDescription {
+	font-size: 1.0625rem;
+	line-height: 1.7;
+	color: var(--color-text-muted);
+	max-width: 36rem;
+}
+
+.CareerHeroCTA {
+	align-self: flex-start;
+	padding: 0.75rem 1.25rem;
+}
+
+.CareerHeroRight {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.CareerHeroSvg {
+	width: 100%;
+	max-width: 28rem;
+	height: auto;
+}
+
+@media (max-width: 768px) {
+	.CareerHeroRight {
+		display: none;
+	}
+}
+
+/* Why Us */
+
+.WhyUsSection {
+	padding: 5rem 1.5rem;
+	max-width: 90rem;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.WhyUsContainer {
+	display: flex;
+	gap: 4rem;
+	align-items: flex-start;
+	max-width: 72rem;
+	margin: 0 auto;
+}
+
+.WhyUsLeft {
+	flex: 1;
+}
+
+.WhyUsGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1.5rem;
+}
+
+.WhyUsGrid .WhyUsBlock:nth-child(2n) {
+	transform: translateY(1.5rem);
+}
+
+.WhyUsBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 1.25rem;
+	background-color: #ffffff;
+	border: 1px solid var(--color-border);
+	border-radius: 0.875rem;
+	transition:
+		box-shadow 0.2s,
+		transform 0.2s;
+}
+
+.WhyUsBlock:hover {
+	box-shadow: 0 4px 20px rgba(52, 41, 55, 0.08);
+	transform: translateY(-2px);
+}
+
+.WhyUsGrid .WhyUsBlock:nth-child(n + 4):hover {
+	transform: translateY(calc(1.5rem - 2px));
+}
+
+.WhyUsBlockIcon {
+	width: 2.25rem;
+	height: 2.25rem;
+	border-radius: 0.5rem;
+	background-color: var(--color-bg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-primary);
+	flex-shrink: 0;
+}
+
+.WhyUsBlockTitle {
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--color-primary);
+	line-height: 1.3;
+}
+
+.WhyUsBlockDesc {
+	font-size: 0.875rem;
+	color: var(--color-text-muted);
+	line-height: 1.55;
+}
+
+.WhyUsRight {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	padding-top: 0.5rem;
+}
+
+.WhyUsTitle {
+	font-size: clamp(1.5rem, 3vw, 2.25rem);
+	font-weight: 700;
+	color: var(--color-primary);
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+}
+
+.WhyUsText {
+	font-size: 0.9375rem;
+	color: var(--color-text-muted);
+	line-height: 1.75;
+}
+
+.WhyUsCTA {
+	align-self: flex-start;
+	margin-top: 0.5rem;
+	padding: 0.75rem 1.25rem;
+	cursor: pointer;
+}
+
+@media (max-width: 900px) {
+	.WhyUsContainer {
+		flex-direction: column-reverse;
+		gap: 2.5rem;
+	}
+
+	.WhyUsGrid .WhyUsBlock:nth-child(n + 4) {
+		transform: none;
+	}
+
+	.WhyUsGrid .WhyUsBlock:nth-child(n + 4):hover {
+		transform: translateY(-2px);
+	}
+}
+
+@media (max-width: 480px) {
+	.WhyUsGrid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Job Openings */
+
+.JobsSection {
+	padding: 5rem 1.5rem;
+}
+
+.JobsSectionInner {
+	max-width: 56rem;
+	margin: 0 auto;
+}
+
+.JobsSectionHeader {
+	margin-bottom: 2.5rem;
+}
+
+.JobsSectionTitle {
+	font-size: clamp(1.5rem, 3vw, 2.25rem);
+	font-weight: 700;
+	color: var(--color-primary);
+	letter-spacing: -0.01em;
+	margin-bottom: 0.625rem;
+}
+
+.JobsSectionDesc {
+	font-size: 1rem;
+	color: var(--color-text-muted);
+	line-height: 1.65;
+}
+
+.JobsList {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.JobCard {
+	background-color: #ffffff;
+	border: 1px solid var(--color-border);
+	border-radius: 0.875rem;
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.875rem;
+	transition:
+		box-shadow 0.2s,
+		border-color 0.2s;
+}
+
+.JobCard:hover {
+	box-shadow: 0 4px 20px rgba(52, 41, 55, 0.08);
+	border-color: var(--color-primary-light);
+}
+
+.JobCardHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.JobCardTitle {
+	font-size: 1.0625rem;
+	font-weight: 600;
+	color: var(--color-primary);
+	line-height: 1.3;
+}
+
+.JobCardApplyBtn {
+	padding: 0.5rem 1.25rem;
+	background-color: var(--color-primary);
+	color: #ffffff;
+	border: none;
+	border-radius: 0.5rem;
+	font-size: 0.875rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: opacity 0.15s;
+	white-space: nowrap;
+}
+
+.JobCardApplyBtn:hover {
+	opacity: 0.85;
+}
+
+.JobCardMeta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.JobCardBadge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	padding: 0.25rem 0.75rem;
+	border-radius: 9999px;
+	font-size: 0.8125rem;
+	font-weight: 500;
+	background-color: var(--color-bg);
+	color: var(--color-text-muted);
+	border: 1px solid var(--color-border);
+}
+
+.JobCardBadgeType {
+	background-color: var(--color-primary);
+	color: #ffffff;
+	border-color: transparent;
+}
+
+.JobCardDescription {
+	font-size: 0.9rem;
+	color: var(--color-text-muted);
+	line-height: 1.65;
+}
+
+.JobCardSkills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+}
+
+.JobCardSkill {
+	padding: 0.2rem 0.625rem;
+	border-radius: 0.375rem;
+	font-size: 0.8rem;
+	font-weight: 500;
+	background-color: var(--color-bg);
+	color: var(--color-primary);
+	border: 1px solid var(--color-border);
+}
+
+.JobsLoading {
+	display: flex;
+	justify-content: center;
+	padding: 4rem 0;
+	color: var(--color-text-muted);
+}
+
+.JobsLoadingIcon {
+	color: var(--color-primary);
+}
+
+.JobsEmpty {
+	text-align: center;
+	padding: 4rem 1.5rem;
+	color: var(--color-text-muted);
+	font-size: 0.9375rem;
+	background-color: #ffffff;
+	border: 1px solid var(--color-border);
+	border-radius: 0.875rem;
+}
+
+/* Apply Modal */
+
+.ApplyModal {
+	border: none;
+	border-radius: 1rem;
+	padding: 0;
+	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+	max-width: 560px;
+	width: calc(100% - 2rem);
+	margin: auto;
+	max-height: calc(100vh - 2rem);
+	overflow-y: auto;
+}
+
+.ApplyModal::backdrop {
+	background-color: rgba(0, 0, 0, 0.55);
+}
+
+.ApplyModalInner {
+	background-color: #ffffff;
+	border-radius: 1rem;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.ApplyModalHeader {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.ApplyModalTitle {
+	font-size: 1.1875rem;
+	font-weight: 700;
+	color: var(--color-primary);
+	line-height: 1.3;
+}
+
+.ApplyModalSubtitle {
+	font-size: 0.875rem;
+	color: var(--color-text-muted);
+	margin-top: 0.25rem;
+}
+
+.ApplyModalClose {
+	width: 2rem;
+	height: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.375rem;
+	border: none;
+	background: none;
+	cursor: pointer;
+	color: var(--color-text-muted);
+	flex-shrink: 0;
+	transition: background-color 0.15s;
+}
+
+.ApplyModalClose:hover {
+	background-color: var(--color-bg);
+}
+
+.ApplyModalForm {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.ApplyModalRow {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+}
+
+.ApplyModalField {
+	display: flex;
+	flex-direction: column;
+	gap: 0.375rem;
+}
+
+.ApplyModalField label {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	color: var(--color-primary);
+}
+
+.ApplyModalField input,
+.ApplyModalField textarea {
+	padding: 0.625rem 0.875rem;
+	border: 1.5px solid var(--color-border);
+	border-radius: 0.5rem;
+	font-size: 0.875rem;
+	color: var(--color-primary);
+	background-color: #ffffff;
+	outline: none;
+	transition: border-color 0.15s;
+	resize: vertical;
+	font-family: inherit;
+}
+
+.ApplyModalField input:focus,
+.ApplyModalField textarea:focus {
+	border-color: var(--color-primary);
+}
+
+.ApplyModalFileInput {
+	display: flex;
+	align-items: center;
+	gap: 0.625rem;
+	padding: 0.625rem 0.875rem;
+	border: 1.5px dashed var(--color-border);
+	border-radius: 0.5rem;
+	font-size: 0.8125rem;
+	color: var(--color-text-muted);
+	cursor: pointer;
+	transition:
+		border-color 0.15s,
+		background-color 0.15s;
+	background-color: var(--color-bg);
+}
+
+.ApplyModalFileInput:hover {
+	border-color: var(--color-primary);
+	background-color: #ffffff;
+}
+
+.ApplyModalError {
+	font-size: 0.8125rem;
+	color: var(--color-error);
+	padding: 0.5rem 0.75rem;
+	background-color: rgba(220, 53, 69, 0.06);
+	border-radius: 0.375rem;
+	border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+.ApplyModalSubmitBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	width: 100%;
+	padding: 0.75rem;
+	background-color: var(--color-primary);
+	color: #ffffff;
+	border: none;
+	border-radius: 0.625rem;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: opacity 0.15s;
+	font-family: inherit;
+}
+
+.ApplyModalSubmitBtn:hover {
+	opacity: 0.88;
+}
+
+.ApplyModalSubmitBtn:disabled {
+	opacity: 0.55;
+	cursor: not-allowed;
+}
+
+.ApplyModalSuccess {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 0.875rem;
+	padding: 1rem 0;
+}
+
+.ApplyModalSuccessIcon {
+	color: var(--color-success);
+}
+
+.ApplyModalSuccess h3 {
+	font-size: 1.125rem;
+	font-weight: 700;
+	color: var(--color-primary);
+}
+
+.ApplyModalSuccess p {
+	font-size: 0.9rem;
+	color: var(--color-text-muted);
+	line-height: 1.6;
+	max-width: 28rem;
+}
+
+@media (max-width: 480px) {
+	.ApplyModalRow {
+		grid-template-columns: 1fr;
+	}
+
+	.ApplyModalInner {
+		padding: 1.5rem;
+	}
+}
+
+/* Recruitment Process */
+
+.RecruitmentSection {
+	padding: 5rem 1.5rem 6rem;
+}
+
+.RecruitmentInner {
+	max-width: 72rem;
+	margin: 0 auto;
+}
+
+.RecruitmentTitle {
+	font-size: clamp(1.5rem, 3vw, 2.25rem);
+	font-weight: 700;
+	color: var(--color-primary);
+	text-align: center;
+	letter-spacing: -0.01em;
+	margin-bottom: 3rem;
+}
+
+.RecruitmentSteps {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1.75rem;
+	position: relative;
+}
+
+.RecruitmentSteps::before {
+	content: "";
+	position: absolute;
+	top: 1.375rem;
+	left: calc(12.5% + 1.375rem);
+	right: calc(12.5% + 1.375rem);
+	height: 2px;
+	background: linear-gradient(
+		to right,
+		var(--color-border),
+		var(--color-primary-light),
+		var(--color-border)
+	);
+	z-index: 0;
+}
+
+.RecruitmentStep {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 0.875rem;
+	position: relative;
+}
+
+.RecruitmentStepNumber {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 2.75rem;
+	height: 2.75rem;
+	border-radius: 9999px;
+	background-color: var(--color-primary);
+	color: #ffffff;
+	font-size: 0.9375rem;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1;
+}
+
+.RecruitmentStepIcon {
+	margin-top: 3.75rem;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 0.75rem;
+	background-color: #ffffff;
+	border: 1px solid var(--color-border);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-primary);
+}
+
+.RecruitmentStepTitle {
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--color-primary);
+	line-height: 1.3;
+}
+
+.RecruitmentStepDesc {
+	font-size: 0.875rem;
+	color: var(--color-text-muted);
+	line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+	.RecruitmentSteps {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.RecruitmentSteps::before {
+		display: none;
+	}
+}
+
+@media (max-width: 520px) {
+	.RecruitmentSteps {
+		grid-template-columns: 1fr;
+	}
+}
+
+/*#endregion */

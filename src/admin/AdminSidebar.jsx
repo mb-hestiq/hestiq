@@ -5,6 +5,7 @@ import {
 	RiShoppingBagLine,
 	RiToolsLine,
 	RiTeamLine,
+	RiBriefcaseLine,
 	RiCodeSSlashLine,
 	RiLogoutBoxLine,
 	RiCloseLine,
@@ -18,6 +19,7 @@ const NAV_ITEMS = [
 	{ id: "orders", label: "Orders", icon: RiShoppingBagLine },
 	{ id: "services", label: "Services", icon: RiToolsLine },
 	{ id: "team", label: "Team", icon: RiTeamLine },
+	{ id: "jobs", label: "Jobs", icon: RiBriefcaseLine },
 	{ id: "api", label: "API", icon: RiCodeSSlashLine },
 ];
 

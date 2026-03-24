@@ -10,6 +10,7 @@ import analyticsRoutes from "./routes/analytics.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
 import teamRoutes from "./routes/team.routes.js";
 import filesRoutes from "./routes/files.routes.js";
+import jobsRoutes from "./routes/jobs.routes.js";
 import transporter from "./config/mailer.js";
 import { companyName } from "../shared/company.js";
 import { errorHandler } from "./middlewares/error.middleware.js";
@@ -57,6 +58,7 @@ app.use("/api/analytics", analyticsRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/team", teamRoutes);
 app.use("/api/files", filesRoutes);
+app.use("/api/jobs", jobsRoutes);
 
 app.post("/api/contact", contactLimiter, async (req, res) => {
   const { name, email, message } = req.body;
