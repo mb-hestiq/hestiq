@@ -5,6 +5,7 @@ import DashboardTab from "./tabs/DashboardTab";
 import UsersTab from "./tabs/UsersTab";
 import OrdersTab from "./tabs/OrdersTab";
 import ServicesTab from "./tabs/ServicesTab";
+import TeamTab from "./tabs/TeamTab";
 import ProfileTab from "./tabs/ProfileTab";
 import ApiTab from "./tabs/ApiTab";
 
@@ -13,6 +14,7 @@ const TABS = {
 	users: UsersTab,
 	orders: OrdersTab,
 	services: ServicesTab,
+	team: TeamTab,
 	profile: ProfileTab,
 	api: ApiTab,
 };

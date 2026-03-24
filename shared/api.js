@@ -551,4 +551,224 @@ export const API_DOCS = [
       },
     ],
   },
+  {
+    category: "Team",
+    endpoints: [
+      {
+        id: "team-create",
+        method: "POST",
+        path: "/api/team",
+        description: "Create a new team member. Admin only.",
+        auth: "admin",
+        params: [],
+        query: [],
+        body: [
+          { name: "name", type: "String", required: true, placeholder: "Jane Doe", description: "Team member's full name" },
+          { name: "email", type: "String", required: true, placeholder: "jane@example.com", description: "Unique email address" },
+          { name: "title", type: "String", required: false, placeholder: "Lead Designer", description: "Job title or role" },
+          { name: "image", type: "String", required: false, placeholder: "/api/files/64a1b2c3d4e5f6789abcdef0", description: "Image URL from files API" },
+          { name: "tags", type: "Array<String>", required: false, placeholder: '["design","management"]', description: "Tags: management | design | development | marketing" },
+        ],
+        response: [
+          { name: "success", type: "Boolean", description: "Operation result" },
+          { name: "member", type: "Object", description: "Created team member document" },
+        ],
+        errors: [
+          { status: 400, reason: "Missing name or email; invalid tag values" },
+          { status: 401, reason: "Not authenticated" },
+          { status: 403, reason: "Insufficient permissions" },
+        ],
+      },
+      {
+        id: "team-list",
+        method: "GET",
+        path: "/api/team",
+        description: "Retrieve all team members sorted by newest first.",
+        auth: null,
+        params: [],
+        query: [],
+        body: [],
+        response: [
+          { name: "success", type: "Boolean", description: "Operation result" },
+          { name: "members", type: "Array<Object>", description: "All team member documents" },
+        ],
+        errors: [
+          { status: 500, reason: "Internal server error" },
+        ],
+      },
+      {
+        id: "team-get",
+        method: "GET",
+        path: "/api/team/:id",
+        description: "Retrieve a single team member by MongoDB ID.",
+        auth: null,
+        params: [
+          { name: "id", type: "String", required: true, placeholder: "64a1b2c3d4e5f6789abcdef0", description: "MongoDB team member ID" },
+        ],
+        query: [],
+        body: [],
+        response: [
+          { name: "success", type: "Boolean", description: "Operation result" },
+          { name: "member", type: "Object", description: "Team member document" },
+        ],
+        errors: [
+          { status: 404, reason: "Team member not found" },
+          { status: 500, reason: "Internal server error" },
+        ],
+      },
+      {
+        id: "team-update",
+        method: "PATCH",
+        path: "/api/team/:id",
+        description: "Update a team member. If the image URL changes, the old image is deleted from storage. Admin only.",
+        auth: "admin",
+        params: [
+          { name: "id", type: "String", required: true, placeholder: "64a1b2c3d4e5f6789abcdef0", description: "MongoDB team member ID" },
+        ],
+        query: [],
+        body: [
+          { name: "name", type: "String", required: false, placeholder: "Jane Doe", description: "Updated full name" },
+          { name: "email", type: "String", required: false, placeholder: "jane@example.com", description: "Updated email address" },
+          { name: "title", type: "String", required: false, placeholder: "Senior Designer", description: "Updated job title" },
+          { name: "image", type: "String", required: false, placeholder: "/api/files/64a1b2c3d4e5f6789abcdef0", description: "Updated image URL" },
+          { name: "tags", type: "Array<String>", required: false, placeholder: '["development"]', description: "Updated tags array" },
+        ],
+        response: [
+          { name: "success", type: "Boolean", description: "Operation result" },
+          { name: "member", type: "Object", description: "Updated team member document" },
+        ],
+        errors: [
+          { status: 401, reason: "Not authenticated" },
+          { status: 403, reason: "Insufficient permissions" },
+          { status: 404, reason: "Team member not found" },
+        ],
+      },
+      {
+        id: "team-delete",
+        method: "DELETE",
+        path: "/api/team/:id",
+        description: "Delete a team member and their associated image from storage. Admin only.",
+        auth: "admin",
+        params: [
+          { name: "id", type: "String", required: true, placeholder: "64a1b2c3d4e5f6789abcdef0", description: "MongoDB team member ID" },
+        ],
+        query: [],
+        body: [],
+        response: [
+          { name: "success", type: "Boolean", description: "Always true on success" },
+        ],
+        errors: [
+          { status: 401, reason: "Not authenticated" },
+          { status: 403, reason: "Insufficient permissions" },
+          { status: 404, reason: "Team member not found" },
+        ],
+      },
+      {
+        id: "team-bulk-delete",
+        method: "DELETE",
+        path: "/api/team",
+        description: "Delete multiple team members and their images in a single request. Admin only.",
+        auth: "admin",
+        params: [],
+        query: [],
+        body: [
+          { name: "ids", type: "Array<String>", required: true, placeholder: '["64a1b2c...","64a1b2d..."]', description: "Array of MongoDB team member IDs" },
+        ],
+        response: [
+          { name: "success", type: "Boolean", description: "Always true on success" },
+        ],
+        errors: [
+          { status: 400, reason: "ids must be a non-empty array" },
+          { status: 401, reason: "Not authenticated" },
+          { status: 403, reason: "Insufficient permissions" },
+        ],
+      },
+    ],
+  },
+  {
+    category: "Files",
+    endpoints: [
+      {
+        id: "files-upload",
+        method: "POST",
+        path: "/api/files",
+        description: "Upload an image file to GridFS storage. Accepts multipart/form-data with a 'file' field. Max size 10 MB. Admin only.",
+        auth: "admin",
+        params: [],
+        query: [],
+        body: [
+          { name: "file", type: "File", required: true, placeholder: "(binary)", description: "Image file (multipart/form-data, field name: file)" },
+        ],
+        response: [
+          { name: "success", type: "Boolean", description: "Operation result" },
+          { name: "id", type: "String", description: "GridFS file ID" },
+          { name: "url", type: "String", description: "Relative URL to retrieve the file: /api/files/:id" },
+        ],
+        errors: [
+          { status: 400, reason: "No file provided or non-image MIME type" },
+          { status: 401, reason: "Not authenticated" },
+          { status: 403, reason: "Insufficient permissions" },
+          { status: 413, reason: "File exceeds 10 MB size limit" },
+        ],
+      },
+      {
+        id: "files-list",
+        method: "GET",
+        path: "/api/files",
+        description: "List all stored files sorted by upload date descending. Admin only.",
+        auth: "admin",
+        params: [],
+        query: [],
+        body: [],
+        response: [
+          { name: "success", type: "Boolean", description: "Operation result" },
+          { name: "files", type: "Array<Object>", description: "GridFS file documents" },
+        ],
+        errors: [
+          { status: 401, reason: "Not authenticated" },
+          { status: 403, reason: "Insufficient permissions" },
+        ],
+      },
+      {
+        id: "files-get",
+        method: "GET",
+        path: "/api/files/:id",
+        description: "Stream a file by its GridFS ID. Returns the raw binary with appropriate Content-Type. Publicly accessible.",
+        auth: null,
+        params: [
+          { name: "id", type: "String", required: true, placeholder: "64a1b2c3d4e5f6789abcdef0", description: "GridFS file ID" },
+        ],
+        query: [],
+        body: [],
+        response: [
+          { name: "(binary stream)", type: "Buffer", description: "Raw file data with Content-Type header set" },
+        ],
+        errors: [
+          { status: 400, reason: "Invalid file ID format" },
+          { status: 404, reason: "File not found" },
+        ],
+      },
+      {
+        id: "files-delete",
+        method: "DELETE",
+        path: "/api/files/:id",
+        description: "Permanently delete a file from GridFS storage by ID. Admin only.",
+        auth: "admin",
+        params: [
+          { name: "id", type: "String", required: true, placeholder: "64a1b2c3d4e5f6789abcdef0", description: "GridFS file ID" },
+        ],
+        query: [],
+        body: [],
+        response: [
+          { name: "success", type: "Boolean", description: "Always true on success" },
+        ],
+        errors: [
+          { status: 400, reason: "Invalid file ID format" },
+          { status: 401, reason: "Not authenticated" },
+          { status: 403, reason: "Insufficient permissions" },
+          { status: 404, reason: "File not found" },
+        ],
+      },
+    ],
+  },
 ];

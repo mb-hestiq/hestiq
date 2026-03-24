@@ -10,8 +10,8 @@ const OrderSchema = new mongoose.Schema({
   total: { type: Number, default: 0 },
   details: { type: String },
   status: { type: String, enum: ["pending", "completed"], default: "pending" },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
+}, {
+  timestamps: true,
 });
 
 export default mongoose.model("Order", OrderSchema);

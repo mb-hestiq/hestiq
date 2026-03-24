@@ -10,8 +10,8 @@ const ServiceSchema = new mongoose.Schema({
   category: { type: String },
   icon: { type: String },
   href: { type: String },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
+}, {
+  timestamps: true,
 });
 
 export default mongoose.model("Service", ServiceSchema);

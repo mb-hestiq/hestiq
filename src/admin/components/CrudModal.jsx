@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback, memo } from "react";
-import { RiCloseLine } from "react-icons/ri";
+import { RiCloseLine, RiImageLine, RiLoader4Line } from "react-icons/ri";
 
 const FIELD_TYPES = [
 	"text",
@@ -8,6 +8,8 @@ const FIELD_TYPES = [
 	"number",
 	"select",
 	"textarea",
+	"file",
+	"multiselect",
 ];
 
 const CrudModal = memo(function CrudModal({
@@ -17,20 +19,29 @@ const CrudModal = memo(function CrudModal({
 	initialValues = {},
 	onSubmit,
 	onClose,
+	uploadHandlers = {},
 }) {
 	const [form, setForm] = useState({});
 	const [errors, setErrors] = useState({});
 	const [submitting, setSubmitting] = useState(false);
+	const [uploading, setUploading] = useState({});
 	const dialogRef = useRef(null);
 
 	useEffect(() => {
 		if (isOpen) {
 			const defaults = {};
 			for (const f of fields) {
-				defaults[f.name] = initialValues[f.name] ?? f.defaultValue ?? "";
+				if (f.type === "multiselect") {
+					defaults[f.name] = Array.isArray(initialValues[f.name])
+						? initialValues[f.name]
+						: (f.defaultValue ?? []);
+				} else {
+					defaults[f.name] = initialValues[f.name] ?? f.defaultValue ?? "";
+				}
 			}
 			setForm(defaults);
 			setErrors({});
+			setUploading({});
 			dialogRef.current?.showModal();
 		} else {
 			dialogRef.current?.close();
@@ -41,6 +52,35 @@ const CrudModal = memo(function CrudModal({
 		setForm((prev) => ({ ...prev, [name]: value }));
 		setErrors((prev) => ({ ...prev, [name]: undefined }));
 	}, []);
+
+	const handleMultiToggle = useCallback((name, value) => {
+		setForm((prev) => {
+			const current = Array.isArray(prev[name]) ? prev[name] : [];
+			const next = current.includes(value)
+				? current.filter((v) => v !== value)
+				: [...current, value];
+			return { ...prev, [name]: next };
+		});
+		setErrors((prev) => ({ ...prev, [name]: undefined }));
+	}, []);
+
+	const handleFileChange = useCallback(
+		async (name, file) => {
+			const handler = uploadHandlers[name];
+			if (!handler || !file) return;
+			setUploading((prev) => ({ ...prev, [name]: true }));
+			setErrors((prev) => ({ ...prev, [name]: undefined }));
+			try {
+				const url = await handler(file);
+				setForm((prev) => ({ ...prev, [name]: url }));
+			} catch (err) {
+				setErrors((prev) => ({ ...prev, [name]: err.message }));
+			} finally {
+				setUploading((prev) => ({ ...prev, [name]: false }));
+			}
+		},
+		[uploadHandlers],
+	);
 
 	const validate = useCallback(() => {
 		const errs = {};
@@ -129,6 +169,61 @@ const CrudModal = memo(function CrudModal({
 									onChange={(e) => handleChange(field.name, e.target.value)}
 									placeholder={field.placeholder}
 								/>
+							) : field.type === "multiselect" ? (
+								<div className="flex flex-wrap gap-2 pt-1">
+									{field.options?.map((opt) => {
+										const selected = Array.isArray(form[field.name])
+											? form[field.name].includes(opt.value)
+											: false;
+										return (
+											<button
+												key={opt.value}
+												type="button"
+												onClick={() => handleMultiToggle(field.name, opt.value)}
+												className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
+													selected
+														? "bg-[#342937] text-white border-[#342937]"
+														: "bg-white text-[#342937] border-border hover:border-[#342937]"
+												}`}
+											>
+												{opt.label}
+											</button>
+										);
+									})}
+								</div>
+							) : field.type === "file" ? (
+								<div className="flex flex-col gap-2">
+									{form[field.name] && (
+										<img
+											src={form[field.name]}
+											alt="preview"
+											className="w-20 h-20 object-cover rounded-lg border border-border"
+										/>
+									)}
+									<label className="flex items-center gap-2 cursor-pointer admin-input w-fit">
+										{uploading[field.name] ? (
+											<RiLoader4Line size={16} className="animate-spin" />
+										) : (
+											<RiImageLine size={16} />
+										)}
+										<span className="text-sm">
+											{uploading[field.name]
+												? "Uploading…"
+												: form[field.name]
+													? "Replace image"
+													: "Choose image"}
+										</span>
+										<input
+											type="file"
+											accept="image/*"
+											className="hidden"
+											disabled={uploading[field.name]}
+											onChange={(e) =>
+												handleFileChange(field.name, e.target.files?.[0])
+											}
+										/>
+									</label>
+								</div>
 							) : (
 								<input
 									type={FIELD_TYPES.includes(field.type) ? field.type : "text"}
