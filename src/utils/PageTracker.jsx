@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
-import { track } from "../utils/analytics";
+import { track } from "./analytics";
 
 const SESSION_KEY = "hestiq_session";
 

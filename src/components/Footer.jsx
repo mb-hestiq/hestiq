@@ -11,6 +11,8 @@ import {
 } from "react-icons/fa6";
 
 export default function Footer() {
+	const linkOptions = { scrollToTop: true };
+
 	return (
 		<footer role="contentinfo">
 			<div className="FooterMainContainer">
@@ -70,7 +72,9 @@ export default function Footer() {
 							<span>Solutions</span>
 							{solutions.map((item, idx) => (
 								<li key={idx}>
-									<Link to={item.href}>{item.name}</Link>
+									<Link to={item.href} state={linkOptions}>
+										{item.name}
+									</Link>
 								</li>
 							))}
 						</ul>
@@ -78,32 +82,48 @@ export default function Footer() {
 						<ul>
 							<span>Company</span>
 							<li>
-								<Link to="/">About</Link>
+								<Link to="/about" state={linkOptions}>
+									About
+								</Link>
 							</li>
 							<li>
-								<Link to="/">FAQ</Link>
+								<Link to="/faq" state={linkOptions}>
+									FAQ
+								</Link>
 							</li>
 							<li>
-								<Link to="/">Team</Link>
+								<Link to="/team" state={linkOptions}>
+									Team
+								</Link>
 							</li>
 							<li>
-								<Link to="/">Career</Link>
+								<Link to="/career" state={linkOptions}>
+									Career
+								</Link>
 							</li>
 							<li>
-								<Link to="/">Contact Us</Link>
+								<Link to="/contact" state={linkOptions}>
+									Contact Us
+								</Link>
 							</li>
 						</ul>
 
 						<ul>
 							<span>Legal</span>
 							<li>
-								<Link to="/terms">Terms of service</Link>
+								<Link to="/terms" state={linkOptions}>
+									Terms of service
+								</Link>
 							</li>
 							<li>
-								<Link to="/privacy">Privacy policy</Link>
+								<Link to="/privacy" state={linkOptions}>
+									Privacy policy
+								</Link>
 							</li>
 							<li>
-								<Link to="/refunds">Refund Policy</Link>
+								<Link to="/refunds" state={linkOptions}>
+									Refund Policy
+								</Link>
 							</li>
 						</ul>
 					</nav>

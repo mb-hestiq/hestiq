@@ -19,7 +19,6 @@ if (redirect) {
 import "./styles/index.css";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
-import PageTracker from "./components/PageTracker";
 import App from "./App.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import TermsPage from "./pages/TermsPage.jsx";
@@ -30,12 +29,18 @@ import ContactPage from "./pages/ContactPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import AdminLayout from "./admin/AdminLayout.jsx";
+import FAQ from "./pages/FAQ.jsx";
+
+import PageTracker from "./utils/PageTracker.jsx";
+import ScrollHandler from "./utils/ScrollHandler.jsx";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
 		<BrowserRouter>
 			<AuthProvider>
 				<PageTracker />
+				<ScrollHandler />
+
 				<Routes>
 					<Route path="/" element={<App />} />
 					<Route path="/terms" element={<TermsPage />} />
@@ -45,6 +50,7 @@ createRoot(document.getElementById("root")).render(
 					<Route path="/contact" element={<ContactPage />} />
 					<Route path="/register" element={<RegisterPage />} />
 					<Route path="/login" element={<LoginPage />} />
+					<Route path="/faq" element={<FAQ />} />
 					<Route
 						path="/admin"
 						element={

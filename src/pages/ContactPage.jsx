@@ -161,7 +161,11 @@ function InfoPanel({ title, description, items }) {
 						Review the most common questions before reaching out.
 					</p>
 				</div>
-				<Link to="/faq" className="CTA ContactInfoFaqLink">
+				<Link
+					to="/faq"
+					state={{ scrollToTop: true }}
+					className="CTA ContactInfoFaqLink"
+				>
 					<span>Go to FAQ</span>
 					<FaArrowRight />
 				</Link>

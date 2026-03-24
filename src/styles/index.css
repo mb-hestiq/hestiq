@@ -1049,7 +1049,8 @@ footer {
 .ConsultationSection {
 	position: relative;
 	background-color: var(--color-surface);
-	padding: 4rem 2rem !important;
+	padding: 6rem 2rem !important;
+	box-shadow: 0 0px 8px rgba(0, 0, 0, 0.5);
 }
 
 .ConsultationContainer {
@@ -2001,6 +2002,118 @@ footer {
 
 	color: var(--color-primary);
 	font-weight: 500;
+}
+
+/*#endregion */
+
+/*#region FAQ Page */
+
+.FaqPage {
+	padding-bottom: 5rem;
+}
+
+.FaqHero {
+	padding: 4.5rem 1.5rem 3rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	max-width: 44rem;
+}
+
+.FaqHeroTitle {
+	font-size: clamp(2.25rem, 4vw, 3.5rem);
+	line-height: 1.05;
+	font-weight: 700;
+	color: var(--color-primary);
+}
+
+.FaqHeroDescription {
+	font-size: 1.05rem;
+	line-height: 1.8;
+	color: var(--color-text-muted);
+}
+
+.FaqBody {
+	padding-inline: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.FaqList {
+	display: flex;
+	flex-direction: column;
+	border-radius: 18px;
+	overflow: hidden;
+	border: 1px solid var(--color-border);
+}
+
+.FaqItem {
+	border-bottom: 1px solid var(--color-border);
+}
+
+.FaqItem:last-child {
+	border-bottom: none;
+}
+
+.FaqItemTrigger {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 1.25rem 1.5rem;
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-align: left;
+	transition: background-color 150ms ease;
+}
+
+.FaqItemTrigger:hover {
+	background-color: rgba(52, 41, 55, 0.03);
+}
+
+.FaqItemOpen .FaqItemTrigger {
+	background-color: rgba(52, 41, 55, 0.04);
+}
+
+.FaqItemIndex {
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	color: var(--color-text-muted);
+	min-width: 1.75rem;
+	flex-shrink: 0;
+}
+
+.FaqItemQuestion {
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--color-primary);
+	flex: 1;
+	line-height: 1.4;
+}
+
+.FaqItemChevron {
+	flex-shrink: 0;
+	color: var(--color-text-muted);
+	font-size: 0.8rem;
+	transition: transform 250ms ease;
+}
+
+.FaqItemOpen .FaqItemChevron {
+	transform: rotate(180deg);
+}
+
+.FaqItemAnswer {
+	padding: 0rem 1.5rem 1.25rem calc(1.5rem + 2.75rem);
+	font-size: 0.97rem;
+	line-height: 1.75;
+	color: var(--color-text-muted);
+}
+
+.FaqCta {
+	margin-top: 0.5rem;
 }
 
 /*#endregion */
