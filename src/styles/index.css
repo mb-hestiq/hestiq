@@ -3937,6 +3937,7 @@ footer {
 .CareerHeroCTA {
 	align-self: flex-start;
 	padding: 0.75rem 1.25rem;
+	cursor: pointer;
 }
 
 .CareerHeroRight {

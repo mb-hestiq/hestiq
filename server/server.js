@@ -46,7 +46,7 @@ const contactLimiter = rateLimit({
   message: { success: false, error: "Too many contact requests, please try again later." },
 });
 
-app.use(cors());
+app.use(cors({ exposedHeaders: ["Content-Disposition"] }));
 app.use(express.json());
 app.use(generalLimiter);
 

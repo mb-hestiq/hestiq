@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, memo } from "react";
+import { useState, useCallback, useMemo, memo, Fragment } from "react";
 import {
 	useReactTable,
 	getCoreRowModel,
@@ -283,9 +283,8 @@ const DataGrid = memo(function DataGrid({
 							</tr>
 						) : (
 							table.getRowModel().rows.map((row) => (
-								<>
+								<Fragment key={row.id}>
 									<tr
-										key={row.id}
 										className={`border-t border-border hover:bg-bg transition-colors ${row.getIsSelected() ? "bg-bg" : "bg-white"}`}
 									>
 										{row.getVisibleCells().map((cell) => (
@@ -298,16 +297,13 @@ const DataGrid = memo(function DataGrid({
 										))}
 									</tr>
 									{row.getIsExpanded() && expandedContent && (
-										<tr
-											key={`${row.id}-expanded`}
-											className="bg-[#f8f9fa] border-t border-border"
-										>
+										<tr className="bg-[#f8f9fa] border-t border-border">
 											<td colSpan={tableColumns.length} className="px-6 py-4">
 												{expandedContent(row.original)}
 											</td>
 										</tr>
 									)}
-								</>
+								</Fragment>
 							))
 						)}
 					</tbody>

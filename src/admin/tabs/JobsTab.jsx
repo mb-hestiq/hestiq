@@ -4,7 +4,7 @@ import DataGrid from "../components/DataGrid";
 import CrudModal from "../components/CrudModal";
 import ConfirmDialog from "../components/ConfirmDialog";
 import { backendUrl } from "../../../shared/company";
-import { RiDownloadLine, RiMailLine } from "react-icons/ri";
+import { RiDownloadLine, RiEditLine, RiDeleteBinLine } from "react-icons/ri";
 
 const JOB_TYPE_OPTIONS = [
 	{ value: "Full-time", label: "Full-time" },
@@ -199,6 +199,43 @@ function jobToForm(job) {
 function ApplicantsTable({ job, token, onJobUpdate }) {
 	const [modal, setModal] = useState({ open: false, target: null });
 	const [deleteTarget, setDeleteTarget] = useState(null);
+	const [downloading, setDownloading] = useState(null);
+
+	const handleDownloadCv = useCallback(
+		async (applicant) => {
+			if (downloading === applicant._id) return;
+			setDownloading(applicant._id);
+			try {
+				const res = await fetch(`${backendUrl}${applicant.resumeUrl}`, {
+					headers: { Authorization: `Bearer ${token}` },
+				});
+				if (!res.ok) throw new Error("Download failed");
+				const blob = await res.blob();
+				const url = URL.createObjectURL(blob);
+				const a = document.createElement("a");
+				a.href = url;
+				const disposition = res.headers.get("Content-Disposition") ?? "";
+				const nameMatch = disposition.match(/filename="?([^"\s;]+)"?/);
+				if (nameMatch) {
+					a.download = nameMatch[1];
+				} else {
+					const MIME_EXT = {
+						"application/pdf": ".pdf",
+						"application/msword": ".doc",
+						"application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+							".docx",
+					};
+					const ext = MIME_EXT[blob.type] ?? "";
+					a.download = `cv-${applicant.firstName}-${applicant.lastName}${ext}`;
+				}
+				a.click();
+				URL.revokeObjectURL(url);
+			} finally {
+				setDownloading(null);
+			}
+		},
+		[token, downloading],
+	);
 
 	const handleEdit = useCallback(
 		async (form) => {
@@ -296,26 +333,24 @@ function ApplicantsTable({ job, token, onJobUpdate }) {
 							className="admin-icon-btn text-[#342937]"
 							title="Edit"
 						>
-							<RiMailLine size={16} />
+							<RiEditLine size={16} />
 						</button>
 						{row.original.resumeUrl && (
-							<a
-								href={`${backendUrl}${row.original.resumeUrl}`}
-								target="_blank"
-								rel="noopener noreferrer"
+							<button
+								onClick={() => handleDownloadCv(row.original)}
 								className="admin-icon-btn text-[#342937]"
 								title="Download CV"
-								onClick={(e) => e.stopPropagation()}
+								disabled={downloading === row.original._id}
 							>
 								<RiDownloadLine size={16} />
-							</a>
+							</button>
 						)}
 						<button
 							onClick={() => setDeleteTarget(row.original)}
 							className="admin-icon-btn text-red-500"
 							title="Delete"
 						>
-							<span className="text-xs">✕</span>
+							<RiDeleteBinLine size={16} />
 						</button>
 					</div>
 				),
@@ -324,7 +359,7 @@ function ApplicantsTable({ job, token, onJobUpdate }) {
 				size: 100,
 			},
 		],
-		[],
+		[downloading, handleDownloadCv],
 	);
 
 	const applicants = Array.isArray(job.applicants) ? job.applicants : [];
@@ -387,15 +422,15 @@ function ApplicantsTable({ job, token, onJobUpdate }) {
 			/>
 
 			<ConfirmDialog
-				open={!!deleteTarget}
+				isOpen={!!deleteTarget}
 				title="Delete Applicant"
-				description={
+				message={
 					deleteTarget
 						? `Remove ${deleteTarget.firstName} ${deleteTarget.lastName} from this job?`
 						: ""
 				}
 				onConfirm={handleDelete}
-				onCancel={() => setDeleteTarget(null)}
+				onClose={() => setDeleteTarget(null)}
 			/>
 		</div>
 	);
