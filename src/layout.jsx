@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { HashRouter, Routes, Route } from "react-router";
 
 import "./styles/index.css";
 import { AuthProvider } from "./context/AuthContext";
@@ -18,7 +18,7 @@ import AdminLayout from "./admin/AdminLayout.jsx";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-		<BrowserRouter>
+		<HashRouter>
 			<AuthProvider>
 				<PageTracker />
 				<Routes>
@@ -40,6 +40,6 @@ createRoot(document.getElementById("root")).render(
 					/>
 				</Routes>
 			</AuthProvider>
-		</BrowserRouter>
+		</HashRouter>
 	</StrictMode>,
 );
