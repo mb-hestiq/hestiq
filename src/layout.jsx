@@ -30,6 +30,7 @@ import RegisterPage from "./pages/RegisterPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import AdminLayout from "./admin/AdminLayout.jsx";
 import FAQ from "./pages/FAQ.jsx";
+import TeamPage from "./pages/TeamPage.jsx";
 
 import PageTracker from "./utils/PageTracker.jsx";
 import ScrollHandler from "./utils/ScrollHandler.jsx";
@@ -51,6 +52,8 @@ createRoot(document.getElementById("root")).render(
 					<Route path="/register" element={<RegisterPage />} />
 					<Route path="/login" element={<LoginPage />} />
 					<Route path="/faq" element={<FAQ />} />
+					<Route path="/team" element={<TeamPage />} />
+
 					<Route
 						path="/admin"
 						element={

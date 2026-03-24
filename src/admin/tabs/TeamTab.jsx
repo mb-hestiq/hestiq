@@ -123,7 +123,7 @@ export default function TeamTab() {
 			});
 			const data = await res.json();
 			if (!data.success) throw new Error(data.error || "Upload failed");
-			return data.url;
+			return `${backendUrl}${data.url}`;
 		},
 		[token],
 	);
