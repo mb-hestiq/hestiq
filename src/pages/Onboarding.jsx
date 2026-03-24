@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useMemo } from "react";
+import { useSearchParams } from "react-router";
 import Header from "../components/Header";
 import ContactForm from "../components/ContactForm";
 import Icon from "../components/Icon";
@@ -32,11 +33,19 @@ const STEPS = ["Choose Category", "Select Services", "Finalize"];
 const TOTAL_STEPS = STEPS.length;
 
 export default function Onboarding() {
-	const [step, setStep] = useState(1);
+	const [searchParams] = useSearchParams();
+	const initCategory = searchParams.get("category");
+	const initService = searchParams.get("service");
+
+	const [step, setStep] = useState(() =>
+		initCategory ? (initService ? 3 : 2) : 1,
+	);
 	const [direction, setDirection] = useState("forward");
 	const [stepKey, setStepKey] = useState(0);
-	const [category, setCategory] = useState(null);
-	const [selectedServices, setSelectedServices] = useState([]);
+	const [category, setCategory] = useState(initCategory);
+	const [selectedServices, setSelectedServices] = useState(
+		initService ? [initService] : [],
+	);
 
 	const { services: allServices } = useServices();
 
