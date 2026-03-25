@@ -33,6 +33,7 @@ import FAQ from "./pages/FAQ.jsx";
 import TeamPage from "./pages/TeamPage.jsx";
 import CareerPage from "./pages/CareerPage.jsx";
 import PricingPage from "./pages/PricingPage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
 
 import PageTracker from "./utils/PageTracker.jsx";
 import ScrollHandler from "./utils/ScrollHandler.jsx";
@@ -57,6 +58,7 @@ createRoot(document.getElementById("root")).render(
 					<Route path="/team" element={<TeamPage />} />
 					<Route path="/career" element={<CareerPage />} />
 					<Route path="/pricing" element={<PricingPage />} />
+					<Route path="/about" element={<AboutPage />} />
 
 					<Route
 						path="/admin"
