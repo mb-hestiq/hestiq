@@ -266,7 +266,7 @@ header {
 	left: 50%;
 	bottom: 0;
 	width: 50%;
-	height: 2px;
+	height: 3px;
 	background-color: var(--color-text);
 	border-radius: 999px;
 
@@ -4576,9 +4576,37 @@ footer {
 	max-width: 72rem;
 	margin: 0 auto;
 	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 3rem;
+}
+
+.PricingHeroLeft {
+	flex: 1;
+	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 1.25rem;
+}
+
+.PricingHeroRight {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.PricingHeroSvg {
+	width: 100%;
+	max-width: 16rem;
+	height: auto;
+	color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+	.PricingHeroRight {
+		display: none;
+	}
 }
 
 .PricingHeroBadge {
@@ -4657,49 +4685,83 @@ footer {
 	flex: 1;
 }
 
-.PricingModelPillars {
+.PricingTimeline {
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 1.25rem;
 }
 
-.PricingModelPillar {
+.PricingTimeline::before {
+	content: "";
+	position: absolute;
+	top: 0.5rem;
+	bottom: 0.5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 1px;
+	background-image: repeating-linear-gradient(
+		to bottom,
+		var(--color-primary) 0,
+		var(--color-primary) 4px,
+		transparent 4px,
+		transparent 12px
+	);
+	z-index: 0;
+}
+
+.PricingTimelineRow {
+	display: grid;
+	grid-template-columns: 1fr 1.5rem 1fr;
+	align-items: center;
+	gap: 0.75rem;
+	position: relative;
+	z-index: 1;
+}
+
+.PricingTimelineDot {
+	width: 0.875rem;
+	height: 0.875rem;
+	border-radius: 9999px;
+	background-color: var(--color-primary);
+	outline: 3px solid var(--color-bg);
+	outline-offset: 1px;
+	justify-self: center;
+	align-self: center;
+}
+
+.PricingTimelineCard {
 	background-color: #ffffff;
 	border: 1px solid var(--color-border);
 	border-radius: 0.875rem;
-	overflow: hidden;
-	transition: box-shadow 0.2s;
-}
-
-.PricingModelPillar:hover {
-	box-shadow: 0 4px 20px rgba(52, 41, 55, 0.08);
-}
-
-.PricingModelPillarHeader {
-	display: flex;
-	align-items: center;
-	gap: 0.75rem;
-	width: 100%;
 	padding: 1.125rem 1.25rem;
-	background: none;
-	border: none;
-	cursor: pointer;
-	text-align: left;
-	color: inherit;
-	font-family: inherit;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	box-shadow: 0 2px 12px rgba(52, 41, 55, 0.05);
 }
 
-.PricingModelPillarNum {
-	font-size: 0.75rem;
+.PricingTimelineCardNum {
+	font-size: 0.6875rem;
 	font-weight: 700;
 	color: var(--color-primary);
-	letter-spacing: 0.06em;
-	opacity: 0.45;
-	flex-shrink: 0;
+	opacity: 0.35;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 }
 
-.PricingModelPillarTitle {
-	flex: 1;
+.PricingTimelineCardIconWrapper {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 0.5rem;
+	background-color: var(--color-bg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-primary);
+}
+
+.PricingTimelineCardTitle {
 	font-size: 0.9375rem;
 	font-weight: 600;
 	color: var(--color-primary);
@@ -4707,21 +4769,29 @@ footer {
 	margin: 0;
 }
 
-.PricingModelPillarToggle {
-	flex-shrink: 0;
+.PricingTimelineCardDesc {
+	font-size: 0.8125rem;
 	color: var(--color-text-muted);
-	display: flex;
-	align-items: center;
+	line-height: 1.65;
+	margin: 0;
 }
 
-.PricingModelPillarDesc {
-	font-size: 0.875rem;
-	color: var(--color-text-muted);
-	line-height: 1.6;
-	padding: 0 1.25rem 1.125rem;
-	margin: 0;
-	border-top: 1px solid var(--color-border);
-	padding-top: 0.875rem;
+@media (max-width: 600px) {
+	.PricingTimeline::before {
+		display: none;
+	}
+
+	.PricingTimelineRow {
+		grid-template-columns: 1fr;
+	}
+
+	.PricingTimelineDot {
+		display: none;
+	}
+
+	.PricingTimelineRow > div:empty {
+		display: none;
+	}
 }
 
 @media (max-width: 900px) {
@@ -4779,13 +4849,19 @@ footer {
 }
 
 .PricingPackageCard {
-	background-color: white;
+	background-color: var(--color-bg);
 	border-radius: 10px;
 	padding: 1.75rem;
 	display: flex;
 	flex-direction: column;
 	gap: 1.25rem;
 	aspect-ratio: 3 / 4;
+	border: 2px solid var(--color-primary);
+}
+
+.PricingPackageCard:nth-child(2) {
+	background-color: var(--color-primary);
+	border: 2px solid var(--color-bg);
 }
 
 .PricingPackageCardTop {
@@ -4800,10 +4876,15 @@ footer {
 	width: 3rem;
 	height: 3rem;
 	border-radius: 0.75rem;
-	background-color: var(--color-bg);
+	background-color: var(--color-primary);
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	color: #ffffff;
+}
+
+.PricingPackageCard:nth-child(2) .PricingPackageCardIcon {
+	background-color: #ffffff;
 	color: var(--color-primary);
 }
 
@@ -4814,9 +4895,13 @@ footer {
 	line-height: 1.2;
 }
 
+.PricingPackageCard:nth-child(2) .PricingPackageCardTitle {
+	color: #ffffff;
+}
+
 .PricingPackageCardPrice {
 	font-size: 1.125rem;
-	color: var(--color-text-muted);
+	color: var(--color-primary-light);
 	line-height: 1;
 }
 
@@ -4826,10 +4911,18 @@ footer {
 	color: var(--color-primary);
 }
 
+.PricingPackageCard:nth-child(2) .PricingPackageCardPrice {
+	color: rgba(255, 255, 255, 0.85);
+}
+
+.PricingPackageCard:nth-child(2) .PricingPackageCardPrice strong {
+	color: var(--color-text-inverse);
+}
+
 .PricingPackagePriceLabel {
 	font-size: 0.875rem;
 	font-weight: 500;
-	color: var(--color-text-muted);
+	color: var(--color-primary-light);
 	margin-left: 0.125rem;
 }
 
@@ -4842,18 +4935,30 @@ footer {
 	padding-top: 1.25rem;
 }
 
+.PricingPackageCard:nth-child(2) .PricingPackageCardList {
+	border-color: var(--color-divider);
+}
+
 .PricingPackageCardItem {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
 	font-size: 0.875rem;
-	color: var(--color-text);
+	color: var(--color-primary-light);
 	line-height: 1.4;
 }
 
 .PricingPackageCheckIcon {
-	color: var(--color-success);
+	color: var(--color-primary-light);
 	flex-shrink: 0;
+}
+
+.PricingPackageCard:nth-child(2) .PricingPackageCardItem {
+	color: var(--color-text-inverse);
+}
+
+.PricingPackageCard:nth-child(2) .PricingPackageCheckIcon {
+	color: var(--color-text-inverse);
 }
 
 .PricingPackageExploreBtn {
@@ -4863,13 +4968,18 @@ footer {
 	gap: 0.375rem;
 	padding: 0.75rem;
 	background-color: var(--color-primary);
-	color: #ffffff;
+	color: var(--color-text-inverse);
 	border-radius: 0.625rem;
 	font-size: 0.9375rem;
 	font-weight: 600;
 	text-decoration: none;
 	transition: opacity 0.15s;
 	margin-top: auto;
+}
+
+.PricingPackageCard:nth-child(2) .PricingPackageExploreBtn {
+	background-color: var(--color-bg);
+	color: var(--color-primary);
 }
 
 .PricingPackageExploreBtn:hover {
@@ -4995,6 +5105,10 @@ footer {
 	color: var(--color-primary);
 }
 
+.PricingComparisonTable tbody tr:nth-child(even) td {
+	background-color: var(--color-bg);
+}
+
 /* Process */
 
 .PricingProcessSection {
@@ -5094,6 +5208,10 @@ footer {
 @media (max-width: 900px) {
 	.PricingProcessSteps {
 		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.PricingProcessStepNumber {
+		display: none;
 	}
 
 	.PricingProcessSteps::before {

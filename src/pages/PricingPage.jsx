@@ -1,9 +1,9 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router";
-import { RiAddLine, RiSubtractLine } from "react-icons/ri";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useServices } from "../utils/servicesCache";
+import SignHere from "../assets/sign-here.svg?react";
 import {
 	RiPaletteLine,
 	RiCodeSSlashLine,
@@ -14,6 +14,9 @@ import {
 	RiTerminalBoxLine,
 	RiRocketLine,
 	RiArrowRightLine,
+	RiFileTextLine,
+	RiMoneyDollarCircleLine,
+	RiTimeLine,
 } from "react-icons/ri";
 
 const MAINTENANCE_FROM_PRICE = 50;
@@ -24,6 +27,27 @@ const MAINTENANCE_BENEFITS = [
 	"Hosting setup",
 	"Performance optimization",
 	"Ongoing support",
+];
+
+const MODEL_ITEMS = [
+	{
+		num: "01",
+		icon: RiFileTextLine,
+		title: "Scoped per project",
+		desc: "Every engagement starts with a discovery call to define deliverables and a fixed estimate.",
+	},
+	{
+		num: "02",
+		icon: RiMoneyDollarCircleLine,
+		title: "No hidden fees",
+		desc: "What we quote is what you pay. Revisions within scope are included at no extra cost.",
+	},
+	{
+		num: "03",
+		icon: RiTimeLine,
+		title: "Flexible timelines",
+		desc: "Rush delivery is available for projects with tight deadlines, with adjusted pricing.",
+	},
 ];
 
 const PROCESS_STEPS = [
@@ -100,46 +124,6 @@ function PackageCard({
 	);
 }
 
-const PILLARS = [
-	{
-		num: "01",
-		title: "Scoped per project",
-		desc: "Every engagement starts with a discovery call to define deliverables and a fixed estimate.",
-	},
-	{
-		num: "02",
-		title: "No hidden fees",
-		desc: "What we quote is what you pay. Revisions within scope are included at no extra cost.",
-	},
-	{
-		num: "03",
-		title: "Flexible timelines",
-		desc: "Rush delivery is available for projects with tight deadlines, with adjusted pricing.",
-	},
-];
-
-function PricingPillar({ num, title, desc }) {
-	const [open, setOpen] = useState(false);
-	const toggle = useCallback(() => setOpen((v) => !v), []);
-	return (
-		<div className="PricingModelPillar" data-open={open ? "true" : "false"}>
-			<button
-				type="button"
-				className="PricingModelPillarHeader"
-				onClick={toggle}
-				aria-expanded={open}
-			>
-				<span className="PricingModelPillarNum">{num}</span>
-				<h4 className="PricingModelPillarTitle">{title}</h4>
-				<span className="PricingModelPillarToggle" aria-hidden="true">
-					{open ? <RiSubtractLine size={16} /> : <RiAddLine size={16} />}
-				</span>
-			</button>
-			{open && <p className="PricingModelPillarDesc">{desc}</p>}
-		</div>
-	);
-}
-
 function ComparisonTable({ services }) {
 	return (
 		<div className="PricingComparisonTableWrapper">
@@ -203,17 +187,22 @@ export default function PricingPage() {
 			<main>
 				<section className="PricingHero">
 					<div className="PricingHeroContent">
-						<span className="PricingHeroBadge">Transparent Pricing</span>
-						<h1 className="PricingHeroTitle">
-							Quality Work,
-							<br />
-							<span>Honest Pricing</span>
-						</h1>
-						<p className="PricingHeroDescription">
-							No surprise invoices. No bloated retainers. Every project is
-							scoped individually so you pay for exactly what you need — nothing
-							more.
-						</p>
+						<div className="PricingHeroLeft">
+							<span className="PricingHeroBadge">Transparent Pricing</span>
+							<h1 className="PricingHeroTitle">
+								Quality Work,
+								<br />
+								<span>Honest Pricing</span>
+							</h1>
+							<p className="PricingHeroDescription">
+								No surprise invoices. No bloated retainers. Every project is
+								scoped individually so you pay for exactly what you need —
+								nothing more.
+							</p>
+						</div>
+						<div className="PricingHeroRight">
+							<SignHere className="PricingHeroSvg" aria-hidden="true" />
+						</div>
 					</div>
 				</section>
 
@@ -232,10 +221,53 @@ export default function PricingPage() {
 							</p>
 						</div>
 						<div className="PricingModelRight">
-							<div className="PricingModelPillars">
-								{PILLARS.map((pillar) => (
-									<PricingPillar key={pillar.num} {...pillar} />
-								))}
+							<div className="PricingTimeline">
+								{MODEL_ITEMS.map(({ num, icon: Icon, title, desc }, i) => {
+									const side = i % 2 === 0 ? "left" : "right";
+									return (
+										<div
+											key={num}
+											className="PricingTimelineRow"
+											data-side={side}
+										>
+											{side === "left" ? (
+												<>
+													<div className="PricingTimelineCard">
+														<span className="PricingTimelineCardNum">
+															{num}
+														</span>
+														<div className="PricingTimelineCardIconWrapper">
+															<Icon size={18} />
+														</div>
+														<h4 className="PricingTimelineCardTitle">
+															{title}
+														</h4>
+														<p className="PricingTimelineCardDesc">{desc}</p>
+													</div>
+													<div className="PricingTimelineDot" />
+													<div />
+												</>
+											) : (
+												<>
+													<div />
+													<div className="PricingTimelineDot" />
+													<div className="PricingTimelineCard">
+														<span className="PricingTimelineCardNum">
+															{num}
+														</span>
+														<div className="PricingTimelineCardIconWrapper">
+															<Icon size={18} />
+														</div>
+														<h4 className="PricingTimelineCardTitle">
+															{title}
+														</h4>
+														<p className="PricingTimelineCardDesc">{desc}</p>
+													</div>
+												</>
+											)}
+										</div>
+									);
+								})}
 							</div>
 						</div>
 					</div>
