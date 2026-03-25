@@ -9,7 +9,7 @@ import {
 	FaLocationDot,
 	FaPhone,
 } from "react-icons/fa6";
-import { backendUrl } from "../../shared/company.js";
+import backendUrl from "../utils/backend.js";
 
 const channelIcons = {
 	email: FaEnvelope,

@@ -12,7 +12,7 @@ import {
 	FaArrowLeft,
 	FaEnvelope,
 } from "react-icons/fa6";
-import { backendUrl } from "../../shared/company";
+import backendUrl from "../utils/backend";
 
 const CATEGORIES = [
 	{
@@ -57,24 +57,13 @@ export default function Onboarding() {
 			duration: s.duration,
 			icon: s.icon,
 		});
-		const OTHER = {
-			id: "other",
-			label: "Other",
-			price: null,
-			duration: null,
-			icon: "FaEllipsis",
-		};
 		return {
-			design: [
-				...allServices.filter((s) => s.category === "Design").map(mapService),
-				OTHER,
-			],
-			programming: [
-				...allServices
-					.filter((s) => s.category === "Development")
-					.map(mapService),
-				OTHER,
-			],
+			design: allServices
+				.filter((s) => s.category === "Design")
+				.map(mapService),
+			programming: allServices
+				.filter((s) => s.category === "Development")
+				.map(mapService),
 		};
 	}, [allServices]);
 
@@ -185,6 +174,7 @@ export default function Onboarding() {
 									selectedItems={selectedItems}
 									estimatedPrice={estimatedPrice}
 									estimatedDuration={estimatedDuration}
+									onSuccess={handleOrderSuccess}
 								/>
 							)}
 						</div>

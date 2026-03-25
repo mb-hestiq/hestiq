@@ -6,7 +6,7 @@ import {
 	RiArrowUpSLine,
 	RiLockLine,
 } from "react-icons/ri";
-import { backendUrl } from "../../../shared/company.js";
+import backendUrl from "../../utils/backend.js";
 
 const METHOD_CLASS = {
 	GET: "api-method-get",

@@ -6,6 +6,7 @@ import Job from "../models/Job.js";
 import { protect, requireRole } from "../middlewares/auth.middleware.js";
 import { verifyToken } from "../scripts/token.js";
 import User from "../models/User.js";
+import backendUrl from "../utils/backend.js";
 
 const router = express.Router();
 
@@ -27,6 +28,20 @@ const resumeUpload = multer({
 
 function getResumeBucket() {
   return new GridFSBucket(mongoose.connection.db, { bucketName: "resumes" });
+}
+
+function extractResumeFileId(resumeUrl) {
+  if (!resumeUrl) return null;
+  const segments = resumeUrl.split("/");
+  const last = segments[segments.length - 1].split("?")[0];
+  return /^[a-f\d]{24}$/i.test(last) ? last : null;
+}
+
+async function deleteResumeFile(fileIdStr) {
+  try {
+    const bucket = getResumeBucket();
+    await bucket.delete(new ObjectId(fileIdStr));
+  } catch {}
 }
 
 async function resolveAdmin(req) {
@@ -87,6 +102,11 @@ router.delete("/", protect, requireRole("admin"), async (req, res, next) => {
     if (!Array.isArray(ids) || ids.length === 0) {
       return res.status(400).json({ success: false, error: "ids must be a non-empty array" });
     }
+    const jobs = await Job.find({ _id: { $in: ids } }).lean();
+    const fileIds = jobs.flatMap((j) =>
+      j.applicants.map((a) => extractResumeFileId(a.resumeUrl)).filter(Boolean)
+    );
+    await Promise.all(fileIds.map(deleteResumeFile));
     await Job.deleteMany({ _id: { $in: ids } });
     res.json({ success: true });
   } catch (error) {
@@ -96,8 +116,11 @@ router.delete("/", protect, requireRole("admin"), async (req, res, next) => {
 
 router.delete("/:id", protect, requireRole("admin"), async (req, res, next) => {
   try {
-    const job = await Job.findByIdAndDelete(req.params.id);
+    const job = await Job.findById(req.params.id).lean();
     if (!job) return res.status(404).json({ success: false, error: "Job not found" });
+    const fileIds = job.applicants.map((a) => extractResumeFileId(a.resumeUrl)).filter(Boolean);
+    await Promise.all(fileIds.map(deleteResumeFile));
+    await Job.findByIdAndDelete(req.params.id);
     res.json({ success: true });
   } catch (error) {
     next(error);
@@ -147,7 +170,7 @@ router.post("/:id/apply", resumeUpload.single("resume"), async (req, res, next) 
         uploadStream.on("finish", resolve);
         uploadStream.on("error", reject);
       });
-      resumeUrl = `/api/jobs/resumes/${uploadStream.id}`;
+      resumeUrl = `${backendUrl}/jobs/resumes/${uploadStream.id}`;
     }
 
     job.applicants.push({ firstName, lastName, email, phone, message, resumeUrl });
@@ -187,8 +210,10 @@ router.delete("/:id/applicants/:applicantId", protect, requireRole("admin"), asy
     const applicant = job.applicants.id(req.params.applicantId);
     if (!applicant) return res.status(404).json({ success: false, error: "Applicant not found" });
 
+    const fileId = extractResumeFileId(applicant.resumeUrl);
     applicant.deleteOne();
     await job.save();
+    if (fileId) await deleteResumeFile(fileId);
     res.json({ success: true });
   } catch (error) {
     next(error);

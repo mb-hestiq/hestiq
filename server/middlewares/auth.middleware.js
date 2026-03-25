@@ -1,5 +1,6 @@
 import { verifyToken } from "../scripts/token.js";
 import User from "../models/User.js";
+import { isRevoked } from "../services/tokenBlacklist.js";
 
 export const protect = async (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -8,6 +9,10 @@ export const protect = async (req, res, next) => {
   }
 
   const token = authHeader.split(" ")[1];
+  if (isRevoked(token)) {
+    return res.status(401).json({ success: false, error: "Token has been revoked" });
+  }
+
   try {
     const decoded = verifyToken(token);
     const user = await User.findById(decoded.id);

@@ -10,7 +10,7 @@ import {
 	RiLogoutBoxLine,
 	RiCloseLine,
 } from "react-icons/ri";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router";
 
 const NAV_ITEMS = [

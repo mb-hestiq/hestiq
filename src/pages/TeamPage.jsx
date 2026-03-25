@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useTeam } from "../utils/teamCache";
-import { backendUrl } from "../../shared/company";
+import backendUrl from "../utils/backend";
 
 const ALL_TAGS = ["all", "management", "design", "development", "marketing"];
 

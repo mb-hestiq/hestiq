@@ -83,7 +83,9 @@ router.post("/", async (req, res, next) => {
       details: message,
     });
 
-    await transporter.sendMail({
+    res.json({ success: true, order });
+
+    transporter.sendMail({
       from: `${companyName} <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
       replyTo: email,
@@ -125,8 +127,7 @@ router.post("/", async (req, res, next) => {
               <p style="padding: 10px; background-color: #f2f2f2; border-radius: 5px;">${message}</p>
             </div>
           `,
-    });
-    res.json({ success: true, order });
+    }).catch((err) => console.error("Order email failed:", err));
   } catch (error) {
     next(error);
   }

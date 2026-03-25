@@ -1,8 +1,8 @@
 import { useState, useCallback, useEffect } from "react";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import DataGrid from "../components/DataGrid";
 import CrudModal from "../components/CrudModal";
-import { backendUrl } from "../../../shared/company";
+import backendUrl from "../../utils/backend";
 
 function formatDate(d) {
 	if (!d) return "—";

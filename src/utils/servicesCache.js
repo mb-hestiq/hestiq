@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { backendUrl } from "../../shared/company";
+import backendUrl from "./backend";
 
 const CACHE_KEY = "hestiq_services";
 

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import Footer from "../components/Footer";
 import Form from "../components/Form";
 import Header from "../components/Header";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth.js";
 import Logo from "../assets/logo.svg?react";
 import { companyName } from "../../shared/company.js";
 import { FaCircleCheck, FaLock, FaShieldHalved } from "react-icons/fa6";

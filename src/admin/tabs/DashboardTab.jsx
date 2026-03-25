@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import {
 	AreaChart,
 	Area,
@@ -25,7 +25,7 @@ import {
 	RiArrowUpLine,
 	RiArrowDownLine,
 } from "react-icons/ri";
-import { backendUrl } from "../../../shared/company";
+import backendUrl from "../../utils/backend";
 
 const CHART_COLORS = [
 	"#342937",

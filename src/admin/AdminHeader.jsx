@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { RiMenuLine } from "react-icons/ri";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 
 const AdminHeader = memo(function AdminHeader({
 	onProfileClick,

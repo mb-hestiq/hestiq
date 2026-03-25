@@ -1,4 +1,4 @@
-import { backendUrl } from "../../shared/company";
+import backendUrl from "./backend";
 
 const VISITOR_ID_KEY = "hestiq_vid";
 

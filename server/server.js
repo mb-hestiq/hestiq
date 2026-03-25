@@ -21,6 +21,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const app = express();
+app.set("trust proxy", 1);
 
 //#region Rate Limiters
 const generalLimiter = rateLimit({
@@ -48,11 +49,24 @@ const contactLimiter = rateLimit({
 });
 //#endregion
 
+const allowedOrigins = [
+  "https://hestiq.com",
+  "https://www.hestiq.com",
+  ...(process.env.NODE_ENV !== "production" ? ["http://localhost:5173", "http://localhost:4173"] : []),
+];
+
 app.use(cors({
-  origin: "https://hestiq.com",
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    callback(new Error("Not allowed by CORS"));
+  },
   credentials: true,
-  exposedHeaders: ["Content-Disposition"]
+  exposedHeaders: ["Content-Disposition"],
 }));
+app.use((req, res, next) => {
+  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  next();
+});
 app.use(express.json());
 app.use(generalLimiter);
 

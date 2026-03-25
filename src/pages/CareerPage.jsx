@@ -20,7 +20,7 @@ import {
 	RiLoader4Line,
 	RiUploadLine,
 } from "react-icons/ri";
-import { backendUrl } from "../../shared/company";
+import backendUrl from "../utils/backend";
 
 const WHY_US = [
 	{

@@ -1,6 +1,7 @@
 import express from "express";
 import { register, login, updateUser, deleteUser } from "../services/auth.service.js";
 import { protect, requireRole } from "../middlewares/auth.middleware.js";
+import { revokeToken } from "../services/tokenBlacklist.js";
 
 const router = express.Router();
 
@@ -40,6 +41,8 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.post("/logout", protect, (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  revokeToken(token);
   res.json({ success: true });
 });
 

@@ -1,13 +1,7 @@
-import {
-	createContext,
-	useCallback,
-	useContext,
-	useEffect,
-	useState,
-} from "react";
-import { backendUrl } from "../../shared/company";
+import { createContext, useCallback, useEffect, useState } from "react";
+import backendUrl from "../utils/backend";
 
-const AuthContext = createContext(null);
+export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
 	const [user, setUser] = useState(null);
@@ -35,6 +29,24 @@ export function AuthProvider({ children }) {
 			.catch(() => localStorage.removeItem("auth_token"))
 			.finally(() => setIsLoading(false));
 	}, []);
+
+	useEffect(() => {
+		if (!token) return;
+		const interval = setInterval(() => {
+			fetch(`${backendUrl}/auth/me`, {
+				headers: { Authorization: `Bearer ${token}` },
+			})
+				.then((res) => {
+					if (!res.ok) {
+						localStorage.removeItem("auth_token");
+						setToken(null);
+						setUser(null);
+					}
+				})
+				.catch(() => {});
+		}, 30000);
+		return () => clearInterval(interval);
+	}, [token]);
 
 	const login = useCallback(async (email, password) => {
 		const res = await fetch(`${backendUrl}/auth/login`, {
@@ -119,5 +131,3 @@ export function AuthProvider({ children }) {
 		</AuthContext.Provider>
 	);
 }
-
-export const useAuth = () => useContext(AuthContext);
