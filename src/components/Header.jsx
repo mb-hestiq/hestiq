@@ -37,7 +37,7 @@ export default function Header() {
 
 				<NavigationMenu.List className="NavigationMenuList hidden lg:flex">
 					<NavItem to="/about">About</NavItem>
-					<NavItem to="/products">Products</NavItem>
+					{/* <NavItem to="/products">Products</NavItem> */}
 					<NavItem to="/pricing">Pricing</NavItem>
 
 					<NavList to="/solutions" title="Solutions">
@@ -152,9 +152,9 @@ export default function Header() {
 										<NavLink to="/about" className="MobileMenuLink">
 											About
 										</NavLink>
-										<NavLink to="/products" className="MobileMenuLink">
+										{/* <NavLink to="/products" className="MobileMenuLink">
 											Products
-										</NavLink>
+										</NavLink> */}
 										<NavLink to="/pricing" className="MobileMenuLink">
 											Pricing
 										</NavLink>
