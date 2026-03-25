@@ -19,7 +19,7 @@ export function track(event, data = {}) {
   if (isLocal()) return Promise.resolve();
   try {
     const visitorId = getVisitorId();
-    return fetch(`${backendUrl}/api/analytics/track`, {
+    return fetch(`${backendUrl}/analytics/track`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export function trackBatch(events) {
       referrer: e.referrer || document.referrer,
       timestamp: e.timestamp || Date.now(),
     }));
-    return fetch(`${backendUrl}/api/analytics/track`, {
+    return fetch(`${backendUrl}/analytics/track`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

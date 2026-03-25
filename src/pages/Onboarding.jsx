@@ -350,7 +350,7 @@ function StepContact({
 					</div>
 				</div>
 				<ContactForm
-					endpoint={`${backendUrl}/api/orders`}
+					endpoint={`${backendUrl}/orders`}
 					payload={{
 						category: categoryLabel,
 						services: selectedItems.map((item) => item.label),

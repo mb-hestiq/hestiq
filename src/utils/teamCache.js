@@ -12,7 +12,7 @@ export function getTeam() {
   } catch {}
 
   if (!inflightPromise) {
-    inflightPromise = fetch(`${backendUrl}/api/team`)
+    inflightPromise = fetch(`${backendUrl}/team`)
       .then((r) => r.json())
       .then((data) => {
         const list = data.success && Array.isArray(data.members) ? data.members : [];

@@ -12,7 +12,7 @@ export function getServices() {
   } catch {}
 
   if (!inflightPromise) {
-    inflightPromise = fetch(`${backendUrl}/api/services`)
+    inflightPromise = fetch(`${backendUrl}/services`)
       .then((r) => r.json())
       .then((data) => {
         const list = data.success && Array.isArray(data.services) ? data.services : [];

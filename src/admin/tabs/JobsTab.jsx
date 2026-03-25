@@ -240,7 +240,7 @@ function ApplicantsTable({ job, token, onJobUpdate }) {
 	const handleEdit = useCallback(
 		async (form) => {
 			const res = await fetch(
-				`${backendUrl}/api/jobs/${job._id}/applicants/${modal.target._id}`,
+				`${backendUrl}/jobs/${job._id}/applicants/${modal.target._id}`,
 				{
 					method: "PATCH",
 					headers: {
@@ -261,7 +261,7 @@ function ApplicantsTable({ job, token, onJobUpdate }) {
 	const handleDelete = useCallback(async () => {
 		if (!deleteTarget) return;
 		const res = await fetch(
-			`${backendUrl}/api/jobs/${job._id}/applicants/${deleteTarget._id}`,
+			`${backendUrl}/jobs/${job._id}/applicants/${deleteTarget._id}`,
 			{
 				method: "DELETE",
 				headers: { Authorization: `Bearer ${token}` },
@@ -450,7 +450,7 @@ export default function JobsTab() {
 	const fetchJobs = useCallback(async () => {
 		setLoading(true);
 		try {
-			const res = await fetch(`${backendUrl}/api/jobs`, {
+			const res = await fetch(`${backendUrl}/jobs`, {
 				headers: { Authorization: `Bearer ${token}` },
 			});
 			const data = await res.json();
@@ -467,7 +467,7 @@ export default function JobsTab() {
 
 	const handleCreate = useCallback(
 		async (form) => {
-			const res = await fetch(`${backendUrl}/api/jobs`, {
+			const res = await fetch(`${backendUrl}/jobs`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -484,7 +484,7 @@ export default function JobsTab() {
 
 	const handleEdit = useCallback(
 		async (form) => {
-			const res = await fetch(`${backendUrl}/api/jobs/${modal.target._id}`, {
+			const res = await fetch(`${backendUrl}/jobs/${modal.target._id}`, {
 				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",
@@ -501,7 +501,7 @@ export default function JobsTab() {
 
 	const handleDelete = useCallback(
 		async (id) => {
-			const res = await fetch(`${backendUrl}/api/jobs/${id}`, {
+			const res = await fetch(`${backendUrl}/jobs/${id}`, {
 				method: "DELETE",
 				headers: { Authorization: `Bearer ${token}` },
 			});
@@ -514,7 +514,7 @@ export default function JobsTab() {
 
 	const handleBulkDelete = useCallback(
 		async (ids) => {
-			const res = await fetch(`${backendUrl}/api/jobs`, {
+			const res = await fetch(`${backendUrl}/jobs`, {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",

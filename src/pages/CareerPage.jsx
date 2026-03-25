@@ -107,7 +107,7 @@ function useJobs() {
 			setLoading(false);
 			return;
 		}
-		fetch(`${backendUrl}/api/jobs`)
+		fetch(`${backendUrl}/jobs`)
 			.then((r) => r.json())
 			.then((data) => {
 				const list = data.success && Array.isArray(data.jobs) ? data.jobs : [];
@@ -168,7 +168,7 @@ function ApplyModal({ job, onClose }) {
 				if (form.message) formData.append("message", form.message);
 				if (cvFile) formData.append("resume", cvFile);
 
-				const res = await fetch(`${backendUrl}/api/jobs/${job._id}/apply`, {
+				const res = await fetch(`${backendUrl}/jobs/${job._id}/apply`, {
 					method: "POST",
 					body: formData,
 				});

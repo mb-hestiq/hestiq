@@ -5,7 +5,7 @@ export const API_DOCS = [
       {
         id: "auth-register",
         method: "POST",
-        path: "/api/auth/register",
+        path: "/auth/register",
         description: "Register a new user account. Returns the created user and a JWT token.",
         auth: null,
         params: [],
@@ -32,7 +32,7 @@ export const API_DOCS = [
       {
         id: "auth-login",
         method: "POST",
-        path: "/api/auth/login",
+        path: "/auth/login",
         description: "Authenticate with email and password. Returns user data and a JWT token.",
         auth: null,
         params: [],
@@ -59,7 +59,7 @@ export const API_DOCS = [
       {
         id: "auth-logout",
         method: "POST",
-        path: "/api/auth/logout",
+        path: "/auth/logout",
         description: "Invalidate the current session server-side. Requires a valid JWT token.",
         auth: "user",
         params: [],
@@ -75,7 +75,7 @@ export const API_DOCS = [
       {
         id: "auth-me-get",
         method: "GET",
-        path: "/api/auth/me",
+        path: "/auth/me",
         description: "Retrieve the currently authenticated user's profile.",
         auth: "user",
         params: [],
@@ -92,7 +92,7 @@ export const API_DOCS = [
       {
         id: "auth-me-patch",
         method: "PATCH",
-        path: "/api/auth/me",
+        path: "/auth/me",
         description: "Update the current user's name, email, or password.",
         auth: "user",
         params: [],
@@ -114,7 +114,7 @@ export const API_DOCS = [
       {
         id: "auth-me-delete",
         method: "DELETE",
-        path: "/api/auth/me",
+        path: "/auth/me",
         description: "Permanently delete the current user's account.",
         auth: "user",
         params: [],
@@ -130,7 +130,7 @@ export const API_DOCS = [
       {
         id: "auth-admin",
         method: "GET",
-        path: "/api/auth/admin",
+        path: "/auth/admin",
         description: "Verify that the current token belongs to an admin user.",
         auth: "admin",
         params: [],
@@ -153,7 +153,7 @@ export const API_DOCS = [
       {
         id: "orders-create",
         method: "POST",
-        path: "/api/orders",
+        path: "/orders",
         description: "Submit a new service order. Services can be identified by MongoDB ID or by name. A confirmation email is sent to the company on success.",
         auth: null,
         params: [],
@@ -186,7 +186,7 @@ export const API_DOCS = [
       {
         id: "orders-list",
         method: "GET",
-        path: "/api/orders",
+        path: "/orders",
         description: "Retrieve all orders sorted by newest first. Service references are populated.",
         auth: null,
         params: [],
@@ -203,7 +203,7 @@ export const API_DOCS = [
       {
         id: "orders-update",
         method: "PUT",
-        path: "/api/orders/:id",
+        path: "/orders/:id",
         description: "Update any field of an existing order. Admin only.",
         auth: "admin",
         params: [
@@ -227,7 +227,7 @@ export const API_DOCS = [
       {
         id: "orders-delete",
         method: "DELETE",
-        path: "/api/orders/:id",
+        path: "/orders/:id",
         description: "Permanently delete a single order by ID. Admin only.",
         auth: "admin",
         params: [
@@ -246,7 +246,7 @@ export const API_DOCS = [
       {
         id: "orders-bulk-delete",
         method: "DELETE",
-        path: "/api/orders",
+        path: "/orders",
         description: "Delete multiple orders by ID in a single request. Admin only.",
         auth: "admin",
         params: [],
@@ -271,7 +271,7 @@ export const API_DOCS = [
       {
         id: "services-create",
         method: "POST",
-        path: "/api/services",
+        path: "/services",
         description: "Create a new service entry in the catalog. Admin only.",
         auth: "admin",
         params: [],
@@ -300,7 +300,7 @@ export const API_DOCS = [
       {
         id: "services-list",
         method: "GET",
-        path: "/api/services",
+        path: "/services",
         description: "Retrieve all services sorted by newest first.",
         auth: null,
         params: [],
@@ -317,7 +317,7 @@ export const API_DOCS = [
       {
         id: "services-get",
         method: "GET",
-        path: "/api/services/:id",
+        path: "/services/:id",
         description: "Retrieve a single service by its MongoDB ID.",
         auth: null,
         params: [
@@ -337,7 +337,7 @@ export const API_DOCS = [
       {
         id: "services-update",
         method: "PUT",
-        path: "/api/services/:id",
+        path: "/services/:id",
         description: "Update any field of an existing service. Admin only.",
         auth: "admin",
         params: [
@@ -365,7 +365,7 @@ export const API_DOCS = [
       {
         id: "services-delete",
         method: "DELETE",
-        path: "/api/services/:id",
+        path: "/services/:id",
         description: "Permanently delete a service by ID. Admin only.",
         auth: "admin",
         params: [
@@ -384,7 +384,7 @@ export const API_DOCS = [
       {
         id: "services-bulk-delete",
         method: "DELETE",
-        path: "/api/services",
+        path: "/services",
         description: "Delete multiple services by ID in a single request. Admin only.",
         auth: "admin",
         params: [],
@@ -409,7 +409,7 @@ export const API_DOCS = [
       {
         id: "email-send",
         method: "POST",
-        path: "/api/email",
+        path: "/email",
         description: "Send a transactional email via the configured SMTP mailer. Admin only.",
         auth: "admin",
         params: [],
@@ -439,7 +439,7 @@ export const API_DOCS = [
       {
         id: "analytics-track",
         method: "POST",
-        path: "/api/analytics/track",
+        path: "/analytics/track",
         description: "Track a single analytics event or a batch of up to 20 events. Accepts a single event object or a JSON array. Rate-limited to 60 requests per minute per IP.",
         auth: null,
         params: [],
@@ -462,7 +462,7 @@ export const API_DOCS = [
       {
         id: "analytics-traffic",
         method: "GET",
-        path: "/api/analytics/traffic",
+        path: "/analytics/traffic",
         description: "Get traffic overview: session visits, page views, unique visitors, and visit trend over time. Admin only.",
         auth: "admin",
         params: [],
@@ -485,7 +485,7 @@ export const API_DOCS = [
       {
         id: "analytics-source",
         method: "GET",
-        path: "/api/analytics/source",
+        path: "/analytics/source",
         description: "Get session breakdown by device type (desktop, tablet, mobile), based on session_start events. Admin only.",
         auth: "admin",
         params: [],
@@ -507,7 +507,7 @@ export const API_DOCS = [
       {
         id: "analytics-orders-stats",
         method: "GET",
-        path: "/api/analytics/orders-stats",
+        path: "/analytics/orders-stats",
         description: "Get order statistics: total count, current-month count, month-over-month change, and weekday distribution. Admin only.",
         auth: "admin",
         params: [],
@@ -530,7 +530,7 @@ export const API_DOCS = [
       {
         id: "analytics-users-stats",
         method: "GET",
-        path: "/api/analytics/users-stats",
+        path: "/analytics/users-stats",
         description: "Get customer analytics: new vs returning customers and geographic breakdown, derived from order_created events. Admin only.",
         auth: "admin",
         params: [],
@@ -557,7 +557,7 @@ export const API_DOCS = [
       {
         id: "team-create",
         method: "POST",
-        path: "/api/team",
+        path: "/team",
         description: "Create a new team member. Admin only.",
         auth: "admin",
         params: [],
@@ -566,7 +566,7 @@ export const API_DOCS = [
           { name: "name", type: "String", required: true, placeholder: "Jane Doe", description: "Team member's full name" },
           { name: "email", type: "String", required: true, placeholder: "jane@example.com", description: "Unique email address" },
           { name: "title", type: "String", required: false, placeholder: "Lead Designer", description: "Job title or role" },
-          { name: "image", type: "String", required: false, placeholder: "/api/files/64a1b2c3d4e5f6789abcdef0", description: "Image URL from files API" },
+          { name: "image", type: "String", required: false, placeholder: "/files/64a1b2c3d4e5f6789abcdef0", description: "Image URL from files API" },
           { name: "tags", type: "Array<String>", required: false, placeholder: '["design","management"]', description: "Tags: management | design | development | marketing" },
         ],
         response: [
@@ -582,7 +582,7 @@ export const API_DOCS = [
       {
         id: "team-list",
         method: "GET",
-        path: "/api/team",
+        path: "/team",
         description: "Retrieve all team members sorted by newest first.",
         auth: null,
         params: [],
@@ -599,7 +599,7 @@ export const API_DOCS = [
       {
         id: "team-get",
         method: "GET",
-        path: "/api/team/:id",
+        path: "/team/:id",
         description: "Retrieve a single team member by MongoDB ID.",
         auth: null,
         params: [
@@ -619,7 +619,7 @@ export const API_DOCS = [
       {
         id: "team-update",
         method: "PATCH",
-        path: "/api/team/:id",
+        path: "/team/:id",
         description: "Update a team member. If the image URL changes, the old image is deleted from storage. Admin only.",
         auth: "admin",
         params: [
@@ -630,7 +630,7 @@ export const API_DOCS = [
           { name: "name", type: "String", required: false, placeholder: "Jane Doe", description: "Updated full name" },
           { name: "email", type: "String", required: false, placeholder: "jane@example.com", description: "Updated email address" },
           { name: "title", type: "String", required: false, placeholder: "Senior Designer", description: "Updated job title" },
-          { name: "image", type: "String", required: false, placeholder: "/api/files/64a1b2c3d4e5f6789abcdef0", description: "Updated image URL" },
+          { name: "image", type: "String", required: false, placeholder: "/files/64a1b2c3d4e5f6789abcdef0", description: "Updated image URL" },
           { name: "tags", type: "Array<String>", required: false, placeholder: '["development"]', description: "Updated tags array" },
         ],
         response: [
@@ -646,7 +646,7 @@ export const API_DOCS = [
       {
         id: "team-delete",
         method: "DELETE",
-        path: "/api/team/:id",
+        path: "/team/:id",
         description: "Delete a team member and their associated image from storage. Admin only.",
         auth: "admin",
         params: [
@@ -666,7 +666,7 @@ export const API_DOCS = [
       {
         id: "team-bulk-delete",
         method: "DELETE",
-        path: "/api/team",
+        path: "/team",
         description: "Delete multiple team members and their images in a single request. Admin only.",
         auth: "admin",
         params: [],
@@ -691,7 +691,7 @@ export const API_DOCS = [
       {
         id: "files-upload",
         method: "POST",
-        path: "/api/files",
+        path: "/files",
         description: "Upload an image file to GridFS storage. Accepts multipart/form-data with a 'file' field. Max size 10 MB. Admin only.",
         auth: "admin",
         params: [],
@@ -702,7 +702,7 @@ export const API_DOCS = [
         response: [
           { name: "success", type: "Boolean", description: "Operation result" },
           { name: "id", type: "String", description: "GridFS file ID" },
-          { name: "url", type: "String", description: "Relative URL to retrieve the file: /api/files/:id" },
+          { name: "url", type: "String", description: "Relative URL to retrieve the file: /files/:id" },
         ],
         errors: [
           { status: 400, reason: "No file provided or non-image MIME type" },
@@ -714,7 +714,7 @@ export const API_DOCS = [
       {
         id: "files-list",
         method: "GET",
-        path: "/api/files",
+        path: "/files",
         description: "List all stored files sorted by upload date descending. Admin only.",
         auth: "admin",
         params: [],
@@ -732,7 +732,7 @@ export const API_DOCS = [
       {
         id: "files-get",
         method: "GET",
-        path: "/api/files/:id",
+        path: "/files/:id",
         description: "Stream a file by its GridFS ID. Returns the raw binary with appropriate Content-Type. Publicly accessible.",
         auth: null,
         params: [
@@ -751,7 +751,7 @@ export const API_DOCS = [
       {
         id: "files-delete",
         method: "DELETE",
-        path: "/api/files/:id",
+        path: "/files/:id",
         description: "Permanently delete a file from GridFS storage by ID. Admin only.",
         auth: "admin",
         params: [
@@ -777,7 +777,7 @@ export const API_DOCS = [
       {
         id: "jobs-list",
         method: "GET",
-        path: "/api/jobs",
+        path: "/jobs",
         description: "List jobs. Without authentication, returns only active jobs (applicants excluded). With a valid admin token, returns all jobs including applicants.",
         auth: null,
         params: [],
@@ -794,7 +794,7 @@ export const API_DOCS = [
       {
         id: "jobs-create",
         method: "POST",
-        path: "/api/jobs",
+        path: "/jobs",
         description: "Create a new job posting. Admin only.",
         auth: "admin",
         params: [],
@@ -824,7 +824,7 @@ export const API_DOCS = [
       {
         id: "jobs-update",
         method: "PUT",
-        path: "/api/jobs/:id",
+        path: "/jobs/:id",
         description: "Update a job posting. Admin only.",
         auth: "admin",
         params: [
@@ -853,7 +853,7 @@ export const API_DOCS = [
       {
         id: "jobs-delete",
         method: "DELETE",
-        path: "/api/jobs/:id",
+        path: "/jobs/:id",
         description: "Permanently delete a job posting by ID. Admin only.",
         auth: "admin",
         params: [
@@ -873,7 +873,7 @@ export const API_DOCS = [
       {
         id: "jobs-bulk-delete",
         method: "DELETE",
-        path: "/api/jobs",
+        path: "/jobs",
         description: "Delete multiple job postings by ID. Admin only.",
         auth: "admin",
         params: [],
@@ -893,7 +893,7 @@ export const API_DOCS = [
       {
         id: "jobs-apply",
         method: "POST",
-        path: "/api/jobs/:id/apply",
+        path: "/jobs/:id/apply",
         description: "Submit a job application. Accepts multipart/form-data. An optional resume file (PDF or Word, max 5 MB) can be attached. The job must be active.",
         auth: null,
         params: [
@@ -920,7 +920,7 @@ export const API_DOCS = [
       {
         id: "jobs-applicant-update",
         method: "PATCH",
-        path: "/api/jobs/:id/applicants/:applicantId",
+        path: "/jobs/:id/applicants/:applicantId",
         description: "Update an applicant's record (e.g. change status). Admin only.",
         auth: "admin",
         params: [
@@ -949,7 +949,7 @@ export const API_DOCS = [
       {
         id: "jobs-applicant-delete",
         method: "DELETE",
-        path: "/api/jobs/:id/applicants/:applicantId",
+        path: "/jobs/:id/applicants/:applicantId",
         description: "Remove an applicant from a job. Admin only.",
         auth: "admin",
         params: [
@@ -970,7 +970,7 @@ export const API_DOCS = [
       {
         id: "jobs-resume-download",
         method: "GET",
-        path: "/api/jobs/resumes/:fileId",
+        path: "/jobs/resumes/:fileId",
         description: "Download an applicant's resume from GridFS storage. Returns the file as an attachment. Admin only.",
         auth: "admin",
         params: [

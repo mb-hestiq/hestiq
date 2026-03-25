@@ -98,7 +98,7 @@ export default function ServicesTab() {
 	const fetchServices = useCallback(async () => {
 		setLoading(true);
 		try {
-			const res = await fetch(`${backendUrl}/api/services`, {
+			const res = await fetch(`${backendUrl}/services`, {
 				headers: { Authorization: `Bearer ${token}` },
 			});
 			const data = await res.json();
@@ -115,7 +115,7 @@ export default function ServicesTab() {
 
 	const handleCreate = useCallback(
 		async (form) => {
-			const res = await fetch(`${backendUrl}/api/services`, {
+			const res = await fetch(`${backendUrl}/services`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -133,17 +133,14 @@ export default function ServicesTab() {
 
 	const handleEdit = useCallback(
 		async (form) => {
-			const res = await fetch(
-				`${backendUrl}/api/services/${modal.target._id}`,
-				{
-					method: "PUT",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Bearer ${token}`,
-					},
-					body: JSON.stringify(form),
+			const res = await fetch(`${backendUrl}/services/${modal.target._id}`, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${token}`,
 				},
-			);
+				body: JSON.stringify(form),
+			});
 			const data = await res.json();
 			if (!data.success)
 				throw new Error(data.error || "Failed to update service");
@@ -154,7 +151,7 @@ export default function ServicesTab() {
 
 	const handleDelete = useCallback(
 		async (id) => {
-			const res = await fetch(`${backendUrl}/api/services/${id}`, {
+			const res = await fetch(`${backendUrl}/services/${id}`, {
 				method: "DELETE",
 				headers: { Authorization: `Bearer ${token}` },
 			});
@@ -168,7 +165,7 @@ export default function ServicesTab() {
 
 	const handleBulkDelete = useCallback(
 		async (ids) => {
-			const res = await fetch(`${backendUrl}/api/services`, {
+			const res = await fetch(`${backendUrl}/services`, {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",

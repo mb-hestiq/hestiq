@@ -82,7 +82,7 @@ export default function ContactPage() {
 							items={contacts}
 						/>
 						<ContactForm
-							endpoint={`${backendUrl}/api/contact`}
+							endpoint={`${backendUrl}/contact`}
 							title="Send a message"
 							description="Share your goals, scope, timeline, or any blockers so we can respond with the right next step."
 							submitLabel="Send message"

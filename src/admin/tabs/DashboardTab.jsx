@@ -155,12 +155,9 @@ export default function DashboardTab() {
 		async (p) => {
 			setSection("traffic", true);
 			try {
-				const res = await fetch(
-					`${backendUrl}/api/analytics/traffic?period=${p}`,
-					{
-						headers: { Authorization: `Bearer ${token}` },
-					},
-				);
+				const res = await fetch(`${backendUrl}/analytics/traffic?period=${p}`, {
+					headers: { Authorization: `Bearer ${token}` },
+				});
 				const data = await res.json();
 				if (data.success) setTrafficData(data.data);
 			} finally {
@@ -174,12 +171,9 @@ export default function DashboardTab() {
 		async (p) => {
 			setSection("source", true);
 			try {
-				const res = await fetch(
-					`${backendUrl}/api/analytics/source?period=${p}`,
-					{
-						headers: { Authorization: `Bearer ${token}` },
-					},
-				);
+				const res = await fetch(`${backendUrl}/analytics/source?period=${p}`, {
+					headers: { Authorization: `Bearer ${token}` },
+				});
 				const data = await res.json();
 				if (data.success) setSourceData(data.data);
 			} finally {
@@ -194,7 +188,7 @@ export default function DashboardTab() {
 			setSection("orders", true);
 			try {
 				const res = await fetch(
-					`${backendUrl}/api/analytics/orders-stats?period=${p}`,
+					`${backendUrl}/analytics/orders-stats?period=${p}`,
 					{
 						headers: { Authorization: `Bearer ${token}` },
 					},
@@ -213,7 +207,7 @@ export default function DashboardTab() {
 			setSection("users", true);
 			try {
 				const res = await fetch(
-					`${backendUrl}/api/analytics/users-stats?period=${p}`,
+					`${backendUrl}/analytics/users-stats?period=${p}`,
 					{
 						headers: { Authorization: `Bearer ${token}` },
 					},

@@ -121,7 +121,7 @@ export default function UsersTab() {
 	const fetchUsers = useCallback(async () => {
 		setLoading(true);
 		try {
-			const res = await fetch(`${backendUrl}/api/admin/users`, {
+			const res = await fetch(`${backendUrl}/admin/users`, {
 				headers: { Authorization: `Bearer ${token}` },
 			});
 			const data = await res.json();
@@ -138,7 +138,7 @@ export default function UsersTab() {
 
 	const handleCreate = useCallback(
 		async (form) => {
-			const res = await fetch(`${backendUrl}/api/auth/register`, {
+			const res = await fetch(`${backendUrl}/auth/register`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -155,17 +155,14 @@ export default function UsersTab() {
 
 	const handleEdit = useCallback(
 		async (form) => {
-			const res = await fetch(
-				`${backendUrl}/api/admin/users/${modal.target._id}`,
-				{
-					method: "PATCH",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Bearer ${token}`,
-					},
-					body: JSON.stringify(form),
+			const res = await fetch(`${backendUrl}/admin/users/${modal.target._id}`, {
+				method: "PATCH",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${token}`,
 				},
-			);
+				body: JSON.stringify(form),
+			});
 			const data = await res.json();
 			if (!data.success) throw new Error(data.error || "Failed to update user");
 			await fetchUsers();
@@ -175,7 +172,7 @@ export default function UsersTab() {
 
 	const handleDelete = useCallback(
 		async (id) => {
-			const res = await fetch(`${backendUrl}/api/admin/users/${id}`, {
+			const res = await fetch(`${backendUrl}/admin/users/${id}`, {
 				method: "DELETE",
 				headers: { Authorization: `Bearer ${token}` },
 			});
@@ -188,7 +185,7 @@ export default function UsersTab() {
 
 	const handleBulkDelete = useCallback(
 		async (ids) => {
-			const res = await fetch(`${backendUrl}/api/admin/users`, {
+			const res = await fetch(`${backendUrl}/admin/users`, {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",

@@ -22,6 +22,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const app = express();
 
+//#region Rate Limiters
 const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -45,22 +46,27 @@ const contactLimiter = rateLimit({
   legacyHeaders: false,
   message: { success: false, error: "Too many contact requests, please try again later." },
 });
+//#endregion
 
-app.use(cors({ exposedHeaders: ["Content-Disposition"] }));
+app.use(cors({
+  origin: "https://hestiq.com",
+  credentials: true,
+  exposedHeaders: ["Content-Disposition"]
+}));
 app.use(express.json());
 app.use(generalLimiter);
 
-app.use("/api/auth", authLimiter, authRoutes);
-app.use("/api/orders", orderRoutes);
-app.use("/api/services", serviceRoutes);
-app.use("/api/email", emailRoutes);
-app.use("/api/analytics", analyticsRoutes);
-app.use("/api/admin", adminRoutes);
-app.use("/api/team", teamRoutes);
-app.use("/api/files", filesRoutes);
-app.use("/api/jobs", jobsRoutes);
+app.use("/auth", authLimiter, authRoutes);
+app.use("/orders", orderRoutes);
+app.use("/services", serviceRoutes);
+app.use("/email", emailRoutes);
+app.use("/analytics", analyticsRoutes);
+app.use("/admin", adminRoutes);
+app.use("/team", teamRoutes);
+app.use("/files", filesRoutes);
+app.use("/jobs", jobsRoutes);
 
-app.post("/api/contact", contactLimiter, async (req, res) => {
+app.post("/contact", contactLimiter, async (req, res) => {
   const { name, email, message } = req.body;
 
   try {
@@ -87,7 +93,6 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
 });
 
 app.use(errorHandler);
-
 process.on('uncaughtException', console.error);
 process.on('unhandledRejection', console.error);
 

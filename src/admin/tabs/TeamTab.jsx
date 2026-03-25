@@ -97,7 +97,7 @@ export default function TeamTab() {
 	const fetchMembers = useCallback(async () => {
 		setLoading(true);
 		try {
-			const res = await fetch(`${backendUrl}/api/team`, {
+			const res = await fetch(`${backendUrl}/team`, {
 				headers: { Authorization: `Bearer ${token}` },
 			});
 			const data = await res.json();
@@ -116,7 +116,7 @@ export default function TeamTab() {
 		async (file) => {
 			const formData = new FormData();
 			formData.append("file", file);
-			const res = await fetch(`${backendUrl}/api/files`, {
+			const res = await fetch(`${backendUrl}/files`, {
 				method: "POST",
 				headers: { Authorization: `Bearer ${token}` },
 				body: formData,
@@ -130,7 +130,7 @@ export default function TeamTab() {
 
 	const handleCreate = useCallback(
 		async (form) => {
-			const res = await fetch(`${backendUrl}/api/team`, {
+			const res = await fetch(`${backendUrl}/team`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -148,7 +148,7 @@ export default function TeamTab() {
 
 	const handleEdit = useCallback(
 		async (form) => {
-			const res = await fetch(`${backendUrl}/api/team/${modal.target._id}`, {
+			const res = await fetch(`${backendUrl}/team/${modal.target._id}`, {
 				method: "PATCH",
 				headers: {
 					"Content-Type": "application/json",
@@ -166,7 +166,7 @@ export default function TeamTab() {
 
 	const handleDelete = useCallback(
 		async (id) => {
-			const res = await fetch(`${backendUrl}/api/team/${id}`, {
+			const res = await fetch(`${backendUrl}/team/${id}`, {
 				method: "DELETE",
 				headers: { Authorization: `Bearer ${token}` },
 			});
@@ -180,7 +180,7 @@ export default function TeamTab() {
 
 	const handleBulkDelete = useCallback(
 		async (ids) => {
-			const res = await fetch(`${backendUrl}/api/team`, {
+			const res = await fetch(`${backendUrl}/team`, {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",
