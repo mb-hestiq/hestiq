@@ -35,6 +35,8 @@ import CareerPage from "./pages/CareerPage.jsx";
 import PricingPage from "./pages/PricingPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 
+import DigitalTransformation from "./pages/Solutions/DigitalTransformation.jsx";
+
 import PageTracker from "./utils/PageTracker.jsx";
 import ScrollHandler from "./utils/ScrollHandler.jsx";
 
@@ -68,6 +70,13 @@ createRoot(document.getElementById("root")).render(
 							</ProtectedRoute>
 						}
 					/>
+
+					<Route path="/solutions">
+						<Route
+							path="digital-transformation"
+							element={<DigitalTransformation />}
+						/>
+					</Route>
 
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
