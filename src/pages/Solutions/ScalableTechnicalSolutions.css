@@ -1,0 +1,446 @@
+/* ============================================================
+   SCALABLE TECHNICAL SOLUTIONS PAGE
+   ============================================================ */
+
+.STSShell {
+	max-width: 80rem;
+	margin-inline: auto;
+	padding-inline: 2rem;
+}
+
+.STSPage {
+	background: var(--color-bg);
+}
+
+.STSSection {
+	padding-block: 5rem;
+}
+
+.STSSectionAlt {
+	background: #ffffff;
+}
+
+.STSSectionHeader {
+	max-width: 42rem;
+	margin-block-end: 3.5rem;
+}
+
+.STSSectionHeaderCentered {
+	text-align: center;
+	margin-inline: auto;
+}
+
+.STSSectionEyebrow {
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--color-primary);
+	opacity: 0.5;
+	margin-block-end: 0.625rem;
+}
+
+.STSSectionTitle {
+	font-size: clamp(1.75rem, 3vw, 2.5rem);
+	font-weight: 800;
+	color: var(--color-text);
+	line-height: 1.18;
+	margin-block-end: 1rem;
+}
+
+.STSSectionDescription {
+	font-size: 1.0625rem;
+	color: var(--color-text-muted);
+	line-height: 1.7;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.STSHero {
+	position: relative;
+	background-color: var(--color-primary);
+	min-height: 560px;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+}
+
+.STSHeroPattern {
+	position: absolute;
+	inset: 0;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect x='0' y='0' width='80' height='80' fill='none'/%3E%3Cline x1='0' y1='0' x2='80' y2='0' stroke='%23ffffff' stroke-width='0.4' stroke-opacity='0.08'/%3E%3Cline x1='0' y1='20' x2='80' y2='20' stroke='%23ffffff' stroke-width='0.4' stroke-opacity='0.08'/%3E%3Cline x1='0' y1='40' x2='80' y2='40' stroke='%23ffffff' stroke-width='0.4' stroke-opacity='0.08'/%3E%3Cline x1='0' y1='60' x2='80' y2='60' stroke='%23ffffff' stroke-width='0.4' stroke-opacity='0.08'/%3E%3Cline x1='0' y1='80' x2='80' y2='80' stroke='%23ffffff' stroke-width='0.4' stroke-opacity='0.08'/%3E%3Cline x1='0' y1='0' x2='0' y2='80' stroke='%23ffffff' stroke-width='0.4' stroke-opacity='0.08'/%3E%3Cline x1='20' y1='0' x2='20' y2='80' stroke='%23ffffff' stroke-width='0.4' stroke-opacity='0.08'/%3E%3Cline x1='40' y1='0' x2='40' y2='80' stroke='%23ffffff' stroke-width='0.4' stroke-opacity='0.08'/%3E%3Cline x1='60' y1='0' x2='60' y2='80' stroke='%23ffffff' stroke-width='0.4' stroke-opacity='0.08'/%3E%3Cline x1='80' y1='0' x2='80' y2='80' stroke='%23ffffff' stroke-width='0.4' stroke-opacity='0.08'/%3E%3Crect x='17' y='17' width='6' height='6' rx='1' fill='%23ffffff' fill-opacity='0.07'/%3E%3Crect x='37' y='37' width='6' height='6' rx='1' fill='%23ffffff' fill-opacity='0.07'/%3E%3Crect x='57' y='17' width='6' height='6' rx='1' fill='%23ffffff' fill-opacity='0.07'/%3E%3Crect x='17' y='57' width='6' height='6' rx='1' fill='%23ffffff' fill-opacity='0.07'/%3E%3Crect x='57' y='57' width='6' height='6' rx='1' fill='%23ffffff' fill-opacity='0.07'/%3E%3C/svg%3E");
+	background-repeat: repeat;
+	background-size: 80px 80px;
+}
+
+.STSHeroContent {
+	position: relative;
+	z-index: 1;
+	max-width: 80rem;
+	margin-inline: auto;
+	padding-inline: 2rem;
+	padding-block: 7rem 6rem;
+	width: 100%;
+}
+
+.STSHeroEyebrow {
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.55);
+	margin-block-end: 1rem;
+}
+
+.STSHeroTitle {
+	font-size: clamp(2.25rem, 5vw, 3.75rem);
+	font-weight: 800;
+	color: var(--color-text-inverse);
+	line-height: 1.1;
+	margin-block-end: 1.25rem;
+	max-width: 22ch;
+}
+
+.STSHeroSubtitle {
+	font-size: clamp(1rem, 2vw, 1.25rem);
+	color: rgba(255, 255, 255, 0.72);
+	line-height: 1.6;
+	margin-block-end: 2.5rem;
+	max-width: 38rem;
+}
+
+.STSHeroCTA {
+	background-color: #ffffff !important;
+	border-color: #ffffff !important;
+	color: var(--color-primary) !important;
+	padding: 0.75rem 1.75rem;
+}
+
+.STSHeroCTA:hover {
+	background-color: transparent !important;
+	color: #ffffff !important;
+}
+
+/* ============================================================
+   PROBLEM STATEMENT
+   ============================================================ */
+
+.STSProblemGrid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 3.5rem;
+	align-items: center;
+}
+
+@media (min-width: 768px) {
+	.STSProblemGrid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.STSPainPoints {
+	display: flex;
+	flex-direction: column;
+	gap: 0.875rem;
+}
+
+.STSPainPoint {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 1.125rem 1.25rem;
+	background: var(--color-primary);
+	border-radius: 10px;
+}
+
+.STSPainPointIcon {
+	flex-shrink: 0;
+	font-size: 1.25rem;
+	color: rgba(255, 255, 255, 0.75);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+}
+
+.STSPainPointText {
+	display: flex;
+	flex-direction: column;
+	gap: 0.125rem;
+}
+
+.STSPainPointLabel {
+	font-size: 0.9375rem;
+	font-weight: 700;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.STSPainPointDesc {
+	font-size: 0.8125rem;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================================
+   APPROACH / METHODOLOGY
+   ============================================================ */
+
+.STSStepsGrid {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+	.STSStepsGrid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.STSStep {
+	background: var(--color-bg);
+	border-radius: 16px;
+	padding: 2rem;
+	border: 1px solid var(--color-border);
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	transition: box-shadow 0.2s ease;
+}
+
+.STSStep:hover {
+	box-shadow: 0 8px 32px rgba(52, 41, 55, 0.1);
+}
+
+.STSStepHead {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.STSStepNumber {
+	font-size: 2.5rem;
+	font-weight: 800;
+	color: var(--color-primary);
+	opacity: 0.12;
+	line-height: 1;
+	font-variant-numeric: tabular-nums;
+}
+
+.STSStepIconWrapper {
+	width: 2.75rem;
+	height: 2.75rem;
+	background: var(--color-primary);
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-size: 1.25rem;
+}
+
+.STSStepTitle {
+	font-size: 1.0625rem;
+	font-weight: 700;
+	color: var(--color-text);
+}
+
+.STSStepDescription {
+	font-size: 0.9375rem;
+	color: var(--color-text-muted);
+	line-height: 1.65;
+}
+
+/* ============================================================
+   SERVICES GRID
+   ============================================================ */
+
+.STSServicesGrid {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+	.STSServicesGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.STSServicesGrid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.STSServiceCard {
+	background: var(--color-bg);
+	border-radius: 14px;
+	padding: 1.75rem;
+	border: 1px solid var(--color-border);
+	display: flex;
+	flex-direction: column;
+	gap: 0.875rem;
+	transition:
+		box-shadow 0.2s ease,
+		transform 0.2s ease;
+}
+
+.STSServiceCard:hover {
+	box-shadow: 0 6px 24px rgba(52, 41, 55, 0.09);
+	transform: translateY(-2px);
+}
+
+.STSServiceIconWrapper {
+	width: 2.5rem;
+	height: 2.5rem;
+	background: var(--color-primary);
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-size: 1.125rem;
+}
+
+.STSServiceTitle {
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--color-text);
+}
+
+.STSServiceDescription {
+	font-size: 0.9375rem;
+	color: var(--color-text-muted);
+	line-height: 1.6;
+}
+
+/* ============================================================
+   BENEFITS
+   ============================================================ */
+
+.STSBenefitsGrid {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.5rem;
+	margin-block-end: 2.5rem;
+}
+
+@media (min-width: 640px) {
+	.STSBenefitsGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.STSBenefit {
+	display: flex;
+	gap: 1.25rem;
+	align-items: flex-start;
+	padding: 1.75rem;
+	background: var(--color-bg);
+	border-radius: 14px;
+	border: 1px solid var(--color-border);
+}
+
+.STSBenefitIconWrapper {
+	flex-shrink: 0;
+	width: 2.5rem;
+	height: 2.5rem;
+	background: var(--color-primary);
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-size: 1.125rem;
+	margin-block-start: 0.125rem;
+}
+
+.STSBenefitTitle {
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--color-text);
+	margin-block-end: 0.375rem;
+}
+
+.STSBenefitDescription {
+	font-size: 0.9375rem;
+	color: var(--color-text-muted);
+	line-height: 1.65;
+}
+
+.STSBenefitsCTA {
+	display: flex;
+	justify-content: center;
+}
+
+.STSBenefitsCTABtn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.75rem;
+}
+
+/* ============================================================
+   FINAL CTA SECTION
+   ============================================================ */
+
+.STSCTASection {
+	background: var(--color-primary);
+	padding-block: 5rem;
+}
+
+.STSCTAContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 1.5rem;
+}
+
+.STSCTATitle {
+	font-size: clamp(1.75rem, 3vw, 2.75rem);
+	font-weight: 800;
+	color: var(--color-text-inverse);
+	line-height: 1.15;
+	max-width: 34rem;
+}
+
+.STSCTASubtitle {
+	font-size: 1.0625rem;
+	color: rgba(255, 255, 255, 0.7);
+	line-height: 1.6;
+	max-width: 42rem;
+}
+
+.STSCTAButton {
+	background-color: #ffffff !important;
+	border-color: #ffffff !important;
+	color: var(--color-primary) !important;
+	padding: 0.75rem 1.75rem;
+}
+
+.STSCTAButton:hover {
+	background-color: transparent !important;
+	color: #ffffff !important;
+}
+
+/* ============================================================
+   RESPONSIVE — mobile final tweaks
+   ============================================================ */
+
+@media (max-width: 479px) {
+	.STSHeroContent {
+		padding-block: 5rem 4rem;
+	}
+}

@@ -36,6 +36,7 @@ import PricingPage from "./pages/PricingPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 
 import DigitalTransformation from "./pages/Solutions/DigitalTransformation.jsx";
+import ScalableTechnicalSolutions from "./pages/Solutions/ScalableTechnicalSolutions.jsx";
 
 import PageTracker from "./utils/PageTracker.jsx";
 import ScrollHandler from "./utils/ScrollHandler.jsx";
@@ -75,6 +76,10 @@ createRoot(document.getElementById("root")).render(
 						<Route
 							path="digital-transformation"
 							element={<DigitalTransformation />}
+						/>
+						<Route
+							path="scalable-technical-solutions"
+							element={<ScalableTechnicalSolutions />}
 						/>
 					</Route>
 
