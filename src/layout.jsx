@@ -38,6 +38,7 @@ import AboutPage from "./pages/AboutPage.jsx";
 import DigitalTransformation from "./pages/Solutions/DigitalTransformation.jsx";
 import ScalableTechnicalSolutions from "./pages/Solutions/ScalableTechnicalSolutions.jsx";
 import EndToEndCreativeStrategy from "./pages/Solutions/EndToEndCreativeStrategy.jsx";
+import Solutions from "./pages/Solutions/Solutions.jsx";
 
 import PageTracker from "./utils/PageTracker.jsx";
 import ScrollHandler from "./utils/ScrollHandler.jsx";
@@ -73,20 +74,19 @@ createRoot(document.getElementById("root")).render(
 						}
 					/>
 
-					<Route path="/solutions">
-						<Route
-							path="digital-transformation"
-							element={<DigitalTransformation />}
-						/>
-						<Route
-							path="scalable-technical-solutions"
-							element={<ScalableTechnicalSolutions />}
-						/>
-						<Route
-							path="end-to-end-creative-strategy"
-							element={<EndToEndCreativeStrategy />}
-						/>
-					</Route>
+					<Route path="/solutions" element={<Solutions />} />
+					<Route
+						path="/solutions/digital-transformation"
+						element={<DigitalTransformation />}
+					/>
+					<Route
+						path="/solutions/scalable-technical-solutions"
+						element={<ScalableTechnicalSolutions />}
+					/>
+					<Route
+						path="/solutions/end-to-end-creative-strategy"
+						element={<EndToEndCreativeStrategy />}
+					/>
 
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
