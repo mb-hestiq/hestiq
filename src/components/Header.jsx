@@ -41,7 +41,7 @@ export default function Header() {
 					<NavItem to="/pricing">Pricing</NavItem>
 
 					<NavList to="/solutions" title="Solutions">
-						<CallOut to="/">
+						<CallOut to="/solutions">
 							<CallOut.Heading>
 								Innovative Solutions for Your Business
 							</CallOut.Heading>

@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import solutions from "../../../shared/solutions.js";
+import BrightIdeas from "../../assets/bright-ideas.svg?react";
 import {
 	FaWandMagicSparkles,
 	FaCubesStacked,
@@ -67,21 +68,26 @@ export default function Solutions() {
 				<section className="SolHero" aria-labelledby="sol-hero-title">
 					<div className="SolHeroPattern" aria-hidden="true" />
 					<div className="SolHeroContent">
-						<p className="SolHeroEyebrow">Solutions</p>
-						<h1 id="sol-hero-title" className="SolHeroTitle">
-							Solutions That Drive Business Growth
-						</h1>
-						<p className="SolHeroSubtitle">
-							Helping businesses modernize, scale, and innovate through tailored
-							strategies
-						</p>
-						<Link
-							to="#solutions"
-							state={{ scrollTo: "solutions" }}
-							className="CTA SolHeroCTA"
-						>
-							Explore Our Solutions
-						</Link>
+						<div className="SolHeroLeft">
+							<p className="SolHeroEyebrow">Solutions</p>
+							<h1 id="sol-hero-title" className="SolHeroTitle">
+								Solutions That Drive Business Growth
+							</h1>
+							<p className="SolHeroSubtitle">
+								Helping businesses modernize, scale, and innovate through
+								tailored strategies
+							</p>
+							<Link
+								to="#solutions"
+								state={{ scrollTo: "solutions" }}
+								className="CTA SolHeroCTA"
+							>
+								Explore Our Solutions
+							</Link>
+						</div>
+						<div className="SolHeroRight">
+							<BrightIdeas className="SolHeroSvg" aria-hidden="true" />
+						</div>
 					</div>
 				</section>
 
