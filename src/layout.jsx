@@ -34,6 +34,7 @@ import TeamPage from "./pages/TeamPage.jsx";
 import CareerPage from "./pages/CareerPage.jsx";
 import PricingPage from "./pages/PricingPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+import Designer from "./pages/Designer.jsx";
 
 import DigitalTransformation from "./pages/Solutions/DigitalTransformation.jsx";
 import ScalableTechnicalSolutions from "./pages/Solutions/ScalableTechnicalSolutions.jsx";
@@ -64,6 +65,7 @@ createRoot(document.getElementById("root")).render(
 					<Route path="/career" element={<CareerPage />} />
 					<Route path="/pricing" element={<PricingPage />} />
 					<Route path="/about" element={<AboutPage />} />
+					<Route path="/designer" element={<Designer />} />
 
 					<Route
 						path="/admin"
