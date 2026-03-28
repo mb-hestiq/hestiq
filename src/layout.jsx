@@ -41,6 +41,8 @@ import ScalableTechnicalSolutions from "./pages/Solutions/ScalableTechnicalSolut
 import EndToEndCreativeStrategy from "./pages/Solutions/EndToEndCreativeStrategy.jsx";
 import Solutions from "./pages/Solutions/Solutions.jsx";
 
+import LogoService from "./pages/Design/LogoService.jsx";
+
 import PageTracker from "./utils/PageTracker.jsx";
 import ScrollHandler from "./utils/ScrollHandler.jsx";
 
@@ -76,6 +78,7 @@ createRoot(document.getElementById("root")).render(
 						}
 					/>
 
+					{/* Solutions */}
 					<Route path="/solutions" element={<Solutions />} />
 					<Route
 						path="/solutions/digital-transformation"
@@ -89,6 +92,9 @@ createRoot(document.getElementById("root")).render(
 						path="/solutions/end-to-end-creative-strategy"
 						element={<EndToEndCreativeStrategy />}
 					/>
+
+					{/* Design Services */}
+					<Route path="/services/logo" element={<LogoService />} />
 
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
