@@ -1,0 +1,237 @@
+/* ============================================================
+   DEVELOPMENT OVERVIEW PAGE
+   ============================================================ */
+
+.DevHero {
+	background: var(--color-bg);
+	padding-block: 5.5rem 4.5rem;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.DevHeroContent {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	max-width: 56rem;
+}
+
+.DevHeroTitle {
+	font-size: clamp(2.25rem, 5vw, 3.75rem);
+	font-weight: 800;
+	color: var(--color-text);
+	line-height: 1.08;
+	margin: 0;
+}
+
+.DevHeroSubtitle {
+	font-size: 1.125rem;
+	color: var(--color-text-muted);
+	line-height: 1.7;
+	max-width: 48rem;
+	margin: 0;
+}
+
+.DevHeroCTAs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.875rem;
+	margin-block-start: 0.5rem;
+}
+
+.DevHeroCTAOutline {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.5rem;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--color-text);
+	border: 1.5px solid var(--color-border);
+	border-radius: 8px;
+	text-decoration: none;
+	transition:
+		border-color 0.2s ease,
+		color 0.2s ease;
+}
+
+.DevHeroCTAOutline:hover {
+	border-color: var(--color-primary);
+	color: var(--color-primary);
+}
+
+/* ============================================================
+   SERVICES GRID
+   ============================================================ */
+
+.DevServicesGrid {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+	.DevServicesGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.DevServicesGrid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.DevServicesGrid > li {
+	display: flex;
+}
+
+.DevServiceCard {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	background: #fff;
+	border-radius: 16px;
+	padding: 1.875rem;
+	border: 1px solid var(--color-border);
+	text-decoration: none;
+	color: inherit;
+	width: 100%;
+	transition:
+		box-shadow 0.2s ease,
+		transform 0.2s ease,
+		border-color 0.2s ease;
+}
+
+.DevServiceCard:hover {
+	box-shadow: 0 8px 28px rgba(52, 41, 55, 0.1);
+	transform: translateY(-2px);
+	border-color: var(--color-primary);
+}
+
+.DevServiceCardIcon {
+	width: 2.75rem;
+	height: 2.75rem;
+	background: var(--color-primary);
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-size: 1.25rem;
+	flex-shrink: 0;
+}
+
+.DevServiceCardName {
+	font-size: 1.0625rem;
+	font-weight: 700;
+	color: var(--color-text);
+	margin: 0;
+}
+
+.DevServiceCardDescription {
+	font-size: 0.9375rem;
+	color: var(--color-text-muted);
+	line-height: 1.6;
+	flex: 1;
+	margin: 0;
+}
+
+.DevServiceCardMeta {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.DevServiceCardMetaItem {
+	font-size: 0.8125rem;
+	color: var(--color-text-muted);
+	font-weight: 500;
+}
+
+.DevServiceCardMetaItem strong {
+	color: var(--color-text);
+	font-weight: 700;
+}
+
+.DevServiceCardLink {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.375rem;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	color: var(--color-primary);
+	margin-block-start: auto;
+	padding-block-start: 0.25rem;
+	transition: gap 0.2s ease;
+}
+
+.DevServiceCard:hover .DevServiceCardLink {
+	gap: 0.625rem;
+}
+
+/* ============================================================
+   PROCESS
+   ============================================================ */
+
+.DevProcessGrid {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+	.DevProcessGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.DevProcessGrid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+.DevProcessCard {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	background: var(--color-bg);
+	border: 1px solid var(--color-border);
+	border-radius: 14px;
+	padding: 1.75rem;
+}
+
+.DevProcessNum {
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 8px;
+	background: var(--color-primary);
+	color: #fff;
+	font-size: 0.8125rem;
+	font-weight: 800;
+	letter-spacing: 0.04em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.DevProcessCardTitle {
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--color-text);
+	margin: 0;
+}
+
+.DevProcessCardDescription {
+	font-size: 0.9375rem;
+	color: var(--color-text-muted);
+	line-height: 1.6;
+	margin: 0;
+}

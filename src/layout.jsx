@@ -43,6 +43,14 @@ import Solutions from "./pages/Solutions/Solutions.jsx";
 
 import LogoService from "./pages/Design/LogoService.jsx";
 
+import WebApplication from "./pages/Development/WebApplication.jsx";
+import SinglePageWebsite from "./pages/Development/SinglePageWebsite.jsx";
+import MobileApplication from "./pages/Development/MobileApplication.jsx";
+import ECommercePlatform from "./pages/Development/ECommercePlatform.jsx";
+import MaintenanceHosting from "./pages/Development/MaintenanceHosting.jsx";
+import BusinessWebsite from "./pages/Development/BusinessWebsite.jsx";
+import Development from "./pages/Development.jsx";
+
 import PageTracker from "./utils/PageTracker.jsx";
 import ScrollHandler from "./utils/ScrollHandler.jsx";
 
@@ -95,6 +103,33 @@ createRoot(document.getElementById("root")).render(
 
 					{/* Design Services */}
 					<Route path="/services/logo" element={<LogoService />} />
+
+					{/* Development Services */}
+					<Route path="/development" element={<Development />} />
+					<Route
+						path="/services/web-application"
+						element={<WebApplication />}
+					/>
+					<Route
+						path="/services/single-page-website"
+						element={<SinglePageWebsite />}
+					/>
+					<Route
+						path="/services/mobile-application"
+						element={<MobileApplication />}
+					/>
+					<Route
+						path="/services/e-commerce-platform"
+						element={<ECommercePlatform />}
+					/>
+					<Route
+						path="/services/maintenance-hosting"
+						element={<MaintenanceHosting />}
+					/>
+					<Route
+						path="/services/business-website"
+						element={<BusinessWebsite />}
+					/>
 
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
