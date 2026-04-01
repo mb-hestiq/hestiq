@@ -3,37 +3,37 @@ import { Link } from "react-router";
 
 export default function BookConsultationSection() {
 	return (
-		<div className="ConsultationSection">
-			<div className="ConsultationContainer lg:px-8">
-				<div className="ConsultationGrid lg:max-w-none lg:grid-cols-2">
-					<div className="ConsultationContent lg:max-w-lg">
-						<h2 className="ConsultationTitle">Book A Free Consultation</h2>
-						<p className="ConsultationDescription">
+		<div className="consultation-section">
+			<div className="consultation-container lg:px-8">
+				<div className="consultation-grid lg:max-w-none lg:grid-cols-2">
+					<div className="consultation-content lg:max-w-lg">
+						<h2 className="consultation-title">Book A Free Consultation</h2>
+						<p className="consultation-description">
 							Schedule a free consultation to discuss your goals, challenges,
 							and ideas. We'll review your needs, suggest the right approach,
 							and outline clear next steps - no commitment required.
 						</p>
-						<Link to="/onboarding" className="ConsultationButton">
+						<Link to="/onboarding" className="consultation-button">
 							Let's Talk
 						</Link>
 					</div>
-					<dl className="ConsultationFeatures sm:grid-cols-2 lg:pt-2">
-						<div className="ConsultationFeature">
-							<div className="ConsultationIconWrapper">
-								<FaShieldHalved className="ConsultationIcon" />
+					<dl className="consultation-features sm:grid-cols-2 lg:pt-2">
+						<div className="consultation-feature">
+							<div className="consultation-icon-wrapper">
+								<FaShieldHalved className="consultation-icon" />
 							</div>
-							<dt className="ConsultationFeatureTitle">No Obligation</dt>
-							<dd className="ConsultationFeatureDescription">
+							<dt className="consultation-feature-title">No Obligation</dt>
+							<dd className="consultation-feature-description">
 								A short, free call to understand your needs and see if we're a
 								good fit - no pressure, no commitment.
 							</dd>
 						</div>
-						<div className="ConsultationFeature">
-							<div className="ConsultationIconWrapper">
-								<FaListCheck className="ConsultationIcon" />
+						<div className="consultation-feature">
+							<div className="consultation-icon-wrapper">
+								<FaListCheck className="consultation-icon" />
 							</div>
-							<dt className="ConsultationFeatureTitle">Clear Next Steps</dt>
-							<dd className="ConsultationFeatureDescription">
+							<dt className="consultation-feature-title">Clear Next Steps</dt>
+							<dd className="consultation-feature-description">
 								You'll leave with practical advice, scope clarity, and a
 								recommended path forward.
 							</dd>

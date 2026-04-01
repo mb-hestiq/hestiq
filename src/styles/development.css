@@ -1,21 +1,17 @@
-/* ============================================================
-   DEVELOPMENT OVERVIEW PAGE
-   ============================================================ */
-
-.DevHero {
+.dev-hero {
 	background: var(--color-bg);
 	padding-block: 5.5rem 4.5rem;
 	border-bottom: 1px solid var(--color-border);
 }
 
-.DevHeroContent {
+.dev-hero-content {
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
 	max-width: 56rem;
 }
 
-.DevHeroTitle {
+.dev-hero-title {
 	font-size: clamp(2.25rem, 5vw, 3.75rem);
 	font-weight: 800;
 	color: var(--color-text);
@@ -23,7 +19,7 @@
 	margin: 0;
 }
 
-.DevHeroSubtitle {
+.dev-hero-subtitle {
 	font-size: 1.125rem;
 	color: var(--color-text-muted);
 	line-height: 1.7;
@@ -31,14 +27,14 @@
 	margin: 0;
 }
 
-.DevHeroCTAs {
+.dev-hero-ctas {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.875rem;
 	margin-block-start: 0.5rem;
 }
 
-.DevHeroCTAOutline {
+.dev-hero-cta-outline {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
@@ -47,23 +43,19 @@
 	font-weight: 600;
 	color: var(--color-text);
 	border: 1.5px solid var(--color-border);
-	border-radius: 8px;
+	border-radius: var(--radius-sm);
 	text-decoration: none;
 	transition:
 		border-color 0.2s ease,
 		color 0.2s ease;
 }
 
-.DevHeroCTAOutline:hover {
+.dev-hero-cta-outline:hover {
 	border-color: var(--color-primary);
 	color: var(--color-primary);
 }
 
-/* ============================================================
-   SERVICES GRID
-   ============================================================ */
-
-.DevServicesGrid {
+.dev-services-grid {
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -73,27 +65,27 @@
 }
 
 @media (min-width: 640px) {
-	.DevServicesGrid {
+	.dev-services-grid {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
 @media (min-width: 1024px) {
-	.DevServicesGrid {
+	.dev-services-grid {
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
-.DevServicesGrid > li {
+.dev-services-grid > li {
 	display: flex;
 }
 
-.DevServiceCard {
+.dev-service-card {
 	display: flex;
 	flex-direction: column;
 	gap: 0.75rem;
-	background: #fff;
-	border-radius: 16px;
+	background: var(--color-secondary);
+	border-radius: var(--radius-xl);
 	padding: 1.875rem;
 	border: 1px solid var(--color-border);
 	text-decoration: none;
@@ -105,33 +97,33 @@
 		border-color 0.2s ease;
 }
 
-.DevServiceCard:hover {
-	box-shadow: 0 8px 28px rgba(52, 41, 55, 0.1);
+.dev-service-card:hover {
+	box-shadow: var(--elevation-card);
 	transform: translateY(-2px);
 	border-color: var(--color-primary);
 }
 
-.DevServiceCardIcon {
+.dev-service-card-icon {
 	width: 2.75rem;
 	height: 2.75rem;
 	background: var(--color-primary);
-	border-radius: 10px;
+	border-radius: var(--radius-md);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #fff;
+	color: var(--color-text-inverse);
 	font-size: 1.25rem;
 	flex-shrink: 0;
 }
 
-.DevServiceCardName {
+.dev-service-card-name {
 	font-size: 1.0625rem;
 	font-weight: 700;
 	color: var(--color-text);
 	margin: 0;
 }
 
-.DevServiceCardDescription {
+.dev-service-card-description {
 	font-size: 0.9375rem;
 	color: var(--color-text-muted);
 	line-height: 1.6;
@@ -139,24 +131,24 @@
 	margin: 0;
 }
 
-.DevServiceCardMeta {
+.dev-service-card-meta {
 	display: flex;
 	gap: 1rem;
 	flex-wrap: wrap;
 }
 
-.DevServiceCardMetaItem {
+.dev-service-card-meta-item {
 	font-size: 0.8125rem;
 	color: var(--color-text-muted);
 	font-weight: 500;
 }
 
-.DevServiceCardMetaItem strong {
+.dev-service-card-meta-item strong {
 	color: var(--color-text);
 	font-weight: 700;
 }
 
-.DevServiceCardLink {
+.dev-service-card-link {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.375rem;
@@ -168,15 +160,11 @@
 	transition: gap 0.2s ease;
 }
 
-.DevServiceCard:hover .DevServiceCardLink {
+.dev-service-card:hover .dev-service-card-link {
 	gap: 0.625rem;
 }
 
-/* ============================================================
-   PROCESS
-   ============================================================ */
-
-.DevProcessGrid {
+.dev-process-grid {
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -186,33 +174,33 @@
 }
 
 @media (min-width: 640px) {
-	.DevProcessGrid {
+	.dev-process-grid {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
 @media (min-width: 1024px) {
-	.DevProcessGrid {
+	.dev-process-grid {
 		grid-template-columns: repeat(4, 1fr);
 	}
 }
 
-.DevProcessCard {
+.dev-process-card {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
 	background: var(--color-bg);
 	border: 1px solid var(--color-border);
-	border-radius: 14px;
+	border-radius: var(--radius-lg);
 	padding: 1.75rem;
 }
 
-.DevProcessNum {
+.dev-process-num {
 	width: 2.5rem;
 	height: 2.5rem;
-	border-radius: 8px;
+	border-radius: var(--radius-sm);
 	background: var(--color-primary);
-	color: #fff;
+	color: var(--color-text-inverse);
 	font-size: 0.8125rem;
 	font-weight: 800;
 	letter-spacing: 0.04em;
@@ -222,14 +210,14 @@
 	flex-shrink: 0;
 }
 
-.DevProcessCardTitle {
+.dev-process-card-title {
 	font-size: 1rem;
 	font-weight: 700;
 	color: var(--color-text);
 	margin: 0;
 }
 
-.DevProcessCardDescription {
+.dev-process-card-description {
 	font-size: 0.9375rem;
 	color: var(--color-text-muted);
 	line-height: 1.6;

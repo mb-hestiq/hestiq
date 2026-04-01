@@ -130,22 +130,20 @@ const CrudModal = memo(function CrudModal({
 		>
 			<div className="admin-dialog-panel w-full max-w-lg">
 				<div className="flex items-center justify-between mb-5">
-					<h2 className="text-lg font-semibold text-[#342937]">{title}</h2>
+					<h2 className="admin-dialog-title">{title}</h2>
 					<button onClick={onClose} className="admin-icon-btn" type="button">
 						<RiCloseLine size={20} />
 					</button>
 				</div>
 
 				{errors._form && (
-					<div className="mb-4 p-3 rounded-md bg-red-50 text-red-700 text-sm">
-						{errors._form}
-					</div>
+					<div className="admin-alert admin-alert-error">{errors._form}</div>
 				)}
 
 				<form onSubmit={handleSubmit} className="flex flex-col gap-4">
 					{fields.map((field) => (
 						<div key={field.name} className="flex flex-col gap-1">
-							<label className="text-sm font-medium text-[#342937]">
+							<label className="admin-form-label">
 								{field.label}
 								{field.required && <span className="text-red-500 ml-1">*</span>}
 							</label>
@@ -180,10 +178,10 @@ const CrudModal = memo(function CrudModal({
 												key={opt.value}
 												type="button"
 												onClick={() => handleMultiToggle(field.name, opt.value)}
-												className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
+												className={`admin-choice-chip ${
 													selected
-														? "bg-[#342937] text-white border-[#342937]"
-														: "bg-white text-[#342937] border-border hover:border-[#342937]"
+														? "admin-choice-chip-active"
+														: "admin-choice-chip-idle"
 												}`}
 											>
 												{opt.label}

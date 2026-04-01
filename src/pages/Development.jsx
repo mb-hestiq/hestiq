@@ -1,6 +1,11 @@
 import { Link } from "react-router";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import FullHeroSection from "../components/sections/hero/FullHeroSection";
+import PrimaryButton from "../components/elements/buttons/PrimaryButton";
+import SecondaryButton from "../components/elements/buttons/SecondaryButton";
+import Card from "../components/elements/cards/base/Card";
+import PrimaryCtaLink from "../components/elements/links/PrimaryCtaLink";
 import allServices from "../../shared/services.js";
 import {
 	FaGlobe,
@@ -87,61 +92,59 @@ export default function Development() {
 	return (
 		<>
 			<Header />
-			<main className="SvcPage">
-				<section className="DevHero" aria-labelledby="dev-hero-title">
-					<div className="SvcShell DevHeroContent">
-						<p className="SvcEyebrow">Development Services</p>
-						<h1 id="dev-hero-title" className="DevHeroTitle">
-							Software built to perform, scale, and last.
-						</h1>
-						<p className="DevHeroSubtitle">
-							From single-page websites to complex web applications and mobile
-							platforms, HestiQ engineers production-grade software around your
-							users and your goals. Every project is owned end to end by one
-							dedicated team.
-						</p>
-						<div className="DevHeroCTAs">
-							<Link
-								to="#services"
-								state={{ scrollTo: "services" }}
-								className="CTA"
-							>
+			<main className="svc-page">
+				<FullHeroSection
+					id="dev-hero-title"
+					className="dev-hero"
+					eyebrow="Development Services"
+					title="Software built to perform, scale, and last."
+					subtitle="From single-page websites to complex web applications and mobile platforms, HestiQ engineers production-grade software around your users and your goals. Every project is owned end to end by one dedicated team."
+					actions={
+						<>
+							<PrimaryButton to="#services" state={{ scrollTo: "services" }}>
 								Explore Services <FaArrowRight aria-hidden="true" />
-							</Link>
-							<Link
+							</PrimaryButton>
+							<SecondaryButton
 								to="/onboarding?category=programming"
 								state={{ scrollToTop: true }}
-								className="DevHeroCTAOutline"
+								className="dev-hero-cta-outline"
 							>
 								Start a Project
-							</Link>
-						</div>
-					</div>
-				</section>
+							</SecondaryButton>
+						</>
+					}
+				/>
 
 				<section
-					className="SvcSection SvcSectionAlt"
+					className="svc-section svc-section-alt"
 					aria-labelledby="dev-pillars-title"
 				>
-					<div className="SvcShell">
-						<div className="SvcSectionHeader">
-							<p className="SvcEyebrow">How We Build</p>
-							<h2 id="dev-pillars-title" className="SvcSectionTitle">
+					<div className="svc-shell">
+						<div className="svc-section-header">
+							<p className="svc-eyebrow">How We Build</p>
+							<h2 id="dev-pillars-title" className="svc-section-title">
 								Engineering principles applied to every project
 							</h2>
-							<p className="SvcSectionDescription">
+							<p className="svc-section-description">
 								Consistent standards regardless of scope, stack, or timeline.
 							</p>
 						</div>
-						<ul className="SvcFeaturesGrid" aria-label="Engineering principles">
+						<ul
+							className="svc-features-grid"
+							aria-label="Engineering principles"
+						>
 							{PILLARS.map(({ icon: Icon, title, description }) => (
-								<li key={title} className="SvcFeatureCard">
-									<div className="SvcFeatureIconWrapper" aria-hidden="true">
+								<Card
+									as="li"
+									key={title}
+									className="svc-feature-card card-surface-muted"
+								>
+									<div className="svc-feature-icon-wrapper" aria-hidden="true">
 										<Icon />
 									</div>
-									<h3 className="SvcFeatureTitle">{title}</h3>
-									<p className="SvcFeatureDescription">{description}</p>
-								</li>
+									<h3 className="svc-feature-title">{title}</h3>
+									<p className="svc-feature-description">{description}</p>
+								</Card>
 							))}
 						</ul>
 					</div>
@@ -149,21 +152,21 @@ export default function Development() {
 
 				<section
 					id="services"
-					className="SvcSection"
+					className="svc-section"
 					aria-labelledby="dev-services-title"
 				>
-					<div className="SvcShell">
-						<div className="SvcSectionHeader SvcSectionHeaderCentered">
-							<p className="SvcEyebrow">What We Deliver</p>
-							<h2 id="dev-services-title" className="SvcSectionTitle">
+					<div className="svc-shell">
+						<div className="svc-section-header svc-section-header-centered">
+							<p className="svc-eyebrow">What We Deliver</p>
+							<h2 id="dev-services-title" className="svc-section-title">
 								Development services
 							</h2>
-							<p className="SvcSectionDescription">
+							<p className="svc-section-description">
 								Specialised offerings for every stage of your digital product,
 								from initial launch through long-term operation.
 							</p>
 						</div>
-						<ul className="DevServicesGrid" aria-label="Development services">
+						<ul className="dev-services-grid" aria-label="Development services">
 							{DEV_SERVICES.map((service) => {
 								const Icon = ICON_MAP[service.icon];
 								return (
@@ -171,33 +174,36 @@ export default function Development() {
 										<Link
 											to={service.href}
 											state={{ scrollToTop: true }}
-											className="DevServiceCard"
+											className="dev-service-card"
 										>
 											{Icon && (
-												<div className="DevServiceCardIcon" aria-hidden="true">
+												<div
+													className="dev-service-card-icon"
+													aria-hidden="true"
+												>
 													<Icon />
 												</div>
 											)}
-											<h3 className="DevServiceCardName">{service.name}</h3>
-											<p className="DevServiceCardDescription">
+											<h3 className="dev-service-card-name">{service.name}</h3>
+											<p className="dev-service-card-description">
 												{service.description}
 											</p>
 											{(service.price || service.duration) && (
-												<div className="DevServiceCardMeta">
+												<div className="dev-service-card-meta">
 													{service.price && (
-														<span className="DevServiceCardMetaItem">
+														<span className="dev-service-card-meta-item">
 															From <strong>${service.price}</strong>
 														</span>
 													)}
 													{service.duration && (
-														<span className="DevServiceCardMetaItem">
+														<span className="dev-service-card-meta-item">
 															<strong>{service.duration}</strong>{" "}
 															{service.duration === 1 ? "week" : "weeks"}
 														</span>
 													)}
 												</div>
 											)}
-											<span className="DevServiceCardLink">
+											<span className="dev-service-card-link">
 												Learn more <FaArrowRight aria-hidden="true" />
 											</span>
 										</Link>
@@ -209,52 +215,52 @@ export default function Development() {
 				</section>
 
 				<section
-					className="SvcSection SvcSectionAlt"
+					className="svc-section svc-section-alt"
 					aria-labelledby="dev-process-title"
 				>
-					<div className="SvcShell">
-						<div className="SvcSectionHeader SvcSectionHeaderCentered">
-							<p className="SvcEyebrow">How We Work</p>
-							<h2 id="dev-process-title" className="SvcSectionTitle">
+					<div className="svc-shell">
+						<div className="svc-section-header svc-section-header-centered">
+							<p className="svc-eyebrow">How We Work</p>
+							<h2 id="dev-process-title" className="svc-section-title">
 								From brief to live in four stages
 							</h2>
-							<p className="SvcSectionDescription">
+							<p className="svc-section-description">
 								A structured delivery process that keeps every engagement on
 								track, on scope, and on budget.
 							</p>
 						</div>
-						<ol className="DevProcessGrid" aria-label="Development process">
+						<ol className="dev-process-grid" aria-label="Development process">
 							{PROCESS.map(({ num, title, description }) => (
-								<li key={num} className="DevProcessCard">
-									<div className="DevProcessNum" aria-hidden="true">
+								<li key={num} className="dev-process-card">
+									<div className="dev-process-num" aria-hidden="true">
 										{num}
 									</div>
-									<h3 className="DevProcessCardTitle">{title}</h3>
-									<p className="DevProcessCardDescription">{description}</p>
+									<h3 className="dev-process-card-title">{title}</h3>
+									<p className="dev-process-card-description">{description}</p>
 								</li>
 							))}
 						</ol>
 					</div>
 				</section>
 
-				<section className="SvcCTASection" aria-labelledby="dev-cta-title">
-					<div className="SvcCTAPattern" aria-hidden="true" />
-					<div className="SvcShell SvcCTAContent">
-						<h2 id="dev-cta-title" className="SvcCTATitle">
+				<section className="svc-cta-section" aria-labelledby="dev-cta-title">
+					<div className="svc-cta-pattern" aria-hidden="true" />
+					<div className="svc-shell svc-cta-content">
+						<h2 id="dev-cta-title" className="svc-cta-title">
 							Ready to build something that works?
 						</h2>
-						<p className="SvcCTASubtitle">
+						<p className="svc-cta-subtitle">
 							Tell us what you need and we will scope a development engagement
 							with a clear brief, a fixed estimate, and one team accountable
 							from start to finish.
 						</p>
-						<Link
+						<PrimaryButton
 							to="/onboarding?category=programming"
 							state={{ scrollToTop: true }}
-							className="CTA SvcCTAButton"
+							className="svc-cta-button"
 						>
 							Get Started <FaArrowRight aria-hidden="true" />
-						</Link>
+						</PrimaryButton>
 					</div>
 				</section>
 			</main>

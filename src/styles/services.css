@@ -1,224 +1,208 @@
-/* ============================================================
-   SERVICE PAGES — SHARED STYLES
-   ============================================================ */
-
-.SvcPage {
+.svc-page {
 	background: var(--color-bg);
 }
 
-.SvcShell {
-	max-width: 80rem;
+.svc-shell {
+	max-width: var(--layout-max-width);
 	margin-inline: auto;
-	padding-inline: 2rem;
+	padding-inline: var(--layout-gutter);
 }
 
-.SvcSection {
-	padding-block: 5rem;
+.svc-section {
+	padding-block: var(--section-space-xl);
 }
 
-.SvcSectionAlt {
-	background: #ffffff;
+.svc-section-alt {
+	background: var(--color-secondary);
 }
 
-.SvcSectionHeader {
+.svc-section-header {
 	max-width: 42rem;
-	margin-block-end: 3.5rem;
+	margin-block-end: var(--section-gap-xl);
 }
 
-.SvcSectionHeaderCentered {
+.svc-section-header-centered {
 	text-align: center;
 	margin-inline: auto;
 }
 
-.SvcEyebrow {
-	font-size: 0.75rem;
+.svc-eyebrow {
+	font-size: var(--font-size-xs);
 	font-weight: 700;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
 	color: var(--color-primary);
 	opacity: 0.5;
-	margin-block-end: 0.625rem;
+	margin-block-end: var(--space-2-5);
 }
 
-.SvcSectionTitle {
+.svc-section-title {
 	font-size: clamp(1.75rem, 3vw, 2.5rem);
 	font-weight: 800;
 	color: var(--color-text);
 	line-height: 1.18;
-	margin-block-end: 1rem;
+	margin-block-end: var(--space-4);
 }
 
-.SvcSectionDescription {
-	font-size: 1.0625rem;
+.svc-section-description {
+	font-size: var(--font-size-lg);
 	color: var(--color-text-muted);
 	line-height: 1.7;
 	margin: 0;
 }
 
-/* ============================================================
-   OVERVIEW
-   ============================================================ */
-
-.SvcOverviewGrid {
+.svc-overview-grid {
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 3.5rem;
+	gap: var(--section-gap-xl);
 	align-items: center;
 }
 
 @media (min-width: 768px) {
-	.SvcOverviewGrid {
+	.svc-overview-grid {
 		grid-template-columns: 1fr 1fr;
 	}
 }
 
-.SvcOverviewContent {
+.svc-overview-content {
 	display: flex;
 	flex-direction: column;
-	gap: 1.25rem;
+	gap: var(--space-5);
 }
 
-.SvcOverviewVisual {
+.svc-overview-visual {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.SvcOverviewImage {
+.svc-overview-image {
 	width: 100%;
 	max-width: 480px;
 	height: auto;
-	border-radius: 16px;
+	border-radius: var(--radius-xl);
 	object-fit: cover;
-	box-shadow: 0 16px 48px rgba(52, 41, 55, 0.12);
+	box-shadow: var(--elevation-media);
 }
 
-.SvcOverviewPoints {
+.svc-overview-points {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 	display: flex;
 	flex-direction: column;
-	gap: 0.625rem;
-	margin-block-start: 0.5rem;
+	gap: var(--space-2-5);
+	margin-block-start: var(--space-2);
 }
 
-.SvcOverviewPoint {
+.svc-overview-point {
 	display: flex;
 	align-items: center;
-	gap: 0.75rem;
-	font-size: 0.9375rem;
+	gap: var(--space-3);
+	font-size: var(--font-size-sm);
 	font-weight: 500;
 	color: var(--color-text);
 }
 
-.SvcOverviewPointIcon {
+.svc-overview-point-icon {
 	color: var(--color-primary);
-	font-size: 1rem;
+	font-size: var(--font-size-md);
 	flex-shrink: 0;
 }
 
-/* ============================================================
-   FEATURES
-   ============================================================ */
-
-.SvcFeaturesGrid {
+.svc-features-grid {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 1.5rem;
+	gap: var(--space-6);
 }
 
 @media (min-width: 640px) {
-	.SvcFeaturesGrid {
+	.svc-features-grid {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
 @media (min-width: 1024px) {
-	.SvcFeaturesGrid {
+	.svc-features-grid {
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
-.SvcFeatureCard {
+.svc-feature-card {
 	background: var(--color-bg);
-	border-radius: 14px;
-	padding: 1.75rem;
+	border-radius: var(--radius-lg);
+	padding: var(--space-7);
 	border: 1px solid var(--color-border);
 	display: flex;
 	flex-direction: column;
-	gap: 0.875rem;
+	gap: var(--space-3-5);
 	transition:
-		box-shadow 0.2s ease,
-		transform 0.2s ease;
+		box-shadow var(--duration-fast) ease,
+		transform var(--duration-fast) ease;
 }
 
-.SvcFeatureCard:hover {
-	box-shadow: 0 6px 24px rgba(52, 41, 55, 0.09);
+.svc-feature-card:hover {
+	box-shadow: var(--elevation-card);
 	transform: translateY(-2px);
 }
 
-.SvcFeatureIconWrapper {
-	width: 2.5rem;
-	height: 2.5rem;
+.svc-feature-icon-wrapper {
+	width: var(--space-10);
+	height: var(--space-10);
 	background: var(--color-primary);
-	border-radius: 8px;
+	border-radius: var(--radius-sm);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #fff;
-	font-size: 1.125rem;
+	color: var(--color-text-inverse);
+	font-size: var(--font-size-xl);
 	flex-shrink: 0;
 }
 
-.SvcFeatureTitle {
-	font-size: 1rem;
+.svc-feature-title {
+	font-size: var(--font-size-md);
 	font-weight: 700;
 	color: var(--color-text);
 	margin: 0;
 }
 
-.SvcFeatureDescription {
-	font-size: 0.9375rem;
+.svc-feature-description {
+	font-size: var(--font-size-sm);
 	color: var(--color-text-muted);
 	line-height: 1.6;
 	margin: 0;
 }
 
-/* ============================================================
-   USE CASES
-   ============================================================ */
-
-.SvcUseCasesGrid {
+.svc-use-cases-grid {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 1.5rem;
+	gap: var(--space-6);
 }
 
 @media (min-width: 640px) {
-	.SvcUseCasesGrid {
+	.svc-use-cases-grid {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
-.SvcUseCaseCard {
-	background: #ffffff;
-	border-radius: 14px;
-	padding: 2rem;
+.svc-use-case-card {
+	background: var(--color-secondary);
+	border-radius: var(--radius-lg);
+	padding: var(--space-8);
 	border: 1px solid var(--color-border);
 	display: flex;
 	flex-direction: column;
-	gap: 0.625rem;
+	gap: var(--space-2-5);
 }
 
-.SvcUseCaseLabel {
-	font-size: 0.75rem;
+.svc-use-case-label {
+	font-size: var(--font-size-xs);
 	font-weight: 700;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
@@ -226,159 +210,151 @@
 	opacity: 0.6;
 }
 
-.SvcUseCaseTitle {
-	font-size: 1.125rem;
+.svc-use-case-title {
+	font-size: var(--font-size-xl);
 	font-weight: 700;
 	color: var(--color-text);
 	line-height: 1.25;
 	margin: 0;
 }
 
-.SvcUseCaseDescription {
-	font-size: 0.9375rem;
+.svc-use-case-description {
+	font-size: var(--font-size-sm);
 	color: var(--color-text-muted);
 	line-height: 1.65;
 	margin: 0;
 }
 
-/* ============================================================
-   BENEFITS
-   ============================================================ */
-
-.SvcBenefitsGrid {
+.svc-benefits-grid {
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 3.5rem;
+	gap: var(--section-gap-xl);
 	align-items: start;
 }
 
 @media (min-width: 768px) {
-	.SvcBenefitsGrid {
+	.svc-benefits-grid {
 		grid-template-columns: 1fr 1.5fr;
 	}
 }
 
-.SvcBenefitsIntro {
+.svc-benefits-intro {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: var(--space-4);
 }
 
-.SvcBenefitsCTA {
+.svc-benefits-cta {
 	align-self: flex-start;
 	display: inline-flex;
 	align-items: center;
-	gap: 0.5rem;
-	padding: 0.75rem 1.5rem;
-	margin-block-start: 0.5rem;
+	gap: var(--space-2);
+	padding: var(--space-3) var(--space-6);
+	margin-block-start: var(--space-2);
 }
 
-.SvcBenefitsList {
+.svc-benefits-list {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 	display: flex;
 	flex-direction: column;
-	gap: 1.75rem;
+	gap: var(--space-7);
 }
 
-.SvcBenefit {
+.svc-benefit {
 	display: flex;
 	align-items: flex-start;
-	gap: 1.25rem;
+	gap: var(--space-5);
 }
 
-.SvcBenefitIconWrapper {
-	width: 2.75rem;
-	height: 2.75rem;
+.svc-benefit-icon-wrapper {
+	width: var(--space-11);
+	height: var(--space-11);
 	background: var(--color-primary);
-	border-radius: 10px;
+	border-radius: var(--radius-md);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #fff;
-	font-size: 1.125rem;
+	color: var(--color-text-inverse);
+	font-size: var(--font-size-xl);
 	flex-shrink: 0;
 	margin-block-start: 0.125rem;
 }
 
-.SvcBenefitContent {
+.svc-benefit-content {
 	display: flex;
 	flex-direction: column;
-	gap: 0.375rem;
+	gap: var(--space-1-5);
 }
 
-.SvcBenefitTitle {
-	font-size: 1.0625rem;
+.svc-benefit-title {
+	font-size: var(--font-size-lg);
 	font-weight: 700;
 	color: var(--color-text);
 	margin: 0;
 }
 
-.SvcBenefitDescription {
-	font-size: 0.9375rem;
+.svc-benefit-description {
+	font-size: var(--font-size-sm);
 	color: var(--color-text-muted);
 	line-height: 1.65;
 	margin: 0;
 }
 
-/* ============================================================
-   RELATED SERVICES
-   ============================================================ */
-
-.SvcRelatedGrid {
+.svc-related-grid {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 1.25rem;
+	gap: var(--space-5);
 }
 
 @media (min-width: 640px) {
-	.SvcRelatedGrid {
+	.svc-related-grid {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
 @media (min-width: 1024px) {
-	.SvcRelatedGrid {
+	.svc-related-grid {
 		grid-template-columns: repeat(4, 1fr);
 	}
 }
 
-.SvcRelatedGrid > li {
+.svc-related-grid > li {
 	display: flex;
 }
 
-.SvcRelatedCard {
+.svc-related-card {
 	display: flex;
 	flex-direction: column;
-	gap: 0.625rem;
+	gap: var(--space-2-5);
 	background: var(--color-bg);
-	border-radius: 14px;
-	padding: 1.75rem;
+	border-radius: var(--radius-lg);
+	padding: var(--space-7);
 	border: 1px solid var(--color-border);
 	text-decoration: none;
 	color: inherit;
 	height: 100%;
 	transition:
-		box-shadow 0.2s ease,
-		transform 0.2s ease,
-		border-color 0.2s ease;
+		box-shadow var(--duration-fast) ease,
+		transform var(--duration-fast) ease,
+		border-color var(--duration-fast) ease;
 }
 
-.SvcRelatedCard:hover {
-	box-shadow: 0 6px 24px rgba(52, 41, 55, 0.09);
+.svc-related-card:hover {
+	box-shadow: var(--elevation-card);
 	transform: translateY(-2px);
 	border-color: var(--color-primary);
 }
 
-.SvcRelatedCardTop {
+.svc-related-card-top {
 	margin-block-end: 0.25rem;
 }
 
-.SvcRelatedCardCategory {
+.svc-related-card-category {
 	font-size: 0.7rem;
 	font-weight: 700;
 	letter-spacing: 0.11em;
@@ -387,14 +363,14 @@
 	opacity: 0.55;
 }
 
-.SvcRelatedCardTitle {
+.svc-related-card-title {
 	font-size: 1rem;
 	font-weight: 700;
 	color: var(--color-text);
 	margin: 0;
 }
 
-.SvcRelatedCardDescription {
+.svc-related-card-description {
 	font-size: 0.875rem;
 	color: var(--color-text-muted);
 	line-height: 1.55;
@@ -402,32 +378,28 @@
 	margin: 0;
 }
 
-.SvcRelatedCardLink {
+.svc-related-card-link {
 	display: inline-flex;
 	align-items: center;
-	gap: 0.375rem;
+	gap: var(--space-1-5);
 	font-size: 0.8125rem;
 	font-weight: 600;
 	color: var(--color-primary);
-	margin-block-start: 0.5rem;
-	transition: gap 0.2s;
+	margin-block-start: var(--space-2);
+	transition: gap var(--duration-fast);
 }
 
-.SvcRelatedCard:hover .SvcRelatedCardLink {
-	gap: 0.625rem;
+.svc-related-card:hover .svc-related-card-link {
+	gap: var(--space-2-5);
 }
 
-/* ============================================================
-   CALL TO ACTION
-   ============================================================ */
-
-.SvcCTASection {
+.svc-cta-section {
 	position: relative;
 	background-color: var(--color-primary);
 	overflow: hidden;
 }
 
-.SvcCTAPattern {
+.svc-cta-pattern {
 	position: absolute;
 	inset: 0;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1.5' fill='%23ffffff' fill-opacity='0.06'/%3E%3Ccircle cx='0' cy='0' r='1.5' fill='%23ffffff' fill-opacity='0.06'/%3E%3Ccircle cx='80' cy='0' r='1.5' fill='%23ffffff' fill-opacity='0.06'/%3E%3Ccircle cx='0' cy='80' r='1.5' fill='%23ffffff' fill-opacity='0.06'/%3E%3Ccircle cx='80' cy='80' r='1.5' fill='%23ffffff' fill-opacity='0.06'/%3E%3Cpath d='M16 40 L40 16 L64 40 L40 64 Z' fill='none' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.08'/%3E%3C/svg%3E");
@@ -435,18 +407,18 @@
 	background-size: 80px 80px;
 }
 
-.SvcCTAContent {
+.svc-cta-content {
 	position: relative;
 	z-index: 1;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	padding-block: 5rem;
-	gap: 1.25rem;
+	padding-block: var(--section-space-xl);
+	gap: var(--space-5);
 }
 
-.SvcCTATitle {
+.svc-cta-title {
 	font-size: clamp(1.75rem, 3.5vw, 2.75rem);
 	font-weight: 800;
 	color: var(--color-text-inverse);
@@ -455,46 +427,42 @@
 	margin: 0;
 }
 
-.SvcCTASubtitle {
-	font-size: 1.0625rem;
-	color: rgba(255, 255, 255, 0.72);
+.svc-cta-subtitle {
+	font-size: var(--font-size-lg);
+	color: var(--color-white-72);
 	line-height: 1.65;
 	max-width: 44rem;
 	margin: 0;
 }
 
-.SvcCTAButton {
-	background-color: #ffffff !important;
-	border-color: #ffffff !important;
+.svc-cta-button {
+	background-color: var(--color-secondary) !important;
+	border-color: var(--color-secondary) !important;
 	color: var(--color-primary) !important;
-	padding: 0.875rem 2rem;
+	padding: var(--space-3-5) var(--space-8);
 	display: inline-flex;
 	align-items: center;
-	gap: 0.5rem;
-	margin-block-start: 0.5rem;
+	gap: var(--space-2);
+	margin-block-start: var(--space-2);
 }
 
-.SvcCTAButton:hover {
+.svc-cta-button:hover {
 	background-color: transparent !important;
-	color: #ffffff !important;
+	color: var(--color-text-inverse) !important;
 }
 
-/* ============================================================
-   OVERVIEW IMAGE VARIANTS
-   ============================================================ */
-
-.SvcOverviewImageFrame {
+.svc-overview-image-frame {
 	position: relative;
 	width: 100%;
 	max-width: 480px;
 	height: 420px;
 	overflow: hidden;
-	border-radius: 16px;
-	box-shadow: 0 16px 48px rgba(52, 41, 55, 0.12);
-	clip-path: inset(0 round 16px);
+	border-radius: var(--radius-xl);
+	box-shadow: var(--elevation-media);
+	clip-path: inset(0 round var(--radius-xl));
 }
 
-.SvcOverviewImageFrame img {
+.svc-overview-image-frame img {
 	width: 100%;
 	height: auto;
 	display: block;
@@ -502,7 +470,7 @@
 	object-position: top;
 }
 
-.SvcOverviewImageFrame::after {
+.svc-overview-image-frame::after {
 	content: "";
 	position: absolute;
 	bottom: 0;
@@ -513,68 +481,64 @@
 	pointer-events: none;
 }
 
-.SvcOverviewImageMobile {
+.svc-overview-image-mobile {
 	max-height: 500px;
 	width: auto;
 	max-width: 100%;
-	border-radius: 16px;
+	border-radius: var(--radius-xl);
 	object-fit: cover;
 	object-position: top;
-	box-shadow: 0 16px 48px rgba(52, 41, 55, 0.12);
+	box-shadow: var(--elevation-media);
 }
 
-.SvcOverviewDualImages {
+.svc-overview-dual-images {
 	position: relative;
 	width: 100%;
 	max-width: 480px;
 	height: 400px;
 }
 
-.SvcOverviewDualImg {
+.svc-overview-dual-img {
 	position: absolute;
 	width: 80%;
 	height: auto;
-	border-radius: 8px;
-	box-shadow: 0 12px 40px rgba(52, 41, 55, 0.14);
+	border-radius: var(--radius-sm);
+	box-shadow: var(--elevation-float);
 	object-fit: cover;
 	object-position: top;
 }
 
-.SvcOverviewDualImgBack {
+.svc-overview-dual-img-back {
 	top: 0;
 	left: 0;
 	z-index: 1;
 }
 
-.SvcOverviewDualImgFront {
+.svc-overview-dual-img-front {
 	bottom: 0;
 	right: 0;
 	z-index: 2;
 }
 
-/* ============================================================
-   OVERVIEW META PANEL (no-image variant)
-   ============================================================ */
-
-.SvcOverviewMeta {
+.svc-overview-meta {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: var(--space-4);
 	justify-content: center;
 }
 
-.SvcOverviewMetric {
-	background: #ffffff;
+.svc-overview-metric {
+	background: var(--color-secondary);
 	border: 1px solid var(--color-border);
-	border-radius: 14px;
-	padding: 1.375rem 1.5rem;
+	border-radius: var(--radius-lg);
+	padding: 1.375rem var(--space-6);
 	display: flex;
 	flex-direction: column;
-	gap: 0.25rem;
+	gap: var(--space-1);
 }
 
-.SvcOverviewMetricLabel {
-	font-size: 0.75rem;
+.svc-overview-metric-label {
+	font-size: var(--font-size-xs);
 	font-weight: 700;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
@@ -582,8 +546,8 @@
 	opacity: 0.6;
 }
 
-.SvcOverviewMetricValue {
-	font-size: 1.0625rem;
+.svc-overview-metric-value {
+	font-size: var(--font-size-lg);
 	font-weight: 700;
 	color: var(--color-text);
 	line-height: 1.3;

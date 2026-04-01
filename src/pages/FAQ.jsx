@@ -71,18 +71,18 @@ function FaqItem({ question, answer, index }) {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<div className={`FaqItem${open ? " FaqItemOpen" : ""}`}>
+		<div className={`faq-item${open ? " faq-item-open" : ""}`}>
 			<button
-				className="FaqItemTrigger"
+				className="faq-item-trigger"
 				onClick={() => setOpen((o) => !o)}
 				aria-expanded={open}
 			>
-				<span className="FaqItemIndex">{String(index).padStart(2, "0")}</span>
-				<span className="FaqItemQuestion">{question}</span>
-				<FaChevronDown className="FaqItemChevron" aria-hidden="true" />
+				<span className="faq-item-index">{String(index).padStart(2, "0")}</span>
+				<span className="faq-item-question">{question}</span>
+				<FaChevronDown className="faq-item-chevron" aria-hidden="true" />
 			</button>
 			{open && (
-				<div className="FaqItemAnswer" role="region">
+				<div className="faq-item-answer" role="region">
 					<p>{answer}</p>
 				</div>
 			)}
@@ -94,21 +94,21 @@ export default function FAQ() {
 	return (
 		<>
 			<Header />
-			<main className="FaqPage">
-				<div className="ContactPageShell">
-					<section className="FaqHero" aria-labelledby="faq-title">
-						<p className="ContactPageEyebrow">FAQ</p>
-						<h1 id="faq-title" className="FaqHeroTitle">
+			<main className="faq-page">
+				<div className="contact-page-shell">
+					<section className="faq-hero" aria-labelledby="faq-title">
+						<p className="contact-page-eyebrow">FAQ</p>
+						<h1 id="faq-title" className="faq-hero-title">
 							Answers to common questions.
 						</h1>
-						<p className="FaqHeroDescription">
+						<p className="faq-hero-description">
 							Everything you need to know about working with HestiQ - from
 							pricing and timelines to technology and support.
 						</p>
 					</section>
 
-					<section className="FaqBody" aria-label="Frequently asked questions">
-						<div className="FaqList">
+					<section className="faq-body" aria-label="Frequently asked questions">
+						<div className="faq-list">
 							{faqs.map((item, i) => (
 								<FaqItem
 									key={i}
@@ -119,17 +119,17 @@ export default function FAQ() {
 							))}
 						</div>
 
-						<div className="ContactInfoFaqCard FaqCta">
+						<div className="contact-info-faq-card faq-cta">
 							<div>
-								<p className="ContactInfoFaqTitle">Still have questions?</p>
-								<p className="ContactInfoFaqText">
+								<p className="contact-info-faq-title">Still have questions?</p>
+								<p className="contact-info-faq-text">
 									Our team is ready to help with anything not covered here.
 								</p>
 							</div>
 							<Link
 								to="/contact"
 								state={{ scrollToTop: true }}
-								className="CTA ContactInfoFaqLink"
+								className="cta contact-info-faq-link"
 							>
 								Contact us <FaArrowRight aria-hidden="true" />
 							</Link>

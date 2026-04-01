@@ -69,15 +69,15 @@ function SectionCard({
 	children,
 }) {
 	return (
-		<div className="bg-white rounded-xl border border-border p-5">
+		<div className="admin-panel admin-panel-spacious">
 			<div className="flex items-center justify-between mb-5">
-				<h3 className="font-semibold text-[#342937] text-base">{title}</h3>
+				<h3 className="font-semibold text-primary text-base">{title}</h3>
 				<div className="flex items-center gap-2">
 					<button
 						onClick={onSync}
 						disabled={loading}
 						title="Sync"
-						className="admin-icon-btn text-text-muted hover:text-[#342937]"
+						className="admin-icon-btn text-text-muted hover:text-primary"
 					>
 						<RiRefreshLine
 							size={16}
@@ -87,7 +87,7 @@ function SectionCard({
 					<button
 						onClick={() => downloadJSON(exportName, exportData)}
 						title="Export JSON"
-						className="admin-icon-btn text-text-muted hover:text-[#342937]"
+						className="admin-icon-btn text-text-muted hover:text-primary"
 					>
 						<RiDownloadLine size={16} />
 					</button>
@@ -106,12 +106,12 @@ function SectionCard({
 
 function StatCard({ icon: Icon, label, value, sub, subPositive }) {
 	return (
-		<div className="bg-white rounded-xl border border-border p-5 flex items-start gap-4">
-			<div className="w-10 h-10 rounded-lg bg-[#342937] flex items-center justify-center shrink-0">
+		<div className="admin-panel admin-panel-spacious flex items-start gap-4">
+			<div className="admin-stat-icon">
 				<Icon size={18} className="text-white" />
 			</div>
 			<div>
-				<div className="text-2xl font-bold text-[#342937]">{value}</div>
+				<div className="admin-stat-value">{value}</div>
 				<div className="text-sm text-text-muted">{label}</div>
 				{sub !== undefined && (
 					<div
@@ -242,13 +242,13 @@ export default function DashboardTab() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex items-center justify-between flex-wrap gap-3">
-				<h2 className="text-xl font-semibold text-[#342937]">Dashboard</h2>
-				<div className="flex items-center gap-1 bg-white border border-border rounded-lg p-1">
+				<h2 className="admin-section-title">Dashboard</h2>
+				<div className="admin-toggle-group">
 					{["day", "month", "year"].map((p) => (
 						<button
 							key={p}
 							onClick={() => setPeriod(p)}
-							className={`px-3 py-1 text-sm rounded-md transition-colors capitalize ${period === p ? "bg-[#342937] text-white" : "text-text-muted hover:text-[#342937]"}`}
+							className={`admin-toggle-btn ${period === p ? "admin-toggle-btn-active" : "admin-toggle-btn-idle"}`}
 						>
 							{p}
 						</button>
@@ -256,7 +256,6 @@ export default function DashboardTab() {
 				</div>
 			</div>
 
-			{/* Traffic Section */}
 			<SectionCard
 				title="Traffic"
 				loading={loading.traffic}
@@ -314,7 +313,6 @@ export default function DashboardTab() {
 				</ResponsiveContainer>
 			</SectionCard>
 
-			{/* Traffic Source */}
 			<SectionCard
 				title="Traffic Source"
 				loading={loading.source}
@@ -358,7 +356,7 @@ export default function DashboardTab() {
 									className="w-3 h-3 rounded-full shrink-0"
 									style={{ backgroundColor: DEVICE_COLORS[d.name] }}
 								/>
-								<span className="text-sm capitalize text-[#342937] font-medium w-16">
+								<span className="text-sm capitalize text-primary font-medium w-16">
 									{d.name}
 								</span>
 								<span className="text-sm text-text-muted">
@@ -370,7 +368,6 @@ export default function DashboardTab() {
 				</div>
 			</SectionCard>
 
-			{/* Orders Analytics */}
 			<SectionCard
 				title="Orders Analytics"
 				loading={loading.orders}
@@ -417,7 +414,6 @@ export default function DashboardTab() {
 				</ResponsiveContainer>
 			</SectionCard>
 
-			{/* Customer Analytics */}
 			<SectionCard
 				title="Customer Analytics"
 				loading={loading.users}
@@ -428,17 +424,15 @@ export default function DashboardTab() {
 				<div className="flex flex-col sm:flex-row gap-6">
 					<div className="flex-1">
 						<div className="grid grid-cols-2 gap-3 mb-4">
-							<div className="bg-bg rounded-lg p-3 text-center">
-								<div className="text-2xl font-bold text-[#342937]">
-									{usersData?.new ?? 0}
-								</div>
-								<div className="text-xs text-text-muted">New</div>
+							<div className="admin-metric-tile">
+								<div className="admin-metric-value">{usersData?.new ?? 0}</div>
+								<div className="admin-metric-caption">New</div>
 							</div>
-							<div className="bg-[#342937] rounded-lg p-3 text-center">
-								<div className="text-2xl font-bold text-white">
+							<div className="admin-metric-tile admin-metric-tile-primary">
+								<div className="admin-metric-value">
 									{usersData?.returning ?? 0}
 								</div>
-								<div className="text-xs text-white opacity-70">Returning</div>
+								<div className="admin-metric-caption">Returning</div>
 							</div>
 						</div>
 						<ResponsiveContainer width="100%" height={160}>
@@ -478,13 +472,11 @@ export default function DashboardTab() {
 										key={i}
 										className="flex items-center justify-between text-sm border-b border-border pb-2"
 									>
-										<span className="text-[#342937]">
+										<span className="text-primary">
 											{[g.city, g.country].filter(Boolean).join(", ") ||
 												"Unknown"}
 										</span>
-										<span className="font-medium text-[#342937]">
-											{g.count}
-										</span>
+										<span className="font-medium text-primary">{g.count}</span>
 									</div>
 								))}
 							</div>

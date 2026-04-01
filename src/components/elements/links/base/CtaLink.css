@@ -1,0 +1,19 @@
+/*#region base */
+.cta-link-base {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-bold);
+	text-decoration: none;
+	transition: gap var(--duration-fast) ease;
+}
+
+.cta-link-base:hover {
+	gap: var(--space-3);
+}
+
+.cta-link-primary {
+	color: var(--color-primary);
+}
+/*#endregion */

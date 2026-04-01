@@ -126,25 +126,25 @@ export default function Onboarding() {
 	return (
 		<>
 			<Header />
-			<main className="OnboardingMain">
-				<div className="OnboardingPage">
-					<div className="OnboardingContainer">
-						<div className="OnboardingStepTrack">
+			<main className="onboarding-main">
+				<div className="onboarding-page">
+					<div className="onboarding-container">
+						<div className="onboarding-step-track">
 							{STEPS.map((label, i) => (
 								<React.Fragment key={i}>
 									<div
-										className="OnboardingStepNode"
+										className="onboarding-step-node"
 										data-done={i + 1 < step ? "true" : "false"}
 										data-active={i + 1 === step ? "true" : "false"}
 									>
-										<div className="OnboardingStepNodeDot">
+										<div className="onboarding-step-node-dot">
 											{i + 1 < step ? <FaCheck /> : i + 1}
 										</div>
-										<span className="OnboardingStepNodeLabel">{label}</span>
+										<span className="onboarding-step-node-label">{label}</span>
 									</div>
 									{i < TOTAL_STEPS - 1 && (
 										<div
-											className="OnboardingStepConnector"
+											className="onboarding-step-connector"
 											data-done={i + 1 < step ? "true" : "false"}
 										/>
 									)}
@@ -154,7 +154,7 @@ export default function Onboarding() {
 
 						<div
 							key={stepKey}
-							className="OnboardingStep"
+							className="onboarding-step"
 							data-direction={direction}
 						>
 							{step === 1 && (
@@ -179,10 +179,10 @@ export default function Onboarding() {
 							)}
 						</div>
 
-						<div className="OnboardingNav">
+						<div className="onboarding-nav">
 							<div>
 								{step > 1 && (
-									<button className="OnboardingNavBack" onClick={retreat}>
+									<button className="onboarding-nav-back" onClick={retreat}>
 										<FaArrowLeft />
 										Back
 									</button>
@@ -192,7 +192,7 @@ export default function Onboarding() {
 								{step < TOTAL_STEPS ? (
 									<button
 										type="button"
-										className="CTA OnboardingNavContinue"
+										className="cta onboarding-nav-continue"
 										onClick={advance}
 										disabled={!canAdvance}
 									>
@@ -212,31 +212,31 @@ export default function Onboarding() {
 function StepCategory({ selected, onSelect }) {
 	return (
 		<>
-			<div className="OnboardingStepHeader">
-				<h1 className="OnboardingStepTitle">What are you looking for?</h1>
-				<p className="OnboardingStepDescription">
+			<div className="onboarding-step-header">
+				<h1 className="onboarding-step-title">What are you looking for?</h1>
+				<p className="onboarding-step-description">
 					Tell us what kind of service you need and we'll guide you from there.
 				</p>
 			</div>
-			<div className="OnboardingCards" data-layout="category">
+			<div className="onboarding-cards" data-layout="category">
 				{CATEGORIES.map(({ id, label, description, icon }) => (
 					<button
 						key={id}
 						type="button"
-						className="OnboardingCard"
+						className="onboarding-card"
 						data-layout="category"
 						data-selected={selected === id ? "true" : "false"}
 						onClick={() => onSelect(id)}
 					>
 						{selected === id && (
-							<span className="OnboardingCardCheck">
+							<span className="onboarding-card-check">
 								<FaCheck />
 							</span>
 						)}
-						<Icon name={icon} className="OnboardingCardIcon" />
+						<Icon name={icon} className="onboarding-card-icon" />
 						<div>
-							<div className="OnboardingCardLabel">{label}</div>
-							<div className="OnboardingCardDescription">{description}</div>
+							<div className="onboarding-card-label">{label}</div>
+							<div className="onboarding-card-description">{description}</div>
 						</div>
 					</button>
 				))}
@@ -248,34 +248,34 @@ function StepCategory({ selected, onSelect }) {
 function StepServices({ services, selected, onToggle, category }) {
 	return (
 		<>
-			<div className="OnboardingStepHeader">
-				<h1 className="OnboardingStepTitle">
+			<div className="onboarding-step-header">
+				<h1 className="onboarding-step-title">
 					{category === "design"
 						? "Which design services do you need?"
 						: "Which development services do you need?"}
 				</h1>
-				<p className="OnboardingStepDescription">
+				<p className="onboarding-step-description">
 					Select all that apply - you can choose multiple.
 				</p>
 			</div>
-			<div className="OnboardingCards" data-layout="services">
+			<div className="onboarding-cards" data-layout="services">
 				{services.map(({ id, label, icon }) => {
 					const isSelected = selected.includes(id);
 					return (
 						<button
 							key={id}
 							type="button"
-							className="OnboardingCard"
+							className="onboarding-card"
 							data-selected={isSelected ? "true" : "false"}
 							onClick={() => onToggle(id)}
 						>
 							{isSelected && (
-								<span className="OnboardingCardCheck">
+								<span className="onboarding-card-check">
 									<FaCheck />
 								</span>
 							)}
-							<Icon name={icon} className="OnboardingCardIcon" />
-							<div className="OnboardingCardLabel">{label}</div>
+							<Icon name={icon} className="onboarding-card-icon" />
+							<div className="onboarding-card-label">{label}</div>
 						</button>
 					);
 				})}
@@ -293,28 +293,30 @@ function StepContact({
 }) {
 	return (
 		<>
-			<div className="OnboardingStepHeader">
-				<h1 className="OnboardingStepTitle">Tell us more about your request</h1>
-				<p className="OnboardingStepDescription">
+			<div className="onboarding-step-header">
+				<h1 className="onboarding-step-title">
+					Tell us more about your request
+				</h1>
+				<p className="onboarding-step-description">
 					Send your details here and we&apos;ll follow up with the right plan.
 				</p>
 			</div>
-			<div className="OnboardingContactLayout">
-				<div className="OnboardingContactPanel">
-					<div className="OnboardingContactSummaryBadge">
+			<div className="onboarding-contact-layout">
+				<div className="onboarding-contact-panel">
+					<div className="onboarding-contact-summary-badge">
 						<FaEnvelope />
 						<span>{categoryLabel}</span>
 					</div>
-					<h2 className="OnboardingContactPanelTitle">Project snapshot</h2>
-					<p className="OnboardingContactPanelText">
+					<h2 className="onboarding-contact-panel-title">Project snapshot</h2>
+					<p className="onboarding-contact-panel-text">
 						You selected the services below. Use the message field to add scope,
 						goals, timeline, or anything else the team should know.
 					</p>
-					<div className="OnboardingSummaryTags">
+					<div className="onboarding-summary-tags">
 						{selectedItems.map(({ id, label, icon }, index) => (
 							<span
 								key={id}
-								className="OnboardingSummaryTag"
+								className="onboarding-summary-tag"
 								style={{ animationDelay: `${index * 0.05}s` }}
 							>
 								<Icon name={icon} />
@@ -322,18 +324,18 @@ function StepContact({
 							</span>
 						))}
 					</div>
-					<div className="OnboardingEstimate">
-						<div className="OnboardingEstimateItem">
-							<span className="OnboardingEstimateLabel">Estimated Price</span>
-							<span className="OnboardingEstimateValue">
+					<div className="onboarding-estimate">
+						<div className="onboarding-estimate-item">
+							<span className="onboarding-estimate-label">Estimated Price</span>
+							<span className="onboarding-estimate-value">
 								from ${estimatedPrice}
 							</span>
 						</div>
-						<div className="OnboardingEstimateItem">
-							<span className="OnboardingEstimateLabel">
+						<div className="onboarding-estimate-item">
+							<span className="onboarding-estimate-label">
 								Estimated Duration
 							</span>
-							<span className="OnboardingEstimateValue">
+							<span className="onboarding-estimate-value">
 								{estimatedDuration} days
 							</span>
 						</div>
@@ -349,7 +351,7 @@ function StepContact({
 					description="Include the details of what you want so we can respond with a tailored recommendation."
 					submitLabel="Submit request"
 					successMessage="Your order request has been sent. We will reach out soon."
-					className="OnboardingContactForm"
+					className="onboarding-contact-form"
 					onSuccess={onSuccess}
 				/>
 			</div>

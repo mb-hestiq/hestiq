@@ -18,13 +18,15 @@ import Form from "../components/Form";
 import backendUrl from "../utils/backend";
 import "../styles/designer.css";
 
-const allImages = import.meta.glob("../assets/Templates/**/*.png", {
+const allImages = import.meta.glob("../assets/images/templates/**/*.png", {
 	eager: true,
 	import: "default",
 });
 
 function img(folder, filename) {
-	return allImages[`../assets/Templates/${folder}/PNG/${filename}`] ?? null;
+	return (
+		allImages[`../assets/images/templates/${folder}/PNG/${filename}`] ?? null
+	);
 }
 
 function buildDesigns(folder, desktopPrefix, mobilePrefix, entries) {

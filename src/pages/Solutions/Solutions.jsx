@@ -1,8 +1,12 @@
 import { Link } from "react-router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import FullHeroSection from "../../components/sections/hero/FullHeroSection";
+import PrimaryButton from "../../components/elements/buttons/PrimaryButton";
+import PrimaryCtaLink from "../../components/elements/links/PrimaryCtaLink";
+import Card from "../../components/elements/cards/base/Card";
 import solutions from "../../../shared/solutions.js";
-import BrightIdeas from "../../assets/bright-ideas.svg?react";
+import BrightIdeas from "../../assets/images/illustrations/bright-ideas.svg?react";
 import {
 	FaWandMagicSparkles,
 	FaCubesStacked,
@@ -16,7 +20,6 @@ import {
 	FaChartLine,
 	FaArrowRight,
 } from "react-icons/fa6";
-import "./Solutions.css";
 
 const SOLUTION_ICONS = [FaWandMagicSparkles, FaCubesStacked, FaPaintbrush];
 
@@ -64,45 +67,37 @@ export default function Solutions() {
 	return (
 		<>
 			<Header />
-			<main className="SolPage">
-				<section className="SolHero" aria-labelledby="sol-hero-title">
-					<div className="SolHeroPattern" aria-hidden="true" />
-					<div className="SolHeroContent">
-						<div className="SolHeroLeft">
-							<p className="SolHeroEyebrow">Solutions</p>
-							<h1 id="sol-hero-title" className="SolHeroTitle">
-								Solutions That Drive Business Growth
-							</h1>
-							<p className="SolHeroSubtitle">
-								Helping businesses modernize, scale, and innovate through
-								tailored strategies
-							</p>
-							<Link
-								to="#solutions"
-								state={{ scrollTo: "solutions" }}
-								className="CTA SolHeroCTA"
-							>
-								Explore Our Solutions
-							</Link>
-						</div>
-						<div className="SolHeroRight">
-							<BrightIdeas className="SolHeroSvg" aria-hidden="true" />
-						</div>
-					</div>
-				</section>
+			<main className="sol-page">
+				<FullHeroSection
+					id="sol-hero-title"
+					className="sol-hero"
+					eyebrow="Solutions"
+					title="Solutions That Drive Business Growth"
+					subtitle="Helping businesses modernize, scale, and innovate through tailored strategies"
+					actions={
+						<PrimaryButton
+							to="#solutions"
+							className="sol-hero-cta"
+							state={{ scrollTo: "solutions" }}
+						>
+							Explore Our Solutions
+						</PrimaryButton>
+					}
+					media={<BrightIdeas className="sol-hero-svg" aria-hidden="true" />}
+				/>
 
 				<section
-					className="SolSection SolIntro"
+					className="sol-section sol-intro"
 					aria-labelledby="sol-intro-title"
 				>
-					<div className="SolShell">
-						<div className="SolIntroGrid">
-							<div className="SolIntroContent">
-								<p className="SolSectionEyebrow">Our Philosophy</p>
-								<h2 id="sol-intro-title" className="SolSectionTitle">
+					<div className="sol-shell">
+						<div className="sol-intro-grid">
+							<div className="sol-intro-content">
+								<p className="sol-section-eyebrow">Our Philosophy</p>
+								<h2 id="sol-intro-title" className="sol-section-title">
 									Strategy, design, and technology — unified
 								</h2>
-								<p className="SolSectionDescription">
+								<p className="sol-section-description">
 									At HestiQ, every solution begins with a clear understanding of
 									your business goals. We combine strategic thinking, purposeful
 									design, and robust engineering to deliver outcomes that are
@@ -110,13 +105,13 @@ export default function Solutions() {
 									disconnect between vision and execution.
 								</p>
 							</div>
-							<div className="SolFocusAreas" aria-label="Key focus areas">
+							<div className="sol-focus-areas" aria-label="Key focus areas">
 								{FOCUS_AREAS.map(({ icon: Icon, label }) => (
-									<div className="SolFocusArea" key={label}>
-										<div className="SolFocusAreaIcon" aria-hidden="true">
+									<div className="sol-focus-area" key={label}>
+										<div className="sol-focus-area-icon" aria-hidden="true">
 											<Icon />
 										</div>
-										<span className="SolFocusAreaLabel">{label}</span>
+										<span className="sol-focus-area-label">{label}</span>
 									</div>
 								))}
 							</div>
@@ -126,47 +121,51 @@ export default function Solutions() {
 
 				<section
 					id="solutions"
-					className="SolSection SolGrid SolSectionAlt"
+					className="sol-section sol-grid sol-section-alt"
 					aria-labelledby="sol-grid-title"
 				>
-					<div className="SolShell">
-						<div className="SolSectionHeader SolSectionHeaderCentered">
-							<p className="SolSectionEyebrow">What We Do</p>
-							<h2 id="sol-grid-title" className="SolSectionTitle">
+					<div className="sol-shell">
+						<div className="sol-section-header sol-section-header-centered">
+							<p className="sol-section-eyebrow">What We Do</p>
+							<h2 id="sol-grid-title" className="sol-section-title">
 								Featured solutions
 							</h2>
-							<p className="SolSectionDescription">
+							<p className="sol-section-description">
 								Three interconnected offerings designed to address the full
 								spectrum of business growth challenges.
 							</p>
 						</div>
-						<ul className="SolCardsGrid" aria-label="Featured solutions">
+						<ul className="sol-cards-grid" aria-label="Featured solutions">
 							{solutions.map((solution, idx) => {
 								const Icon = SOLUTION_ICONS[idx];
 								return (
-									<li className="SolCard" key={solution.href}>
-										<div className="SolCardIconWrapper" aria-hidden="true">
+									<Card
+										as="li"
+										className="sol-card card-surface-muted"
+										key={solution.href}
+									>
+										<div className="sol-card-icon-wrapper" aria-hidden="true">
 											<Icon />
 										</div>
-										<div className="SolCardBody">
-											<h3 className="SolCardTitle">{solution.name}</h3>
-											<p className="SolCardDescription">
+										<div className="sol-card-body">
+											<h3 className="sol-card-title">{solution.name}</h3>
+											<p className="sol-card-description">
 												{solution.description}
 											</p>
 										</div>
-										<Link
+										<PrimaryCtaLink
 											to={solution.href}
 											state={{ scrollToTop: true }}
-											className="SolCardCTA"
+											className="sol-card-cta"
 											aria-label={`Learn more about ${solution.name}`}
 										>
 											Learn More
 											<FaArrowRight
 												aria-hidden="true"
-												className="SolCardCTAIcon"
+												className="sol-card-cta-icon"
 											/>
-										</Link>
-									</li>
+										</PrimaryCtaLink>
+									</Card>
 								);
 							})}
 						</ul>
@@ -174,27 +173,36 @@ export default function Solutions() {
 				</section>
 
 				<section
-					className="SolSection SolApproach"
+					className="sol-section sol-approach"
 					aria-labelledby="sol-approach-title"
 				>
-					<div className="SolShell">
-						<div className="SolSectionHeader SolSectionHeaderCentered">
-							<p className="SolSectionEyebrow">How We Work</p>
-							<h2 id="sol-approach-title" className="SolSectionTitle">
+					<div className="sol-shell">
+						<div className="sol-section-header sol-section-header-centered">
+							<p className="sol-section-eyebrow">How We Work</p>
+							<h2 id="sol-approach-title" className="sol-section-title">
 								Our approach across every solution
 							</h2>
 						</div>
-						<ol className="SolApproachTrack" aria-label="Approach methodology">
+						<ol
+							className="sol-approach-track"
+							aria-label="Approach methodology"
+						>
 							{APPROACH_STEPS.map(({ icon: Icon, label }, idx) => (
-								<li className="SolApproachStep" key={label}>
-									<div className="SolApproachStepInner">
-										<div className="SolApproachIconWrapper" aria-hidden="true">
+								<li className="sol-approach-step" key={label}>
+									<div className="sol-approach-step-inner">
+										<div
+											className="sol-approach-icon-wrapper"
+											aria-hidden="true"
+										>
 											<Icon />
 										</div>
-										<span className="SolApproachLabel">{label}</span>
+										<span className="sol-approach-label">{label}</span>
 									</div>
 									{idx < APPROACH_STEPS.length - 1 && (
-										<div className="SolApproachConnector" aria-hidden="true" />
+										<div
+											className="sol-approach-connector"
+											aria-hidden="true"
+										/>
 									)}
 								</li>
 							))}
@@ -203,28 +211,28 @@ export default function Solutions() {
 				</section>
 
 				<section
-					className="SolSection SolBenefits SolSectionAlt"
+					className="sol-section sol-benefits sol-section-alt"
 					aria-labelledby="sol-benefits-title"
 				>
-					<div className="SolShell">
-						<div className="SolSectionHeader SolSectionHeaderCentered">
-							<p className="SolSectionEyebrow">Why HestiQ</p>
-							<h2 id="sol-benefits-title" className="SolSectionTitle">
+					<div className="sol-shell">
+						<div className="sol-section-header sol-section-header-centered">
+							<p className="sol-section-eyebrow">Why HestiQ</p>
+							<h2 id="sol-benefits-title" className="sol-section-title">
 								What sets us apart
 							</h2>
 						</div>
 						<ul
-							className="SolBenefitsGrid"
+							className="sol-benefits-grid"
 							aria-label="Benefits of working with HestiQ"
 						>
 							{BENEFITS.map(({ icon: Icon, title, description }) => (
-								<li className="SolBenefit" key={title}>
-									<div className="SolBenefitIconWrapper" aria-hidden="true">
+								<li className="sol-benefit" key={title}>
+									<div className="sol-benefit-icon-wrapper" aria-hidden="true">
 										<Icon />
 									</div>
-									<div className="SolBenefitContent">
-										<h3 className="SolBenefitTitle">{title}</h3>
-										<p className="SolBenefitDescription">{description}</p>
+									<div className="sol-benefit-content">
+										<h3 className="sol-benefit-title">{title}</h3>
+										<p className="sol-benefit-description">{description}</p>
 									</div>
 								</li>
 							))}
@@ -232,22 +240,22 @@ export default function Solutions() {
 					</div>
 				</section>
 
-				<section className="SolCTASection" aria-labelledby="sol-cta-title">
-					<div className="SolShell SolCTAContent">
-						<h2 id="sol-cta-title" className="SolCTATitle">
+				<section className="sol-cta-section" aria-labelledby="sol-cta-title">
+					<div className="sol-shell sol-cta-content">
+						<h2 id="sol-cta-title" className="sol-cta-title">
 							Discover the Right Solution for Your Business
 						</h2>
-						<p className="SolCTASubtitle">
+						<p className="sol-cta-subtitle">
 							Tell us where you are and where you want to go. We'll map the
 							right path forward.
 						</p>
-						<Link
+						<PrimaryButton
 							to="/contact"
 							state={{ scrollToTop: true }}
-							className="CTA SolCTAButton"
+							className="sol-cta-button"
 						>
 							Talk to Our Experts
-						</Link>
+						</PrimaryButton>
 					</div>
 				</section>
 			</main>

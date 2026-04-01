@@ -5,12 +5,10 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import classNames from "classnames";
-import Logo from "../assets/logo.svg?react";
+import Logo from "../assets/images/logos/logo.svg?react";
 import { useServices } from "../utils/servicesCache";
 import solutions from "../../shared/solutions.js";
 import { companyName } from "../../shared/company.js";
-
-/* ===================== HEADER ===================== */
 
 export default function Header() {
 	const [openDisclosures, setOpenDisclosures] = React.useState({
@@ -30,14 +28,13 @@ export default function Header() {
 
 	return (
 		<header>
-			<NavigationMenu.Root className="NavigationMenuRoot">
+			<NavigationMenu.Root className="navigation-menu-root">
 				<Link to="/">
-					<Logo className="Logo h-10 w-auto" />
+					<Logo className="logo h-10 w-auto" />
 				</Link>
 
-				<NavigationMenu.List className="NavigationMenuList hidden lg:flex">
+				<NavigationMenu.List className="navigation-menu-list hidden lg:flex">
 					<NavItem to="/about">About</NavItem>
-					{/* <NavItem to="/products">Products</NavItem> */}
 					<NavItem to="/pricing">Pricing</NavItem>
 
 					<NavList to="/solutions" title="Solutions">
@@ -77,22 +74,22 @@ export default function Header() {
 							))}
 					</NavList>
 
-					<NavItem to="/contact" className="CTA">
+					<NavItem to="/contact" className="cta">
 						Contact Us
 					</NavItem>
 
-					<NavigationMenu.Indicator className="NavigationMenuIndicator">
-						<div className="Arrow" />
+					<NavigationMenu.Indicator className="navigation-menu-indicator">
+						<div className="arrow" />
 					</NavigationMenu.Indicator>
 
-					<div className="ViewportPosition">
-						<NavigationMenu.Viewport className="NavigationMenuViewport" />
+					<div className="viewport-position">
+						<NavigationMenu.Viewport className="navigation-menu-viewport" />
 					</div>
 				</NavigationMenu.List>
 
 				<Dialog.Root>
 					<Dialog.Trigger asChild>
-						<button type="button" className="Hamburger flex lg:hidden">
+						<button type="button" className="hamburger flex lg:hidden">
 							<span className="sr-only">Open main menu</span>
 							<svg
 								viewBox="0 0 24 24"
@@ -112,8 +109,8 @@ export default function Header() {
 					</Dialog.Trigger>
 
 					<Dialog.Portal>
-						<Dialog.Overlay className="MobileMenuOverlay" />
-						<Dialog.Content className="MobileMenuPanel">
+						<Dialog.Overlay className="mobile-menu-overlay" />
+						<Dialog.Content className="mobile-menu-panel">
 							<VisuallyHidden.Root>
 								<Dialog.Title>Mobile Navigation Menu</Dialog.Title>
 								<Dialog.Description>
@@ -121,13 +118,13 @@ export default function Header() {
 								</Dialog.Description>
 							</VisuallyHidden.Root>
 
-							<div className="MobileMenuHeader">
+							<div className="mobile-menu-header">
 								<Link to="/" className="-m-1.5 p-1.5">
 									<span className="sr-only">{companyName}</span>
-									<Logo className="Logo h-10 w-10" />
+									<Logo className="logo h-10 w-10" />
 								</Link>
 								<Dialog.Close asChild>
-									<button type="button" className="MobileMenuClose">
+									<button type="button" className="mobile-menu-close">
 										<span className="sr-only">Close menu</span>
 										<svg
 											viewBox="0 0 24 24"
@@ -146,24 +143,21 @@ export default function Header() {
 									</button>
 								</Dialog.Close>
 							</div>
-							<div className="MobileMenuContent">
-								<div className="MobileMenuInner">
-									<div className="MobileMenuSection space-y-2">
-										<NavLink to="/about" className="MobileMenuLink">
+							<div className="mobile-menu-content">
+								<div className="mobile-menu-inner">
+									<div className="mobile-menu-section space-y-2">
+										<NavLink to="/about" className="mobile-menu-link">
 											About
 										</NavLink>
-										{/* <NavLink to="/products" className="MobileMenuLink">
-											Products
-										</NavLink> */}
-										<NavLink to="/pricing" className="MobileMenuLink">
+										<NavLink to="/pricing" className="mobile-menu-link">
 											Pricing
 										</NavLink>
 
-										<div className="MobileMenuDisclosure">
+										<div className="mobile-menu-disclosure">
 											<button
 												type="button"
 												onClick={() => toggleDisclosure("solutions")}
-												className="MobileMenuDisclosureButton"
+												className="mobile-menu-disclosure-button"
 												aria-expanded={openDisclosures.solutions}
 											>
 												Solutions
@@ -171,7 +165,7 @@ export default function Header() {
 													viewBox="0 0 20 20"
 													fill="currentColor"
 													aria-hidden="true"
-													className="MobileMenuDisclosureIcon"
+													className="mobile-menu-disclosure-icon"
 													style={{
 														transform: openDisclosures.design
 															? "rotate(180deg)"
@@ -186,13 +180,13 @@ export default function Header() {
 												</svg>
 											</button>
 											{openDisclosures.solutions && (
-												<div className="MobileMenuDisclosureContent">
+												<div className="mobile-menu-disclosure-content">
 													<div className="space-y-2">
 														{solutions.map((item, idx) => (
 															<NavLink
 																to={item.href}
 																key={idx}
-																className="MobileMenuDisclosureLink"
+																className="mobile-menu-disclosure-link"
 															>
 																{item.name}
 															</NavLink>
@@ -202,11 +196,11 @@ export default function Header() {
 											)}
 										</div>
 
-										<div className="MobileMenuDisclosure">
+										<div className="mobile-menu-disclosure">
 											<button
 												type="button"
 												onClick={() => toggleDisclosure("design")}
-												className="MobileMenuDisclosureButton"
+												className="mobile-menu-disclosure-button"
 												aria-expanded={openDisclosures.design}
 											>
 												Design
@@ -214,7 +208,7 @@ export default function Header() {
 													viewBox="0 0 20 20"
 													fill="currentColor"
 													aria-hidden="true"
-													className="MobileMenuDisclosureIcon"
+													className="mobile-menu-disclosure-icon"
 													style={{
 														transform: openDisclosures.design
 															? "rotate(180deg)"
@@ -229,7 +223,7 @@ export default function Header() {
 												</svg>
 											</button>
 											{openDisclosures.design && (
-												<div className="MobileMenuDisclosureContent">
+												<div className="mobile-menu-disclosure-content">
 													<div className="space-y-2">
 														{services
 															.filter((s) => s.category === "Design")
@@ -237,7 +231,7 @@ export default function Header() {
 																<NavLink
 																	to={item.href}
 																	key={idx}
-																	className="MobileMenuDisclosureLink"
+																	className="mobile-menu-disclosure-link"
 																>
 																	{item.name}
 																</NavLink>
@@ -247,11 +241,11 @@ export default function Header() {
 											)}
 										</div>
 
-										<div className="MobileMenuDisclosure">
+										<div className="mobile-menu-disclosure">
 											<button
 												type="button"
 												onClick={() => toggleDisclosure("development")}
-												className="MobileMenuDisclosureButton"
+												className="mobile-menu-disclosure-button"
 												aria-expanded={openDisclosures.development}
 											>
 												Development
@@ -259,7 +253,7 @@ export default function Header() {
 													viewBox="0 0 20 20"
 													fill="currentColor"
 													aria-hidden="true"
-													className="MobileMenuDisclosureIcon"
+													className="mobile-menu-disclosure-icon"
 													style={{
 														transform: openDisclosures.development
 															? "rotate(180deg)"
@@ -274,7 +268,7 @@ export default function Header() {
 												</svg>
 											</button>
 											{openDisclosures.development && (
-												<div className="MobileMenuDisclosureContent">
+												<div className="mobile-menu-disclosure-content">
 													<div className="space-y-2">
 														{services
 															.filter((s) => s.category === "Development")
@@ -282,7 +276,7 @@ export default function Header() {
 																<NavLink
 																	to={item.href}
 																	key={idx}
-																	className="MobileMenuDisclosureLink"
+																	className="mobile-menu-disclosure-link"
 																>
 																	{item.name}
 																</NavLink>
@@ -292,7 +286,7 @@ export default function Header() {
 											)}
 										</div>
 
-										<NavLink to="/contact" className="MobileMenuLink">
+										<NavLink to="/contact" className="mobile-menu-link">
 											Contact Us
 										</NavLink>
 									</div>
@@ -306,15 +300,13 @@ export default function Header() {
 	);
 }
 
-/* =================== COMPONENTS =================== */
-
 function NavItem({ to, children, className }) {
 	return (
-		<NavigationMenu.Item className="NavigationMenuItem">
+		<NavigationMenu.Item className="navigation-menu-item">
 			<NavigationMenu.Link asChild>
 				<NavLink
 					to={to}
-					className={classNames("NavigationMenuLink", className)}
+					className={classNames("navigation-menu-link", className)}
 				>
 					{children}
 				</NavLink>
@@ -326,15 +318,15 @@ function NavItem({ to, children, className }) {
 function NavList({ to, title, children }) {
 	return (
 		<NavigationMenu.Item>
-			<NavigationMenu.Trigger className="NavigationMenuTrigger">
-				<NavLink to={to} className="NavigationMenuLink">
+			<NavigationMenu.Trigger className="navigation-menu-trigger">
+				<NavLink to={to} className="navigation-menu-link">
 					{title}{" "}
 				</NavLink>
-				<CaretDownIcon className="CaretDown" aria-hidden />
+				<CaretDownIcon className="caret-down" aria-hidden />
 			</NavigationMenu.Trigger>
 
-			<NavigationMenu.Content className="NavigationMenuContent">
-				<ul className="List">{children}</ul>
+			<NavigationMenu.Content className="navigation-menu-content">
+				<ul className="list">{children}</ul>
 			</NavigationMenu.Content>
 		</NavigationMenu.Item>
 	);
@@ -346,12 +338,12 @@ const ListItem = React.forwardRef(
 			<NavigationMenu.Link asChild>
 				<Link
 					to={to}
-					className={classNames("ListItemLink", className)}
+					className={classNames("list-item-link", className)}
 					{...props}
 					ref={forwardedRef}
 				>
-					<div className="ListItemHeading">{title}</div>
-					<p className="ListItemText">{children}</p>
+					<div className="list-item-heading">{title}</div>
+					<p className="list-item-text">{children}</p>
 				</Link>
 			</NavigationMenu.Link>
 		</li>
@@ -362,7 +354,7 @@ function CallOut({ to, children }) {
 	return (
 		<li style={{ gridRow: "span 3" }}>
 			<NavigationMenu.Link asChild>
-				<Link className="Callout" to={to}>
+				<Link className="callout" to={to}>
 					{children}
 				</Link>
 			</NavigationMenu.Link>
@@ -371,11 +363,11 @@ function CallOut({ to, children }) {
 }
 
 function CallOutHeading({ children }) {
-	return <div className="CalloutHeading">{children}</div>;
+	return <div className="callout-heading">{children}</div>;
 }
 
 function CallOutText({ children }) {
-	return <p className="CalloutText">{children}</p>;
+	return <p className="callout-text">{children}</p>;
 }
 
 CallOut.Heading = CallOutHeading;

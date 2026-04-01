@@ -17,55 +17,55 @@ const channelIcons = {
 	address: FaLocationDot,
 };
 
-export default function ContactPage() {
+export default function Contact() {
 	const address = contacts.find((channel) => channel.id === "address");
 
 	return (
 		<>
 			<Header />
-			<main className="ContactPage">
+			<main className="contact-page">
 				<section
-					className="ContactPageHero"
+					className="contact-page-hero"
 					aria-labelledby="contact-page-title"
 				>
-					<div className="ContactPageShell">
-						<div className="ContactPageHeroCard">
-							<div className="ContactPageHeroContent">
-								<p className="ContactPageEyebrow">Contact</p>
-								<h1 id="contact-page-title" className="ContactPageTitle">
+					<div className="contact-page-shell">
+						<div className="contact-page-hero-card">
+							<div className="contact-page-hero-content">
+								<p className="contact-page-eyebrow">Contact</p>
+								<h1 id="contact-page-title" className="contact-page-title">
 									Start the conversation with the HestiQ team.
 								</h1>
-								<p className="ContactPageDescription">
+								<p className="contact-page-description">
 									Reach out directly or send a detailed request through the
 									contact form. We handle design, development, and product
 									questions from one place.
 								</p>
 							</div>
 							<div
-								className="ContactPageHeroMeta"
+								className="contact-page-hero-meta"
 								aria-label="Contact highlights"
 							>
-								<div className="ContactPageHeroMetric">
-									<span className="ContactPageHeroMetricLabel">
+								<div className="contact-page-hero-metric">
+									<span className="contact-page-hero-metric-label">
 										Response window
 									</span>
-									<strong className="ContactPageHeroMetricValue">
+									<strong className="contact-page-hero-metric-value">
 										Within an hour
 									</strong>
 								</div>
-								<div className="ContactPageHeroMetric">
-									<span className="ContactPageHeroMetricLabel">
+								<div className="contact-page-hero-metric">
+									<span className="contact-page-hero-metric-label">
 										Best fit for
 									</span>
-									<strong className="ContactPageHeroMetricValue">
+									<strong className="contact-page-hero-metric-value">
 										Projects, partnerships, and support
 									</strong>
 								</div>
-								<div className="ContactPageHeroMetric">
-									<span className="ContactPageHeroMetricLabel">
+								<div className="contact-page-hero-metric">
+									<span className="contact-page-hero-metric-label">
 										Contact channels
 									</span>
-									<strong className="ContactPageHeroMetricValue">
+									<strong className="contact-page-hero-metric-value">
 										Email, phone, and guided inquiry form
 									</strong>
 								</div>
@@ -74,8 +74,8 @@ export default function ContactPage() {
 					</div>
 				</section>
 
-				<section className="ContactPageSection">
-					<div className="ContactPageShell ContactPageContentGrid">
+				<section className="contact-page-section">
+					<div className="contact-page-shell contact-page-content-grid">
 						<InfoPanel
 							title="Reach us directly"
 							description="Choose the contact method that matches your situation. The form is best for detailed project briefs, while the direct channels work well for quick questions."
@@ -87,23 +87,25 @@ export default function ContactPage() {
 							description="Share your goals, scope, timeline, or any blockers so we can respond with the right next step."
 							submitLabel="Send message"
 							successMessage="Your message has been sent. We will get back to you soon."
-							className="ContactPageForm"
+							className="contact-page-form"
 						/>
 					</div>
 				</section>
 
 				{address ? (
-					<section className="ContactPageSection ContactPageSectionSecondary">
-						<div className="ContactPageShell ContactPageMapGrid">
+					<section className="contact-page-section contact-page-section-secondary">
+						<div className="contact-page-shell contact-page-map-grid">
 							<MapEmbed title="Find us on the map" src={address.href} />
-							<aside className="ContactPageVisitCard">
-								<h2 className="ContactPageVisitTitle">Visits by appointment</h2>
-								<p className="ContactPageVisitDescription">
+							<aside className="contact-page-visit-card">
+								<h2 className="contact-page-visit-title">
+									Visits by appointment
+								</h2>
+								<p className="contact-page-visit-description">
 									If you prefer to meet in person, use the contact form first so
 									we can prepare the right people and materials before the
 									conversation.
 								</p>
-								<address className="ContactPageVisitAddress">
+								<address className="contact-page-visit-address">
 									{address.value}
 								</address>
 							</aside>
@@ -118,16 +120,16 @@ export default function ContactPage() {
 
 function MapEmbed({ title, src }) {
 	return (
-		<section className="ContactMapCard" aria-labelledby="contact-map-title">
-			<div className="ContactMapHeader">
-				<h2 id="contact-map-title" className="ContactMapTitle">
+		<section className="contact-map-card" aria-labelledby="contact-map-title">
+			<div className="contact-map-header">
+				<h2 id="contact-map-title" className="contact-map-title">
 					{title}
 				</h2>
-				<p className="ContactMapDescription">
+				<p className="contact-map-description">
 					Use the embedded map to get orientation before your appointment.
 				</p>
 			</div>
-			<div className="ContactMapFrame">
+			<div className="contact-map-frame">
 				<iframe
 					title={title}
 					src={src + "&output=embed"}
@@ -142,29 +144,32 @@ function MapEmbed({ title, src }) {
 
 function InfoPanel({ title, description, items }) {
 	return (
-		<section className="ContactInfoPanel" aria-labelledby="contact-info-title">
-			<div className="ContactInfoPanelHeader">
-				<h2 id="contact-info-title" className="ContactInfoPanelTitle">
+		<section
+			className="contact-info-panel"
+			aria-labelledby="contact-info-title"
+		>
+			<div className="contact-info-panel-header">
+				<h2 id="contact-info-title" className="contact-info-panel-title">
 					{title}
 				</h2>
-				<p className="ContactInfoPanelDescription">{description}</p>
+				<p className="contact-info-panel-description">{description}</p>
 			</div>
-			<div className="ContactInfoList">
+			<div className="contact-info-list">
 				{items.map((item) => (
 					<InfoItem key={item.id} item={item} />
 				))}
 			</div>
-			<div className="ContactInfoFaqCard">
+			<div className="contact-info-faq-card">
 				<div>
-					<h3 className="ContactInfoFaqTitle">Prefer a faster answer?</h3>
-					<p className="ContactInfoFaqText">
+					<h3 className="contact-info-faq-title">Prefer a faster answer?</h3>
+					<p className="contact-info-faq-text">
 						Review the most common questions before reaching out.
 					</p>
 				</div>
 				<Link
 					to="/faq"
 					state={{ scrollToTop: true }}
-					className="CTA ContactInfoFaqLink"
+					className="cta contact-info-faq-link"
 				>
 					<span>Go to FAQ</span>
 					<FaArrowRight />
@@ -178,15 +183,15 @@ function InfoItem({ item }) {
 	const Icon = channelIcons[item.id] ?? FaEnvelope;
 
 	return (
-		<article className="ContactInfoItem">
-			<div className="ContactInfoItemIcon" aria-hidden="true">
+		<article className="contact-info-item">
+			<div className="contact-info-item-icon" aria-hidden="true">
 				<Icon />
 			</div>
-			<div className="ContactInfoItemContent">
-				<a className="ContactInfoItemLink" href={item.href}>
+			<div className="contact-info-item-content">
+				<a className="contact-info-item-link" href={item.href}>
 					{item.value}
 				</a>
-				<p className="ContactInfoItemDescription">{item.description}</p>
+				<p className="contact-info-item-description">{item.description}</p>
 			</div>
 		</article>
 	);

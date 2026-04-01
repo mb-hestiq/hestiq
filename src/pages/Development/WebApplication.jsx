@@ -3,8 +3,8 @@ import { Link } from "react-router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { useServices } from "../../utils/servicesCache";
-import webAppDark from "../../assets/example/web-app-example-dark.png";
-import webAppLight from "../../assets/example/web-app-example-light.png";
+import webAppDark from "../../assets/images/examples/web-app-example-dark.png";
+import webAppLight from "../../assets/images/examples/web-app-example-light.png";
 import {
 	FaCircleCheck,
 	FaGlobe,
@@ -140,40 +140,40 @@ export default function WebApplication() {
 	return (
 		<>
 			<Header />
-			<main className="SvcPage">
+			<main className="svc-page">
 				<section
 					id="overview"
-					className="SvcSection"
+					className="svc-section"
 					aria-labelledby="wa-overview-title"
 				>
-					<div className="SvcShell">
-						<div className="SvcOverviewGrid">
-							<div className="SvcOverviewContent">
-								<p className="SvcEyebrow">The Problem We Solve</p>
-								<h2 id="wa-overview-title" className="SvcSectionTitle">
+					<div className="svc-shell">
+						<div className="svc-overview-grid">
+							<div className="svc-overview-content">
+								<p className="svc-eyebrow">The Problem We Solve</p>
+								<h2 id="wa-overview-title" className="svc-section-title">
 									A web application built to run a business, not just impress
 									investors.
 								</h2>
-								<p className="SvcSectionDescription">
+								<p className="svc-section-description">
 									Most web applications are prototypes that outlived their
 									welcome. Technical debt accumulates, performance degrades
 									under load, and security gaps widen with every unreviewed
 									dependency update.
 								</p>
-								<p className="SvcSectionDescription">
+								<p className="svc-section-description">
 									We build web applications as production systems from the first
 									commit: architected to scale, secured against the OWASP Top
 									10, and instrumented so you can see exactly how they perform
 									in the real world.
 								</p>
 								<ul
-									className="SvcOverviewPoints"
+									className="svc-overview-points"
 									aria-label="Core value points"
 								>
 									{OVERVIEW_POINTS.map((point) => (
-										<li key={point} className="SvcOverviewPoint">
+										<li key={point} className="svc-overview-point">
 											<FaCircleCheck
-												className="SvcOverviewPointIcon"
+												className="svc-overview-point-icon"
 												aria-hidden="true"
 											/>
 											<span>{point}</span>
@@ -181,18 +181,18 @@ export default function WebApplication() {
 									))}
 								</ul>
 							</div>
-							<div className="SvcOverviewVisual">
-								<div className="SvcOverviewDualImages">
+							<div className="svc-overview-visual">
+								<div className="svc-overview-dual-images">
 									<img
 										src={webAppDark}
 										alt="Web application dark theme"
-										className="SvcOverviewDualImg SvcOverviewDualImgBack"
+										className="svc-overview-dual-img svc-overview-dual-img-back"
 										loading="lazy"
 									/>
 									<img
 										src={webAppLight}
 										alt="Web application light theme"
-										className="SvcOverviewDualImg SvcOverviewDualImgFront"
+										className="svc-overview-dual-img svc-overview-dual-img-front"
 										loading="lazy"
 									/>
 								</div>
@@ -202,87 +202,90 @@ export default function WebApplication() {
 				</section>
 
 				<section
-					className="SvcSection SvcSectionAlt"
+					className="svc-section svc-section-alt"
 					aria-labelledby="wa-features-title"
 				>
-					<div className="SvcShell">
-						<div className="SvcSectionHeader SvcSectionHeaderCentered">
-							<p className="SvcEyebrow">What's Included</p>
-							<h2 id="wa-features-title" className="SvcSectionTitle">
+					<div className="svc-shell">
+						<div className="svc-section-header svc-section-header-centered">
+							<p className="svc-eyebrow">What's Included</p>
+							<h2 id="wa-features-title" className="svc-section-title">
 								Every build covers
 							</h2>
-							<p className="SvcSectionDescription">
+							<p className="svc-section-description">
 								Full-stack engineering delivered as a complete, production-ready
 								system, not a collection of loosely assembled parts.
 							</p>
 						</div>
-						<ul className="SvcFeaturesGrid" aria-label="Service features">
+						<ul className="svc-features-grid" aria-label="Service features">
 							{FEATURES.map(({ icon: Icon, title, description }) => (
-								<li key={title} className="SvcFeatureCard">
-									<div className="SvcFeatureIconWrapper" aria-hidden="true">
+								<li key={title} className="svc-feature-card">
+									<div className="svc-feature-icon-wrapper" aria-hidden="true">
 										<Icon />
 									</div>
-									<h3 className="SvcFeatureTitle">{title}</h3>
-									<p className="SvcFeatureDescription">{description}</p>
+									<h3 className="svc-feature-title">{title}</h3>
+									<p className="svc-feature-description">{description}</p>
 								</li>
 							))}
 						</ul>
 					</div>
 				</section>
 
-				<section className="SvcSection" aria-labelledby="wa-usecases-title">
-					<div className="SvcShell">
-						<div className="SvcSectionHeader">
-							<p className="SvcEyebrow">Applications</p>
-							<h2 id="wa-usecases-title" className="SvcSectionTitle">
+				<section className="svc-section" aria-labelledby="wa-usecases-title">
+					<div className="svc-shell">
+						<div className="svc-section-header">
+							<p className="svc-eyebrow">Applications</p>
+							<h2 id="wa-usecases-title" className="svc-section-title">
 								Where web applications create leverage
 							</h2>
-							<p className="SvcSectionDescription">
+							<p className="svc-section-description">
 								Any process driven by data, multi-user interaction, or
 								automation is a candidate for a purpose-built web application.
 							</p>
 						</div>
-						<ul className="SvcUseCasesGrid" aria-label="Use cases">
+						<ul className="svc-use-cases-grid" aria-label="Use cases">
 							{USE_CASES.map(({ label, title, description }) => (
-								<li key={label} className="SvcUseCaseCard">
-									<span className="SvcUseCaseLabel">{label}</span>
-									<h3 className="SvcUseCaseTitle">{title}</h3>
-									<p className="SvcUseCaseDescription">{description}</p>
+								<li key={label} className="svc-use-case-card">
+									<span className="svc-use-case-label">{label}</span>
+									<h3 className="svc-use-case-title">{title}</h3>
+									<p className="svc-use-case-description">{description}</p>
 								</li>
 							))}
 						</ul>
 					</div>
 				</section>
 
-				<section className="SvcSection" aria-labelledby="wa-benefits-title">
-					<div className="SvcShell">
-						<div className="SvcBenefitsGrid">
-							<div className="SvcBenefitsIntro">
-								<p className="SvcEyebrow">Why HestiQ</p>
-								<h2 id="wa-benefits-title" className="SvcSectionTitle">
+				<section className="svc-section" aria-labelledby="wa-benefits-title">
+					<div className="svc-shell">
+						<div className="svc-benefits-grid">
+							<div className="svc-benefits-intro">
+								<p className="svc-eyebrow">Why HestiQ</p>
+								<h2 id="wa-benefits-title" className="svc-section-title">
 									What you gain
 								</h2>
-								<p className="SvcSectionDescription">
+								<p className="svc-section-description">
 									A robust, scalable application delivered by engineers who
 									treat production quality as a baseline.
 								</p>
 								<Link
 									to={ONBOARDING_URL}
 									state={{ scrollToTop: true }}
-									className="CTA SvcBenefitsCTA"
+									className="cta svc-benefits-cta"
 								>
 									Get Started <FaArrowRight aria-hidden="true" />
 								</Link>
 							</div>
-							<ul className="SvcBenefitsList" aria-label="Benefits">
+							<ul className="svc-benefits-list" aria-label="Benefits">
 								{BENEFITS.map(({ icon: Icon, title, description }) => (
-									<li key={title} className="SvcBenefit">
-										<div className="SvcBenefitIconWrapper" aria-hidden="true">
+									<li key={title} className="svc-benefit">
+										<div
+											className="svc-benefit-icon-wrapper"
+											aria-hidden="true"
+										>
 											<Icon />
 										</div>
-										<div className="SvcBenefitContent">
-											<h3 className="SvcBenefitTitle">{title}</h3>
-											<p className="SvcBenefitDescription">{description}</p>
+										<div className="svc-benefit-content">
+											<h3 className="svc-benefit-title">{title}</h3>
+											<p className="svc-benefit-description">{description}</p>
 										</div>
 									</li>
 								))}
@@ -293,22 +296,22 @@ export default function WebApplication() {
 
 				{relatedServices.length > 0 && (
 					<section
-						className="SvcSection SvcSectionAlt"
+						className="svc-section svc-section-alt"
 						aria-labelledby="wa-related-title"
 					>
-						<div className="SvcShell">
-							<div className="SvcSectionHeader SvcSectionHeaderCentered">
-								<p className="SvcEyebrow">Explore More</p>
-								<h2 id="wa-related-title" className="SvcSectionTitle">
+						<div className="svc-shell">
+							<div className="svc-section-header svc-section-header-centered">
+								<p className="svc-eyebrow">Explore More</p>
+								<h2 id="wa-related-title" className="svc-section-title">
 									Related services
 								</h2>
-								<p className="SvcSectionDescription">
+								<p className="svc-section-description">
 									Web applications are most effective when backed by solid
 									infrastructure, strong UI design, and ongoing maintenance.
 								</p>
 							</div>
 							<ul
-								className="SvcRelatedGrid"
+								className="svc-related-grid"
 								aria-label="Related development services"
 							>
 								{relatedServices.map((s) => (
@@ -316,18 +319,18 @@ export default function WebApplication() {
 										<Link
 											to={s.href}
 											state={{ scrollToTop: true }}
-											className="SvcRelatedCard"
+											className="svc-related-card"
 										>
-											<div className="SvcRelatedCardTop">
-												<span className="SvcRelatedCardCategory">
+											<div className="svc-related-card-top">
+												<span className="svc-related-card-category">
 													{s.category}
 												</span>
 											</div>
-											<h3 className="SvcRelatedCardTitle">{s.name}</h3>
-											<p className="SvcRelatedCardDescription">
+											<h3 className="svc-related-card-title">{s.name}</h3>
+											<p className="svc-related-card-description">
 												{s.description}
 											</p>
-											<span className="SvcRelatedCardLink">
+											<span className="svc-related-card-link">
 												View service <FaArrowRight aria-hidden="true" />
 											</span>
 										</Link>
@@ -338,20 +341,20 @@ export default function WebApplication() {
 					</section>
 				)}
 
-				<section className="SvcCTASection" aria-labelledby="wa-cta-title">
-					<div className="SvcCTAPattern" aria-hidden="true" />
-					<div className="SvcShell SvcCTAContent">
-						<h2 id="wa-cta-title" className="SvcCTATitle">
+				<section className="svc-cta-section" aria-labelledby="wa-cta-title">
+					<div className="svc-cta-pattern" aria-hidden="true" />
+					<div className="svc-shell svc-cta-content">
+						<h2 id="wa-cta-title" className="svc-cta-title">
 							Ready to build an application your business can rely on?
 						</h2>
-						<p className="SvcCTASubtitle">
+						<p className="svc-cta-subtitle">
 							Tell us about your product and we'll architect a web application
 							built to perform, scale, and last.
 						</p>
 						<Link
 							to={ONBOARDING_URL}
 							state={{ scrollToTop: true }}
-							className="CTA SvcCTAButton"
+							className="cta svc-cta-button"
 						>
 							Get Started <FaArrowRight aria-hidden="true" />
 						</Link>

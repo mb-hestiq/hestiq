@@ -1,4 +1,4 @@
-import Logo from "../assets/logo.svg?react";
+import Logo from "../assets/images/logos/logo.svg?react";
 import { Link } from "react-router";
 import solutions from "../../shared/solutions.js";
 import { companyName, companyMission } from "../../shared/company.js";
@@ -15,18 +15,18 @@ export default function Footer() {
 
 	return (
 		<footer role="contentinfo">
-			<div className="FooterMainContainer">
-				<div className="FooterBrandContainer">
-					<div className="BrandLogo">
+			<div className="footer-main-container">
+				<div className="footer-brand-container">
+					<div className="brand-logo">
 						<span className="sr-only">{companyName}</span>
 						<Link to="/">
-							<Logo className="Logo h-10 w-auto" />
+							<Logo className="logo h-10 w-auto" />
 						</Link>
 					</div>
 
-					<p className="CompanyMission">{companyMission}</p>
+					<p className="company-mission">{companyMission}</p>
 
-					<div className="SocialLinks">
+					<div className="social-links">
 						<nav aria-label="Social media">
 							<Link
 								title="Facebook"
@@ -66,7 +66,7 @@ export default function Footer() {
 						</nav>
 					</div>
 				</div>
-				<div className="FooterLinksContainer">
+				<div className="footer-links-container">
 					<nav aria-label="Footer navigation">
 						<ul>
 							<span>Solutions</span>
@@ -129,7 +129,7 @@ export default function Footer() {
 					</nav>
 				</div>
 			</div>
-			<div className="FooterCopyrightContainer">
+			<div className="footer-copyright-container">
 				<small>
 					© {new Date().getFullYear()} {companyName}, All rights reserved.
 				</small>

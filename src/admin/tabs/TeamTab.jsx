@@ -49,9 +49,7 @@ const COLUMNS = [
 					className="w-8 h-8 rounded-full object-cover border border-border"
 				/>
 			) : (
-				<div className="w-8 h-8 rounded-full bg-gray-100 border border-border flex items-center justify-center text-xs text-text-muted">
-					?
-				</div>
+				<div className="admin-avatar-fallback">?</div>
 			),
 	},
 	{ accessorKey: "name", header: "Name", cell: (info) => info.getValue() },
@@ -70,10 +68,7 @@ const COLUMNS = [
 			return (
 				<div className="flex flex-wrap gap-1">
 					{tags.map((tag) => (
-						<span
-							key={tag}
-							className="px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-[#342937]"
-						>
+						<span key={tag} className="admin-badge admin-badge-muted">
 							{tag}
 						</span>
 					))}
@@ -220,8 +215,8 @@ export default function TeamTab() {
 
 	return (
 		<div>
-			<h2 className="text-xl font-semibold text-[#342937] tab-title">Team</h2>
-			<div className="bg-white rounded-xl border border-border p-4">
+			<h2 className="admin-section-title tab-title">Team</h2>
+			<div className="admin-panel">
 				<DataGrid
 					data={members}
 					columns={COLUMNS}

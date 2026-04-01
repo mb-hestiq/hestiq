@@ -114,12 +114,12 @@ const APPLICANT_FIELDS = [
 ];
 
 const STATUS_COLORS = {
-	active: "bg-green-100 text-green-800",
-	closed: "bg-gray-100 text-gray-600",
-	pending: "bg-yellow-100 text-yellow-800",
-	reviewing: "bg-blue-100 text-blue-800",
-	accepted: "bg-green-100 text-green-800",
-	rejected: "bg-red-100 text-red-600",
+	active: "admin-badge-success",
+	closed: "admin-badge-neutral",
+	pending: "admin-badge-warning",
+	reviewing: "admin-badge-info",
+	accepted: "admin-badge-success",
+	rejected: "admin-badge-danger",
 };
 
 const JOB_COLUMNS = [
@@ -139,7 +139,7 @@ const JOB_COLUMNS = [
 		header: "Status",
 		cell: (i) => (
 			<span
-				className={`px-2 py-0.5 rounded-full text-xs font-medium ${STATUS_COLORS[i.getValue()] ?? "bg-gray-100 text-gray-600"}`}
+				className={`admin-badge ${STATUS_COLORS[i.getValue()] ?? "admin-badge-neutral"}`}
 			>
 				{i.getValue()}
 			</span>
@@ -290,10 +290,7 @@ function ApplicantsTable({ job, token, onJobUpdate }) {
 				accessorKey: "email",
 				header: "Email",
 				cell: (i) => (
-					<a
-						href={`mailto:${i.getValue()}`}
-						className="text-[#342937] underline underline-offset-2 hover:opacity-70"
-					>
+					<a href={`mailto:${i.getValue()}`} className="admin-link-primary">
 						{i.getValue()}
 					</a>
 				),
@@ -308,7 +305,7 @@ function ApplicantsTable({ job, token, onJobUpdate }) {
 				header: "Status",
 				cell: (i) => (
 					<span
-						className={`px-2 py-0.5 rounded-full text-xs font-medium ${STATUS_COLORS[i.getValue()] ?? "bg-gray-100 text-gray-600"}`}
+						className={`admin-badge ${STATUS_COLORS[i.getValue()] ?? "admin-badge-neutral"}`}
 					>
 						{i.getValue()}
 					</span>
@@ -330,7 +327,7 @@ function ApplicantsTable({ job, token, onJobUpdate }) {
 					>
 						<button
 							onClick={() => setModal({ open: true, target: row.original })}
-							className="admin-icon-btn text-[#342937]"
+							className="admin-icon-btn text-primary"
 							title="Edit"
 						>
 							<RiEditLine size={16} />
@@ -338,7 +335,7 @@ function ApplicantsTable({ job, token, onJobUpdate }) {
 						{row.original.resumeUrl && (
 							<button
 								onClick={() => handleDownloadCv(row.original)}
-								className="admin-icon-btn text-[#342937]"
+								className="admin-icon-btn text-primary"
 								title="Download CV"
 								disabled={downloading === row.original._id}
 							>
@@ -366,7 +363,7 @@ function ApplicantsTable({ job, token, onJobUpdate }) {
 
 	return (
 		<div>
-			<h4 className="text-sm font-semibold text-[#342937] mb-3">
+			<h4 className="admin-subsection-title">
 				Applicants ({applicants.length})
 			</h4>
 			{applicants.length === 0 ? (
@@ -544,8 +541,8 @@ export default function JobsTab() {
 
 	return (
 		<div>
-			<h2 className="text-xl font-semibold text-[#342937] tab-title">Jobs</h2>
-			<div className="bg-white rounded-xl border border-border p-4">
+			<h2 className="admin-section-title tab-title">Jobs</h2>
+			<div className="admin-panel">
 				<DataGrid
 					data={jobs}
 					columns={JOB_COLUMNS}

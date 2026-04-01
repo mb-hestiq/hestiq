@@ -94,7 +94,7 @@ const COLUMNS = [
 		header: "Role",
 		cell: (info) => (
 			<span
-				className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${info.getValue() === "admin" ? "bg-[#342937] text-white" : "bg-gray-100 text-[#342937]"}`}
+				className={`admin-badge ${info.getValue() === "admin" ? "admin-badge-primary" : "admin-badge-muted"}`}
 			>
 				{info.getValue()}
 			</span>
@@ -203,8 +203,8 @@ export default function UsersTab() {
 
 	return (
 		<div>
-			<h2 className="text-xl font-semibold text-[#342937] tab-title">Users</h2>
-			<div className="bg-white rounded-xl border border-border p-4">
+			<h2 className="admin-section-title tab-title">Users</h2>
+			<div className="admin-panel">
 				<DataGrid
 					data={users}
 					columns={COLUMNS}

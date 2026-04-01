@@ -1,26 +1,26 @@
 import React from "react";
 import { Link } from "react-router";
-import DesignerHuman from "../assets/designer-human.svg?react";
-import Wave from "../assets/wave.svg?react";
+import DesignerHuman from "../assets/images/illustrations/designer-human.svg?react";
+import Wave from "../assets/images/illustrations/wave.svg?react";
 
 export default function HeroSection() {
 	return (
-		<div className="HeroSection">
-			<Wave className="Wave" />
-			<div className="HeroContent">
-				<div className="HeroLeftContent">
-					<h1 className="HeroTitle">
+		<div className="hero-section-landing">
+			<Wave className="hero-wave" />
+			<div className="hero-content">
+				<div className="hero-left-content">
+					<h1 className="hero-title">
 						Design & <span>Development</span>, Done Right.
 					</h1>
-					<p className="HeroDescription">
+					<p className="hero-description">
 						We build clear, scalable digital products by combining thoughtful
 						design with solid engineering.
 					</p>
-					<Link className="CTA HeroAction" to="/onboarding">
+					<Link className="cta hero-action" to="/onboarding">
 						Get Started
 					</Link>
 				</div>
-				<div className="HeroRightContent">
+				<div className="hero-right-content">
 					<DesignerHuman className="hidden md:flex" />
 				</div>
 			</div>

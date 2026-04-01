@@ -4,13 +4,13 @@ import Footer from "../components/Footer";
 import Form from "../components/Form";
 import Header from "../components/Header";
 import { useAuth } from "../hooks/useAuth.js";
-import Logo from "../assets/logo.svg?react";
+import Logo from "../assets/images/logos/logo.svg?react";
 import { companyName } from "../../shared/company.js";
 import { FaCircleCheck, FaLock, FaShieldHalved } from "react-icons/fa6";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function LoginPage() {
+export default function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
@@ -55,42 +55,42 @@ export default function LoginPage() {
 	return (
 		<>
 			<Header />
-			<main className="AuthPage">
-				<div className="AuthCard">
-					<div className="AuthBrandPanel">
-						<div className="AuthBrandLogo">
-							<Logo className="AuthBrandLogoMark" />
+			<main className="auth-page">
+				<div className="auth-card">
+					<div className="auth-brand-panel">
+						<div className="auth-brand-logo">
+							<Logo className="auth-brand-logo-mark" />
 						</div>
-						<div className="AuthBrandContent">
-							<p className="AuthBrandEyebrow">Welcome back</p>
-							<h1 className="AuthBrandTitle">
+						<div className="auth-brand-content">
+							<p className="auth-brand-eyebrow">Welcome back</p>
+							<h1 className="auth-brand-title">
 								Sign in to your {companyName} account
 							</h1>
-							<p className="AuthBrandDescription">
+							<p className="auth-brand-description">
 								Access your orders, manage your services, and stay up to date
 								with everything happening across your projects.
 							</p>
 						</div>
-						<div className="AuthBrandFeatures">
-							<div className="AuthBrandFeature">
-								<FaCircleCheck className="AuthBrandFeatureIcon" />
-								<span className="AuthBrandFeatureText">
+						<div className="auth-brand-features">
+							<div className="auth-brand-feature">
+								<FaCircleCheck className="auth-brand-feature-icon" />
+								<span className="auth-brand-feature-text">
 									<strong>Track your orders</strong>
 									Monitor projects, check delivery timelines, and review all
 									active work in one place.
 								</span>
 							</div>
-							<div className="AuthBrandFeature">
-								<FaShieldHalved className="AuthBrandFeatureIcon" />
-								<span className="AuthBrandFeatureText">
+							<div className="auth-brand-feature">
+								<FaShieldHalved className="auth-brand-feature-icon" />
+								<span className="auth-brand-feature-text">
 									<strong>Secure access</strong>
 									Your account and data are protected with industry-standard
 									authentication.
 								</span>
 							</div>
-							<div className="AuthBrandFeature">
-								<FaLock className="AuthBrandFeatureIcon" />
-								<span className="AuthBrandFeatureText">
+							<div className="auth-brand-feature">
+								<FaLock className="auth-brand-feature-icon" />
+								<span className="auth-brand-feature-text">
 									<strong>Stay in the loop</strong>
 									Get updates, notifications, and direct communication from the{" "}
 									{companyName} team.
@@ -99,8 +99,8 @@ export default function LoginPage() {
 						</div>
 					</div>
 
-					<div className="AuthFormPanel">
-						<Form className="AuthForm">
+					<div className="auth-form-panel">
+						<Form className="auth-form">
 							<Form.Header>
 								<Form.Title>Sign in</Form.Title>
 								<Form.Description>
@@ -127,7 +127,7 @@ export default function LoginPage() {
 								/>
 							</Form.Body>
 						</Form>
-						<p className="AuthSwitch">
+						<p className="auth-switch">
 							Don&apos;t have an account? <Link to="/register">Create one</Link>
 						</p>
 					</div>

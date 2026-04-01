@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-export default function NotFoundPage() {
+export default function NotFound() {
 	return (
 		<>
 			<Header />
@@ -32,7 +32,7 @@ export default function NotFoundPage() {
 						The page you're looking for doesn't exist or has been moved.
 					</p>
 				</div>
-				<Link className="CTA px-6 py-2.5 font-semibold text-sm" to="/">
+				<Link className="cta px-6 py-2.5 font-semibold text-sm" to="/">
 					Back to Home
 				</Link>
 			</main>

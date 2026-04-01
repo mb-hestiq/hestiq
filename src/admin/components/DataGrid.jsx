@@ -34,7 +34,7 @@ function IndeterminateCheckbox({ indeterminate, className = "", ...rest }) {
 		<input
 			type="checkbox"
 			ref={ref}
-			className={`w-4 h-4 accent-[#342937] cursor-pointer ${className}`}
+			className={`w-4 h-4 accent-primary cursor-pointer ${className}`}
 			{...rest}
 		/>
 	);
@@ -94,7 +94,7 @@ const DataGrid = memo(function DataGrid({
 				>
 					<button
 						onClick={() => onEdit?.(row.original)}
-						className="admin-icon-btn text-[#342937]"
+						className="admin-icon-btn text-primary"
 						title="Edit"
 					>
 						<RiEditLine size={16} />
@@ -250,7 +250,7 @@ const DataGrid = memo(function DataGrid({
 															header.column.setFilterValue(e.target.value)
 														}
 														placeholder="Filter…"
-														className="w-full px-2 py-0.5 rounded text-xs text-[#342937] bg-white border border-border focus:outline-none focus:border-[#342937]"
+														className="admin-input admin-filter-input"
 														onClick={(e) => e.stopPropagation()}
 													/>
 												)}
@@ -350,13 +350,13 @@ const DataGrid = memo(function DataGrid({
 			</div>
 
 			{selectedIds.length > 0 && (
-				<div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4 bg-[#342937] text-white px-6 py-3 rounded-xl shadow-lg">
+				<div className="admin-bulk-bar">
 					<span className="text-sm font-medium">
 						{selectedIds.length} selected
 					</span>
 					<button
 						onClick={() => setBulkDeleteOpen(true)}
-						className="flex items-center gap-2 text-sm bg-red-600 hover:bg-red-700 px-4 py-1.5 rounded-lg transition-colors"
+						className="admin-bulk-danger-btn"
 					>
 						<RiDeleteBinLine size={14} />
 						Delete selected

@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ExternalLink from "../components/ExternalLink";
 
-export default function TermsPage() {
+export default function Terms() {
 	return (
 		<>
 			<Header />

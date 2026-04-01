@@ -50,10 +50,8 @@ export default function ProfileTab() {
 
 	return (
 		<div className="max-w-lg">
-			<h2 className="text-xl font-semibold text-[#342937] tab-title">
-				Profile Settings
-			</h2>
-			<div className="bg-white rounded-xl border border-border p-6">
+			<h2 className="admin-section-title tab-title">Profile Settings</h2>
+			<div className="admin-panel p-6">
 				{status && (
 					<div
 						className={`mb-5 p-3 rounded-md text-sm ${status.type === "success" ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"}`}
@@ -63,7 +61,7 @@ export default function ProfileTab() {
 				)}
 				<form onSubmit={handleSubmit} className="flex flex-col gap-5">
 					<div className="flex flex-col gap-1.5">
-						<label className="text-sm font-medium text-[#342937]">Name</label>
+						<label className="admin-form-label">Name</label>
 						<input
 							type="text"
 							name="name"
@@ -75,7 +73,7 @@ export default function ProfileTab() {
 						/>
 					</div>
 					<div className="flex flex-col gap-1.5">
-						<label className="text-sm font-medium text-[#342937]">Email</label>
+						<label className="admin-form-label">Email</label>
 						<input
 							type="email"
 							name="email"
@@ -87,9 +85,7 @@ export default function ProfileTab() {
 						/>
 					</div>
 					<div className="flex flex-col gap-1.5">
-						<label className="text-sm font-medium text-[#342937]">
-							New Password
-						</label>
+						<label className="admin-form-label">New Password</label>
 						<input
 							type="password"
 							name="password"

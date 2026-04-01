@@ -7,24 +7,24 @@ import {
 } from "react-icons/fa6";
 
 function Form({ className = "", children }) {
-	return <div className={`Form ${className}`}>{children}</div>;
+	return <div className={`form-shell ${className}`.trim()}>{children}</div>;
 }
 
 function Header({ children, className = "" }) {
-	return <div className={`FormHeader ${className}`}>{children}</div>;
+	return <div className={`form-header ${className}`.trim()}>{children}</div>;
 }
 
 function Title({ children, className = "" }) {
-	return <h2 className={`FormTitle ${className}`}>{children}</h2>;
+	return <h2 className={`form-title ${className}`.trim()}>{children}</h2>;
 }
 
 function Description({ children, className = "" }) {
-	return <p className={`FormDescription ${className}`}>{children}</p>;
+	return <p className={`form-description ${className}`.trim()}>{children}</p>;
 }
 
 function Body({ children, onSubmit, className = "" }) {
 	return (
-		<form className={`FormBody ${className}`} onSubmit={onSubmit}>
+		<form className={`form-body ${className}`.trim()} onSubmit={onSubmit}>
 			{children}
 		</form>
 	);
@@ -38,10 +38,10 @@ function NameInput({
 	required = false,
 }) {
 	return (
-		<label className={`FormField ${className}`}>
-			<span className="FormLabel">{label}</span>
+		<label className={`form-field ${className}`.trim()}>
+			<span className="form-label">{label}</span>
 			<input
-				className="FormInput"
+				className="form-input"
 				type="text"
 				name="name"
 				value={value}
@@ -61,10 +61,10 @@ function EmailInput({
 	required = false,
 }) {
 	return (
-		<label className={`FormField ${className}`}>
-			<span className="FormLabel">{label}</span>
+		<label className={`form-field ${className}`.trim()}>
+			<span className="form-label">{label}</span>
 			<input
-				className="FormInput"
+				className="form-input"
 				type="email"
 				name="email"
 				value={value}
@@ -84,10 +84,10 @@ function MessageInput({
 	required = false,
 }) {
 	return (
-		<label className={`FormField ${className}`}>
-			<span className="FormLabel">{label}</span>
+		<label className={`form-field ${className}`.trim()}>
+			<span className="form-label">{label}</span>
 			<textarea
-				className="FormInput FormTextarea"
+				className="form-input form-textarea"
 				name="message"
 				value={value}
 				onChange={onChange}
@@ -108,11 +108,11 @@ function PasswordInput({
 	const [showPassword, setShowPassword] = React.useState(false);
 
 	return (
-		<label className={`FormField ${className}`}>
-			<span className="FormLabel">{label}</span>
-			<div className="FormInputContainer">
+		<label className={`form-field ${className}`.trim()}>
+			<span className="form-label">{label}</span>
+			<div className="form-input-container">
 				<input
-					className="FormInput"
+					className="form-input"
 					type={showPassword ? "text" : "password"}
 					name="password"
 					value={value}
@@ -122,7 +122,7 @@ function PasswordInput({
 				/>
 				<button
 					type="button"
-					className="FormPasswordToggle"
+					className="form-password-toggle"
 					onClick={() => setShowPassword(!showPassword)}
 				>
 					{showPassword ? <FaEye /> : <FaEyeSlash />}
@@ -135,7 +135,7 @@ function PasswordInput({
 function Feedback({ type, message, className = "" }) {
 	if (type === "idle") return null;
 	return (
-		<p className={`FormFeedback ${className}`} data-type={type}>
+		<p className={`form-feedback ${className}`.trim()} data-type={type}>
 			{message}
 		</p>
 	);
@@ -149,11 +149,11 @@ function SubmitButton({
 }) {
 	return (
 		<button
-			className={`CTA FormSubmit ${className}`}
+			className={`cta form-submit ${className}`.trim()}
 			type="submit"
 			disabled={!enabled}
 		>
-			{isLoading ? <FaCircleNotch className="FormSpinner" /> : null}
+			{isLoading ? <FaCircleNotch className="form-spinner" /> : null}
 			<span>{isLoading ? "Submitting..." : label}</span>
 			{!isLoading ? <FaArrowRight /> : null}
 		</button>
@@ -161,7 +161,9 @@ function SubmitButton({
 }
 
 function InputGroup({ children, className = "" }) {
-	return <div className={`FormInputGroup ${className}`}>{children}</div>;
+	return (
+		<div className={`form-input-group ${className}`.trim()}>{children}</div>
+	);
 }
 
 Form.Header = Header;

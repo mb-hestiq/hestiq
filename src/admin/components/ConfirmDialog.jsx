@@ -36,7 +36,7 @@ const ConfirmDialog = memo(function ConfirmDialog({
 		>
 			<div className="admin-dialog-panel w-full max-w-sm">
 				<div className="flex items-center justify-between mb-4">
-					<h2 className="text-lg font-semibold text-[#342937]">{title}</h2>
+					<h2 className="admin-dialog-title">{title}</h2>
 					<button onClick={onClose} className="admin-icon-btn">
 						<RiCloseLine size={20} />
 					</button>

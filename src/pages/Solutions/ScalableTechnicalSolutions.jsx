@@ -1,6 +1,5 @@
 import { Link } from "react-router";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import SolutionDetailPage from "../../components/sections/solutions/base/SolutionDetailPage";
 import {
 	FaCloud,
 	FaCode,
@@ -21,7 +20,6 @@ import {
 	FaLayerGroup,
 	FaCircleExclamation,
 } from "react-icons/fa6";
-import "./ScalableTechnicalSolutions.css";
 
 const STEPS = [
 	{
@@ -138,194 +136,55 @@ const PAIN_POINTS = [
 
 export default function ScalableTechnicalSolutions() {
 	return (
-		<>
-			<Header />
-			<main className="STSPage">
-				<section className="STSHero" aria-labelledby="sts-hero-title">
-					<div className="STSHeroPattern" aria-hidden="true" />
-					<div className="STSHeroContent">
-						<p className="STSHeroEyebrow">Scalable Technical Solutions</p>
-						<h1 id="sts-hero-title" className="STSHeroTitle">
-							Robust Solutions for Growing Businesses
-						</h1>
-						<p className="STSHeroSubtitle">
-							Building scalable technical solutions that evolve with your
-							business
-						</p>
-						<Link to="/onboarding" className="CTA STSHeroCTA">
-							Discover Our Approach
-						</Link>
-					</div>
-				</section>
-
-				<section
-					className="STSSection STSProblem"
-					aria-labelledby="sts-problem-title"
+		<SolutionDetailPage
+			heroId="sts-hero-title"
+			heroEyebrow="Scalable Technical Solutions"
+			heroTitle="Robust Solutions for Growing Businesses"
+			heroSubtitle="Building scalable technical solutions that evolve with your business"
+			heroAction={
+				<Link to="/onboarding" className="cta solution-hero-cta">
+					Discover Our Approach
+				</Link>
+			}
+			problemId="sts-problem-title"
+			problemTitle="Growth exposes what was built to last a year"
+			problemDescription="As businesses grow, the technical infrastructure that worked at launch becomes a liability. Performance degrades under load, reliability suffers during peak demand, and tightly coupled systems resist the changes your product needs most. Without a deliberate scaling strategy, technical debt compounds and every new feature costs more than the last."
+			painPoints={PAIN_POINTS}
+			painPointsAriaLabel="Common scaling pain points"
+			painPointVariant="detailed"
+			methodologyId="sts-approach-title"
+			methodologyTitle="How we build for scale"
+			methodologyDescription="A deliberate, phased approach that delivers reliable infrastructure without over-engineering for problems you haven't encountered yet."
+			steps={STEPS}
+			stepsAriaLabel="Technical methodology steps"
+			servicesId="sts-services-title"
+			servicesTitle="Key capabilities"
+			servicesAriaLabel="Key services and capabilities"
+			services={SERVICES}
+			servicesCardClassName="card-surface-muted"
+			benefitsId="sts-benefits-title"
+			benefitsTitle="What you gain"
+			benefitsDescription="Technical excellence is not just about the code shipped today. It is about building the foundation that keeps your team moving at speed for years ahead."
+			benefitsAriaLabel="Benefits of working with HestiQ"
+			benefits={BENEFITS}
+			benefitsVariant="stacked"
+			benefitsAction={
+				<Link to="/onboarding" className="cta solution-benefits-cta-button">
+					Get Started <FaArrowRight aria-hidden="true" />
+				</Link>
+			}
+			ctaId="sts-cta-title"
+			ctaTitle="Ready to Scale Your Business?"
+			ctaSubtitle="Partner with HestiQ to build infrastructure that handles today's demands and tomorrow's growth without compromise."
+			ctaAction={
+				<Link
+					to="/contact"
+					state={{ scrollToTop: true }}
+					className="cta solution-cta-button"
 				>
-					<div className="STSShell">
-						<div className="STSProblemGrid">
-							<div className="STSProblemContent">
-								<p className="STSSectionEyebrow">The Challenge</p>
-								<h2 id="sts-problem-title" className="STSSectionTitle">
-									Growth exposes what was built to last a year
-								</h2>
-								<p className="STSSectionDescription">
-									As businesses grow, the technical infrastructure that worked
-									at launch becomes a liability. Performance degrades under
-									load, reliability suffers during peak demand, and tightly
-									coupled systems resist the changes your product needs most.
-									Without a deliberate scaling strategy, technical debt
-									compounds and every new feature costs more than the last.
-								</p>
-							</div>
-							<div
-								className="STSPainPoints"
-								aria-label="Common scaling pain points"
-							>
-								{PAIN_POINTS.map(({ icon: Icon, label, description }) => (
-									<div className="STSPainPoint" key={label}>
-										<div className="STSPainPointIcon" aria-hidden="true">
-											<Icon />
-										</div>
-										<div className="STSPainPointText">
-											<span className="STSPainPointLabel">{label}</span>
-											<span className="STSPainPointDesc">{description}</span>
-										</div>
-									</div>
-								))}
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section
-					className="STSSection STSApproach STSSectionAlt"
-					aria-labelledby="sts-approach-title"
-				>
-					<div className="STSShell">
-						<div className="STSSectionHeader STSSectionHeaderCentered">
-							<p className="STSSectionEyebrow">Our Methodology</p>
-							<h2 id="sts-approach-title" className="STSSectionTitle">
-								How we build for scale
-							</h2>
-							<p className="STSSectionDescription">
-								A deliberate, phased approach that delivers reliable
-								infrastructure without over-engineering for problems you haven't
-								encountered yet.
-							</p>
-						</div>
-						<ol
-							className="STSStepsGrid"
-							aria-label="Technical methodology steps"
-						>
-							{STEPS.map(({ number, icon: Icon, title, description }) => (
-								<li className="STSStep" key={number}>
-									<div className="STSStepHead">
-										<span className="STSStepNumber" aria-hidden="true">
-											{number}
-										</span>
-										<div className="STSStepIconWrapper" aria-hidden="true">
-											<Icon />
-										</div>
-									</div>
-									<div className="STSStepBody">
-										<h3 className="STSStepTitle">{title}</h3>
-										<p className="STSStepDescription">{description}</p>
-									</div>
-								</li>
-							))}
-						</ol>
-					</div>
-				</section>
-
-				<section
-					className="STSSection STSServices"
-					aria-labelledby="sts-services-title"
-				>
-					<div className="STSShell">
-						<div className="STSSectionHeader STSSectionHeaderCentered">
-							<p className="STSSectionEyebrow">What We Deliver</p>
-							<h2 id="sts-services-title" className="STSSectionTitle">
-								Key capabilities
-							</h2>
-						</div>
-						<ul
-							className="STSServicesGrid"
-							aria-label="Key services and capabilities"
-						>
-							{SERVICES.map(({ icon: Icon, title, description }) => (
-								<li className="STSServiceCard" key={title}>
-									<div className="STSServiceIconWrapper" aria-hidden="true">
-										<Icon />
-									</div>
-									<h3 className="STSServiceTitle">{title}</h3>
-									<p className="STSServiceDescription">{description}</p>
-								</li>
-							))}
-						</ul>
-					</div>
-				</section>
-
-				<section
-					className="STSSection STSBenefits STSSectionAlt"
-					aria-labelledby="sts-benefits-title"
-				>
-					<div className="STSShell">
-						<div className="STSSectionHeader STSSectionHeaderCentered">
-							<p className="STSSectionEyebrow">Why HestiQ</p>
-							<h2 id="sts-benefits-title" className="STSSectionTitle">
-								What you gain
-							</h2>
-							<p className="STSSectionDescription">
-								Technical excellence is not just about the code shipped today.
-								It is about building the foundation that keeps your team moving
-								at speed for years ahead.
-							</p>
-						</div>
-						<ul
-							className="STSBenefitsGrid"
-							aria-label="Benefits of working with HestiQ"
-						>
-							{BENEFITS.map(({ icon: Icon, title, description }) => (
-								<li className="STSBenefit" key={title}>
-									<div className="STSBenefitIconWrapper" aria-hidden="true">
-										<Icon />
-									</div>
-									<div className="STSBenefitContent">
-										<h3 className="STSBenefitTitle">{title}</h3>
-										<p className="STSBenefitDescription">{description}</p>
-									</div>
-								</li>
-							))}
-						</ul>
-						<div className="STSBenefitsCTA">
-							<Link to="/onboarding" className="CTA STSBenefitsCTABtn">
-								Get Started <FaArrowRight aria-hidden="true" />
-							</Link>
-						</div>
-					</div>
-				</section>
-
-				<section className="STSCTASection" aria-labelledby="sts-cta-title">
-					<div className="STSShell STSCTAContent">
-						<h2 id="sts-cta-title" className="STSCTATitle">
-							Ready to Scale Your Business?
-						</h2>
-						<p className="STSCTASubtitle">
-							Partner with HestiQ to build infrastructure that handles today's
-							demands and tomorrow's growth without compromise.
-						</p>
-						<Link
-							to="/contact"
-							state={{ scrollToTop: true }}
-							className="CTA STSCTAButton"
-						>
-							Talk to Our Experts
-						</Link>
-					</div>
-				</section>
-			</main>
-			<Footer />
-		</>
+					Talk to Our Experts
+				</Link>
+			}
+		/>
 	);
 }

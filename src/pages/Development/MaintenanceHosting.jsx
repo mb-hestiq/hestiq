@@ -139,39 +139,39 @@ export default function MaintenanceHosting() {
 	return (
 		<>
 			<Header />
-			<main className="SvcPage">
+			<main className="svc-page">
 				<section
 					id="overview"
-					className="SvcSection"
+					className="svc-section"
 					aria-labelledby="mh-overview-title"
 				>
-					<div className="SvcShell">
-						<div className="SvcOverviewGrid">
-							<div className="SvcOverviewContent">
-								<p className="SvcEyebrow">The Problem We Solve</p>
-								<h2 id="mh-overview-title" className="SvcSectionTitle">
+					<div className="svc-shell">
+						<div className="svc-overview-grid">
+							<div className="svc-overview-content">
+								<p className="svc-eyebrow">The Problem We Solve</p>
+								<h2 id="mh-overview-title" className="svc-section-title">
 									Your site, running. Always.
 								</h2>
-								<p className="SvcSectionDescription">
+								<p className="svc-section-description">
 									Most websites are launched and promptly forgotten. Plugins go
 									unpatched, dependencies age, backups are never verified, and
 									performance gradually degrades until something breaks at the
 									worst possible time.
 								</p>
-								<p className="SvcSectionDescription">
+								<p className="svc-section-description">
 									We take full ownership of your hosting and maintenance:
 									monitoring infrastructure, applying updates, verifying
 									backups, and resolving issues before they reach your users or
 									your inbox.
 								</p>
 								<ul
-									className="SvcOverviewPoints"
+									className="svc-overview-points"
 									aria-label="Core value points"
 								>
 									{OVERVIEW_POINTS.map((point) => (
-										<li key={point} className="SvcOverviewPoint">
+										<li key={point} className="svc-overview-point">
 											<FaCircleCheck
-												className="SvcOverviewPointIcon"
+												className="svc-overview-point-icon"
 												aria-hidden="true"
 											/>
 											<span>{point}</span>
@@ -179,24 +179,31 @@ export default function MaintenanceHosting() {
 									))}
 								</ul>
 							</div>
-							<div className="SvcOverviewMeta" aria-label="Service highlights">
-								<div className="SvcOverviewMetric">
-									<span className="SvcOverviewMetricLabel">Uptime target</span>
-									<strong className="SvcOverviewMetricValue">
+							<div
+								className="svc-overview-meta"
+								aria-label="Service highlights"
+							>
+								<div className="svc-overview-metric">
+									<span className="svc-overview-metric-label">
+										Uptime target
+									</span>
+									<strong className="svc-overview-metric-value">
 										99.9% with continuous monitoring and proactive alerts
 									</strong>
 								</div>
-								<div className="SvcOverviewMetric">
-									<span className="SvcOverviewMetricLabel">
+								<div className="svc-overview-metric">
+									<span className="svc-overview-metric-label">
 										Backup frequency
 									</span>
-									<strong className="SvcOverviewMetricValue">
+									<strong className="svc-overview-metric-value">
 										Daily encrypted backups with verified restore capability
 									</strong>
 								</div>
-								<div className="SvcOverviewMetric">
-									<span className="SvcOverviewMetricLabel">Support access</span>
-									<strong className="SvcOverviewMetricValue">
+								<div className="svc-overview-metric">
+									<span className="svc-overview-metric-label">
+										Support access
+									</span>
+									<strong className="svc-overview-metric-value">
 										Direct contact with your dedicated technical owner
 									</strong>
 								</div>
@@ -206,87 +213,90 @@ export default function MaintenanceHosting() {
 				</section>
 
 				<section
-					className="SvcSection SvcSectionAlt"
+					className="svc-section svc-section-alt"
 					aria-labelledby="mh-features-title"
 				>
-					<div className="SvcShell">
-						<div className="SvcSectionHeader SvcSectionHeaderCentered">
-							<p className="SvcEyebrow">What's Included</p>
-							<h2 id="mh-features-title" className="SvcSectionTitle">
+					<div className="svc-shell">
+						<div className="svc-section-header svc-section-header-centered">
+							<p className="svc-eyebrow">What's Included</p>
+							<h2 id="mh-features-title" className="svc-section-title">
 								Every plan covers
 							</h2>
-							<p className="SvcSectionDescription">
+							<p className="svc-section-description">
 								A complete managed infrastructure service covering hosting,
 								security, updates, and support in a single engagement.
 							</p>
 						</div>
-						<ul className="SvcFeaturesGrid" aria-label="Service features">
+						<ul className="svc-features-grid" aria-label="Service features">
 							{FEATURES.map(({ icon: Icon, title, description }) => (
-								<li key={title} className="SvcFeatureCard">
-									<div className="SvcFeatureIconWrapper" aria-hidden="true">
+								<li key={title} className="svc-feature-card">
+									<div className="svc-feature-icon-wrapper" aria-hidden="true">
 										<Icon />
 									</div>
-									<h3 className="SvcFeatureTitle">{title}</h3>
-									<p className="SvcFeatureDescription">{description}</p>
+									<h3 className="svc-feature-title">{title}</h3>
+									<p className="svc-feature-description">{description}</p>
 								</li>
 							))}
 						</ul>
 					</div>
 				</section>
 
-				<section className="SvcSection" aria-labelledby="mh-usecases-title">
-					<div className="SvcShell">
-						<div className="SvcSectionHeader">
-							<p className="SvcEyebrow">Applications</p>
-							<h2 id="mh-usecases-title" className="SvcSectionTitle">
+				<section className="svc-section" aria-labelledby="mh-usecases-title">
+					<div className="svc-shell">
+						<div className="svc-section-header">
+							<p className="svc-eyebrow">Applications</p>
+							<h2 id="mh-usecases-title" className="svc-section-title">
 								Who needs managed maintenance
 							</h2>
-							<p className="SvcSectionDescription">
+							<p className="svc-section-description">
 								Any online presence that drives revenue or serves customers
 								professionally needs reliable infrastructure behind it.
 							</p>
 						</div>
-						<ul className="SvcUseCasesGrid" aria-label="Use cases">
+						<ul className="svc-use-cases-grid" aria-label="Use cases">
 							{USE_CASES.map(({ label, title, description }) => (
-								<li key={label} className="SvcUseCaseCard">
-									<span className="SvcUseCaseLabel">{label}</span>
-									<h3 className="SvcUseCaseTitle">{title}</h3>
-									<p className="SvcUseCaseDescription">{description}</p>
+								<li key={label} className="svc-use-case-card">
+									<span className="svc-use-case-label">{label}</span>
+									<h3 className="svc-use-case-title">{title}</h3>
+									<p className="svc-use-case-description">{description}</p>
 								</li>
 							))}
 						</ul>
 					</div>
 				</section>
 
-				<section className="SvcSection" aria-labelledby="mh-benefits-title">
-					<div className="SvcShell">
-						<div className="SvcBenefitsGrid">
-							<div className="SvcBenefitsIntro">
-								<p className="SvcEyebrow">Why HestiQ</p>
-								<h2 id="mh-benefits-title" className="SvcSectionTitle">
+				<section className="svc-section" aria-labelledby="mh-benefits-title">
+					<div className="svc-shell">
+						<div className="svc-benefits-grid">
+							<div className="svc-benefits-intro">
+								<p className="svc-eyebrow">Why HestiQ</p>
+								<h2 id="mh-benefits-title" className="svc-section-title">
 									What you gain
 								</h2>
-								<p className="SvcSectionDescription">
+								<p className="svc-section-description">
 									Technical accountability that lets you focus on your business,
 									not your infrastructure.
 								</p>
 								<Link
 									to={ONBOARDING_URL}
 									state={{ scrollToTop: true }}
-									className="CTA SvcBenefitsCTA"
+									className="cta svc-benefits-cta"
 								>
 									Get Started <FaArrowRight aria-hidden="true" />
 								</Link>
 							</div>
-							<ul className="SvcBenefitsList" aria-label="Benefits">
+							<ul className="svc-benefits-list" aria-label="Benefits">
 								{BENEFITS.map(({ icon: Icon, title, description }) => (
-									<li key={title} className="SvcBenefit">
-										<div className="SvcBenefitIconWrapper" aria-hidden="true">
+									<li key={title} className="svc-benefit">
+										<div
+											className="svc-benefit-icon-wrapper"
+											aria-hidden="true"
+										>
 											<Icon />
 										</div>
-										<div className="SvcBenefitContent">
-											<h3 className="SvcBenefitTitle">{title}</h3>
-											<p className="SvcBenefitDescription">{description}</p>
+										<div className="svc-benefit-content">
+											<h3 className="svc-benefit-title">{title}</h3>
+											<p className="svc-benefit-description">{description}</p>
 										</div>
 									</li>
 								))}
@@ -297,23 +307,23 @@ export default function MaintenanceHosting() {
 
 				{relatedServices.length > 0 && (
 					<section
-						className="SvcSection SvcSectionAlt"
+						className="svc-section svc-section-alt"
 						aria-labelledby="mh-related-title"
 					>
-						<div className="SvcShell">
-							<div className="SvcSectionHeader SvcSectionHeaderCentered">
-								<p className="SvcEyebrow">Explore More</p>
-								<h2 id="mh-related-title" className="SvcSectionTitle">
+						<div className="svc-shell">
+							<div className="svc-section-header svc-section-header-centered">
+								<p className="svc-eyebrow">Explore More</p>
+								<h2 id="mh-related-title" className="svc-section-title">
 									Related services
 								</h2>
-								<p className="SvcSectionDescription">
+								<p className="svc-section-description">
 									Maintenance is most valuable when the site itself is built to
 									a high standard. These services ensure the foundation is worth
 									protecting.
 								</p>
 							</div>
 							<ul
-								className="SvcRelatedGrid"
+								className="svc-related-grid"
 								aria-label="Related development services"
 							>
 								{relatedServices.map((s) => (
@@ -321,18 +331,18 @@ export default function MaintenanceHosting() {
 										<Link
 											to={s.href}
 											state={{ scrollToTop: true }}
-											className="SvcRelatedCard"
+											className="svc-related-card"
 										>
-											<div className="SvcRelatedCardTop">
-												<span className="SvcRelatedCardCategory">
+											<div className="svc-related-card-top">
+												<span className="svc-related-card-category">
 													{s.category}
 												</span>
 											</div>
-											<h3 className="SvcRelatedCardTitle">{s.name}</h3>
-											<p className="SvcRelatedCardDescription">
+											<h3 className="svc-related-card-title">{s.name}</h3>
+											<p className="svc-related-card-description">
 												{s.description}
 											</p>
-											<span className="SvcRelatedCardLink">
+											<span className="svc-related-card-link">
 												View service <FaArrowRight aria-hidden="true" />
 											</span>
 										</Link>
@@ -343,20 +353,20 @@ export default function MaintenanceHosting() {
 					</section>
 				)}
 
-				<section className="SvcCTASection" aria-labelledby="mh-cta-title">
-					<div className="SvcCTAPattern" aria-hidden="true" />
-					<div className="SvcShell SvcCTAContent">
-						<h2 id="mh-cta-title" className="SvcCTATitle">
+				<section className="svc-cta-section" aria-labelledby="mh-cta-title">
+					<div className="svc-cta-pattern" aria-hidden="true" />
+					<div className="svc-shell svc-cta-content">
+						<h2 id="mh-cta-title" className="svc-cta-title">
 							Ready to hand off your infrastructure for good?
 						</h2>
-						<p className="SvcCTASubtitle">
+						<p className="svc-cta-subtitle">
 							Tell us about your current setup and we'll take full ownership of
 							keeping it secure, fast, and available.
 						</p>
 						<Link
 							to={ONBOARDING_URL}
 							state={{ scrollToTop: true }}
-							className="CTA SvcCTAButton"
+							className="cta svc-cta-button"
 						>
 							Get Started <FaArrowRight aria-hidden="true" />
 						</Link>

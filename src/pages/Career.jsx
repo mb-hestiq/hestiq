@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import WorkTime from "../assets/work-time.svg?react";
+import WorkTime from "../assets/images/illustrations/work-time.svg?react";
 import {
 	RiMapPinLine,
 	RiTimeLine,
@@ -187,23 +187,23 @@ function ApplyModal({ job, onClose }) {
 	return (
 		<dialog
 			ref={dialogRef}
-			className="ApplyModal"
+			className="apply-modal"
 			onClose={onClose}
 			aria-labelledby="apply-modal-title"
 		>
-			<div className="ApplyModalInner">
-				<div className="ApplyModalHeader">
+			<div className="apply-modal-inner">
+				<div className="apply-modal-header">
 					<div>
-						<h2 id="apply-modal-title" className="ApplyModalTitle">
+						<h2 id="apply-modal-title" className="apply-modal-title">
 							Apply for {job.title}
 						</h2>
-						<p className="ApplyModalSubtitle">
+						<p className="apply-modal-subtitle">
 							{job.location} · {job.type}
 						</p>
 					</div>
 					<button
 						type="button"
-						className="ApplyModalClose"
+						className="apply-modal-close"
 						onClick={handleClose}
 						aria-label="Close"
 					>
@@ -212,8 +212,11 @@ function ApplyModal({ job, onClose }) {
 				</div>
 
 				{success ? (
-					<div className="ApplyModalSuccess">
-						<RiCheckboxCircleLine size={48} className="ApplyModalSuccessIcon" />
+					<div className="apply-modal-success">
+						<RiCheckboxCircleLine
+							size={48}
+							className="apply-modal-success-icon"
+						/>
 						<h3>Application Submitted!</h3>
 						<p>
 							We will review your application and get back to you within 5
@@ -221,16 +224,16 @@ function ApplyModal({ job, onClose }) {
 						</p>
 						<button
 							type="button"
-							className="ApplyModalSubmitBtn"
+							className="apply-modal-submit-btn"
 							onClick={handleClose}
 						>
 							Close
 						</button>
 					</div>
 				) : (
-					<form className="ApplyModalForm" onSubmit={handleSubmit} noValidate>
-						<div className="ApplyModalRow">
-							<div className="ApplyModalField">
+					<form className="apply-modal-form" onSubmit={handleSubmit} noValidate>
+						<div className="apply-modal-row">
+							<div className="apply-modal-field">
 								<label htmlFor="apply-firstName">First Name *</label>
 								<input
 									id="apply-firstName"
@@ -243,7 +246,7 @@ function ApplyModal({ job, onClose }) {
 									autoComplete="given-name"
 								/>
 							</div>
-							<div className="ApplyModalField">
+							<div className="apply-modal-field">
 								<label htmlFor="apply-lastName">Last Name *</label>
 								<input
 									id="apply-lastName"
@@ -258,8 +261,8 @@ function ApplyModal({ job, onClose }) {
 							</div>
 						</div>
 
-						<div className="ApplyModalRow">
-							<div className="ApplyModalField">
+						<div className="apply-modal-row">
+							<div className="apply-modal-field">
 								<label htmlFor="apply-email">Email *</label>
 								<input
 									id="apply-email"
@@ -272,7 +275,7 @@ function ApplyModal({ job, onClose }) {
 									autoComplete="email"
 								/>
 							</div>
-							<div className="ApplyModalField">
+							<div className="apply-modal-field">
 								<label htmlFor="apply-phone">Phone</label>
 								<input
 									id="apply-phone"
@@ -286,10 +289,10 @@ function ApplyModal({ job, onClose }) {
 							</div>
 						</div>
 
-						<div className="ApplyModalField">
+						<div className="apply-modal-field">
 							<label htmlFor="apply-cv">Resume / CV</label>
 							<div
-								className="ApplyModalFileInput"
+								className="apply-modal-file-input"
 								onClick={() => fileInputRef.current?.click()}
 							>
 								<RiUploadLine size={18} />
@@ -307,7 +310,7 @@ function ApplyModal({ job, onClose }) {
 							/>
 						</div>
 
-						<div className="ApplyModalField">
+						<div className="apply-modal-field">
 							<label htmlFor="apply-message">Cover Letter</label>
 							<textarea
 								id="apply-message"
@@ -319,11 +322,11 @@ function ApplyModal({ job, onClose }) {
 							/>
 						</div>
 
-						{error && <p className="ApplyModalError">{error}</p>}
+						{error && <p className="apply-modal-error">{error}</p>}
 
 						<button
 							type="submit"
-							className="ApplyModalSubmitBtn"
+							className="apply-modal-submit-btn"
 							disabled={submitting}
 						>
 							{submitting ? (
@@ -347,26 +350,26 @@ function JobCard({ job, onApply }) {
 	const currency = job.salary?.currency || "USD";
 
 	return (
-		<article className="JobCard">
-			<div className="JobCardHeader">
-				<h3 className="JobCardTitle">{job.title}</h3>
+		<article className="job-card">
+			<div className="job-card-header">
+				<h3 className="job-card-title">{job.title}</h3>
 				<button
 					type="button"
-					className="JobCardApplyBtn"
+					className="job-card-apply-btn"
 					onClick={() => onApply(job)}
 				>
 					Apply Now
 				</button>
 			</div>
 
-			<div className="JobCardMeta">
-				<span className="JobCardBadge JobCardBadgeType">{job.type}</span>
-				<span className="JobCardBadge">
+			<div className="job-card-meta">
+				<span className="job-card-badge job-card-badge-type">{job.type}</span>
+				<span className="job-card-badge">
 					<RiMapPinLine size={13} />
 					{job.location}
 				</span>
 				{hasSalary && (
-					<span className="JobCardBadge">
+					<span className="job-card-badge">
 						<RiMoneyDollarCircleLine size={13} />
 						{job.salary.min && job.salary.max
 							? `${job.salary.min.toLocaleString()}–${job.salary.max.toLocaleString()} ${currency}`
@@ -378,13 +381,13 @@ function JobCard({ job, onApply }) {
 			</div>
 
 			{job.description && (
-				<p className="JobCardDescription">{job.description}</p>
+				<p className="job-card-description">{job.description}</p>
 			)}
 
 			{Array.isArray(job.skills) && job.skills.length > 0 && (
-				<div className="JobCardSkills">
+				<div className="job-card-skills">
 					{job.skills.map((skill) => (
-						<span key={skill} className="JobCardSkill">
+						<span key={skill} className="job-card-skill">
 							{skill}
 						</span>
 					))}
@@ -394,7 +397,7 @@ function JobCard({ job, onApply }) {
 	);
 }
 
-export default function CareerPage() {
+export default function Career() {
 	const { jobs, loading } = useJobs();
 	const [applyJob, setApplyJob] = useState(null);
 	const openingsRef = useRef(null);
@@ -407,64 +410,64 @@ export default function CareerPage() {
 		<>
 			<Header />
 			<main>
-				<section className="CareerHero">
-					<div className="CareerHeroContent">
-						<div className="CareerHeroLeft">
-							<h1 className="CareerHeroTitle">
+				<section className="career-hero">
+					<div className="career-hero-content">
+						<div className="career-hero-left">
+							<h1 className="career-hero-title">
 								Join Our Team
 								<br />
 								At <span>HestiQ</span>
 							</h1>
-							<p className="CareerHeroDescription">
+							<p className="career-hero-description">
 								We are a small team of designers and engineers who care deeply
 								about craft. If you love building things that matter and working
 								with people who push you to grow, this is the place for you.
 							</p>
 							<button
 								type="button"
-								className="CTA CareerHeroCTA"
+								className="cta career-hero-cta"
 								onClick={scrollToOpenings}
 							>
 								View Openings
 							</button>
 						</div>
-						<div className="CareerHeroRight">
-							<WorkTime className="CareerHeroSvg" aria-hidden="true" />
+						<div className="career-hero-right">
+							<WorkTime className="career-hero-svg" aria-hidden="true" />
 						</div>
 					</div>
 				</section>
 
-				<section className="WhyUsSection">
-					<div className="WhyUsContainer">
-						<div className="WhyUsLeft">
-							<div className="WhyUsGrid">
+				<section className="why-us-section">
+					<div className="why-us-container">
+						<div className="why-us-left">
+							<div className="why-us-grid">
 								{WHY_US.map(({ icon: Icon, title, description }, i) => (
-									<div key={i} className="WhyUsBlock">
-										<div className="WhyUsBlockIcon">
+									<div key={i} className="why-us-block">
+										<div className="why-us-block-icon">
 											<Icon size={22} />
 										</div>
-										<h3 className="WhyUsBlockTitle">{title}</h3>
-										<p className="WhyUsBlockDesc">{description}</p>
+										<h3 className="why-us-block-title">{title}</h3>
+										<p className="why-us-block-desc">{description}</p>
 									</div>
 								))}
 							</div>
 						</div>
-						<div className="WhyUsRight">
-							<h2 className="WhyUsTitle">Your Life At HestiQ</h2>
-							<p className="WhyUsText">
+						<div className="why-us-right">
+							<h2 className="why-us-title">Your Life At HestiQ</h2>
+							<p className="why-us-text">
 								At HestiQ, we believe the best work comes from people who feel
 								trusted, challenged, and respected. We keep the team lean so
 								every person has real ownership over what they build. There is
 								no micromanagement here - just clear goals, open communication,
 								and space to do great work.
 							</p>
-							<p className="WhyUsText">
+							<p className="why-us-text">
 								We invest in our team's growth through continuous learning,
 								knowledge sharing, and honest feedback. Whether you are early in
 								your career or have years of experience, you will find room to
 								level up here.
 							</p>
-							<p className="WhyUsText">
+							<p className="why-us-text">
 								Beyond the work itself, we prioritise balance. We know that
 								sustainable performance beats burnout every time. Our flexible
 								schedule means you can structure your day in a way that makes
@@ -472,7 +475,7 @@ export default function CareerPage() {
 							</p>
 							<button
 								type="button"
-								className="WhyUsCTA CTA"
+								className="why-us-cta cta"
 								onClick={scrollToOpenings}
 							>
 								View Openings
@@ -481,29 +484,29 @@ export default function CareerPage() {
 					</div>
 				</section>
 
-				<section className="JobsSection" ref={openingsRef} id="openings">
-					<div className="JobsSectionInner">
-						<div className="JobsSectionHeader">
-							<h2 className="JobsSectionTitle">Open Positions</h2>
-							<p className="JobsSectionDesc">
+				<section className="jobs-section" ref={openingsRef} id="openings">
+					<div className="jobs-section-inner">
+						<div className="jobs-section-header">
+							<h2 className="jobs-section-title">Open Positions</h2>
+							<p className="jobs-section-desc">
 								Browse our current openings. Apply directly - no middlemen, no
 								lengthy portals.
 							</p>
 						</div>
 
 						{loading ? (
-							<div className="JobsLoading" aria-live="polite">
+							<div className="jobs-loading" aria-live="polite">
 								<RiLoader4Line
 									size={32}
-									className="animate-spin JobsLoadingIcon"
+									className="animate-spin jobs-loading-icon"
 								/>
 							</div>
 						) : jobs.length === 0 ? (
-							<div className="JobsEmpty">
+							<div className="jobs-empty">
 								<p>No open positions at the moment. Check back soon.</p>
 							</div>
 						) : (
-							<div className="JobsList">
+							<div className="jobs-list">
 								{jobs.map((job) => (
 									<JobCard key={job._id} job={job} onApply={setApplyJob} />
 								))}
@@ -512,19 +515,19 @@ export default function CareerPage() {
 					</div>
 				</section>
 
-				<section className="RecruitmentSection">
-					<div className="RecruitmentInner">
-						<h2 className="RecruitmentTitle">Learn Our Recruitment Process</h2>
-						<div className="RecruitmentSteps">
+				<section className="recruitment-section">
+					<div className="recruitment-inner">
+						<h2 className="recruitment-title">Learn Our Recruitment Process</h2>
+						<div className="recruitment-steps">
 							{RECRUITMENT_STEPS.map(
 								({ icon: Icon, title, description }, i) => (
-									<div key={i} className="RecruitmentStep">
-										<div className="RecruitmentStepNumber">{i + 1}</div>
-										<div className="RecruitmentStepIcon">
+									<div key={i} className="recruitment-step">
+										<div className="recruitment-step-number">{i + 1}</div>
+										<div className="recruitment-step-icon">
 											<Icon size={24} />
 										</div>
-										<h3 className="RecruitmentStepTitle">{title}</h3>
-										<p className="RecruitmentStepDesc">{description}</p>
+										<h3 className="recruitment-step-title">{title}</h3>
+										<p className="recruitment-step-desc">{description}</p>
 									</div>
 								),
 							)}

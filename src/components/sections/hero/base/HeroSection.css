@@ -1,0 +1,108 @@
+/*#region base */
+.hero-section {
+	position: relative;
+	min-height: 560px;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+}
+
+.hero-section-content {
+	position: relative;
+	z-index: 1;
+	max-width: 80rem;
+	margin-inline: auto;
+	padding-inline: 2rem;
+	padding-block: 7rem 6rem;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 3rem;
+}
+
+.hero-section-left {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.hero-section-right {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hero-section-eyebrow {
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-bold);
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	margin-block-end: var(--space-4);
+}
+
+.hero-section-title {
+	font-size: clamp(2.25rem, 5vw, 3.75rem);
+	font-weight: var(--font-weight-extrabold);
+	line-height: 1.1;
+	margin-block-end: var(--space-5);
+	max-width: 26ch;
+}
+
+.hero-section-subtitle {
+	font-size: clamp(1rem, 2vw, 1.25rem);
+	line-height: 1.6;
+	margin-block-end: var(--space-10);
+	max-width: 38rem;
+}
+
+.hero-section-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-4);
+}
+
+@media (max-width: 768px) {
+	.hero-section-right {
+		display: none;
+	}
+}
+
+.full-hero-section .hero-section-eyebrow {
+	color: var(--color-text-muted);
+}
+
+.full-hero-section .hero-section-title {
+	color: var(--color-text);
+}
+
+.full-hero-section .hero-section-subtitle {
+	color: var(--color-text-muted);
+}
+
+.primary-hero-section {
+	background-color: var(--color-neutral-400);
+}
+
+.primary-hero-pattern {
+	position: absolute;
+	inset: 0;
+	background-color: var(--color-neutral-400);
+	background-repeat: repeat;
+	background-size: 400px 400px;
+	filter: blur(1px);
+}
+
+.primary-hero-section .hero-section-eyebrow {
+	color: var(--color-white-55);
+}
+
+.primary-hero-section .hero-section-title {
+	color: var(--color-text-inverse);
+}
+
+.primary-hero-section .hero-section-subtitle {
+	color: var(--color-white-72);
+}
+/*#endregion */

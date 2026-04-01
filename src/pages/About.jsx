@@ -57,23 +57,23 @@ function MemberCard({ member }) {
 	return (
 		<a
 			href={`mailto:${member.email}`}
-			className="TeamMemberCard"
+			className="team-member-card"
 			aria-label={`Email ${member.name}`}
 		>
 			{imageUrl ? (
 				<img
 					src={imageUrl}
 					alt={member.name}
-					className="TeamMemberImage"
+					className="team-member-image"
 					loading="lazy"
 				/>
 			) : (
-				<div className="TeamMemberImageFallback" aria-hidden="true" />
+				<div className="team-member-image-fallback" aria-hidden="true" />
 			)}
-			<div className="TeamMemberInfo">
-				<span className="TeamMemberName">{member.name}</span>
+			<div className="team-member-info">
+				<span className="team-member-name">{member.name}</span>
 				{member.title && (
-					<span className="TeamMemberTitle">{member.title}</span>
+					<span className="team-member-title">{member.title}</span>
 				)}
 			</div>
 		</a>
@@ -82,11 +82,14 @@ function MemberCard({ member }) {
 
 function SkeletonCard() {
 	return (
-		<div className="TeamMemberCard TeamMemberCardSkeleton" aria-hidden="true" />
+		<div
+			className="team-member-card team-member-card-skeleton"
+			aria-hidden="true"
+		/>
 	);
 }
 
-export default function AboutPage() {
+export default function About() {
 	const { members, loading } = useTeam();
 
 	const teamPreview = useMemo(() => {
@@ -110,39 +113,39 @@ export default function AboutPage() {
 	return (
 		<>
 			<Header />
-			<main className="AboutPage">
-				<section className="AboutStory" aria-labelledby="about-story-title">
-					<div className="AboutShell">
-						<div className="AboutStoryGrid">
-							<div className="AboutStoryContent">
-								<p className="ContactPageEyebrow">Our Story</p>
-								<h2 id="about-story-title" className="AboutSectionTitle">
+			<main className="about-page">
+				<section className="about-story" aria-labelledby="about-story-title">
+					<div className="about-shell">
+						<div className="about-story-grid">
+							<div className="about-story-content">
+								<p className="contact-page-eyebrow">Our Story</p>
+								<h2 id="about-story-title" className="about-section-title">
 									Why we started.
 								</h2>
-								<p className="AboutBodyText">
+								<p className="about-body-text">
 									HestiQ was founded because too many promising ideas end up
 									buried under slow processes, bloated agencies, and misaligned
 									priorities. We built HestiQ to be different: small by design,
 									precise in execution, and fully accountable to the people we
 									work with.
 								</p>
-								<p className="AboutBodyText">
+								<p className="about-body-text">
 									We don't believe in disappearing behind project management
 									layers or delegating across multiple vendors. From discovery
 									to delivery, you work directly with the people doing the work.
 								</p>
 							</div>
-							<div className="AboutStorySide">
-								<div className="AboutStatCard">
-									<p className="ContactPageEyebrow">Mission</p>
-									<p className="AboutStatCardText">
+							<div className="about-story-side">
+								<div className="about-stat-card">
+									<p className="contact-page-eyebrow">Mission</p>
+									<p className="about-stat-card-text">
 										We turn ideas into thoughtful digital experiences that feel
 										simple, human, and purposeful.
 									</p>
 								</div>
-								<div className="AboutStatCard">
-									<p className="ContactPageEyebrow">Vision</p>
-									<p className="AboutStatCardText">
+								<div className="about-stat-card">
+									<p className="contact-page-eyebrow">Vision</p>
+									<p className="about-stat-card-text">
 										A world where every business, regardless of size, has access
 										to world-class design and engineering.
 									</p>
@@ -152,21 +155,21 @@ export default function AboutPage() {
 					</div>
 				</section>
 
-				<section className="AboutOffer" aria-labelledby="about-offer-title">
-					<div className="AboutShell">
-						<div className="AboutSectionHeader">
-							<p className="ContactPageEyebrow">What We Do</p>
-							<h2 id="about-offer-title" className="AboutSectionTitle">
+				<section className="about-offer" aria-labelledby="about-offer-title">
+					<div className="about-shell">
+						<div className="about-section-header">
+							<p className="contact-page-eyebrow">What We Do</p>
+							<h2 id="about-offer-title" className="about-section-title">
 								Design & development, under one roof.
 							</h2>
-							<p className="AboutSectionDescription">
+							<p className="about-section-description">
 								We cover the full spectrum: from brand identity and visual
 								design to full-stack web and mobile engineering.
 							</p>
 						</div>
 
-						<div className="AboutSectionBody">
-							<div className="Right AboutSectionParagraph">
+						<div className="about-section-body">
+							<div className="right about-section-paragraph">
 								<p>
 									Our integrated approach means your design and development
 									teams are always in sync, working together from day one to
@@ -194,10 +197,10 @@ export default function AboutPage() {
 									with your business.
 								</p>
 							</div>
-							<div className="Left AboutDifferentiators">
+							<div className="left about-differentiators">
 								{DIFFERENTIATORS.map((item, i) => (
-									<div key={i} className="AboutDifferentiatorItem">
-										<FaCircleCheck className="AboutDifferentiatorIcon" />
+									<div key={i} className="about-differentiator-item">
+										<FaCircleCheck className="about-differentiator-icon" />
 										<span>{item}</span>
 									</div>
 								))}
@@ -206,42 +209,42 @@ export default function AboutPage() {
 					</div>
 				</section>
 
-				<section className="AboutValues" aria-labelledby="about-values-title">
-					<div className="AboutShell">
-						<div className="AboutSectionHeader">
-							<p className="ContactPageEyebrow">Our Values</p>
-							<h2 id="about-values-title" className="AboutSectionTitle">
+				<section className="about-values" aria-labelledby="about-values-title">
+					<div className="about-shell">
+						<div className="about-section-header">
+							<p className="contact-page-eyebrow">Our Values</p>
+							<h2 id="about-values-title" className="about-section-title">
 								How we work.
 							</h2>
 						</div>
-						<div className="AboutValuesGrid">
+						<div className="about-values-grid">
 							{VALUES.map(({ icon: Icon, title, description }) => (
-								<div key={title} className="AboutValueCard">
-									<div className="AboutValueCardIcon">
+								<div key={title} className="about-value-card">
+									<div className="about-value-card-icon">
 										<Icon />
 									</div>
-									<h3 className="AboutValueCardTitle">{title}</h3>
-									<p className="AboutValueCardDescription">{description}</p>
+									<h3 className="about-value-card-title">{title}</h3>
+									<p className="about-value-card-description">{description}</p>
 								</div>
 							))}
 						</div>
 					</div>
 				</section>
 
-				<section className="AboutTeam" aria-labelledby="about-team-title">
-					<div className="AboutShell">
-						<div className="AboutTeamHeader">
+				<section className="about-team" aria-labelledby="about-team-title">
+					<div className="about-shell">
+						<div className="about-team-header">
 							<div>
-								<p className="ContactPageEyebrow">The Team</p>
-								<h2 id="about-team-title" className="AboutSectionTitle">
+								<p className="contact-page-eyebrow">The Team</p>
+								<h2 id="about-team-title" className="about-section-title">
 									The people behind the work.
 								</h2>
 							</div>
-							<Link to="/team" className="AboutTeamLink">
+							<Link to="/team" className="about-team-link">
 								View full team <FaArrowRight className="inline-block text-xs" />
 							</Link>
 						</div>
-						<div className="TeamGrid">
+						<div className="team-grid">
 							{loading
 								? Array.from({ length: 4 }).map((_, i) => (
 										<SkeletonCard key={i} />

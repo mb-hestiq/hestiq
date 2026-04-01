@@ -65,19 +65,19 @@ function ExpandedService({ row }) {
 	return (
 		<div className="grid grid-cols-1 gap-3 text-sm">
 			<div>
-				<span className="font-medium text-[#342937]">Description:</span>{" "}
+				<span className="admin-detail-label">Description:</span>{" "}
 				<span className="text-text-muted">{row.description || "—"}</span>
 			</div>
 			<div>
-				<span className="font-medium text-[#342937]">Revisits:</span>{" "}
+				<span className="admin-detail-label">Revisits:</span>{" "}
 				<span className="text-text-muted">{row.revisits ?? "—"}</span>
 			</div>
 			<div>
-				<span className="font-medium text-[#342937]">Icon:</span>{" "}
+				<span className="admin-detail-label">Icon:</span>{" "}
 				<span className="text-text-muted">{row.icon || "—"}</span>
 			</div>
 			<div>
-				<span className="font-medium text-[#342937]">URL:</span>{" "}
+				<span className="admin-detail-label">URL:</span>{" "}
 				<span className="text-text-muted">{row.href || "—"}</span>
 			</div>
 		</div>
@@ -183,10 +183,8 @@ export default function ServicesTab() {
 
 	return (
 		<div>
-			<h2 className="text-xl font-semibold text-[#342937] tab-title">
-				Services
-			</h2>
-			<div className="bg-white rounded-xl border border-border p-4">
+			<h2 className="admin-section-title tab-title">Services</h2>
+			<div className="admin-panel">
 				<DataGrid
 					data={services}
 					columns={COLUMNS}

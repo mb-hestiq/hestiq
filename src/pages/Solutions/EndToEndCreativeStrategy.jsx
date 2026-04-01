@@ -1,6 +1,5 @@
 import { Link } from "react-router";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import SolutionDetailPage from "../../components/sections/solutions/base/SolutionDetailPage";
 import {
 	FaPaintbrush,
 	FaCode,
@@ -20,7 +19,6 @@ import {
 	FaObjectUngroup,
 	FaServer,
 } from "react-icons/fa6";
-import "./EndToEndCreativeStrategy.css";
 
 const STEPS = [
 	{
@@ -144,192 +142,56 @@ const PAIN_POINTS = [
 
 export default function EndToEndCreativeStrategy() {
 	return (
-		<>
-			<Header />
-			<main className="ETECSPage">
-				<section className="ETECSHero" aria-labelledby="etecs-hero-title">
-					<div className="ETECSHeroPattern" aria-hidden="true" />
-					<div className="ETECSHeroContent">
-						<p className="ETECSHeroEyebrow">End-to-End Creative Strategy</p>
-						<h1 id="etecs-hero-title" className="ETECSHeroTitle">
-							From Concept to Launch: Unified Creative Strategy
-						</h1>
-						<p className="ETECSHeroSubtitle">
-							Integrating design and development for cohesive, impactful
-							projects
-						</p>
-						<Link to="/onboarding" className="CTA ETECSHeroCTA">
-							See Our Approach
-						</Link>
-					</div>
-				</section>
-
-				<section
-					className="ETECSSection ETECSProblem"
-					aria-labelledby="etecs-problem-title"
+		<SolutionDetailPage
+			heroId="etecs-hero-title"
+			heroEyebrow="End-to-End Creative Strategy"
+			heroTitle="From Concept to Launch: Unified Creative Strategy"
+			heroSubtitle="Integrating design and development for cohesive, impactful projects"
+			heroAction={
+				<Link to="/onboarding" className="cta solution-hero-cta">
+					See Our Approach
+				</Link>
+			}
+			heroVariant="wide-title"
+			problemId="etecs-problem-title"
+			problemTitle="When design and development don't speak the same language"
+			problemDescription="Most projects fail not because of a lack of talent, but because design and development operate in silos. Handoffs introduce gaps, goals diverge between teams, and the final product reflects compromises rather than a coherent vision. The result is an inconsistent brand experience and costly rework that could have been avoided from the start."
+			painPoints={PAIN_POINTS}
+			painPointsAriaLabel="Common creative strategy pain points"
+			painPointVariant="detailed"
+			methodologyId="etecs-approach-title"
+			methodologyTitle="The HestiQ creative process"
+			methodologyDescription="A unified workflow where strategy, design, and engineering move together, not in sequence, but in collaboration."
+			steps={STEPS}
+			stepsAriaLabel="Creative strategy methodology steps"
+			servicesId="etecs-services-title"
+			servicesTitle="Key capabilities"
+			servicesAriaLabel="Key services and capabilities"
+			services={SERVICES}
+			servicesCardClassName="card-surface-muted"
+			benefitsId="etecs-benefits-title"
+			benefitsTitle="What you gain"
+			benefitsDescription="When strategy, design, and engineering share the same table, the product built is the product that was envisioned."
+			benefitsAriaLabel="Benefits of working with HestiQ"
+			benefits={BENEFITS}
+			benefitsVariant="stacked"
+			benefitsAction={
+				<Link to="/onboarding" className="cta solution-benefits-cta-button">
+					Get Started <FaArrowRight aria-hidden="true" />
+				</Link>
+			}
+			ctaId="etecs-cta-title"
+			ctaTitle="Ready to Elevate Your Projects?"
+			ctaSubtitle="Partner with HestiQ to bring strategy, design, and engineering under one roof and deliver products that actually land."
+			ctaAction={
+				<Link
+					to="/contact"
+					state={{ scrollToTop: true }}
+					className="cta solution-cta-button"
 				>
-					<div className="ETECSShell">
-						<div className="ETECSProblemGrid">
-							<div className="ETECSProblemContent">
-								<p className="ETECSSectionEyebrow">The Challenge</p>
-								<h2 id="etecs-problem-title" className="ETECSSectionTitle">
-									When design and development don't speak the same language
-								</h2>
-								<p className="ETECSSectionDescription">
-									Most projects fail not because of a lack of talent, but
-									because design and development operate in silos. Handoffs
-									introduce gaps, goals diverge between teams, and the final
-									product reflects compromises rather than a coherent vision.
-									The result is an inconsistent brand experience and costly
-									rework that could have been avoided from the start.
-								</p>
-							</div>
-							<div
-								className="ETECSPainPoints"
-								aria-label="Common creative strategy pain points"
-							>
-								{PAIN_POINTS.map(({ icon: Icon, label, description }) => (
-									<div className="ETECSPainPoint" key={label}>
-										<div className="ETECSPainPointIcon" aria-hidden="true">
-											<Icon />
-										</div>
-										<div className="ETECSPainPointText">
-											<span className="ETECSPainPointLabel">{label}</span>
-											<span className="ETECSPainPointDesc">{description}</span>
-										</div>
-									</div>
-								))}
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section
-					className="ETECSSection ETECSApproach ETECSSectionAlt"
-					aria-labelledby="etecs-approach-title"
-				>
-					<div className="ETECSShell">
-						<div className="ETECSSectionHeader ETECSSectionHeaderCentered">
-							<p className="ETECSSectionEyebrow">Our Methodology</p>
-							<h2 id="etecs-approach-title" className="ETECSSectionTitle">
-								The HestiQ creative process
-							</h2>
-							<p className="ETECSSectionDescription">
-								A unified workflow where strategy, design, and engineering move
-								together — not in sequence, but in collaboration.
-							</p>
-						</div>
-						<ol
-							className="ETECSStepsGrid"
-							aria-label="Creative strategy methodology steps"
-						>
-							{STEPS.map(({ number, icon: Icon, title, description }) => (
-								<li className="ETECSStep" key={number}>
-									<div className="ETECSStepHead">
-										<span className="ETECSStepNumber" aria-hidden="true">
-											{number}
-										</span>
-										<div className="ETECSStepIconWrapper" aria-hidden="true">
-											<Icon />
-										</div>
-									</div>
-									<div className="ETECSStepBody">
-										<h3 className="ETECSStepTitle">{title}</h3>
-										<p className="ETECSStepDescription">{description}</p>
-									</div>
-								</li>
-							))}
-						</ol>
-					</div>
-				</section>
-
-				<section
-					className="ETECSSection ETECSServices"
-					aria-labelledby="etecs-services-title"
-				>
-					<div className="ETECSShell">
-						<div className="ETECSSectionHeader ETECSSectionHeaderCentered">
-							<p className="ETECSSectionEyebrow">What We Deliver</p>
-							<h2 id="etecs-services-title" className="ETECSSectionTitle">
-								Key capabilities
-							</h2>
-						</div>
-						<ul
-							className="ETECSServicesGrid"
-							aria-label="Key services and capabilities"
-						>
-							{SERVICES.map(({ icon: Icon, title, description }) => (
-								<li className="ETECSServiceCard" key={title}>
-									<div className="ETECSServiceIconWrapper" aria-hidden="true">
-										<Icon />
-									</div>
-									<h3 className="ETECSServiceTitle">{title}</h3>
-									<p className="ETECSServiceDescription">{description}</p>
-								</li>
-							))}
-						</ul>
-					</div>
-				</section>
-
-				<section
-					className="ETECSSection ETECSBenefits ETECSSectionAlt"
-					aria-labelledby="etecs-benefits-title"
-				>
-					<div className="ETECSShell">
-						<div className="ETECSSectionHeader ETECSSectionHeaderCentered">
-							<p className="ETECSSectionEyebrow">Why HestiQ</p>
-							<h2 id="etecs-benefits-title" className="ETECSSectionTitle">
-								What you gain
-							</h2>
-							<p className="ETECSSectionDescription">
-								When strategy, design, and engineering share the same table, the
-								product built is the product that was envisioned.
-							</p>
-						</div>
-						<ul
-							className="ETECSBenefitsGrid"
-							aria-label="Benefits of working with HestiQ"
-						>
-							{BENEFITS.map(({ icon: Icon, title, description }) => (
-								<li className="ETECSBenefit" key={title}>
-									<div className="ETECSBenefitIconWrapper" aria-hidden="true">
-										<Icon />
-									</div>
-									<div className="ETECSBenefitContent">
-										<h3 className="ETECSBenefitTitle">{title}</h3>
-										<p className="ETECSBenefitDescription">{description}</p>
-									</div>
-								</li>
-							))}
-						</ul>
-						<div className="ETECSBenefitsCTA">
-							<Link to="/onboarding" className="CTA ETECSBenefitsCTABtn">
-								Get Started <FaArrowRight aria-hidden="true" />
-							</Link>
-						</div>
-					</div>
-				</section>
-
-				<section className="ETECSCTASection" aria-labelledby="etecs-cta-title">
-					<div className="ETECSShell ETECSCTAContent">
-						<h2 id="etecs-cta-title" className="ETECSCTATitle">
-							Ready to Elevate Your Projects?
-						</h2>
-						<p className="ETECSCTASubtitle">
-							Partner with HestiQ to bring strategy, design, and engineering
-							under one roof and deliver products that actually land.
-						</p>
-						<Link
-							to="/contact"
-							state={{ scrollToTop: true }}
-							className="CTA ETECSCTAButton"
-						>
-							Talk to Our Experts
-						</Link>
-					</div>
-				</section>
-			</main>
-			<Footer />
-		</>
+					Talk to Our Experts
+				</Link>
+			}
+		/>
 	);
 }

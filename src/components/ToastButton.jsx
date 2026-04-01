@@ -49,7 +49,7 @@ export default function ToastButton({
 	return (
 		<Toast.Provider swipeDirectoin="right">
 			<button
-				className="Button"
+				className="toast-button"
 				onClick={handleOnClick}
 				disabled={disabled || isLoading}
 				{...props}
@@ -57,16 +57,16 @@ export default function ToastButton({
 				{children}
 			</button>
 
-			<Toast.Root className="ToastRoot" open={open} onOpenChange={setOpen}>
-				<Toast.Title className="ToastTitle">{displayTitle}</Toast.Title>
-				<Toast.Description className="ToastDescription" asChild>
+			<Toast.Root className="toast-root" open={open} onOpenChange={setOpen}>
+				<Toast.Title className="toast-title">{displayTitle}</Toast.Title>
+				<Toast.Description className="toast-description" asChild>
 					<p>{displayDescription}</p>
 				</Toast.Description>
-				<Toast.Action className="ToastAction" asChild altText="">
+				<Toast.Action className="toast-action" asChild altText="">
 					{action}
 				</Toast.Action>
 			</Toast.Root>
-			<Toast.Viewport className="ToastViewport" />
+			<Toast.Viewport className="toast-viewport" />
 		</Toast.Provider>
 	);
 }

@@ -20,23 +20,23 @@ function MemberCard({ member }) {
 	return (
 		<a
 			href={`mailto:${member.email}`}
-			className="TeamMemberCard"
+			className="team-member-card"
 			aria-label={`Email ${member.name}`}
 		>
 			{imageUrl ? (
 				<img
 					src={imageUrl}
 					alt={member.name}
-					className="TeamMemberImage"
+					className="team-member-image"
 					loading="lazy"
 				/>
 			) : (
-				<div className="TeamMemberImageFallback" aria-hidden="true" />
+				<div className="team-member-image-fallback" aria-hidden="true" />
 			)}
-			<div className="TeamMemberInfo">
-				<span className="TeamMemberName">{member.name}</span>
+			<div className="team-member-info">
+				<span className="team-member-name">{member.name}</span>
 				{member.title && (
-					<span className="TeamMemberTitle">{member.title}</span>
+					<span className="team-member-title">{member.title}</span>
 				)}
 			</div>
 		</a>
@@ -45,11 +45,14 @@ function MemberCard({ member }) {
 
 function SkeletonCard() {
 	return (
-		<div className="TeamMemberCard TeamMemberCardSkeleton" aria-hidden="true" />
+		<div
+			className="team-member-card team-member-card-skeleton"
+			aria-hidden="true"
+		/>
 	);
 }
 
-export default function TeamPage() {
+export default function Team() {
 	const { members, loading } = useTeam();
 	const [activeTag, setActiveTag] = useState("all");
 
@@ -68,25 +71,25 @@ export default function TeamPage() {
 	return (
 		<>
 			<Header />
-			<main className="TeamPage">
-				<section className="TeamHero" aria-labelledby="team-page-title">
-					<div className="TeamShell">
-						<p className="ContactPageEyebrow">Our Team</p>
-						<h1 id="team-page-title" className="TeamHeroTitle">
+			<main className="team-page">
+				<section className="team-hero" aria-labelledby="team-page-title">
+					<div className="team-shell">
+						<p className="contact-page-eyebrow">Our Team</p>
+						<h1 id="team-page-title" className="team-hero-title">
 							The people behind the work.
 						</h1>
-						<p className="TeamHeroDescription">
+						<p className="team-hero-description">
 							A focused team of designers, developers, and strategists who care
 							deeply about craft and outcomes.
 						</p>
 					</div>
 				</section>
 
-				<section className="TeamBody" aria-label="Team members">
-					<div className="TeamShell">
+				<section className="team-body" aria-label="Team members">
+					<div className="team-shell">
 						{availableTags.length > 1 && (
 							<div
-								className="TeamFilterTabs"
+								className="team-filter-tabs"
 								role="tablist"
 								aria-label="Filter by department"
 							>
@@ -95,7 +98,7 @@ export default function TeamPage() {
 										key={tag}
 										role="tab"
 										aria-selected={activeTag === tag}
-										className={`TeamFilterTab${activeTag === tag ? " TeamFilterTabActive" : ""}`}
+										className={`team-filter-tab${activeTag === tag ? " team-filter-tab-active" : ""}`}
 										onClick={() => setActiveTag(tag)}
 									>
 										{TAG_LABELS[tag]}
@@ -104,7 +107,7 @@ export default function TeamPage() {
 							</div>
 						)}
 
-						<div className="TeamGrid">
+						<div className="team-grid">
 							{loading
 								? Array.from({ length: 6 }).map((_, i) => (
 										<SkeletonCard key={i} />
@@ -115,7 +118,7 @@ export default function TeamPage() {
 						</div>
 
 						{!loading && filtered.length === 0 && (
-							<p className="TeamEmpty">
+							<p className="team-empty">
 								No team members found in this category.
 							</p>
 						)}

@@ -59,7 +59,7 @@ const COLUMNS = [
 		header: "Status",
 		cell: (info) => (
 			<span
-				className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${info.getValue() === "completed" ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"}`}
+				className={`admin-badge ${info.getValue() === "completed" ? "admin-badge-success" : "admin-badge-warning"}`}
 			>
 				{info.getValue()}
 			</span>
@@ -81,17 +81,17 @@ function ExpandedOrder({ row }) {
 	return (
 		<div className="grid grid-cols-1 gap-3 text-sm">
 			<div>
-				<span className="font-medium text-[#342937]">Category:</span>{" "}
+				<span className="admin-detail-label">Category:</span>{" "}
 				<span className="text-text-muted">{row.category || "—"}</span>
 			</div>
 			<div>
-				<span className="font-medium text-[#342937]">Services:</span>{" "}
+				<span className="admin-detail-label">Services:</span>{" "}
 				<span className="text-text-muted">
 					{row.services?.map((s) => s.name || s).join(", ") || "—"}
 				</span>
 			</div>
 			<div>
-				<span className="font-medium text-[#342937]">Details:</span>{" "}
+				<span className="admin-detail-label">Details:</span>{" "}
 				<span className="text-text-muted">{row.details || "—"}</span>
 			</div>
 		</div>
@@ -175,8 +175,8 @@ export default function OrdersTab() {
 
 	return (
 		<div>
-			<h2 className="text-xl font-semibold text-[#342937] tab-title">Orders</h2>
-			<div className="bg-white rounded-xl border border-border p-4">
+			<h2 className="admin-section-title tab-title">Orders</h2>
+			<div className="admin-panel">
 				<DataGrid
 					data={orders}
 					columns={COLUMNS}
