@@ -2282,7 +2282,7 @@ footer {
 	justify-content: space-between;
 	align-items: center;
 	gap: var(--space-4);
-	padding: var(--space-4) var(--space-1-5);
+	padding: var(--space-4) var(--space-4);
 	border-radius: 18px;
 	background-color: var(--color-primary);
 	color: var(--color-text-inverse);
@@ -3700,7 +3700,7 @@ footer {
 
 .sol-hero-svg {
 	width: 100%;
-	max-width: 20rem;
+	max-width: 22rem;
 	height: auto;
 }
 
@@ -3977,78 +3977,11 @@ footer {
 	max-width: 26ch;
 }
 
-.solution-hero-cta {
-	display: inline-flex;
-	align-items: center;
-	gap: var(--space-2);
-	padding: 0.75rem 1.75rem;
-	font-size: var(--font-size-md);
-	font-weight: 600;
-	color: var(--color-text-inverse);
-	background-color: var(--color-text-inverse);
-	border: 1.5px solid var(--color-text-inverse);
-	border-radius: var(--radius-pill);
-	text-decoration: none;
-	width: fit-content;
-	cursor: pointer;
-	transition: all var(--duration-fast) ease;
-}
-
-.solution-hero-cta:hover,
-.solution-hero-cta:focus-visible {
-	background-color: transparent;
-	color: var(--color-text-inverse);
-	box-shadow: 0 0 0 2px var(--color-text-inverse);
-}
-
-.solution-benefits-cta-button {
-	display: inline-flex;
-	align-items: center;
-	gap: var(--space-2);
-	padding: 0.75rem 1.75rem;
-	font-size: var(--font-size-md);
-	font-weight: 600;
-	color: var(--color-text-inverse);
-	background-color: var(--color-primary);
-	border: 1.5px solid var(--color-primary);
-	border-radius: var(--radius-pill);
-	text-decoration: none;
-	width: fit-content;
-	cursor: pointer;
-	transition: all var(--duration-fast) ease;
-}
-
-.solution-benefits-cta-button:hover,
-.solution-benefits-cta-button:focus-visible {
-	background-color: transparent;
-	color: var(--color-primary);
-	border-color: var(--color-primary);
-	box-shadow: 0 0 0 2px var(--color-primary);
-}
-
+.solution-hero-cta,
+.solution-benefits-cta-button,
 .solution-cta-button {
-	display: inline-flex;
-	align-items: center;
-	gap: var(--space-2);
-	padding: 0.75rem 1.75rem;
-	font-size: var(--font-size-md);
-	font-weight: 600;
-	color: var(--color-primary);
-	background-color: var(--color-text-inverse);
-	border: 1.5px solid var(--color-text-inverse);
-	border-radius: var(--radius-pill);
-	text-decoration: none;
 	width: fit-content;
-	cursor: pointer;
-	transition: all var(--duration-fast) ease;
-}
-
-.solution-cta-button:hover,
-.solution-cta-button:focus-visible {
-	background-color: var(--color-primary);
-	color: var(--color-text-inverse);
-	border-color: var(--color-primary);
-	box-shadow: 0 4px 12px rgba(52, 41, 55, 0.2);
+	padding: 0.75rem 1.75rem;
 }
 
 .solution-problem-grid,
@@ -4544,8 +4477,8 @@ footer {
 }
 
 .career-hero-description {
-	font-size: clamp(1rem, 2vw, 1.125rem);
-	line-height: 1.65;
+	font-size: 1.0625rem;
+	line-height: 1.7;
 	color: var(--color-text-muted);
 	max-width: 36rem;
 }
@@ -4565,7 +4498,7 @@ footer {
 
 .career-hero-svg {
 	width: 100%;
-	max-width: 20rem;
+	max-width: 28rem;
 	height: auto;
 }
 
@@ -5214,7 +5147,7 @@ footer {
 
 .pricing-hero-svg {
 	width: 100%;
-	max-width: 20rem;
+	max-width: 16rem;
 	height: auto;
 	color: var(--color-primary);
 }
@@ -5239,9 +5172,9 @@ footer {
 }
 
 .pricing-hero-title {
-	font-size: clamp(2.25rem, 5vw, 3.75rem);
+	font-size: clamp(2rem, 5vw, 3.25rem);
 	font-weight: 800;
-	line-height: 1.08;
+	line-height: 1.1;
 	color: var(--color-primary);
 	letter-spacing: -0.02em;
 }
@@ -5252,8 +5185,8 @@ footer {
 }
 
 .pricing-hero-description {
-	font-size: clamp(1rem, 2vw, 1.125rem);
-	line-height: 1.65;
+	font-size: 1.0625rem;
+	line-height: 1.7;
 	color: var(--color-text-muted);
 	max-width: 36rem;
 }
