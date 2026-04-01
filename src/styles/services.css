@@ -14,6 +14,7 @@
 
 .svc-section-alt {
 	background: var(--color-secondary);
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
 }
 
 .svc-section-header {
@@ -78,7 +79,7 @@
 
 .svc-overview-image {
 	width: 100%;
-	max-width: 480px;
+	max-width: 380px;
 	height: auto;
 	border-radius: var(--radius-xl);
 	object-fit: cover;
@@ -447,6 +448,22 @@
 }
 
 .svc-cta-button:hover {
+	background-color: transparent !important;
+	color: var(--color-text-inverse) !important;
+}
+
+.sol-cta-button {
+	background-color: var(--color-secondary) !important;
+	border-color: var(--color-secondary) !important;
+	color: var(--color-primary) !important;
+	padding: var(--space-3-5) var(--space-8);
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	margin-block-start: var(--space-2);
+}
+
+.sol-cta-button:hover {
 	background-color: transparent !important;
 	color: var(--color-text-inverse) !important;
 }

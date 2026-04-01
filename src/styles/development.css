@@ -20,9 +20,9 @@
 }
 
 .dev-hero-subtitle {
-	font-size: 1.125rem;
+	font-size: clamp(1rem, 2vw, 1.125rem);
 	color: var(--color-text-muted);
-	line-height: 1.7;
+	line-height: 1.65;
 	max-width: 48rem;
 	margin: 0;
 }

@@ -45,14 +45,14 @@
 .hero-section-title {
 	font-size: clamp(2.25rem, 5vw, 3.75rem);
 	font-weight: var(--font-weight-extrabold);
-	line-height: 1.1;
+	line-height: 1.08;
 	margin-block-end: var(--space-5);
 	max-width: 26ch;
 }
 
 .hero-section-subtitle {
-	font-size: clamp(1rem, 2vw, 1.25rem);
-	line-height: 1.6;
+	font-size: clamp(1rem, 2vw, 1.125rem);
+	line-height: 1.65;
 	margin-block-end: var(--space-10);
 	max-width: 38rem;
 }
@@ -82,16 +82,12 @@
 }
 
 .primary-hero-section {
-	background-color: var(--color-neutral-400);
+	background-color: var(--color-primary);
 }
 
 .primary-hero-pattern {
 	position: absolute;
 	inset: 0;
-	background-color: var(--color-neutral-400);
-	background-repeat: repeat;
-	background-size: 400px 400px;
-	filter: blur(1px);
 }
 
 .primary-hero-section .hero-section-eyebrow {

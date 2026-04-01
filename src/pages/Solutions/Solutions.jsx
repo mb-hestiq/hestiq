@@ -121,14 +121,14 @@ export default function Solutions() {
 
 				<section
 					id="solutions"
-					className="sol-section sol-grid sol-section-alt"
-					aria-labelledby="sol-grid-title"
+					className="sol-section sol-solutions sol-section-alt"
+					aria-labelledby="sol-solutions-title"
 				>
 					<div className="sol-shell">
 						<div className="sol-section-header sol-section-header-centered">
 							<p className="sol-section-eyebrow">What We Do</p>
-							<h2 id="sol-grid-title" className="sol-section-title">
-								Featured solutions
+							<h2 id="sol-solutions-title" className="sol-section-title">
+								Featured Solutions
 							</h2>
 							<p className="sol-section-description">
 								Three interconnected offerings designed to address the full
@@ -180,7 +180,7 @@ export default function Solutions() {
 						<div className="sol-section-header sol-section-header-centered">
 							<p className="sol-section-eyebrow">How We Work</p>
 							<h2 id="sol-approach-title" className="sol-section-title">
-								Our approach across every solution
+								Our Approach Across Every Solution
 							</h2>
 						</div>
 						<ol
@@ -218,7 +218,7 @@ export default function Solutions() {
 						<div className="sol-section-header sol-section-header-centered">
 							<p className="sol-section-eyebrow">Why HestiQ</p>
 							<h2 id="sol-benefits-title" className="sol-section-title">
-								What sets us apart
+								What Sets Us Apart
 							</h2>
 						</div>
 						<ul

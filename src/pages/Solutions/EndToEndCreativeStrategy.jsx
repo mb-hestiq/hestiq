@@ -1,5 +1,10 @@
 import { Link } from "react-router";
-import SolutionDetailPage from "../../components/sections/solutions/base/SolutionDetailPage";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import FullHeroSection from "../../components/sections/hero/FullHeroSection";
+import PrimaryButton from "../../components/elements/buttons/PrimaryButton";
+import SecondaryButton from "../../components/elements/buttons/SecondaryButton";
+import Card from "../../components/elements/cards/base/Card";
 import {
 	FaPaintbrush,
 	FaCode,
@@ -19,6 +24,7 @@ import {
 	FaObjectUngroup,
 	FaServer,
 } from "react-icons/fa6";
+import "../../styles/services.css";
 
 const STEPS = [
 	{
@@ -142,56 +148,163 @@ const PAIN_POINTS = [
 
 export default function EndToEndCreativeStrategy() {
 	return (
-		<SolutionDetailPage
-			heroId="etecs-hero-title"
-			heroEyebrow="End-to-End Creative Strategy"
-			heroTitle="From Concept to Launch: Unified Creative Strategy"
-			heroSubtitle="Integrating design and development for cohesive, impactful projects"
-			heroAction={
-				<Link to="/onboarding" className="cta solution-hero-cta">
-					See Our Approach
-				</Link>
-			}
-			heroVariant="wide-title"
-			problemId="etecs-problem-title"
-			problemTitle="When design and development don't speak the same language"
-			problemDescription="Most projects fail not because of a lack of talent, but because design and development operate in silos. Handoffs introduce gaps, goals diverge between teams, and the final product reflects compromises rather than a coherent vision. The result is an inconsistent brand experience and costly rework that could have been avoided from the start."
-			painPoints={PAIN_POINTS}
-			painPointsAriaLabel="Common creative strategy pain points"
-			painPointVariant="detailed"
-			methodologyId="etecs-approach-title"
-			methodologyTitle="The HestiQ creative process"
-			methodologyDescription="A unified workflow where strategy, design, and engineering move together, not in sequence, but in collaboration."
-			steps={STEPS}
-			stepsAriaLabel="Creative strategy methodology steps"
-			servicesId="etecs-services-title"
-			servicesTitle="Key capabilities"
-			servicesAriaLabel="Key services and capabilities"
-			services={SERVICES}
-			servicesCardClassName="card-surface-muted"
-			benefitsId="etecs-benefits-title"
-			benefitsTitle="What you gain"
-			benefitsDescription="When strategy, design, and engineering share the same table, the product built is the product that was envisioned."
-			benefitsAriaLabel="Benefits of working with HestiQ"
-			benefits={BENEFITS}
-			benefitsVariant="stacked"
-			benefitsAction={
-				<Link to="/onboarding" className="cta solution-benefits-cta-button">
-					Get Started <FaArrowRight aria-hidden="true" />
-				</Link>
-			}
-			ctaId="etecs-cta-title"
-			ctaTitle="Ready to Elevate Your Projects?"
-			ctaSubtitle="Partner with HestiQ to bring strategy, design, and engineering under one roof and deliver products that actually land."
-			ctaAction={
-				<Link
-					to="/contact"
-					state={{ scrollToTop: true }}
-					className="cta solution-cta-button"
+		<>
+			<Header />
+			<main className="svc-page">
+				<FullHeroSection
+					id="etecs-hero-title"
+					className="etecs-hero"
+					eyebrow="End-to-End Creative Strategy"
+					title="From Concept to Launch: Unified Creative Strategy"
+					subtitle="Design thinking and technical excellence working together from day one. Strategy, design, and engineering aligned around shared outcomes to deliver products that actually land."
+					actions={
+						<>
+							<PrimaryButton to="#services" state={{ scrollTo: "services" }}>
+								Explore Services <FaArrowRight aria-hidden="true" />
+							</PrimaryButton>
+							<SecondaryButton
+								to="/onboarding?category=programming"
+								state={{ scrollToTop: true }}
+								className="etecs-hero-cta-outline"
+							>
+								Start a Project
+							</SecondaryButton>
+						</>
+					}
+				/>
+
+				<section
+					className="svc-section svc-section-alt"
+					aria-labelledby="etecs-approach-title"
 				>
-					Talk to Our Experts
-				</Link>
-			}
-		/>
+					<div className="svc-shell">
+						<div className="svc-section-header">
+							<p className="svc-eyebrow">The HestiQ Creative Process</p>
+							<h2 id="etecs-approach-title" className="svc-section-title">
+								A unified workflow where strategy, design, and engineering move
+								together
+							</h2>
+							<p className="svc-section-description">
+								Not in sequence. Not in silos. In collaboration from strategy
+								through to launch.
+							</p>
+						</div>
+						<ol
+							className="dev-process-grid"
+							aria-label="Creative strategy methodology"
+						>
+							{STEPS.map(({ number, icon: Icon, title, description }) => (
+								<li key={number} className="dev-process-card">
+									<div
+										className="dev-process-num"
+										aria-hidden="true"
+										style={{
+											display: "flex",
+											alignItems: "center",
+											justifyContent: "center",
+										}}
+									>
+										<Icon style={{ fontSize: "1.5em" }} />
+									</div>
+									<h3 className="dev-process-card-title">{title}</h3>
+									<p className="dev-process-card-description">{description}</p>
+								</li>
+							))}
+						</ol>
+					</div>
+				</section>
+
+				<section
+					id="services"
+					className="svc-section"
+					aria-labelledby="etecs-services-title"
+				>
+					<div className="svc-shell">
+						<div className="svc-section-header svc-section-header-centered">
+							<p className="svc-eyebrow">Key Capabilities</p>
+							<h2 id="etecs-services-title" className="svc-section-title">
+								End-to-end creative services
+							</h2>
+							<p className="svc-section-description">
+								Integrated strategy, design, and engineering to create cohesive
+								digital products.
+							</p>
+						</div>
+						<ul className="svc-features-grid" aria-label="Creative services">
+							{SERVICES.map(({ icon: Icon, title, description }) => (
+								<Card
+									as="li"
+									key={title}
+									className="svc-feature-card card-surface-muted"
+								>
+									<div className="svc-feature-icon-wrapper" aria-hidden="true">
+										<Icon />
+									</div>
+									<h3 className="svc-feature-title">{title}</h3>
+									<p className="svc-feature-description">{description}</p>
+								</Card>
+							))}
+						</ul>
+					</div>
+				</section>
+
+				<section
+					className="svc-section svc-section-alt"
+					aria-labelledby="etecs-benefits-title"
+				>
+					<div className="svc-shell">
+						<div className="svc-section-header svc-section-header-centered">
+							<p className="svc-eyebrow">What You Gain</p>
+							<h2 id="etecs-benefits-title" className="svc-section-title">
+								Products that land
+							</h2>
+							<p className="svc-section-description">
+								When strategy, design, and engineering share the same table, the
+								product built is the product that was envisioned.
+							</p>
+						</div>
+						<ul
+							className="svc-features-grid"
+							aria-label="Benefits of end-to-end strategy"
+						>
+							{BENEFITS.map(({ icon: Icon, title, description }) => (
+								<Card
+									as="li"
+									key={title}
+									className="svc-feature-card card-surface-light"
+								>
+									<div className="svc-feature-icon-wrapper" aria-hidden="true">
+										<Icon />
+									</div>
+									<h3 className="svc-feature-title">{title}</h3>
+									<p className="svc-feature-description">{description}</p>
+								</Card>
+							))}
+						</ul>
+					</div>
+				</section>
+
+				<section className="svc-cta-section" aria-labelledby="etecs-cta-title">
+					<div className="svc-cta-pattern" aria-hidden="true" />
+					<div className="svc-shell svc-cta-content">
+						<h2 id="etecs-cta-title" className="svc-cta-title">
+							Ready to Elevate Your Projects?
+						</h2>
+						<p className="svc-cta-subtitle">
+							Partner with HestiQ to bring strategy, design, and engineering
+							under one roof and deliver products that actually land.
+						</p>
+						<PrimaryButton
+							to="/contact"
+							state={{ scrollToTop: true }}
+							className="svc-cta-button solution-cta-button"
+						>
+							Talk to Our Experts <FaArrowRight aria-hidden="true" />
+						</PrimaryButton>
+					</div>
+				</section>
+			</main>
+			<Footer />
+		</>
 	);
 }

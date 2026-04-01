@@ -42,6 +42,12 @@ import EndToEndCreativeStrategy from "./pages/Solutions/EndToEndCreativeStrategy
 import Solutions from "./pages/Solutions/Solutions.jsx";
 
 import LogoService from "./pages/Design/LogoService.jsx";
+import BrandIdentity from "./pages/Design/BrandIdentity.jsx";
+import Illustration from "./pages/Design/Illustration.jsx";
+import UiUxDesign from "./pages/Design/UiUxDesign.jsx";
+import PosterDesign from "./pages/Design/PosterDesign.jsx";
+import AdvertisementDesign from "./pages/Design/AdvertisementDesign.jsx";
+import Design from "./pages/Design/Design.jsx";
 
 import WebApplication from "./pages/Development/WebApplication.jsx";
 import SinglePageWebsite from "./pages/Development/SinglePageWebsite.jsx";
@@ -85,6 +91,8 @@ createRoot(document.getElementById("root")).render(
 							</ProtectedRoute>
 						}
 					/>
+
+					{/* Solutions */}
 					<Route path="/solutions" element={<Solutions />} />
 					<Route
 						path="/solutions/digital-transformation"
@@ -98,7 +106,20 @@ createRoot(document.getElementById("root")).render(
 						path="/solutions/end-to-end-creative-strategy"
 						element={<EndToEndCreativeStrategy />}
 					/>
+
+					{/* Design */}
+					<Route path="/design" element={<Design />} />
 					<Route path="/services/logo" element={<LogoService />} />
+					<Route path="/services/brand-identity" element={<BrandIdentity />} />
+					<Route path="/services/illustration" element={<Illustration />} />
+					<Route path="/services/ui-ux-design" element={<UiUxDesign />} />
+					<Route path="/services/poster-design" element={<PosterDesign />} />
+					<Route
+						path="/services/advertisement-design"
+						element={<AdvertisementDesign />}
+					/>
+
+					{/* Development */}
 					<Route path="/development" element={<Development />} />
 					<Route
 						path="/services/web-application"
@@ -125,6 +146,7 @@ createRoot(document.getElementById("root")).render(
 						element={<BusinessWebsite />}
 					/>
 
+					{/* Fallback */}
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</AuthProvider>

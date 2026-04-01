@@ -1,5 +1,10 @@
 import { Link } from "react-router";
-import SolutionDetailPage from "../../components/sections/solutions/base/SolutionDetailPage";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import FullHeroSection from "../../components/sections/hero/FullHeroSection";
+import PrimaryButton from "../../components/elements/buttons/PrimaryButton";
+import SecondaryButton from "../../components/elements/buttons/SecondaryButton";
+import Card from "../../components/elements/cards/base/Card";
 import {
 	FaCloud,
 	FaCode,
@@ -20,6 +25,7 @@ import {
 	FaLayerGroup,
 	FaCircleExclamation,
 } from "react-icons/fa6";
+import "../../styles/services.css";
 
 const STEPS = [
 	{
@@ -136,55 +142,161 @@ const PAIN_POINTS = [
 
 export default function ScalableTechnicalSolutions() {
 	return (
-		<SolutionDetailPage
-			heroId="sts-hero-title"
-			heroEyebrow="Scalable Technical Solutions"
-			heroTitle="Robust Solutions for Growing Businesses"
-			heroSubtitle="Building scalable technical solutions that evolve with your business"
-			heroAction={
-				<Link to="/onboarding" className="cta solution-hero-cta">
-					Discover Our Approach
-				</Link>
-			}
-			problemId="sts-problem-title"
-			problemTitle="Growth exposes what was built to last a year"
-			problemDescription="As businesses grow, the technical infrastructure that worked at launch becomes a liability. Performance degrades under load, reliability suffers during peak demand, and tightly coupled systems resist the changes your product needs most. Without a deliberate scaling strategy, technical debt compounds and every new feature costs more than the last."
-			painPoints={PAIN_POINTS}
-			painPointsAriaLabel="Common scaling pain points"
-			painPointVariant="detailed"
-			methodologyId="sts-approach-title"
-			methodologyTitle="How we build for scale"
-			methodologyDescription="A deliberate, phased approach that delivers reliable infrastructure without over-engineering for problems you haven't encountered yet."
-			steps={STEPS}
-			stepsAriaLabel="Technical methodology steps"
-			servicesId="sts-services-title"
-			servicesTitle="Key capabilities"
-			servicesAriaLabel="Key services and capabilities"
-			services={SERVICES}
-			servicesCardClassName="card-surface-muted"
-			benefitsId="sts-benefits-title"
-			benefitsTitle="What you gain"
-			benefitsDescription="Technical excellence is not just about the code shipped today. It is about building the foundation that keeps your team moving at speed for years ahead."
-			benefitsAriaLabel="Benefits of working with HestiQ"
-			benefits={BENEFITS}
-			benefitsVariant="stacked"
-			benefitsAction={
-				<Link to="/onboarding" className="cta solution-benefits-cta-button">
-					Get Started <FaArrowRight aria-hidden="true" />
-				</Link>
-			}
-			ctaId="sts-cta-title"
-			ctaTitle="Ready to Scale Your Business?"
-			ctaSubtitle="Partner with HestiQ to build infrastructure that handles today's demands and tomorrow's growth without compromise."
-			ctaAction={
-				<Link
-					to="/contact"
-					state={{ scrollToTop: true }}
-					className="cta solution-cta-button"
+		<>
+			<Header />
+			<main className="svc-page">
+				<FullHeroSection
+					id="sts-hero-title"
+					className="sts-hero"
+					eyebrow="Scalable Technical Solutions"
+					title="Robust Solutions for Growing Businesses"
+					subtitle="Build infrastructure and systems designed to scale with your business. From cloud architecture to microservices and DevOps, we deliver technical excellence for organizations ready to grow."
+					actions={
+						<>
+							<PrimaryButton to="#services" state={{ scrollTo: "services" }}>
+								Explore Services <FaArrowRight aria-hidden="true" />
+							</PrimaryButton>
+							<SecondaryButton
+								to="/onboarding?category=programming"
+								state={{ scrollToTop: true }}
+								className="sts-hero-cta-outline"
+							>
+								Start a Project
+							</SecondaryButton>
+						</>
+					}
+				/>
+
+				<section
+					className="svc-section svc-section-alt"
+					aria-labelledby="sts-approach-title"
 				>
-					Talk to Our Experts
-				</Link>
-			}
-		/>
+					<div className="svc-shell">
+						<div className="svc-section-header">
+							<p className="svc-eyebrow">How We Build for Scale</p>
+							<h2 id="sts-approach-title" className="svc-section-title">
+								A deliberate, phased approach that delivers reliable
+								infrastructure
+							</h2>
+							<p className="svc-section-description">
+								Right-sized solutions without over-engineering for problems you
+								haven't encountered yet.
+							</p>
+						</div>
+						<ol className="dev-process-grid" aria-label="Technical methodology">
+							{STEPS.map(({ number, icon: Icon, title, description }) => (
+								<li key={number} className="dev-process-card">
+									<div
+										className="dev-process-num"
+										aria-hidden="true"
+										style={{
+											display: "flex",
+											alignItems: "center",
+											justifyContent: "center",
+										}}
+									>
+										<Icon style={{ fontSize: "1.5em" }} />
+									</div>
+									<h3 className="dev-process-card-title">{title}</h3>
+									<p className="dev-process-card-description">{description}</p>
+								</li>
+							))}
+						</ol>
+					</div>
+				</section>
+
+				<section
+					id="services"
+					className="svc-section"
+					aria-labelledby="sts-services-title"
+				>
+					<div className="svc-shell">
+						<div className="svc-section-header svc-section-header-centered">
+							<p className="svc-eyebrow">Key Capabilities</p>
+							<h2 id="sts-services-title" className="svc-section-title">
+								Technical excellence services
+							</h2>
+							<p className="svc-section-description">
+								Comprehensive solutions across cloud, infrastructure, security,
+								and software engineering.
+							</p>
+						</div>
+						<ul className="svc-features-grid" aria-label="Technical services">
+							{SERVICES.map(({ icon: Icon, title, description }) => (
+								<Card
+									as="li"
+									key={title}
+									className="svc-feature-card card-surface-muted"
+								>
+									<div className="svc-feature-icon-wrapper" aria-hidden="true">
+										<Icon />
+									</div>
+									<h3 className="svc-feature-title">{title}</h3>
+									<p className="svc-feature-description">{description}</p>
+								</Card>
+							))}
+						</ul>
+					</div>
+				</section>
+
+				<section
+					className="svc-section svc-section-alt"
+					aria-labelledby="sts-benefits-title"
+				>
+					<div className="svc-shell">
+						<div className="svc-section-header svc-section-header-centered">
+							<p className="svc-eyebrow">What You Gain</p>
+							<h2 id="sts-benefits-title" className="svc-section-title">
+								Technical excellence that compounds
+							</h2>
+							<p className="svc-section-description">
+								Technical excellence is not just about the code shipped today.
+								It is about building the foundation that keeps your team moving
+								at speed for years ahead.
+							</p>
+						</div>
+						<ul
+							className="svc-features-grid"
+							aria-label="Benefits of scalable solutions"
+						>
+							{BENEFITS.map(({ icon: Icon, title, description }) => (
+								<Card
+									as="li"
+									key={title}
+									className="svc-feature-card card-surface-light"
+								>
+									<div className="svc-feature-icon-wrapper" aria-hidden="true">
+										<Icon />
+									</div>
+									<h3 className="svc-feature-title">{title}</h3>
+									<p className="svc-feature-description">{description}</p>
+								</Card>
+							))}
+						</ul>
+					</div>
+				</section>
+
+				<section className="svc-cta-section" aria-labelledby="sts-cta-title">
+					<div className="svc-cta-pattern" aria-hidden="true" />
+					<div className="svc-shell svc-cta-content">
+						<h2 id="sts-cta-title" className="svc-cta-title">
+							Ready to Scale Your Business?
+						</h2>
+						<p className="svc-cta-subtitle">
+							Partner with HestiQ to build infrastructure that handles today's
+							demands and tomorrow's growth without compromise.
+						</p>
+						<PrimaryButton
+							to="/contact"
+							state={{ scrollToTop: true }}
+							className="svc-cta-button solution-cta-button"
+						>
+							Talk to Our Experts <FaArrowRight aria-hidden="true" />
+						</PrimaryButton>
+					</div>
+				</section>
+			</main>
+			<Footer />
+		</>
 	);
 }

@@ -1,5 +1,10 @@
 import { Link } from "react-router";
-import SolutionDetailPage from "../../components/sections/solutions/base/SolutionDetailPage";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import FullHeroSection from "../../components/sections/hero/FullHeroSection";
+import PrimaryButton from "../../components/elements/buttons/PrimaryButton";
+import SecondaryButton from "../../components/elements/buttons/SecondaryButton";
+import Card from "../../components/elements/cards/base/Card";
 import {
 	FaGears,
 	FaCloud,
@@ -16,6 +21,7 @@ import {
 	FaScrewdriverWrench,
 	FaRocket,
 } from "react-icons/fa6";
+import "../../styles/services.css";
 
 const STEPS = [
 	{
@@ -116,55 +122,167 @@ const PAIN_POINTS = [
 
 export default function DigitalTransformation() {
 	return (
-		<SolutionDetailPage
-			heroId="dt-hero-title"
-			heroEyebrow="Digital Transformation"
-			heroTitle="Transform Your Business for the Digital Age"
-			heroSubtitle="Helping businesses modernize processes and go digital"
-			heroAction={
-				<Link to="/onboarding" className="cta solution-hero-cta">
-					Explore Solutions
-				</Link>
-			}
-			problemId="dt-problem-title"
-			problemTitle="The cost of staying analog"
-			problemDescription="Businesses today face mounting pressure from every direction. Legacy systems slow decision-making, disconnected processes create inefficiency, and customers expect seamless digital experiences that older infrastructure simply cannot deliver. Without a clear transformation roadmap, organisations fall further behind with every passing quarter."
-			painPoints={PAIN_POINTS}
-			painPointsAriaLabel="Common digital transformation pain points"
-			painPointVariant="compact"
-			methodologyId="dt-approach-title"
-			methodologyTitle="The HestiQ approach"
-			methodologyDescription="A structured, iterative framework that turns transformation from an abstract goal into a concrete, measurable outcome."
-			steps={STEPS}
-			stepsAriaLabel="Transformation methodology steps"
-			servicesId="dt-services-title"
-			servicesTitle="Key capabilities"
-			servicesAriaLabel="Key services and capabilities"
-			services={SERVICES}
-			servicesCardClassName="card-surface-light"
-			benefitsId="dt-benefits-title"
-			benefitsTitle="What you gain"
-			benefitsDescription="Transformation is not just about technology. It is about building the operational foundation that lets your business adapt, compete, and grow at pace."
-			benefitsAriaLabel="Benefits of working with HestiQ"
-			benefits={BENEFITS}
-			benefitsVariant="split"
-			benefitsAction={
-				<Link to="/onboarding" className="cta solution-benefits-cta-button">
-					Get Started <FaArrowRight aria-hidden="true" />
-				</Link>
-			}
-			ctaId="dt-cta-title"
-			ctaTitle="Ready to Start Your Digital Transformation?"
-			ctaSubtitle="Take the first step towards modernizing your operations and unlocking growth opportunities through technology."
-			ctaAction={
-				<Link
-					to="/contact"
-					state={{ scrollToTop: true }}
-					className="cta solution-cta-button"
+		<>
+			<Header />
+			<main className="svc-page">
+				<FullHeroSection
+					id="dt-hero-title"
+					className="dt-hero"
+					eyebrow="Digital Transformation"
+					title="Transform Your Business for the Digital Age"
+					subtitle="Helping businesses modernize processes and go digital without losing sight of what makes you competitive. From legacy modernization to intelligent automation, we chart a clear path forward."
+					actions={
+						<>
+							<PrimaryButton to="#services" state={{ scrollTo: "services" }}>
+								Explore Services <FaArrowRight aria-hidden="true" />
+							</PrimaryButton>
+							<SecondaryButton
+								to="/onboarding?category=programming"
+								state={{ scrollToTop: true }}
+								className="dt-hero-cta-outline"
+							>
+								Start a Project
+							</SecondaryButton>
+						</>
+					}
+				/>
+
+				<section
+					className="svc-section svc-section-alt"
+					aria-labelledby="dt-approach-title"
 				>
-					Talk to Our Experts
-				</Link>
-			}
-		/>
+					<div className="svc-shell">
+						<div className="svc-section-header">
+							<p className="svc-eyebrow">The HestiQ Approach</p>
+							<h2 id="dt-approach-title" className="svc-section-title">
+								A structured, iterative framework that turns transformation from
+								abstract goal into concrete outcome
+							</h2>
+							<p className="svc-section-description">
+								Transformation takes planning, execution, and continuous
+								refinement across people, process, and technology.
+							</p>
+						</div>
+						<ol
+							className="dev-process-grid"
+							aria-label="Transformation methodology"
+						>
+							{STEPS.map(({ number, icon: Icon, title, description }) => (
+								<li key={number} className="dev-process-card">
+									<div
+										className="dev-process-num"
+										aria-hidden="true"
+										style={{
+											display: "flex",
+											alignItems: "center",
+											justifyContent: "center",
+										}}
+									>
+										<Icon style={{ fontSize: "1.5em" }} />
+									</div>
+									<h3 className="dev-process-card-title">{title}</h3>
+									<p className="dev-process-card-description">{description}</p>
+								</li>
+							))}
+						</ol>
+					</div>
+				</section>
+
+				<section
+					id="services"
+					className="svc-section"
+					aria-labelledby="dt-services-title"
+				>
+					<div className="svc-shell">
+						<div className="svc-section-header svc-section-header-centered">
+							<p className="svc-eyebrow">Key Capabilities</p>
+							<h2 id="dt-services-title" className="svc-section-title">
+								Digital transformation services
+							</h2>
+							<p className="svc-section-description">
+								Specialised services for every layer of your digital
+								infrastructure and operations.
+							</p>
+						</div>
+						<ul
+							className="svc-features-grid"
+							aria-label="Digital transformation services"
+						>
+							{SERVICES.map(({ icon: Icon, title, description }) => (
+								<Card
+									as="li"
+									key={title}
+									className="svc-feature-card card-surface-light"
+								>
+									<div className="svc-feature-icon-wrapper" aria-hidden="true">
+										<Icon />
+									</div>
+									<h3 className="svc-feature-title">{title}</h3>
+									<p className="svc-feature-description">{description}</p>
+								</Card>
+							))}
+						</ul>
+					</div>
+				</section>
+
+				<section
+					className="svc-section svc-section-alt"
+					aria-labelledby="dt-benefits-title"
+				>
+					<div className="svc-shell">
+						<div className="svc-section-header svc-section-header-centered">
+							<p className="svc-eyebrow">What You Gain</p>
+							<h2 id="dt-benefits-title" className="svc-section-title">
+								The real value of transformation
+							</h2>
+							<p className="svc-section-description">
+								Transformation is not just about technology. It is about
+								building the operational foundation that lets your business
+								adapt, compete, and grow at pace.
+							</p>
+						</div>
+						<ul
+							className="svc-features-grid"
+							aria-label="Benefits of digital transformation"
+						>
+							{BENEFITS.map(({ icon: Icon, title, description }) => (
+								<Card
+									as="li"
+									key={title}
+									className="svc-feature-card card-surface-muted"
+								>
+									<div className="svc-feature-icon-wrapper" aria-hidden="true">
+										<Icon />
+									</div>
+									<h3 className="svc-feature-title">{title}</h3>
+									<p className="svc-feature-description">{description}</p>
+								</Card>
+							))}
+						</ul>
+					</div>
+				</section>
+
+				<section className="svc-cta-section" aria-labelledby="dt-cta-title">
+					<div className="svc-cta-pattern" aria-hidden="true" />
+					<div className="svc-shell svc-cta-content">
+						<h2 id="dt-cta-title" className="svc-cta-title">
+							Ready to Start Your Digital Transformation?
+						</h2>
+						<p className="svc-cta-subtitle">
+							Take the first step towards modernizing your operations and
+							unlocking growth opportunities through technology.
+						</p>
+						<PrimaryButton
+							to="/contact"
+							state={{ scrollToTop: true }}
+							className="svc-cta-button solution-cta-button"
+						>
+							Talk to Our Experts <FaArrowRight aria-hidden="true" />
+						</PrimaryButton>
+					</div>
+				</section>
+			</main>
+			<Footer />
+		</>
 	);
 }
