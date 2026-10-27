@@ -116,7 +116,7 @@ All rights reserved.
 
 Email - [contact@hestiq.com](mailto:contact@hestiq.com)  
 Twitter - [@hestiq_social](https://x.com/hestiq_social)  
-Phone - +370 63285735
+Phone - +370 62977830
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
