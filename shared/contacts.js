@@ -8,8 +8,8 @@ const contacts = [
 	{
 		id: "phone",
 		label: "Phone",
-		value: "+370 63285735",
-		href: "tel:+37063285735",
+		value: "+370 629 77830",
+		href: "tel:+37062977830",
   },
   // {
   //   id: "address",
